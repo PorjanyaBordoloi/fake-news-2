@@ -11,6 +11,9 @@
             padding: 16px;
             font-family: 'Inter', sans-serif;
             margin: 0;
+            background-color: #212121;
+            /* Claude dark theme */
+            color: #ffffff;
         }
 
         .popup-container {
@@ -20,17 +23,18 @@
         .header h1 {
             font-size: 16px;
             margin: 0 0 12px 0;
+            color: #d4d4d4;
         }
 
         .hidden {
-            display: none;
+            display: none !important;
         }
 
         .spinner {
             width: 32px;
             height: 32px;
-            border: 3px solid #e5e7eb;
-            border-top-color: #3b82f6;
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            border-top-color: #a3a3a3;
             border-radius: 50%;
             animation: spin 0.8s linear infinite;
             margin: 16px auto;
@@ -44,29 +48,44 @@
 
         .verdict {
             padding: 16px;
-            border-radius: 8px;
+            border-radius: 12px;
             margin-top: 12px;
+            background: #282828;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .verdict-fake {
-            background: #fef2f2;
-            border: 1px solid #fca5a5;
+            border-color: #fca5a5;
         }
 
         .verdict-real {
-            background: #f0fdf4;
-            border: 1px solid #86efac;
+            border-color: #4ade80;
         }
 
         .verdict-misleading {
-            background: #fffbeb;
-            border: 1px solid #fcd34d;
+            border-color: #fcd34d;
         }
 
         .score-badge {
             font-size: 18px;
             font-weight: 700;
             margin-bottom: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 16px;
+        }
+
+        .verdict-fake .score-badge {
+            color: #fca5a5;
+        }
+
+        .verdict-real .score-badge {
+            color: #4ade80;
+        }
+
+        .verdict-misleading .score-badge {
+            color: #fcd34d;
         }
 
         .verdict h2 {
@@ -74,25 +93,51 @@
             font-size: 16px;
         }
 
+        .verdict-fake h2 {
+            color: #fca5a5;
+        }
+
+        .verdict-real h2 {
+            color: #4ade80;
+        }
+
+        .verdict-misleading h2 {
+            color: #fcd34d;
+        }
+
         .verdict p {
             font-size: 13px;
-            color: #6b7280;
+            color: #a3a3a3;
             margin: 4px 0;
         }
 
-        #view-details {
+        #view-details,
+        #analyze-btn {
             margin-top: 12px;
             padding: 8px 16px;
-            background: #3b82f6;
-            color: white;
-            border: none;
+            background: #2f2f2f;
+            color: #e5e5e5;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 6px;
             cursor: pointer;
             font-size: 13px;
+            width: 100%;
+            transition: background 0.2s;
         }
 
-        #view-details:hover {
-            background: #2563eb;
+        #view-details:hover,
+        #analyze-btn:hover {
+            background: #3b3b3b;
+        }
+
+        #not-article p {
+            color: #a3a3a3;
+            font-size: 14px;
+        }
+
+        #loading p {
+            color: #a3a3a3;
+            font-size: 14px;
         }
     </style>
 </head>
@@ -105,7 +150,7 @@
 
         <div id="loading" class="hidden">
             <div class="spinner"></div>
-            <p>Analyzing article...</p>
+            <p>Agents cross-referencing...</p>
         </div>
 
         <div id="result" class="hidden">
@@ -113,12 +158,12 @@
                 <div id="score-badge" class="score-badge"></div>
                 <h2 id="verdict-text"></h2>
                 <p id="verdict-description"></p>
-                <button id="view-details">View Full Analysis</button>
+                <button id="view-details">View Deep Analysis</button>
             </div>
         </div>
 
         <div id="not-article">
-            <p>Click to analyze the current page.</p>
+            <p>Scan this page to check for misinformation.</p>
             <button id="analyze-btn">Analyze This Page</button>
         </div>
     </div>

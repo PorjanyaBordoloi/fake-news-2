@@ -5,16 +5,22 @@ This file:
   1. Creates the FastAPI app
   2. Configures CORS for React frontend + Chrome Extension
   3. Defines the streaming and simple analysis endpoints
-  4. Runs uvicorn
+  4. Uses the compiled LangGraph pipeline from claim_extraction
+       claim_extraction → evidence_retrieval → fact_checker
+  5. Runs uvicorn
 """
 
+import json
 import logging
 from contextlib import asynccontextmanager
 
 import uvicorn
+from dotenv import load_dotenv
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
+
+load_dotenv()
 
 logger = logging.getLogger(__name__)
 
@@ -52,39 +58,77 @@ app.add_middleware(
 
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# Helper: build initial state and invoke graph
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+def _build_initial_state(user_input: str, top_n: int = 3) -> dict:
+    """Build a fresh AgentState dict for the LangGraph pipeline."""
+    return {
+        "user_input": user_input,
+        "raw_markdown": "",
+        "claims": [],
+        "evidence_map": {},
+        "verdicts": [],
+        "top_n": top_n,
+        "pub_date": None,
+        "author": None,
+        "source_domain": None,
+        "error": "",
+    }
+
+
+def run_pipeline(user_input: str, top_n: int = 3) -> dict:
+    """
+    Run the full 3-agent LangGraph pipeline synchronously.
+      1. claim_extraction  → "What should we fact-check?"
+      2. evidence_retrieval → "What evidence do we have?"
+      3. fact_checker       → "Given this evidence, what is the verdict?"
+    """
+    from agents.claim_extraction import claim_extraction_graph
+
+    initial_state = _build_initial_state(user_input, top_n=top_n)
+    result = claim_extraction_graph.invoke(initial_state)
+    return result
+
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 # Endpoints
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-@app.post("/api/analyze-stream")
-async def analyze_stream(url: str):
+@app.get("/api/analyze-stream")
+async def analyze_stream(user_input: str):
     """
     Streaming endpoint for the website (shows chain of thought).
-    Returns SSE stream of agent thoughts.
+    Returns SSE stream of agent execution events.
     """
-    from agents.orchestrator import AgentOrchestrator
+    from agents.claim_extraction import claim_extraction_graph
 
-    orchestrator = AgentOrchestrator()
+    async def event_generator():
+        initial_state = _build_initial_state(user_input)
+        # Stream events from the compiled LangGraph
+        for event in claim_extraction_graph.stream(initial_state):
+            for node_name, node_output in event.items():
+                payload = {
+                    "agent": node_name,
+                    "status": "error" if node_output.get("error") else "success",
+                    "data": node_output,
+                }
+                yield f"data: {json.dumps(payload)}\n\n"
+
+        yield f"data: {json.dumps({'status': 'complete'})}\n\n"
+
     return StreamingResponse(
-        orchestrator.run_chain(url),
+        event_generator(),
         media_type="text/event-stream",
     )
 
 
 @app.post("/api/analyze-simple")
-async def analyze_simple(url: str):
+async def analyze_simple(user_input: str):
     """
     Simple endpoint for Chrome extension (no streaming).
-    Returns final verdict only.
+    Returns the full pipeline result including verdicts.
     """
-    from agents.orchestrator import AgentOrchestrator
-
-    orchestrator = AgentOrchestrator()
-    result = await orchestrator.run_chain_sync(url)
-
-    return {
-        "score": result["authenticity_score"],
-        "verdict": result["final_verdict"],
-        "confidence": result["confidence"],
-    }
+    result = run_pipeline(user_input)
+    return result
 
 
 @app.get("/health")

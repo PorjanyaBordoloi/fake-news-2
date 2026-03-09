@@ -1,36 +1,40 @@
-/**
- * popup.js — Extension popup script.
- *
- * Gets the current tab URL, sends it to the /api/analyze-simple endpoint,
- * and displays the score + verdict.
- *
- * Extension displays ONLY:
- *   - Score (0-100)
- *   - Verdict (Fake/Real/Misleading)
- *   - Button to "View Full Analysis" (opens website)
- */
-
 const API_URL = 'http://localhost:8000';
 
 document.getElementById('analyze-btn').addEventListener('click', async () => {
-    // Get current tab URL
-    const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-    const url = tab.url;
-
-    if (!url || url.startsWith('chrome://')) {
-        return;
-    }
-
-    // Show loading
-    document.getElementById('not-article').classList.add('hidden');
-    document.getElementById('loading').classList.remove('hidden');
-
     try {
-        const response = await fetch(`${API_URL}/api/analyze-simple?url=${encodeURIComponent(url)}`, {
+        // Get current tab URL
+        const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+        const url = tab?.url || '';
+
+        if (!url || url.startsWith('chrome://')) {
+            alert('Cannot analyze special Chrome pages.');
+            return;
+        }
+
+        // Show loading
+        document.getElementById('not-article').classList.add('hidden');
+        document.getElementById('loading').classList.remove('hidden');
+
+        // Fetch to our backend utilizing the LangGraph pipeline
+        const response = await fetch(`${API_URL}/api/analyze-simple?user_input=${encodeURIComponent(url)}`, {
             method: 'POST',
         });
 
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
         const data = await response.json();
+
+        // Calculate overall score from the verdicts array returned by the Groq Agent
+        const verdicts = data.verdicts || [];
+        const scores = verdicts.map(v => v.truth_score || 50);
+        const avgScore = scores.length > 0 ? Math.round(scores.reduce((a, b) => a + b, 0) / scores.length) : 0;
+
+        let overall = 'UNVERIFIED';
+        if (avgScore >= 70) overall = 'REAL';
+        else if (avgScore <= 30) overall = 'FAKE';
+        else if (avgScore < 70) overall = 'MISLEADING';
 
         // Hide loading, show result
         document.getElementById('loading').classList.add('hidden');
@@ -42,20 +46,20 @@ document.getElementById('analyze-btn').addEventListener('click', async () => {
         const verdictText = document.getElementById('verdict-text');
         const verdictDesc = document.getElementById('verdict-description');
 
-        scoreBadge.textContent = `Score: ${data.score}/100`;
+        scoreBadge.textContent = `Score: ${avgScore}/100`;
 
-        if (data.verdict === 'FAKE') {
+        if (overall === 'FAKE') {
             container.className = 'verdict verdict-fake';
             verdictText.textContent = '⚠️ Likely Fake';
-            verdictDesc.textContent = 'Multiple red flags detected';
-        } else if (data.verdict === 'REAL') {
+            verdictDesc.textContent = 'Multiple red flags detected in claims';
+        } else if (overall === 'REAL') {
             container.className = 'verdict verdict-real';
             verdictText.textContent = '✅ Likely Real';
-            verdictDesc.textContent = 'Verified by trusted sources';
-        } else if (data.verdict === 'MISLEADING') {
+            verdictDesc.textContent = 'Claims are supported by web evidence';
+        } else if (overall === 'MISLEADING') {
             container.className = 'verdict verdict-misleading';
             verdictText.textContent = '⚠️ Misleading';
-            verdictDesc.textContent = 'Contains some inaccuracies';
+            verdictDesc.textContent = 'Contains mixed or exaggerated claims';
         } else {
             container.className = 'verdict';
             verdictText.textContent = '❔ Unverified';
@@ -65,12 +69,16 @@ document.getElementById('analyze-btn').addEventListener('click', async () => {
         document.getElementById('loading').classList.add('hidden');
         document.getElementById('not-article').classList.remove('hidden');
         console.error('Analysis failed:', error);
+        alert('Analysis failed. Make sure the backend server (http://localhost:8000) is running.');
     }
 });
 
 // View Full Analysis button → opens website
 document.getElementById('view-details')?.addEventListener('click', async () => {
     const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-    const url = tab.url;
-    chrome.tabs.create({ url: `http://localhost:5173?url=${encodeURIComponent(url)}` });
+    const url = tab?.url || '';
+    if (url) {
+        // Automatically start verification on the frontend dashboard
+        chrome.tabs.create({ url: `http://localhost:5173?url=${encodeURIComponent(url)}` });
+    }
 });

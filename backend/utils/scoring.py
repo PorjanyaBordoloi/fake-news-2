@@ -1,68 +1,57 @@
 """
 Scoring Utility
 
-Custom scoring algorithm for calculating the final authenticity score (0-100).
-Used by Agent 3 (Cross-Reference Validator).
+Simplified scoring — now each claim gets its own truth_score from Gemini,
+so this module provides helpers for aggregating per-claim scores into an
+overall article-level score when needed.
 """
 
 import logging
+from typing import Any
 
 logger = logging.getLogger(__name__)
 
 
-def calculate_score(agent2_data: dict, cross_ref_data: dict) -> int:
+def aggregate_verdicts(verdicts: list[dict[str, Any]]) -> dict[str, Any]:
     """
-    Calculate the final authenticity score (0-100).
-
-    Scoring logic (from instructions):
-      - Base score: 50 (neutral)
-      - LLM verdict: REAL +30, FAKE -40, MISLEADING -20
-      - Tavily supporting sources: +5 each (max +20)
-      - Tavily contradicting sources: -10 each (max -30)
-      - News API corroboration: >=3 articles +15, 0 articles -15
-      - Red flags: critical -15, high -10, medium -5
+    Aggregate per-claim verdicts into an overall article summary.
 
     Args:
-        agent2_data: The 'data' dict from Agent 2 output.
-        cross_ref_data: Cross-reference results from Agent 3 sources.
+        verdicts: List of verdict dicts from Agent 3 (fact_checker).
+                  Each has: claim_text, verdict, truth_score, explanation, citations.
 
     Returns:
-        Authenticity score clamped to 0-100.
+        {
+            "overall_score": int (0-100, average of truth_scores),
+            "overall_verdict": str (majority verdict label),
+            "total_claims": int,
+            "verdict_breakdown": {"SUPPORTED": n, "CONTRADICTED": n, ...},
+        }
     """
-    base_score = 50  # Neutral starting point
+    if not verdicts:
+        return {
+            "overall_score": 50,
+            "overall_verdict": "UNVERIFIED",
+            "total_claims": 0,
+            "verdict_breakdown": {},
+        }
 
-    # Adjust based on LLM verdict
-    verdict = agent2_data["llm_analysis"]["authenticity_verdict"]
-    if verdict == "REAL":
-        base_score += 30
-    elif verdict == "FAKE":
-        base_score -= 40
-    elif verdict == "MISLEADING":
-        base_score -= 20
+    # Compute average truth score
+    scores = [v.get("truth_score", 50) for v in verdicts]
+    overall_score = round(sum(scores) / len(scores))
 
-    # Adjust based on Tavily results
-    supporting = agent2_data["tavily_results"]["supporting"]
-    contradicting = agent2_data["tavily_results"]["contradicting"]
+    # Count verdicts
+    breakdown: dict[str, int] = {}
+    for v in verdicts:
+        label = v.get("verdict", "UNVERIFIED")
+        breakdown[label] = breakdown.get(label, 0) + 1
 
-    base_score += min(supporting * 5, 20)   # Max +20
-    base_score -= min(contradicting * 10, 30)  # Max -30
+    # Majority verdict
+    overall_verdict = max(breakdown, key=breakdown.get)
 
-    # Adjust based on News API cross-reference
-    corroborating = cross_ref_data.get("news_api", {}).get("corroborating_articles", 0)
-    if corroborating >= 3:
-        base_score += 15
-    elif corroborating == 0:
-        base_score -= 15
-
-    # Adjust based on red flags
-    for flag in agent2_data["llm_analysis"].get("red_flags", []):
-        severity = flag.get("severity", "low")
-        if severity == "critical":
-            base_score -= 15
-        elif severity == "high":
-            base_score -= 10
-        elif severity == "medium":
-            base_score -= 5
-
-    # Clamp to 0-100
-    return max(0, min(100, base_score))
+    return {
+        "overall_score": max(0, min(100, overall_score)),
+        "overall_verdict": overall_verdict,
+        "total_claims": len(verdicts),
+        "verdict_breakdown": breakdown,
+    }

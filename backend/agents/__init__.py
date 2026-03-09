@@ -1,7 +1,7 @@
 """
-agents — Multi-agent system for fake news detection.
+agents — Multi-agent fake news verification pipeline.
 
-Agent 1 (parser): URL Parser & Content Extractor
-Agent 2 (fact_checker): Fact Checker & LLM Analyzer
-Agent 3 (cross_reference): Cross-Reference Validator
+Agent 1 (claim_extraction): Extracts checkable claims from URL or text input.
+Agent 2 (evidence_retrieval): Gathers supporting/refuting web evidence for claims.
+Agent 3 (fact_checker): Produces final verdicts per claim using evidence + Gemini LLM.
 """

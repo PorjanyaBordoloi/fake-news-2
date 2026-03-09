@@ -1,36 +1,38 @@
 import { useState, useCallback } from 'react';
 
-interface AgentThought {
+export interface AgentThought {
     agent: string;
     status: string;
-    thought: string;
     data?: any;
 }
 
-/**
- * useAgentStream — SSE hook for agent updates.
- * Connects to the /api/analyze-stream endpoint and receives
- * real-time agent thought events via Server-Sent Events.
- */
 export function useAgentStream() {
     const [thoughts, setThoughts] = useState<AgentThought[]>([]);
     const [isComplete, setIsComplete] = useState(false);
     const [finalResult, setFinalResult] = useState<any>(null);
 
-    const startStream = useCallback((url: string) => {
+    const startStream = useCallback((userInput: string) => {
+        const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000';
         const eventSource = new EventSource(
-            `${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/analyze-stream?url=${encodeURIComponent(url)}`
+            `${apiUrl}/api/analyze-stream?user_input=${encodeURIComponent(userInput)}`
         );
 
         eventSource.onmessage = (event) => {
-            const data = JSON.parse(event.data);
+            try {
+                const data = JSON.parse(event.data);
 
-            if (data.status === 'complete') {
-                setIsComplete(true);
-                setFinalResult(data);
-                eventSource.close();
-            } else {
-                setThoughts((prev) => [...prev, data]);
+                if (data.status === 'complete') {
+                    setIsComplete(true);
+                    eventSource.close();
+                } else if (data.agent) {
+                    setThoughts((prev) => [...prev, data]);
+                    // If it's the final step, store the verdicts
+                    if (data.agent === 'fact_checker' && data.status === 'success') {
+                        setFinalResult(data.data);
+                    }
+                }
+            } catch (err) {
+                console.error("Error parsing event data:", err);
             }
         };
 

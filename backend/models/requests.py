@@ -4,11 +4,12 @@ Pydantic Request Models
 Defines request schemas for the API endpoints.
 """
 
-from pydantic import BaseModel, HttpUrl
+from typing import Optional
+from pydantic import BaseModel
 
 
 class AnalyzeRequest(BaseModel):
     """Request body for /api/analyze-stream and /api/analyze-simple."""
 
-    url: HttpUrl
-    user_agent: str = "FakeNewsDetector/1.0"
+    user_input: str  # URL or plain text
+    top_n: Optional[int] = 3  # Max number of claims to process

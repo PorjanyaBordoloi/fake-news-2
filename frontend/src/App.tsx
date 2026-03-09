@@ -1,57 +1,78 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
 import URLInput from './components/URLInput';
 import AgentChain from './components/AgentChain';
 import ScoreDisplay from './components/ScoreDisplay';
-import RedFlagsList from './components/RedFlagsList';
-import SourceCitations from './components/SourceCitations';
-import ExportReport from './components/ExportReport';
 import { useAgentStream } from './hooks/useAgentStream';
-import { useAnalysis } from './hooks/useAnalysis';
 
 function App() {
-    const [url, setUrl] = useState<string>('');
     const [isAnalyzing, setIsAnalyzing] = useState<boolean>(false);
+    const [submittedUrl, setSubmittedUrl] = useState<string>('');
 
     const { thoughts, isComplete, finalResult, startStream, resetStream } = useAgentStream();
-    const { analysisData, setAnalysisData } = useAnalysis();
 
-    const handleSubmit = async (submittedUrl: string) => {
-        setUrl(submittedUrl);
+    const handleSubmit = async (url: string) => {
+        setSubmittedUrl(url);
         setIsAnalyzing(true);
         resetStream();
-        startStream(submittedUrl);
+        startStream(url);
     };
+
+    useEffect(() => {
+        const params = new URLSearchParams(window.location.search);
+        const autoUrl = params.get('url');
+        if (autoUrl) {
+            // Remove the URL param from address bar so it doesn't infinite loop on refresh
+            window.history.replaceState({}, document.title, window.location.pathname);
+            handleSubmit(autoUrl);
+        }
+    }, []);
 
     return (
         <div className="app">
             <header className="app-header">
-                <h1>🔍 Fake News Detector</h1>
-                <p>AI-Powered Misinformation Detection</p>
+                <div className="logo">Fake News Detector</div>
+                <div className="nav-links">
+                    <a href="#">Home</a>
+                    <a href="#">About Project</a>
+                </div>
             </header>
 
             <main className="app-main">
+                {!isAnalyzing && !submittedUrl && (
+                    <h1 className="hero-title">Lets Verify !</h1>
+                )}
+
                 <URLInput onSubmit={handleSubmit} isLoading={isAnalyzing && !isComplete} />
 
-                {isAnalyzing && (
-                    <>
-                        <AgentChain thoughts={thoughts} isComplete={isComplete} />
+                {(isAnalyzing || thoughts.length > 0) && (
+                    <div className="chat-container">
+                        {/* User Message Bubble */}
+                        <div className="chat-message user-message">
+                            <div className="chat-bubble">
+                                Please verify this article format to feed into the truth engine:<br />
+                                <a href={submittedUrl} target="_blank" rel="noreferrer" style={{ color: '#fff', textDecoration: 'underline' }}>
+                                    {submittedUrl}
+                                </a>
+                            </div>
+                        </div>
 
-                        {isComplete && finalResult && (
-                            <>
-                                <ScoreDisplay
-                                    score={finalResult.authenticity_score}
-                                    verdict={finalResult.final_verdict}
-                                    confidence={finalResult.confidence}
-                                />
-                                <RedFlagsList redFlags={finalResult.analysis?.red_flags || []} />
-                                <SourceCitations
-                                    corroborating={finalResult.analysis?.corroborating_sources || []}
-                                    contradicting={finalResult.analysis?.contradicting_sources || []}
-                                />
-                                <ExportReport result={finalResult} />
-                            </>
-                        )}
-                    </>
+                        {/* Assistant Message Bubble */}
+                        <div className="chat-message assistant-message">
+                            <div className="chat-bubble assistant-bg">
+                                <p className="assistant-greeting">
+                                    Perfect! Let me orchestrate the multi-agent pipeline to extract claims, retrieve evidence, and fact-check this article.
+                                </p>
+
+                                <AgentChain thoughts={thoughts} isComplete={isComplete} />
+
+                                {isComplete && finalResult && (
+                                    <div className="final-result-wrapper fade-in">
+                                        <ScoreDisplay result={finalResult} />
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+                    </div>
                 )}
             </main>
         </div>

@@ -11,9 +11,9 @@
 - [Overview](#overview)
 - [Architecture](#architecture)
 - [Agent System](#agent-system)
-  - [Agent 1: URL Parser & Content Extractor](#agent-1-url-parser--content-extractor)
-  - [Agent 2: Fact Checker & LLM Analyzer](#agent-2-fact-checker--llm-analyzer)
-  - [Agent 3: Cross-Reference Validator](#agent-3-cross-reference-validator)
+  - [Agent 1: Claim Extraction](#agent-1-claim-extraction)
+  - [Agent 2: Evidence Retrieval](#agent-2-evidence-retrieval)
+  - [Agent 3: Fact Checker](#agent-3-fact-checker)
 - [Chain of Thought Display](#chain-of-thought-display)
 - [Frontend Implementation](#frontend-implementation)
 - [Backend Implementation](#backend-implementation)
@@ -26,19 +26,19 @@
 
 ## 🎯 Overview
 
-The Fake News Detector is a multi-agent system that analyzes news articles through three sequential agents, each performing specialized tasks:
+The Fake News Detector is a modular multi-agent fake-news verification pipeline that takes an input article/text and produces final explainable verdicts through three sequential agents:
 
-1. **Content Extraction Agent** - Parses URLs and extracts article text
-2. **Fact-Checking Agent** - Verifies claims using Tavily API + LLM reasoning
-3. **Cross-Reference Agent** - Validates against trusted sources and outputs final score
+1. **Claim Extraction Agent** — "What should we fact-check?" — Detects URL/text, scrapes via Jina Reader, extracts ranked claims via Groq LLM
+2. **Evidence Retrieval Agent** — "What evidence do we have?" — Gathers supporting/refuting web evidence via Tavily search
+3. **Fact Checker Agent** — "Given this evidence, what is the verdict?" — Produces structured verdicts per claim via Gemini LLM
 
 ### Key Features
 
 ✅ **Transparent Agent Workflow** - Users see real-time agent thinking process  
 ✅ **Chain of Thought Display** - Step-by-step reasoning shown on website  
 ✅ **Chrome Extension** - Quick fake/real verdict while browsing  
-✅ **Multi-Source Verification** - Cross-references News API, Tavily, fact-check databases  
-✅ **Natural Language Explanations** - LLM provides human-readable analysis
+✅ **Multi-Source Verification** - Tavily web search for evidence gathering  
+✅ **Structured Verdicts** - Per-claim verdicts with truth scores, explanations, and citations
 
 ---
 
@@ -47,7 +47,7 @@ The Fake News Detector is a multi-agent system that analyzes news articles throu
 ```
 ┌─────────────────────────────────────────────────────────────┐
 │                         USER INPUT                          │
-│  Website: URL input box    |    Extension: Current page URL │
+│  Website: URL / text input   |  Extension: Current page URL │
 └────────────────┬────────────────────────────────────────────┘
                  │
                  ▼
@@ -59,36 +59,37 @@ The Fake News Detector is a multi-agent system that analyzes news articles throu
     ┌────────────┴────────────┐
     ▼                         ▼
 ┌─────────────────────────────────────────────────────────────┐
-│                    AGENT ORCHESTRATOR                        │
-│  Manages agent execution, streaming responses, and state    │
+│                    AGENT PIPELINE                            │
+│  Sequential execution with SSE streaming                     │
 └────────────────┬─────────┬──────────┬────────────────────────┘
                  │         │          │
         ┌────────┘         │          └────────┐
         ▼                  ▼                   ▼
-   ┌─────────┐      ┌─────────┐       ┌─────────────┐
-   │ AGENT 1 │      │ AGENT 2 │       │  AGENT 3    │
-   │ Parser  │ ───> │ Fact    │ ───>  │ Cross-Ref   │
-   │         │      │ Checker │       │ Validator   │
-   └─────────┘      └─────────┘       └─────────────┘
-        │                │                    │
-        │                │                    │
-        ▼                ▼                    ▼
-   BeautifulSoup    Tavily API          News API
-   Newspaper3k      + LLM (Claude)      Google Fact Check
-                                        
+   ┌─────────────┐   ┌──────────────┐   ┌─────────────┐
+   │  AGENT 1    │   │   AGENT 2    │   │  AGENT 3    │
+   │  Claim      │──>│  Evidence    │──>│  Fact       │
+   │  Extraction │   │  Retrieval   │   │  Checker    │
+   └─────────────┘   └──────────────┘   └─────────────┘
+        │                  │                   │
+        ▼                  ▼                   ▼
+   Jina Reader        Tavily API          Gemini LLM
+   + Groq LLM         (web search)        (structured
+   (structured                             verdicts)
+    claims)
                     │
                     ▼
             ┌───────────────┐
-            │ Final Score   │
-            │ + Explanation │
+            │  Per-Claim    │
+            │  Verdicts +   │
+            │  Truth Scores │
             └───────┬───────┘
                     │
         ┌───────────┴────────────┐
         ▼                        ▼
    ┌─────────┐            ┌──────────────┐
    │ Website │            │  Extension   │
-   │ (Full   │            │  (Score +    │
-   │ Chain)  │            │  Verdict)    │
+   │ (Full   │            │  (Verdicts + │
+   │ Chain)  │            │  Scores)     │
    └─────────┘            └──────────────┘
 ```
 
@@ -96,49 +97,91 @@ The Fake News Detector is a multi-agent system that analyzes news articles throu
 
 ## 🤖 Agent System
 
-### Agent 1: URL Parser & Content Extractor
+### Overall 3-Agent Design
 
-**Purpose:** Extract clean article content from any news URL
+The pipeline is built with **LangGraph** as a compiled `StateGraph` with three sequential nodes.
+All three nodes share a single `AgentState` TypedDict and the graph is compiled once at module load:
 
-#### Responsibilities:
-1. Accept URL input from user
-2. Fetch webpage HTML
-3. Parse and extract:
-   - Headline
-   - Body text
-   - Author
-   - Publish date
-   - Source domain
-4. Clean and structure content
-5. Output JSON with extracted data
+| Agent | Question Answered | File | LangGraph Node |
+|-------|-------------------|------|----------------|
+| **Claim Extraction** | "What should we fact-check?" | `claim_extraction.py` | `extraction_node` |
+| **Evidence Retrieval** | "What evidence do we have?" | `evidence_retrieval.py` | `evidence_retrieval_node` |
+| **Fact Checker** | "Given this evidence, what is the verdict?" | `fact_checker.py` | `fact_checker_node` |
+
+```
+START → claim_extraction → evidence_retrieval → fact_checker → END
+```
+
+**Shared State (`AgentState`):**
+```python
+class AgentState(TypedDict):
+    user_input: str
+    input_url: NotRequired[str]
+    raw_markdown: str
+    claims: list[dict[str, Any]]
+    evidence_map: dict[str, list[dict[str, str]]]
+    verdicts: list[dict[str, Any]]
+    top_n: Optional[int]
+    pub_date: Optional[str]
+    author: Optional[str]
+    source_domain: Optional[str]
+    error: str
+```
+
+---
+
+### Agent 1: Claim Extraction
+
+**Purpose:** Turn raw user input (URL or text) into a small list of high-value, checkable claims.
+
+#### What it does:
+1. Detects whether input is a URL or plain text
+2. If URL, scrapes article markdown via **Jina Reader**
+3. Cleans noisy page text and extracts basic metadata (`pub_date`, `author`, `source_domain`)
+4. Sends text to a **Groq LLM** with structured output schema
+5. Produces ranked claims with:
+   - `claim_text`
+   - `checkworthiness_score` (1-10)
+   - `reasoning`
+6. Keeps top-N claims and stores them in state
 
 #### Technologies:
-- **BeautifulSoup4** - HTML parsing
-- **Newspaper3k** - Article extraction
-- **Requests/httpx** - HTTP client
-
-#### Input:
-```json
-{
-  "url": "https://example.com/news-article",
-  "user_agent": "FakeNewsDetector/1.0"
-}
-```
+- **Jina Reader** (`r.jina.ai`) — URL-to-markdown scraping
+- **LangChain ChatGroq** (`llama-3.1-8b-instant`) — Structured claim extraction with `json_mode`
+- **LangGraph** — `StateGraph` with 3-node sequential pipeline
+- **Pydantic** — `ClaimExtractionResult` schema for structured output validation
+- **requests** — Synchronous HTTP client for Jina
 
 #### Output (to Agent 2):
 ```json
 {
   "success": true,
-  "agent": "parser",
-  "thought": "Successfully extracted article from example.com. Found headline, 1,234 words of body text, author John Doe, published on 2026-03-06.",
+  "agent": "claim_extraction",
+  "thought": "Detected URL input. Scraped article via Jina Reader. Extracted 5 claims, keeping top 3 by checkworthiness.",
   "data": {
-    "url": "https://example.com/news-article",
-    "headline": "Breaking: Major Event Happens",
-    "body": "Full article text here...",
-    "author": "John Doe",
-    "publish_date": "2026-03-06",
-    "domain": "example.com",
-    "word_count": 1234
+    "input_type": "url",
+    "metadata": {
+      "pub_date": "2026-03-06",
+      "author": "John Doe",
+      "source_domain": "example.com"
+    },
+    "claims": [
+      {
+        "claim_text": "Biden announces new $2T infrastructure plan",
+        "checkworthiness_score": 9,
+        "reasoning": "Major policy claim with specific dollar amount, easily verifiable"
+      },
+      {
+        "claim_text": "Study shows 80% increase in renewable energy",
+        "checkworthiness_score": 8,
+        "reasoning": "Specific statistical claim that can be cross-referenced"
+      },
+      {
+        "claim_text": "Event occurred on March 5, 2026",
+        "checkworthiness_score": 6,
+        "reasoning": "Date claim, verifiable but lower priority"
+      }
+    ]
   },
   "timestamp": "2026-03-06T10:30:00Z"
 }
@@ -146,373 +189,172 @@ The Fake News Detector is a multi-agent system that analyzes news articles throu
 
 #### Agent 1 Thought Process (displayed to user):
 ```
-🔍 Agent 1: Content Extractor
-├─ Fetching URL: example.com/news-article
-├─ Status: 200 OK (HTML received)
-├─ Parsing HTML structure...
-├─ Identified article container
-├─ Extracted headline: "Breaking: Major Event..."
-├─ Extracted body: 1,234 words
-├─ Found author: John Doe
-├─ Publication date: March 6, 2026
-└─ ✅ Extraction complete. Passing to Fact Checker...
+🔍 Agent 1: Claim Extraction
+├─ Detecting input type...
+│  └─ Input is a URL: example.com/news-article
+├─ Scraping via Jina Reader...
+│  └─ ✅ Received 2,450 words of markdown
+├─ Extracting metadata...
+│  ├─ Author: John Doe
+│  ├─ Published: March 6, 2026
+│  └─ Domain: example.com
+├─ Sending to Groq LLM for claim extraction...
+│  ├─ Extracted 5 candidate claims
+│  ├─ Ranked by checkworthiness score
+│  └─ Keeping top 3 claims
+├─ Top Claims:
+│  ├─ [9/10] "Biden announces new $2T infrastructure plan"
+│  ├─ [8/10] "Study shows 80% increase in renewable energy"
+│  └─ [6/10] "Event occurred on March 5, 2026"
+└─ ✅ Claim extraction complete. Passing to Evidence Retrieval...
 ```
 
 ---
 
-### Agent 2: Fact Checker & LLM Analyzer
+### Agent 2: Evidence Retrieval
 
-**Purpose:** Verify claims using Tavily API and generate natural language reasoning via LLM
+**Purpose:** Gather supporting/refuting web evidence for the most important claims.
 
-#### Responsibilities:
-1. Receive extracted article from Agent 1
-2. Extract key claims from headline and body
-3. Query **Tavily API** for real-world verification
-4. Compile Tavily results into markdown report
-5. Feed markdown + original article to **LLM (Claude API)**
-6. Get natural language analysis of authenticity
-7. Output reasoning and initial verdict
+#### What it does:
+1. Takes extracted claims and sorts by `checkworthiness_score`
+2. Limits processing to top claims (`MAX_CLAIMS_PER_RUN`)
+3. Uses **Tavily search** to fetch relevant web snippets per claim
+4. Normalizes each result to `{url, content}` and truncates snippet length
+5. Runs retrieval concurrently with a thread pool for speed
+6. Outputs an `evidence_map` keyed by claim text
 
 #### Technologies:
-- **Tavily API** - Real-time web search with source citations
-- **Anthropic Claude API** - LLM for reasoning and analysis
-- **spaCy/NLTK** - Claim extraction (optional)
+- **Tavily API** — Real-time web search with source citations
+- **Concurrent thread pool** — Parallel evidence retrieval for speed
 
-#### Workflow:
-
-##### Step 2.1: Extract Key Claims
-```python
-# Extract factual claims from article
-claims = [
-    "Biden announces new infrastructure plan",
-    "Study shows 80% increase in renewable energy",
-    "Event occurred on March 5, 2026"
-]
-```
-
-##### Step 2.2: Query Tavily API
-```python
-import httpx
-
-async def verify_with_tavily(claim: str):
-    response = await httpx.post(
-        "https://api.tavily.com/search",
-        json={
-            "api_key": TAVILY_API_KEY,
-            "query": claim,
-            "search_depth": "advanced",
-            "include_domains": [
-                "reuters.com", 
-                "apnews.com", 
-                "bbc.com"
-            ],
-            "max_results": 5
-        }
-    )
-    return response.json()
-```
-
-##### Step 2.3: Compile Markdown Report
-```markdown
-# Tavily Fact-Check Results
-
-## Claim 1: "Biden announces new infrastructure plan"
-**Sources Found:** 3
-
-### Supporting Sources:
-- ✅ **Reuters** (2026-03-05): "Biden unveils $2T infrastructure package"
-  - URL: https://reuters.com/article/123
-  - Relevance: 95%
-  
-- ✅ **AP News** (2026-03-05): "White House releases infrastructure details"
-  - URL: https://apnews.com/article/456
-  - Relevance: 92%
-
-### Contradicting Sources:
-- None found
-
-**Verdict:** SUPPORTED by mainstream sources
-
----
-
-## Claim 2: "Study shows 80% increase in renewable energy"
-**Sources Found:** 1
-
-### Supporting Sources:
-- ⚠️ **EnergyBlog.com** (2026-03-04): "Renewable energy surges"
-  - URL: https://energyblog.com/article/789
-  - Relevance: 67%
-  - Note: Non-authoritative source
-
-### Contradicting Sources:
-- ❌ **Nature Journal** (2026-02-28): "Renewable growth at 40%, not 80%"
-  - URL: https://nature.com/article/101
-  - Relevance: 88%
-
-**Verdict:** CONTRADICTED by authoritative source
-```
-
-##### Step 2.4: Feed to LLM for Analysis
-```python
-prompt = f"""You are a fact-checking analyst. Analyze this article for authenticity.
-
-ORIGINAL ARTICLE:
-Headline: {headline}
-Content: {body}
-
-TAVILY FACT-CHECK RESULTS:
-{markdown_report}
-
-Provide a detailed analysis in JSON format:
-{{
-  "authenticity_verdict": "REAL" | "FAKE" | "MISLEADING" | "UNVERIFIED",
-  "confidence": 0.0-1.0,
-  "reasoning": "Natural language explanation of why the article is authentic or fake",
-  "red_flags": [
-    {{
-      "type": "exaggerated_claims" | "unsupported_statistics" | "contradicted_by_sources" | "missing_attribution",
-      "description": "Specific issue found",
-      "severity": "low" | "medium" | "high" | "critical"
-    }}
-  ],
-  "supporting_evidence": ["List of facts that check out"],
-  "contradicting_evidence": ["List of facts that don't check out"]
-}}
-"""
-
-llm_response = await call_claude_api(prompt)
-```
+#### Input: Output from Agent 1 (claims list)
 
 #### Output (to Agent 3):
 ```json
 {
   "success": true,
-  "agent": "fact_checker",
-  "thought": "Verified 3 claims via Tavily. Found 2 supporting sources, 1 contradiction. LLM analysis indicates MISLEADING verdict due to exaggerated statistics.",
+  "agent": "evidence_retrieval",
+  "thought": "Retrieved evidence for 3 claims using Tavily. Found 12 total snippets across all claims.",
   "data": {
-    "tavily_results": {
-      "claims_checked": 3,
-      "sources_found": 7,
-      "supporting": 5,
-      "contradicting": 2
-    },
-    "llm_analysis": {
-      "authenticity_verdict": "MISLEADING",
-      "confidence": 0.87,
-      "reasoning": "While the main event (Biden infrastructure announcement) is factually accurate and supported by Reuters and AP News, the article contains a significant exaggeration. The claim of an '80% increase in renewable energy' is contradicted by Nature Journal, which reports only a 40% increase. This type of statistical inflation is a common tactic in misleading articles to sensationalize legitimate news. The article also lacks proper attribution for the renewable energy statistic, citing only an unnamed 'study' without providing a source.",
-      "red_flags": [
+    "claims_processed": 3,
+    "evidence_map": {
+      "Biden announces new $2T infrastructure plan": [
         {
-          "type": "exaggerated_claims",
-          "description": "Renewable energy increase reported as 80% vs actual 40%",
-          "severity": "high"
+          "url": "https://reuters.com/article/biden-infrastructure-2026",
+          "content": "President Biden unveiled a $2 trillion infrastructure package on March 5..."
         },
         {
-          "type": "missing_attribution",
-          "description": "No source provided for renewable energy statistic",
-          "severity": "medium"
+          "url": "https://apnews.com/article/white-house-infrastructure",
+          "content": "The White House confirmed details of the new infrastructure spending plan..."
         }
       ],
-      "supporting_evidence": [
-        "Biden infrastructure announcement confirmed by Reuters and AP News",
-        "Event date (March 5, 2026) is accurate",
-        "Main policy details match authoritative sources"
+      "Study shows 80% increase in renewable energy": [
+        {
+          "url": "https://nature.com/articles/renewable-growth-2026",
+          "content": "Nature Journal reports actual renewable energy growth at approximately 40%, not 80%..."
+        }
       ],
-      "contradicting_evidence": [
-        "Renewable energy increase is 40%, not 80% (Nature Journal)"
+      "Event occurred on March 5, 2026": [
+        {
+          "url": "https://bbc.com/news/world-us-2026-03-05",
+          "content": "The announcement was made on March 5, 2026 at the White House..."
+        }
       ]
     }
   },
-  "timestamp": "2026-03-06T10:30:15Z"
+  "timestamp": "2026-03-06T10:30:10Z"
 }
 ```
 
 #### Agent 2 Thought Process (displayed to user):
 ```
-🔎 Agent 2: Fact Checker & Analyzer
-├─ Extracting claims from article...
-│  ├─ Claim 1: Biden infrastructure announcement
-│  ├─ Claim 2: 80% renewable energy increase
-│  └─ Claim 3: Event date (March 5, 2026)
+🔎 Agent 2: Evidence Retrieval
+├─ Received 3 claims sorted by checkworthiness
+│  ├─ [9/10] "Biden announces new $2T infrastructure plan"
+│  ├─ [8/10] "Study shows 80% increase in renewable energy"
+│  └─ [6/10] "Event occurred on March 5, 2026"
 │
-├─ Querying Tavily API for verification...
-│  ├─ Searching: "Biden infrastructure announcement"
-│  │  ├─ Found: Reuters (95% relevant) ✅
-│  │  ├─ Found: AP News (92% relevant) ✅
-│  │  └─ Verdict: SUPPORTED
+├─ Searching Tavily for evidence (concurrent)...
+│  ├─ Claim 1: "Biden infrastructure plan"
+│  │  ├─ Found: Reuters (relevant) ✅
+│  │  ├─ Found: AP News (relevant) ✅
+│  │  └─ 2 snippets collected
 │  │
-│  ├─ Searching: "renewable energy 80% increase"
-│  │  ├─ Found: EnergyBlog.com (67% relevant) ⚠️
-│  │  ├─ Found: Nature Journal contradicts (88% relevant) ❌
-│  │  └─ Verdict: CONTRADICTED
+│  ├─ Claim 2: "80% renewable energy increase"
+│  │  ├─ Found: Nature Journal (contradicts) ❌
+│  │  └─ 1 snippet collected
 │  │
-│  └─ Summary: 5 supporting, 2 contradicting sources
+│  └─ Claim 3: "Event on March 5, 2026"
+│     ├─ Found: BBC News (confirms) ✅
+│     └─ 1 snippet collected
 │
-├─ Compiling markdown fact-check report...
-│  └─ ✅ Report generated (1,247 words)
+├─ Normalizing results to {url, content} format...
+│  └─ 12 total evidence snippets across 3 claims
 │
-├─ Feeding to LLM (Claude) for analysis...
-│  ├─ Prompt: Article + Tavily results
-│  ├─ Requesting: Authenticity verdict + reasoning
-│  └─ ✅ LLM response received
-│
-├─ Analysis Results:
-│  ├─ Verdict: MISLEADING
-│  ├─ Confidence: 87%
-│  ├─ Red Flags: 2 identified
-│  │  ├─ HIGH: Exaggerated statistics (80% vs 40%)
-│  │  └─ MEDIUM: Missing source attribution
-│  │
-│  └─ Reasoning: "While main event is factually accurate,
-│     article exaggerates renewable energy statistics..."
-│
-└─ ✅ Fact-check complete. Passing to Cross-Reference Agent...
+└─ ✅ Evidence retrieval complete. Passing to Fact Checker...
 ```
 
 ---
 
-### Agent 3: Cross-Reference Validator
+### Agent 3: Fact Checker
 
-**Purpose:** Final validation against multiple trusted sources and output authenticity score
+**Purpose:** Convert claim + evidence into final user-facing verdicts.
 
-#### Responsibilities:
-1. Receive LLM analysis from Agent 2
-2. Cross-reference against:
-   - News API (trusted sources)
-   - Google Fact Check Tools API
-   - Manual source whitelist
-3. Calculate final authenticity score (0-100)
-4. Generate final verdict
-5. Compile complete report for user
+#### What it does:
+1. For each claim, builds evidence context from valid HTTP/HTTPS snippets
+2. Uses **Gemini** with structured schema `FactCheckVerdict`
+3. Enforces one of 4 labels:
+   - `SUPPORTED`
+   - `CONTRADICTED`
+   - `MISLEADING`
+   - `UNVERIFIED`
+4. Returns per claim:
+   - `verdict`
+   - `truth_score` (0-100)
+   - 2-sentence `explanation`
+   - Cleaned `citations` (only from retrieved evidence URLs, deduplicated/canonicalized)
+5. Falls back to safe `UNVERIFIED` output if no evidence or LLM error
 
 #### Technologies:
-- **News API** - Cross-reference against 80k+ sources
-- **Google Fact Check Tools API** - Existing fact-checks
-- **Custom scoring algorithm**
+- **Google Gemini LLM** — Structured schema output for verdicts
 
-#### Workflow:
-
-##### Step 3.1: Query News API
-```python
-async def cross_reference_news_api(headline: str, claims: list):
-    # Search for articles about the same topic
-    response = await httpx.get(
-        "https://newsapi.org/v2/everything",
-        params={
-            "q": headline,
-            "sources": "reuters,associated-press,bbc-news,the-guardian-uk",
-            "language": "en",
-            "sortBy": "relevancy",
-            "apiKey": NEWS_API_KEY
-        }
-    )
-    return response.json()
-```
-
-##### Step 3.2: Query Google Fact Check API
-```python
-async def check_google_factcheck(claim: str):
-    response = await httpx.get(
-        "https://factchecktools.googleapis.com/v1alpha1/claims:search",
-        params={
-            "query": claim,
-            "key": GOOGLE_API_KEY
-        }
-    )
-    return response.json()
-```
-
-##### Step 3.3: Calculate Authenticity Score
-```python
-def calculate_score(agent2_data: dict, cross_ref_data: dict) -> int:
-    base_score = 50  # Neutral starting point
-    
-    # Adjust based on LLM verdict
-    if agent2_data["llm_analysis"]["authenticity_verdict"] == "REAL":
-        base_score += 30
-    elif agent2_data["llm_analysis"]["authenticity_verdict"] == "FAKE":
-        base_score -= 40
-    elif agent2_data["llm_analysis"]["authenticity_verdict"] == "MISLEADING":
-        base_score -= 20
-    
-    # Adjust based on Tavily results
-    supporting = agent2_data["tavily_results"]["supporting"]
-    contradicting = agent2_data["tavily_results"]["contradicting"]
-    
-    base_score += min(supporting * 5, 20)  # Max +20
-    base_score -= min(contradicting * 10, 30)  # Max -30
-    
-    # Adjust based on News API cross-reference
-    if cross_ref_data["news_api"]["corroborating_articles"] >= 3:
-        base_score += 15
-    elif cross_ref_data["news_api"]["corroborating_articles"] == 0:
-        base_score -= 15
-    
-    # Adjust based on red flags
-    for flag in agent2_data["llm_analysis"]["red_flags"]:
-        if flag["severity"] == "critical":
-            base_score -= 15
-        elif flag["severity"] == "high":
-            base_score -= 10
-        elif flag["severity"] == "medium":
-            base_score -= 5
-    
-    # Clamp to 0-100
-    return max(0, min(100, base_score))
-```
+#### Input: Output from Agent 1 (claims) + Agent 2 (evidence_map)
 
 #### Output (Final Response):
 ```json
 {
   "success": true,
-  "final_verdict": "MISLEADING",
-  "authenticity_score": 42,
-  "confidence": "high",
-  "agent_chain": [
-    {
-      "agent": "parser",
-      "status": "success",
-      "thought": "Successfully extracted article...",
-      "timestamp": "2026-03-06T10:30:00Z"
-    },
-    {
-      "agent": "fact_checker",
-      "status": "success",
-      "thought": "Verified 3 claims via Tavily...",
-      "timestamp": "2026-03-06T10:30:15Z"
-    },
-    {
-      "agent": "cross_reference",
-      "status": "success",
-      "thought": "Cross-referenced against 15 sources...",
-      "timestamp": "2026-03-06T10:30:25Z"
-    }
-  ],
-  "analysis": {
-    "headline": "Breaking: Major Event Happens",
-    "source": "example.com",
-    "verdict": "MISLEADING",
-    "score": 42,
-    "reasoning": "While the main event is factually accurate and supported by Reuters and AP News, the article contains significant exaggeration...",
-    "red_flags": [...],
-    "sources_checked": {
-      "tavily": 7,
-      "news_api": 8,
-      "google_factcheck": 2
-    },
-    "corroborating_sources": [
+  "agent": "fact_checker",
+  "thought": "Generated verdicts for 3 claims. 1 SUPPORTED, 1 CONTRADICTED, 1 SUPPORTED.",
+  "data": {
+    "verdicts": [
       {
-        "source": "Reuters",
-        "title": "Biden unveils infrastructure package",
-        "url": "https://reuters.com/...",
-        "relevance": "95%"
-      }
-    ],
-    "contradicting_sources": [
+        "claim_text": "Biden announces new $2T infrastructure plan",
+        "verdict": "SUPPORTED",
+        "truth_score": 92,
+        "explanation": "Multiple authoritative sources confirm this announcement. Reuters and AP News both reported the $2T infrastructure package on March 5.",
+        "citations": [
+          "https://reuters.com/article/biden-infrastructure-2026",
+          "https://apnews.com/article/white-house-infrastructure"
+        ]
+      },
       {
-        "source": "Nature Journal",
-        "title": "Renewable growth at 40%",
-        "url": "https://nature.com/...",
-        "relevance": "88%"
+        "claim_text": "Study shows 80% increase in renewable energy",
+        "verdict": "CONTRADICTED",
+        "truth_score": 18,
+        "explanation": "Nature Journal reports the actual renewable energy growth at approximately 40%, not 80%. The article's statistic appears to be a significant exaggeration.",
+        "citations": [
+          "https://nature.com/articles/renewable-growth-2026"
+        ]
+      },
+      {
+        "claim_text": "Event occurred on March 5, 2026",
+        "verdict": "SUPPORTED",
+        "truth_score": 95,
+        "explanation": "BBC News confirms the announcement was made on March 5, 2026. The date is consistent across all retrieved sources.",
+        "citations": [
+          "https://bbc.com/news/world-us-2026-03-05"
+        ]
       }
     ]
   },
@@ -522,43 +364,33 @@ def calculate_score(agent2_data: dict, cross_ref_data: dict) -> int:
 
 #### Agent 3 Thought Process (displayed to user):
 ```
-✅ Agent 3: Cross-Reference Validator
-├─ Received analysis from Agent 2
-│  └─ Preliminary verdict: MISLEADING (87% confidence)
+✅ Agent 3: Fact Checker
+├─ Received 3 claims + evidence map
 │
-├─ Cross-referencing with News API...
-│  ├─ Searching 80,000+ sources for: "Biden infrastructure"
-│  ├─ Found 8 articles from trusted sources
-│  │  ├─ Reuters: Corroborates main event ✅
-│  │  ├─ AP News: Corroborates main event ✅
-│  │  ├─ BBC: Corroborates main event ✅
-│  │  └─ 5 more supporting articles
-│  └─ News API Verdict: Main story SUPPORTED
+├─ Processing Claim 1: "Biden $2T infrastructure plan"
+│  ├─ Building evidence context from 2 HTTP snippets...
+│  ├─ Sending to Gemini for structured verdict...
+│  ├─ Verdict: SUPPORTED (truth_score: 92)
+│  └─ Citations: reuters.com, apnews.com
 │
-├─ Checking Google Fact Check database...
-│  ├─ Query: "renewable energy 80% increase"
-│  ├─ Found 2 existing fact-checks
-│  │  ├─ Snopes: "Exaggerated claim - actual 40%" ❌
-│  │  └─ FactCheck.org: "Misleading statistic" ❌
-│  └─ Fact Check Verdict: Renewable stat DEBUNKED
+├─ Processing Claim 2: "80% renewable energy increase"
+│  ├─ Building evidence context from 1 HTTP snippet...
+│  ├─ Sending to Gemini for structured verdict...
+│  ├─ Verdict: CONTRADICTED (truth_score: 18)
+│  └─ Citations: nature.com
 │
-├─ Calculating final authenticity score...
-│  ├─ Base score: 50
-│  ├─ LLM verdict (MISLEADING): -20
-│  ├─ Supporting sources (5): +15
-│  ├─ Contradicting sources (2): -20
-│  ├─ News API corroboration: +15
-│  ├─ Red flags (2): -15
-│  ├─ Fact-check debunks: -10
-│  └─ FINAL SCORE: 42/100
+├─ Processing Claim 3: "Event on March 5, 2026"
+│  ├─ Building evidence context from 1 HTTP snippet...
+│  ├─ Sending to Gemini for structured verdict...
+│  ├─ Verdict: SUPPORTED (truth_score: 95)
+│  └─ Citations: bbc.com
 │
-├─ Final Assessment:
-│  ├─ Verdict: MISLEADING
-│  ├─ Score: 42/100 (Low credibility)
-│  ├─ Confidence: High (87%)
-│  └─ Reasoning: Mixed - accurate event, false statistics
+├─ Final Summary:
+│  ├─ 2 claims SUPPORTED
+│  ├─ 1 claim CONTRADICTED
+│  └─ 0 claims UNVERIFIED
 │
-└─ ✅ Analysis complete. Returning results to user...
+└─ ✅ Fact checking complete. Returning verdicts to user...
 ```
 
 ---
@@ -567,65 +399,45 @@ def calculate_score(agent2_data: dict, cross_ref_data: dict) -> int:
 
 ### Website Implementation (Real-time Streaming)
 
-The website displays the agent thinking process in real-time using **Server-Sent Events (SSE)** or **WebSockets**.
+The website displays the agent thinking process in real-time using **Server-Sent Events (SSE)**.
 
-#### Backend: FastAPI SSE Endpoint
+The compiled LangGraph uses `.stream()` to yield per-node outputs as they complete:
+
+#### Backend: FastAPI SSE Endpoint (LangGraph)
 
 ```python
 from fastapi import FastAPI
 from fastapi.responses import StreamingResponse
-import asyncio
 import json
+
+from agents.claim_extraction import claim_extraction_graph
 
 app = FastAPI()
 
-async def agent_chain_generator(url: str):
-    """Generator that yields agent thoughts as they happen"""
-    
-    # Agent 1: Parser
-    yield f"data: {json.dumps({'agent': 'parser', 'status': 'started', 'thought': 'Fetching URL...'})}\n\n"
-    await asyncio.sleep(0.5)
-    
-    article = await parse_url(url)
-    yield f"data: {json.dumps({'agent': 'parser', 'status': 'success', 'thought': f'Extracted {article.word_count} words', 'data': article})}\n\n"
-    
-    # Agent 2: Fact Checker
-    yield f"data: {json.dumps({'agent': 'fact_checker', 'status': 'started', 'thought': 'Extracting claims...'})}\n\n"
-    await asyncio.sleep(0.5)
-    
-    claims = extract_claims(article)
-    yield f"data: {json.dumps({'agent': 'fact_checker', 'status': 'progress', 'thought': f'Found {len(claims)} claims to verify'})}\n\n"
-    
-    # Query Tavily for each claim
-    for i, claim in enumerate(claims):
-        yield f"data: {json.dumps({'agent': 'fact_checker', 'status': 'progress', 'thought': f'Verifying claim {i+1}/{len(claims)}: {claim[:50]}...'})}\n\n"
-        tavily_result = await verify_with_tavily(claim)
-        await asyncio.sleep(1)
-    
-    # LLM Analysis
-    yield f"data: {json.dumps({'agent': 'fact_checker', 'status': 'progress', 'thought': 'Analyzing with LLM...'})}\n\n"
-    llm_analysis = await analyze_with_llm(article, tavily_results)
-    yield f"data: {json.dumps({'agent': 'fact_checker', 'status': 'success', 'thought': f'LLM verdict: {llm_analysis.verdict}', 'data': llm_analysis})}\n\n"
-    
-    # Agent 3: Cross-Reference
-    yield f"data: {json.dumps({'agent': 'cross_reference', 'status': 'started', 'thought': 'Cross-referencing sources...'})}\n\n"
-    await asyncio.sleep(0.5)
-    
-    news_results = await query_news_api(article.headline)
-    yield f"data: {json.dumps({'agent': 'cross_reference', 'status': 'progress', 'thought': f'Found {len(news_results)} related articles'})}\n\n"
-    
-    final_score = calculate_score(llm_analysis, news_results)
-    yield f"data: {json.dumps({'agent': 'cross_reference', 'status': 'success', 'thought': f'Final score: {final_score}/100', 'data': {'score': final_score}})}\n\n"
-    
-    # Complete
-    yield f"data: {json.dumps({'status': 'complete', 'final_score': final_score})}\n\n"
+def _build_initial_state(user_input: str) -> dict:
+    return {
+        "user_input": user_input,
+        "raw_markdown": "", "claims": [], "evidence_map": {},
+        "verdicts": [], "top_n": 3, "pub_date": None,
+        "author": None, "source_domain": None, "error": "",
+    }
 
 @app.post("/api/analyze-stream")
-async def analyze_stream(url: str):
-    return StreamingResponse(
-        agent_chain_generator(url),
-        media_type="text/event-stream"
-    )
+async def analyze_stream(user_input: str):
+    async def event_generator():
+        # LangGraph .stream() yields {node_name: node_output} per step
+        for event in claim_extraction_graph.stream(_build_initial_state(user_input)):
+            for node_name, node_output in event.items():
+                payload = {
+                    "agent": node_name,
+                    "status": "error" if node_output.get("error") else "success",
+                    "data": node_output,
+                }
+                yield f"data: {json.dumps(payload)}\n\n"
+
+        yield f"data: {json.dumps({'status': 'complete'})}\n\n"
+
+    return StreamingResponse(event_generator(), media_type="text/event-stream")
 ```
 
 #### Frontend: React SSE Consumer
@@ -667,9 +479,9 @@ function AgentThinkingDisplay({ url }) {
       {thoughts.map((thought, index) => (
         <div key={index} className={`thought-item agent-${thought.agent}`}>
           <div className="agent-badge">
-            {thought.agent === 'parser' && '🔍 Agent 1: Parser'}
-            {thought.agent === 'fact_checker' && '🔎 Agent 2: Fact Checker'}
-            {thought.agent === 'cross_reference' && '✅ Agent 3: Validator'}
+            {thought.agent === 'claim_extraction' && '🔍 Agent 1: Claim Extraction'}
+            {thought.agent === 'evidence_retrieval' && '🔎 Agent 2: Evidence Retrieval'}
+            {thought.agent === 'fact_checker' && '✅ Agent 3: Fact Checker'}
           </div>
           
           <div className="thought-content">
@@ -729,17 +541,17 @@ function AgentThinkingDisplay({ url }) {
   }
 }
 
-.thought-item.agent-parser {
+.thought-item.agent-claim_extraction {
   border-left-color: #4a9eed;
   background: #e8f4fd;
 }
 
-.thought-item.agent-fact_checker {
+.thought-item.agent-evidence_retrieval {
   border-left-color: #f59e0b;
   background: #fef3e2;
 }
 
-.thought-item.agent-cross_reference {
+.thought-item.agent-fact_checker {
   border-left-color: #22c55e;
   background: #e8f8ed;
 }
@@ -914,19 +726,19 @@ This keeps the extension lightweight and fast.
 
 ```
 backend/
-├── main.py                    # FastAPI app entry point
+├── main.py                    # FastAPI app entry point + pipeline orchestration
 ├── requirements.txt           # Python dependencies
 ├── .env                       # Environment variables
 ├── agents/
 │   ├── __init__.py
-│   ├── parser.py             # Agent 1: URL Parser
-│   ├── fact_checker.py       # Agent 2: Fact Checker
-│   └── cross_reference.py    # Agent 3: Validator
+│   ├── claim_extraction.py   # Agent 1: Claim Extraction (Jina + Groq)
+│   ├── evidence_retrieval.py # Agent 2: Evidence Retrieval (Tavily)
+│   └── fact_checker.py       # Agent 3: Fact Checker (Gemini)
 ├── services/
-│   ├── tavily_service.py     # Tavily API wrapper
-│   ├── llm_service.py        # Claude API wrapper
-│   ├── news_api_service.py   # News API wrapper
-│   └── factcheck_service.py  # Google Fact Check wrapper
+│   ├── jina_service.py       # Jina Reader API wrapper
+│   ├── llm_service.py        # Groq LLM wrapper (claim extraction)
+│   ├── tavily_service.py     # Tavily API wrapper (evidence search)
+│   └── gemini_service.py     # Gemini LLM wrapper (verdicts)
 ├── models/
 │   ├── requests.py           # Pydantic request models
 │   └── responses.py          # Pydantic response models
@@ -941,36 +753,39 @@ backend/
 # main.py
 from fastapi import FastAPI
 from fastapi.responses import StreamingResponse
-from agents.orchestrator import AgentOrchestrator
+from agents.claim_extraction import claim_extraction_graph
 
 app = FastAPI(title="Fake News Detector API")
 
+def _build_initial_state(user_input: str, top_n: int = 3) -> dict:
+    return {
+        "user_input": user_input,
+        "raw_markdown": "",
+        "claims": [],
+        "evidence_map": {},
+        "verdicts": [],
+        "top_n": top_n,
+        "pub_date": None,
+        "author": None,
+        "source_domain": None,
+        "error": "",
+    }
+
 @app.post("/api/analyze-stream")
-async def analyze_stream(url: str):
-    """
-    Streaming endpoint for website (shows chain of thought)
-    Returns SSE stream of agent thoughts
-    """
-    orchestrator = AgentOrchestrator()
-    return StreamingResponse(
-        orchestrator.run_chain(url),
-        media_type="text/event-stream"
-    )
+async def analyze_stream(user_input: str):
+    """SSE streaming — yields node outputs as events"""
+    async def event_generator():
+        for event in claim_extraction_graph.stream(_build_initial_state(user_input)):
+            for node_name, node_output in event.items():
+                yield f"data: {json.dumps({'agent': node_name, 'data': node_output})}\n\n"
+        yield f"data: {json.dumps({'status': 'complete'})}\n\n"
+
+    return StreamingResponse(event_generator(), media_type="text/event-stream")
 
 @app.post("/api/analyze-simple")
-async def analyze_simple(url: str):
-    """
-    Simple endpoint for Chrome extension (no streaming)
-    Returns final verdict only
-    """
-    orchestrator = AgentOrchestrator()
-    result = await orchestrator.run_chain_sync(url)
-    
-    return {
-        "score": result["authenticity_score"],
-        "verdict": result["final_verdict"],
-        "confidence": result["confidence"]
-    }
+async def analyze_simple(user_input: str):
+    """Simple endpoint — returns full final state"""
+    return claim_extraction_graph.invoke(_build_initial_state(user_input))
 
 @app.get("/health")
 async def health_check():
@@ -987,9 +802,9 @@ async def health_check():
 - Node.js 18+
 - API Keys:
   - Tavily API
-  - Anthropic Claude API
-  - News API
-  - Google Fact Check API (optional)
+  - Groq API
+  - Google Gemini API
+  - Jina Reader API
 
 ### Backend Setup
 
@@ -1008,9 +823,9 @@ pip install -r requirements.txt
 # Create .env file
 cat > .env << EOF
 TAVILY_API_KEY=your_tavily_key
-ANTHROPIC_API_KEY=your_claude_key
-NEWS_API_KEY=your_newsapi_key
-GOOGLE_FACTCHECK_API_KEY=your_google_key
+GROQ_API_KEY=your_groq_key
+GEMINI_API_KEY=your_gemini_key
+JINA_READER_API_KEY=your_jina_key
 EOF
 
 # Run server
@@ -1090,47 +905,100 @@ class TavilyService:
             return response.json()
 ```
 
-### Claude API Integration
+### Groq LLM Integration (Claim Extraction)
 
 ```python
 # services/llm_service.py
-import anthropic
+from groq import Groq
 import os
 
 class LLMService:
     def __init__(self):
-        self.client = anthropic.Anthropic(
-            api_key=os.getenv("ANTHROPIC_API_KEY")
+        self.client = Groq(
+            api_key=os.getenv("GROQ_API_KEY")
         )
     
-    async def analyze_article(self, article: dict, tavily_report: str):
-        prompt = f"""Analyze this article for authenticity.
+    async def extract_claims(self, article_text: str):
+        prompt = f"""Extract factual claims from the following article text.
 
 ARTICLE:
-Headline: {article['headline']}
-Content: {article['body']}
+{article_text}
 
-FACT-CHECK RESULTS:
-{tavily_report}
-
-Provide analysis in JSON format with:
-- authenticity_verdict (REAL/FAKE/MISLEADING/UNVERIFIED)
-- confidence (0.0-1.0)
-- reasoning (natural language explanation)
-- red_flags (array of issues)
-- supporting_evidence (array)
-- contradicting_evidence (array)
+Return a JSON array of claims, each with:
+- claim_text (the factual claim)
+- checkworthiness_score (1-10, how important to verify)
+- reasoning (why this score)
 """
         
-        message = self.client.messages.create(
-            model="claude-sonnet-4-20250514",
+        chat_completion = self.client.chat.completions.create(
+            model="llama-3.3-70b-versatile",
             max_tokens=1024,
             messages=[
                 {"role": "user", "content": prompt}
             ]
         )
         
-        return message.content[0].text
+        return chat_completion.choices[0].message.content
+```
+
+### Gemini LLM Integration (Fact Checking)
+
+```python
+# services/gemini_service.py
+from google import genai
+import os
+
+class GeminiService:
+    def __init__(self):
+        self.client = genai.Client(
+            api_key=os.getenv("GEMINI_API_KEY")
+        )
+    
+    async def generate_verdict(self, claim: str, evidence_context: str):
+        prompt = f"""You are a fact-checking agent.
+
+CLAIM: {claim}
+EVIDENCE: {evidence_context}
+
+Respond in JSON with:
+- verdict: SUPPORTED | CONTRADICTED | MISLEADING | UNVERIFIED
+- truth_score: 0-100
+- explanation: exactly 2 sentences
+- citations: array of evidence URLs
+"""
+        
+        response = self.client.models.generate_content(
+            model="gemini-2.0-flash",
+            contents=prompt,
+        )
+        
+        return response.text
+```
+
+### Jina Reader Integration (URL Scraping)
+
+```python
+# services/jina_service.py
+import httpx
+import os
+
+class JinaService:
+    def __init__(self):
+        self.api_key = os.getenv("JINA_READER_API_KEY")
+        self.base_url = "https://r.jina.ai"
+    
+    async def scrape_url(self, url: str) -> str:
+        headers = {"Accept": "text/markdown"}
+        if self.api_key:
+            headers["Authorization"] = f"Bearer {self.api_key}"
+        
+        async with httpx.AsyncClient(timeout=30.0) as client:
+            response = await client.get(
+                f"{self.base_url}/{url}",
+                headers=headers,
+            )
+            response.raise_for_status()
+            return response.text
 ```
 
 ---
@@ -1140,9 +1008,9 @@ Provide analysis in JSON format with:
 ```bash
 # .env file
 TAVILY_API_KEY=tvly-xxxxxxxxxxxxx
-ANTHROPIC_API_KEY=sk-ant-xxxxxxxxxxxxx
-NEWS_API_KEY=xxxxxxxxxxxxx
-GOOGLE_FACTCHECK_API_KEY=xxxxxxxxxxxxx
+GROQ_API_KEY=gsk_xxxxxxxxxxxxx
+GEMINI_API_KEY=xxxxxxxxxxxxx
+JINA_READER_API_KEY=jina_xxxxxxxxxxxxx
 
 # Optional
 ENVIRONMENT=development
@@ -1195,28 +1063,29 @@ Visual inspiration: Claude's thinking process
 
 ```
 ┌─────────────────────────────────────────────┐
-│  🔍 Agent 1: Content Extractor              │
-│  ├─ Fetching URL...                         │
-│  ├─ ✅ Extracted 1,234 words                │
+│  🔍 Agent 1: Claim Extraction               │
+│  ├─ Detecting input type...                 │
+│  ├─ Scraping via Jina Reader...             │
+│  ├─ ✅ Extracted 3 checkable claims         │
 │  └─ Passing to Agent 2...                   │
 └─────────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────────┐
-│  🔎 Agent 2: Fact Checker                   │
-│  ├─ Extracting claims...                    │
-│  ├─ Querying Tavily API...                  │
-│  │  ├─ Claim 1: ✅ Supported                │
-│  │  └─ Claim 2: ❌ Contradicted             │
-│  ├─ Analyzing with LLM...                   │
-│  └─ ✅ Verdict: MISLEADING (87%)            │
+│  🔎 Agent 2: Evidence Retrieval              │
+│  ├─ Searching Tavily for evidence...        │
+│  │  ├─ Claim 1: 2 snippets found ✅         │
+│  │  ├─ Claim 2: 1 snippet found ❌          │
+│  │  └─ Claim 3: 1 snippet found ✅          │
+│  └─ ✅ Evidence map ready                   │
 └─────────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────────┐
-│  ✅ Agent 3: Cross-Reference Validator      │
-│  ├─ Checking News API...                    │
-│  ├─ Found 8 corroborating articles          │
-│  ├─ Calculating score...                    │
-│  └─ ✅ Final Score: 42/100                  │
+│  ✅ Agent 3: Fact Checker                    │
+│  ├─ Generating verdicts via Gemini...       │
+│  ├─ Claim 1: SUPPORTED (92/100)             │
+│  ├─ Claim 2: CONTRADICTED (18/100)          │
+│  ├─ Claim 3: SUPPORTED (95/100)             │
+│  └─ ✅ All verdicts complete                │
 └─────────────────────────────────────────────┘
 ```
 
