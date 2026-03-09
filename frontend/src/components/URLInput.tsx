@@ -25,14 +25,14 @@ export default function URLInput({ onSubmit, isLoading }: Props) {
                     type="text"
                     className="url-input"
                     autoFocus
-                    placeholder="Paste News Article link here"
+                    placeholder="Drop a news link or paste the article text here..."
                     value={inputVal}
                     onChange={(e) => setInputVal(e.target.value)}
                     onKeyDown={handleKeyDown}
                     disabled={isLoading}
                 />
             </div>
-            <p className="input-hint">Paste News Article link here and verify CREDIBILITY</p>
+            <p className="input-hint">Unmask the truth: Paste a URL or article text to verify its credibility!</p>
         </div>
     );
 }

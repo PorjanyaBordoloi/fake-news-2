@@ -30,7 +30,10 @@ function App() {
     return (
         <div className="app">
             <header className="app-header">
-                <div className="logo">Fake News Detector</div>
+                <div className="logo-container">
+                    <span className="logo-k">K</span>
+                    <span className="logo-redo">REDO</span>
+                </div>
                 <div className="nav-links">
                     <a href="#">Home</a>
                     <a href="#">About Project</a>
@@ -48,11 +51,17 @@ function App() {
                     <div className="chat-container">
                         {/* User Message Bubble */}
                         <div className="chat-message user-message">
-                            <div className="chat-bubble">
-                                Please verify this article format to feed into the truth engine:<br />
-                                <a href={submittedUrl} target="_blank" rel="noreferrer" style={{ color: '#fff', textDecoration: 'underline' }}>
-                                    {submittedUrl}
-                                </a>
+                            <div className="chat-bubble" style={{ wordBreak: 'break-word', whiteSpace: 'pre-wrap' }}>
+                                Please verify this content to feed into the truth engine:<br /><br />
+                                {submittedUrl.startsWith('http') ? (
+                                    <a href={submittedUrl} target="_blank" rel="noreferrer" style={{ color: '#fff', textDecoration: 'underline' }}>
+                                        {submittedUrl}
+                                    </a>
+                                ) : (
+                                    <span style={{ fontStyle: 'italic', opacity: 0.9 }}>
+                                        "{submittedUrl.length > 300 ? submittedUrl.substring(0, 300) + '...' : submittedUrl}"
+                                    </span>
+                                )}
                             </div>
                         </div>
 
