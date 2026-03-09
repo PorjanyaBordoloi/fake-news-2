@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useCallback, useRef, useEffect } from 'react';
 import URLInput from './components/URLInput';
 import AgentChain from './components/AgentChain';
 import ScoreDisplay from './components/ScoreDisplay';
@@ -10,22 +10,25 @@ function App() {
 
     const { thoughts, isComplete, finalResult, startStream, resetStream } = useAgentStream();
 
-    const handleSubmit = async (url: string) => {
+    const handleSubmit = useCallback((url: string) => {
         setSubmittedUrl(url);
         setIsAnalyzing(true);
         resetStream();
         startStream(url);
-    };
+    }, [resetStream, startStream]);
 
+    // Auto-start analysis if ?url= param is present (from Chrome extension handoff)
+    const hasAutoStarted = useRef(false);
     useEffect(() => {
+        if (hasAutoStarted.current) return;
         const params = new URLSearchParams(window.location.search);
         const autoUrl = params.get('url');
         if (autoUrl) {
-            // Remove the URL param from address bar so it doesn't infinite loop on refresh
+            hasAutoStarted.current = true;
             window.history.replaceState({}, document.title, window.location.pathname);
             handleSubmit(autoUrl);
         }
-    }, []);
+    }, [handleSubmit]);
 
     return (
         <div className="app">

@@ -20,7 +20,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 });
 
 async function analyzeUrl(url) {
-    const response = await fetch(`${API_URL}/api/analyze-simple?url=${encodeURIComponent(url)}`, {
+    const response = await fetch(`${API_URL}/api/analyze-simple?user_input=${encodeURIComponent(url)}`, {
         method: 'POST',
     });
 

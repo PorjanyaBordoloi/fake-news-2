@@ -1,121 +1,207 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { AgentThought } from '../hooks/useAgentStream';
-import { ChevronRight, ChevronDown, FileText, Sparkles } from 'lucide-react';
 
 interface Props {
     thoughts: AgentThought[];
     isComplete: boolean;
 }
 
-export default function AgentChain({ thoughts, isComplete }: Props) {
-    const [isExpanded, setIsExpanded] = useState(false);
-    const [logs, setLogs] = useState<string[]>([]);
+interface LogEntry {
+    text: string;
+    type: 'status' | 'detail' | 'success' | 'search' | 'score' | 'verdict' | 'final';
+}
 
-    // Simulate terminal logs based on actual backend agent transitions
+export default function AgentChain({ thoughts, isComplete }: Props) {
+    const [logs, setLogs] = useState<LogEntry[]>([]);
+    const [visibleCount, setVisibleCount] = useState(0);
+    const bottomRef = useRef<HTMLDivElement>(null);
+    const prevLogCount = useRef(0);
+
+    // Initialize pipeline logs
     useEffect(() => {
         setLogs([
-            "--- PIPELINE INITIALIZED ---",
-            "--- SCRAPING ARTICLE CONTENT VIA JINA ---",
-            "--- TRUNCATING MARKDOWN TO 10000 CHARS ---",
-            "--- EXTRACTING CLAIMS WITH GROQ ---"
+            { text: "Initializing pipeline...", type: "status" },
+            { text: "Scraping article content via Jina Reader", type: "status" },
+            { text: "Truncating content for analysis", type: "detail" },
+            { text: "Extracting claims with Groq LLM", type: "status" },
         ]);
+        setVisibleCount(0);
     }, []);
 
+    // Agent 1: Claim Extraction
     useEffect(() => {
-        const extractThought = thoughts.find(t => t.agent === 'claim_extraction');
-        if (extractThought && extractThought.data) {
-            const claims = extractThought.data.claims || [];
-            const numClaims = claims.length;
-
+        const t = thoughts.find(t => t.agent === 'claim_extraction');
+        if (t?.data) {
+            const claims = t.data.claims || [];
             setLogs(prev => {
-                const newLogs = [...prev];
-                if (!newLogs.includes("--- CLAIM EXTRACTION COMPLETE ---")) {
-                    newLogs.push("--- CLAIM EXTRACTION COMPLETE ---");
-                    newLogs.push("--- EVIDENCE RETRIEVAL START ---");
-                    newLogs.push(`--- Processing ${numClaims} claims (of ${numClaims} total) ---`);
+                if (prev.some(l => l.text.startsWith("Extracted"))) return prev;
+                return [
+                    ...prev,
+                    { text: `Extracted ${claims.length} checkable claims`, type: "success" },
+                    { text: "Starting evidence retrieval across the web", type: "status" },
+                    ...claims.map((c: any) => ({
+                        text: `Searching: "${(c.claim_text || c.claim || '').substring(0, 80)}..."`,
+                        type: "search" as const,
+                    })),
+                ];
+            });
+        }
+    }, [thoughts]);
 
-                    // Add mock search strings based on real claims
-                    claims.forEach((c: any) => {
-                        newLogs.push(`  🔎 Tavily search: "${c.claim_text.substring(0, 70)}..."`);
+    // Agent 2: Evidence Retrieval
+    useEffect(() => {
+        const t = thoughts.find(t => t.agent === 'evidence_retrieval');
+        if (t?.data) {
+            const evMap = t.data.evidence_map || {};
+            const total = Object.values(evMap).reduce((acc: number, arr: any) => acc + arr.length, 0);
+            setLogs(prev => {
+                if (prev.some(l => l.text.startsWith("Evidence collected"))) return prev;
+                const newLogs: LogEntry[] = [];
+                for (const [, snippets] of Object.entries(evMap)) {
+                    newLogs.push({ text: `Found ${(snippets as any[]).length} evidence snippets`, type: "success" });
+                }
+                newLogs.push({ text: `Evidence collected: ${total} snippets across ${Object.keys(evMap).length} claims`, type: "success" });
+                newLogs.push({ text: "Scoring source credibility by domain tier", type: "status" });
+                return [...prev, ...newLogs];
+            });
+        }
+    }, [thoughts]);
+
+    // Agent 3: Source Credibility
+    useEffect(() => {
+        const t = thoughts.find(t => t.agent === 'source_credibility');
+        if (t?.data) {
+            const credMap = t.data.credibility_map || {};
+            setLogs(prev => {
+                if (prev.some(l => l.text.startsWith("Sources scored"))) return prev;
+                const newLogs: LogEntry[] = [];
+                for (const [, entries] of Object.entries(credMap)) {
+                    const typed = entries as any[];
+                    if (typed.length > 0) {
+                        const top = typed[0];
+                        newLogs.push({
+                            text: `Top source: ${top.domain} — ${top.score}/100 (${top.label})`,
+                            type: "score",
+                        });
+                    }
+                }
+                newLogs.push({ text: `Sources scored and re-ranked for ${Object.keys(credMap).length} claims`, type: "success" });
+                newLogs.push({ text: "Running fact-check reasoning with Groq", type: "status" });
+                return [...prev, ...newLogs];
+            });
+        }
+    }, [thoughts]);
+
+    // Agent 4: Fact Checker
+    useEffect(() => {
+        const t = thoughts.find(t => t.agent === 'fact_checker');
+        if (t?.data) {
+            const verdicts = t.data.verdicts || [];
+            setLogs(prev => {
+                if (prev.some(l => l.text.startsWith("All claims fact-checked"))) return prev;
+                const newLogs: LogEntry[] = [];
+                for (const v of verdicts) {
+                    const conf = v.confidence_level || 'MEDIUM';
+                    const emoji = v.verdict === 'SUPPORTED' ? '✓' : v.verdict === 'CONTRADICTED' ? '✗' : '~';
+                    newLogs.push({
+                        text: `${emoji} ${v.verdict} (${v.truth_score}/100, ${conf}) — "${(v.claim_text || '').substring(0, 60)}..."`,
+                        type: "verdict",
                     });
                 }
-                return newLogs;
+                newLogs.push({ text: `All claims fact-checked: ${verdicts.length} verdicts`, type: "success" });
+                newLogs.push({ text: "Generating plain-English explanations", type: "status" });
+                return [...prev, ...newLogs];
             });
         }
     }, [thoughts]);
 
+    // Agent 5: Explanation Generator
     useEffect(() => {
-        const evidenceThought = thoughts.find(t => t.agent === 'evidence_retrieval');
-        if (evidenceThought && evidenceThought.data) {
-            const evMap = evidenceThought.data.evidence_map || {};
-            const numClaims = Object.keys(evMap).length;
-            const totalSnippets = Object.values(evMap).reduce((acc: number, arr: any) => acc + arr.length, 0);
-
+        const t = thoughts.find(t => t.agent === 'explanation_generator');
+        if (t?.data) {
+            const expl = t.data.explanations || {};
             setLogs(prev => {
-                const newLogs = [...prev];
-                if (!newLogs.includes("--- FACT CHECKER START ---")) {
-                    for (let i = 0; i < numClaims; i++) {
-                        newLogs.push(`  ✅ Found snippets for claim`);
-                    }
-                    newLogs.push(`--- EVIDENCE RETRIEVAL COMPLETE: ${totalSnippets} total snippets across ${numClaims} claims ---`);
-                    newLogs.push("--- FACT CHECKER START ---");
-                    newLogs.push("  🤖 Groq analyzing evidence vs claims...");
+                if (prev.some(l => l.text.startsWith("Credibility:"))) return prev;
+                const newLogs: LogEntry[] = [];
+                if (expl.overall_credibility) {
+                    newLogs.push({ text: `Credibility: ${expl.overall_credibility}`, type: "final" });
                 }
-                return newLogs;
+                if (expl.bottom_line) {
+                    newLogs.push({ text: expl.bottom_line, type: "final" });
+                }
+                return [...prev, ...newLogs];
             });
         }
     }, [thoughts]);
 
+    // Pipeline complete
     useEffect(() => {
         if (isComplete) {
             setLogs(prev => {
-                if (!prev.includes("--- FACT CHECKING COMPLETE ---")) {
-                    return [...prev, "--- FACT CHECKING COMPLETE ---", "✅ Returning verdicts to user..."];
-                }
-                return prev;
+                if (prev.some(l => l.text === "Pipeline complete — results ready.")) return prev;
+                return [...prev, { text: "Pipeline complete — results ready.", type: "success" }];
             });
         }
     }, [isComplete]);
 
+    // Animate new logs appearing one by one
+    useEffect(() => {
+        if (logs.length > prevLogCount.current) {
+            const newEntries = logs.length - prevLogCount.current;
+            let i = 0;
+            const interval = setInterval(() => {
+                setVisibleCount(prev => prev + 1);
+                i++;
+                if (i >= newEntries) clearInterval(interval);
+            }, 120);
+            prevLogCount.current = logs.length;
+            return () => clearInterval(interval);
+        }
+    }, [logs]);
+
+    // Auto-scroll as new lines appear
+    useEffect(() => {
+        bottomRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }, [visibleCount]);
+
+    const visibleLogs = logs.slice(0, visibleCount);
+
     return (
-        <div className="agent-chain-wrapper">
-            {/* Claude-like tool use accordion */}
-            <div className="tool-accordion">
-                <button
-                    className="tool-accordion-header"
-                    onClick={() => setIsExpanded(!isExpanded)}
+        <div className="agent-stream">
+            {visibleLogs.map((log, i) => (
+                <div
+                    key={i}
+                    className={`stream-line stream-${log.type} stream-enter`}
+                    style={{ animationDelay: '0ms' }}
                 >
-                    <div className="tool-icon-wrapper">
-                        <FileText size={16} />
-                    </div>
-                    <span>Orchestrating verification agents...</span>
-                    <div style={{ flexGrow: 1 }} />
-                    {isExpanded ? <ChevronDown size={18} /> : <ChevronRight size={18} />}
-                </button>
-
-                {isExpanded && (
-                    <div className="tool-accordion-content">
-                        <div className="terminal-logs">
-                            {logs.map((log, i) => (
-                                <div key={i} className="log-line">{log}</div>
-                            ))}
-                            {!isComplete && (
-                                <div className="log-line blinking-cursor">_</div>
-                            )}
-                        </div>
-                    </div>
-                )}
-            </div>
-
-            {/* Claude-like spinner footer */}
-            {!isComplete && (
-                <div className="agent-status-footer">
-                    <Sparkles className="sparkle-icon spinner-spin" size={20} />
-                    <span className="agent-status-text">
-                        Pipeline is analyzing in the background. Once it's complete, you'll see it here.
+                    <span className="stream-indicator">{getIndicator(log.type)}</span>
+                    <span className="stream-text">{log.text}</span>
+                </div>
+            ))}
+            {!isComplete && visibleCount >= logs.length && (
+                <div className="stream-line stream-thinking">
+                    <span className="stream-indicator">
+                        <span className="thinking-dots">
+                            <span>.</span><span>.</span><span>.</span>
+                        </span>
                     </span>
+                    <span className="stream-text stream-text-thinking">Thinking</span>
                 </div>
             )}
+            <div ref={bottomRef} />
         </div>
     );
+}
+
+function getIndicator(type: string): string {
+    switch (type) {
+        case 'status': return '→';
+        case 'detail': return '·';
+        case 'success': return '✓';
+        case 'search': return '⌕';
+        case 'score': return '◆';
+        case 'verdict': return '⬤';
+        case 'final': return '★';
+        default: return '·';
+    }
 }

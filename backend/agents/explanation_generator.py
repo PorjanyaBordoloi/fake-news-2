@@ -4,7 +4,7 @@ Consumes fact-checker verdicts, reasoning summaries, credibility scores,
 and evidence gaps. Produces plain-English explanations readable by a
 general audience at a 10th grade reading level.
 
-One Gemini call per pipeline run (not per claim) — all verdicts are
+One Groq call per pipeline run (not per claim) — all verdicts are
 explained in a single batched call to minimise quota usage.
 
 Pipeline position: fact_checker → explanation_generator → END
@@ -12,13 +12,13 @@ Pipeline position: fact_checker → explanation_generator → END
 
 from __future__ import annotations
 
-import importlib
 import os
 import traceback
 from typing import TYPE_CHECKING, Any, Optional
 
 from dotenv import load_dotenv
 from langchain_core.prompts import ChatPromptTemplate
+from langchain_groq import ChatGroq
 from pydantic import BaseModel, Field, field_validator
 
 if TYPE_CHECKING:
@@ -35,6 +35,14 @@ except ModuleNotFoundError:
     from core.config import pipeline_config
 
 _eg_cfg: dict = pipeline_config.get("explanation_generator", {})
+
+try:
+    from utils.helpers import read_env_var as _read_env_var
+except ModuleNotFoundError:
+    import sys as _sys2
+    from pathlib import Path as _Path2
+    _sys2.path.insert(0, str(_Path2(__file__).resolve().parent.parent))
+    from utils.helpers import read_env_var as _read_env_var
 
 
 # ---------------------------------------------------------------------------
@@ -83,7 +91,7 @@ class VerdictExplanation(BaseModel):
     @classmethod
     def coerce_none_strings(cls, v: Any) -> Optional[str]:
         """
-        Gemini sometimes returns 'None', 'null', 'N/A' as strings.
+        LLMs sometimes return 'None', 'null', 'N/A' as strings.
         Coerce these to actual None to prevent downstream type errors.
         """
         if isinstance(v, str) and v.lower().strip() in (
@@ -172,31 +180,23 @@ Produce one VerdictExplanation per verdict in the same order as input.
 # Helper functions
 # ---------------------------------------------------------------------------
 
-def _read_env_var(*names: str) -> str:
-    for name in names:
-        value = os.getenv(name)
-        if value:
-            return value.strip().strip('"').strip("'")
-    return ""
+
 
 
 def _build_explanation_llm() -> Any:
     """
-    Gemini 2.5 Flash with structured output.
+    Groq LLM with structured output.
     Temperature 0.2 for natural prose — intentionally non-zero.
     """
-    module = importlib.import_module("langchain_google_genai")
-    ChatGoogleGenerativeAI = getattr(module, "ChatGoogleGenerativeAI")
-
-    gemini_api_key = _read_env_var("GEMINI_API_KEY", "gemini_api_key")
-    if not gemini_api_key:
+    groq_api_key = _read_env_var("GROQ_API_KEY", "groq_api_key")
+    if not groq_api_key:
         raise RuntimeError(
-            "Missing Gemini API key. Set GEMINI_API_KEY in .env"
+            "Missing Groq API key. Set GROQ_API_KEY in .env"
         )
 
-    llm = ChatGoogleGenerativeAI(
-        model=_eg_cfg.get("model", "gemini-2.5-flash"),
-        google_api_key=gemini_api_key,
+    llm = ChatGroq(
+        model=_eg_cfg.get("model", "llama-3.3-70b-versatile"),
+        api_key=groq_api_key,
         temperature=_eg_cfg.get("temperature", 0.2),
     )
     return llm.with_structured_output(ExplanationOutput)

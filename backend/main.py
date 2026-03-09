@@ -67,6 +67,8 @@ def _build_initial_state(user_input: str, top_n: int = 3) -> dict:
         "raw_markdown": "",
         "claims": [],
         "evidence_map": {},
+        "credibility_map": {},
+        "explanations": {},
         "verdicts": [],
         "top_n": top_n,
         "pub_date": None,
@@ -78,10 +80,12 @@ def _build_initial_state(user_input: str, top_n: int = 3) -> dict:
 
 def run_pipeline(user_input: str, top_n: int = 3) -> dict:
     """
-    Run the full 3-agent LangGraph pipeline synchronously.
-      1. claim_extraction  → "What should we fact-check?"
-      2. evidence_retrieval → "What evidence do we have?"
-      3. fact_checker       → "Given this evidence, what is the verdict?"
+    Run the full 5-agent LangGraph pipeline synchronously.
+      1. claim_extraction     → "What should we fact-check?"
+      2. evidence_retrieval   → "What evidence do we have?"
+      3. source_credibility   → "How trustworthy are these sources?"
+      4. fact_checker          → "Given this evidence, what is the verdict?"
+      5. explanation_generator → "How do we explain this to a human?"
     """
     from agents.claim_extraction import claim_extraction_graph
 

@@ -16,7 +16,7 @@ import yaml
 from pydantic_settings import BaseSettings
 
 # Resolve paths relative to this file so they work regardless of cwd.
-_ENV_FILE = Path(__file__).resolve().parent.parent.parent / ".env"
+_ENV_FILE = Path(__file__).resolve().parent.parent / ".env"
 _YAML_FILE = Path(__file__).resolve().parent / "config.yaml"
 
 
@@ -26,6 +26,7 @@ class Settings(BaseSettings):
     model_config = {
         "env_file": str(_ENV_FILE),
         "env_file_encoding": "utf-8",
+        "extra": "ignore",
     }
 
 

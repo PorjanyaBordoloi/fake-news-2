@@ -32,6 +32,14 @@ except ModuleNotFoundError:
 
 _fc_cfg: dict = pipeline_config.get("fact_checker", {})
 MAX_CITATIONS: int = _fc_cfg.get("max_citations", 3)
+
+try:
+    from utils.helpers import read_env_var as _read_env_var
+except ModuleNotFoundError:
+    import sys as _sys2
+    from pathlib import Path as _Path2
+    _sys2.path.insert(0, str(_Path2(__file__).resolve().parent.parent))
+    from utils.helpers import read_env_var as _read_env_var
 NO_EVIDENCE_EXPLANATION = (
     "Insufficient reliable evidence was retrieved for this claim. "
     "The claim remains unverified at this time."
@@ -176,12 +184,7 @@ The JSON must contain exactly these keys:
 """.strip()
 
 
-def _read_env_var(*names: str) -> str:
-    for name in names:
-        value = os.getenv(name)
-        if value:
-            return value.strip().strip('"').strip("'")
-    return ""
+
 
 
 def _build_fact_checker_llm() -> Any:

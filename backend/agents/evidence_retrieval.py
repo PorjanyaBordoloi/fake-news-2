@@ -30,13 +30,16 @@ _er_cfg: dict = pipeline_config.get("evidence_retrieval", {})
 MAX_CLAIMS_PER_RUN: int = _er_cfg.get("max_claims_per_run", 3)
 MAX_SNIPPET_CHARS: int = _er_cfg.get("max_snippet_chars", 500)
 
+try:
+	from utils.helpers import read_env_var as _read_env_var
+except ModuleNotFoundError:
+	import sys as _sys2
+	from pathlib import Path as _Path2
+	_sys2.path.insert(0, str(_Path2(__file__).resolve().parent.parent))
+	from utils.helpers import read_env_var as _read_env_var
 
-def _read_env_var(*names: str) -> str:
-	for name in names:
-		value = os.getenv(name)
-		if value:
-			return value.strip().strip('"').strip("'")
-	return ""
+
+
 
 
 def _truncate_snippet(content: str, limit: int = MAX_SNIPPET_CHARS) -> str:

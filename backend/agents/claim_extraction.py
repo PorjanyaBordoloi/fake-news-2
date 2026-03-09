@@ -25,6 +25,14 @@ from langgraph.graph import END, START, StateGraph
 from pydantic import AliasChoices, BaseModel, Field, ValidationError, field_validator
 
 try:
+    from utils.helpers import read_env_var as _read_env_var
+except ModuleNotFoundError:
+    import sys as _sys
+    from pathlib import Path as _Path
+    _sys.path.insert(0, str(_Path(__file__).resolve().parent.parent))
+    from utils.helpers import read_env_var as _read_env_var
+
+try:
     from agents.evidence_retrieval import evidence_retrieval_node
 except ModuleNotFoundError as exc:
     # Support direct script execution from backend/agents where "agents" isn't on sys.path.
@@ -149,13 +157,7 @@ Output requirements:
 """.strip()
 
 
-def _read_env_var(*names: str) -> str:
-    """Read the first non-empty environment variable from candidate names."""
-    for name in names:
-        value = os.getenv(name)
-        if value:
-            return value.strip().strip('"').strip("'")
-    return ""
+
 
 
 URL_RE = re.compile(r"^https?://[^\s]+$", re.IGNORECASE)

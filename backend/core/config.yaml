@@ -33,12 +33,12 @@ source_credibility:
 # ── Agent 4: Fact Checker ─────────────────────────────────────────────────────
 fact_checker:
   # Call 1 — free-form CoT reasoning (unconstrained natural-language output)
-  reasoning_model: "llama-3.3-70b-versatile"
+  reasoning_model: "llama-3.1-8b-instant"   # 8b to save 70b quota — handles CoT well
   reasoning_provider: "groq"
   reasoning_temperature: 0
   reasoning_max_tokens: 1500
 
-  # Call 2 — structured JSON verdict
+  # Call 2 — structured JSON verdict (needs the best model)
   verdict_model: "llama-3.3-70b-versatile"
   verdict_provider: "groq"
   verdict_temperature: 0
@@ -48,6 +48,6 @@ fact_checker:
 
 # ── Agent 5: Explanation Generator ───────────────────────────────────────────
 explanation_generator:
-  model: "gemini-2.5-flash"           # Gemini for high-quality natural prose
-  provider: "gemini"
+  model: "llama-3.1-8b-instant"       # 8b to save 70b quota — prose generation is adequate
+  provider: "groq"
   temperature: 0.2                    # Intentionally non-zero — natural prose benefits from slight warmth
