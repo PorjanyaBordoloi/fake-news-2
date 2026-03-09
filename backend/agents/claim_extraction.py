@@ -39,7 +39,29 @@ except ModuleNotFoundError as exc:
         raise
     from fact_checker import fact_checker_node
 
+try:
+    from agents.source_credibility import source_credibility_node
+except ModuleNotFoundError as exc:
+    if exc.name != "agents":
+        raise
+    from source_credibility import source_credibility_node
+
+try:
+    from agents.explanation_generator import explanation_generator_node
+except ModuleNotFoundError:
+    from explanation_generator import explanation_generator_node
+
 load_dotenv()
+
+try:
+    from core.config import pipeline_config
+except ModuleNotFoundError:
+    import sys as _sys
+    from pathlib import Path as _Path
+    _sys.path.insert(0, str(_Path(__file__).resolve().parent.parent))
+    from core.config import pipeline_config
+
+_ce_cfg: dict = pipeline_config.get("claim_extraction", {})
 
 
 class AgentState(TypedDict):
@@ -48,6 +70,8 @@ class AgentState(TypedDict):
     raw_markdown: str
     claims: list[dict[str, Any]]
     evidence_map: dict[str, list[dict[str, str]]]
+    credibility_map: NotRequired[dict[str, list[dict[str, Any]]]]
+    explanations: NotRequired[dict[str, Any]]
     verdicts: list[dict[str, Any]]
     top_n: Optional[int]
     pub_date: Optional[str]
@@ -265,15 +289,18 @@ def _build_structured_llm() -> Any:
         raise RuntimeError("Missing Groq API key. Set GROQ_API_KEY in .env")
 
     llm = ChatGroq(
-        model="llama-3.1-8b-instant",
+        model=_ce_cfg.get("model", "llama-3.1-8b-instant"),
         api_key=groq_api_key,
-        temperature=0,
+        temperature=_ce_cfg.get("temperature", 0),
     )
     # llama-3.1-8b-instant produces valid JSON but fails the tool-call wire
     # protocol, resulting in Groq HTTP 400 "tool_use_failed". json_mode uses
     # response_format={"type":"json_object"} instead of tool-use, which this
     # model handles correctly.
-    return llm.with_structured_output(ClaimExtractionResult, method="json_mode")
+    return llm.with_structured_output(
+        ClaimExtractionResult,
+        method=_ce_cfg.get("structured_output_method", "json_mode"),
+    )
 
 
 def _rank_and_select_claims(claims: list[Claim], top_n: int) -> list[Claim]:
@@ -367,10 +394,16 @@ def extraction_node(state: AgentState) -> AgentState:
             source_domain = urlparse(resolved_input).netloc or None
             sanitized_markdown = sanitize_article_text(raw_markdown)
             pub_date, author = extract_article_metadata(sanitized_markdown)
-            truncated_markdown = _truncate_markdown(sanitized_markdown, limit=10000)
+            truncated_markdown = _truncate_markdown(
+                sanitized_markdown,
+                limit=_ce_cfg.get("markdown_truncation_limit", 10000),
+            )
         else:
             print("--- DETECTED INPUT TYPE: TEXT ---")
-            truncated_markdown = _truncate_markdown(resolved_input, limit=10000)
+            truncated_markdown = _truncate_markdown(
+                resolved_input,
+                limit=_ce_cfg.get("markdown_truncation_limit", 10000),
+            )
             pub_date, author = extract_article_metadata(truncated_markdown)
             source_domain = None
 
@@ -420,11 +453,15 @@ def build_claim_extraction_graph():
     builder = StateGraph(AgentState)
     builder.add_node("claim_extraction", extraction_node)
     builder.add_node("evidence_retrieval", evidence_retrieval_node)
+    builder.add_node("source_credibility", source_credibility_node)
     builder.add_node("fact_checker", fact_checker_node)
+    builder.add_node("explanation_generator", explanation_generator_node)
     builder.add_edge(START, "claim_extraction")
     builder.add_edge("claim_extraction", "evidence_retrieval")
-    builder.add_edge("evidence_retrieval", "fact_checker")
-    builder.add_edge("fact_checker", END)
+    builder.add_edge("evidence_retrieval", "source_credibility")
+    builder.add_edge("source_credibility", "fact_checker")
+    builder.add_edge("fact_checker", "explanation_generator")
+    builder.add_edge("explanation_generator", END)
     return builder.compile()
 
 
@@ -433,10 +470,12 @@ claim_extraction_graph = build_claim_extraction_graph()
 
 if __name__ == "__main__":
     sample_state: AgentState = {
-        "user_input": "https://indianexpress.com/article/explained/explained-economics/oil-100-dollars-india-impact-iran-war-10572732/?ref=hometop_hp",
+        "user_input": "https://x.com/i/trending/2030881009990856970",
         "raw_markdown": "",
         "claims": [],
         "evidence_map": {},
+        "credibility_map": {},
+        "explanations": {},
         "verdicts": [],
         "top_n": 3,
         "pub_date": None,

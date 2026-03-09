@@ -1,0 +1,53 @@
+# =============================================================================
+# FakeNewsDetector — Pipeline Configuration
+#
+# All tunable parameters for the 5-agent pipeline live here.
+# Secrets (API keys) stay in backend/.env — never add them here.
+# =============================================================================
+
+# ── Agent 1: Claim Extraction ─────────────────────────────────────────────────
+claim_extraction:
+  model: "llama-3.1-8b-instant"       # Groq model for structured claim extraction
+  provider: "groq"
+  temperature: 0                       # Deterministic — keep at 0
+  structured_output_method: "json_mode"
+  markdown_truncation_limit: 10000    # Max chars of article markdown fed to LLM
+
+# ── Agent 2: Evidence Retrieval ───────────────────────────────────────────────
+evidence_retrieval:
+  max_claims_per_run: 3               # Top-N highest-scored claims to retrieve evidence for
+  max_snippet_chars: 500              # Truncate each Tavily snippet to this many chars
+  tavily_search_depth: "basic"        # "basic" or "advanced" (advanced uses more quota)
+  tavily_max_results: 5               # Number of web results fetched per claim
+  max_parallel_workers: 2             # ThreadPoolExecutor workers for concurrent fetches
+
+# ── Agent 3: Source Credibility ───────────────────────────────────────────────
+source_credibility:
+  tier_scores:
+    1: 95   # Wire services / primary fact-check orgs  (e.g. Reuters, AP, PTI)
+    2: 82   # Major national newspapers & broadcasters (e.g. BBC, NYT, The Hindu)
+    3: 70   # Specialist, regional, government-adjacent (e.g. WHO, Statista)
+    4: 35   # Low editorial standards / partisan blogs  (e.g. OpIndia, RT)
+    5: 10   # Social media — no editorial control       (e.g. Twitter, Facebook)
+
+# ── Agent 4: Fact Checker ─────────────────────────────────────────────────────
+fact_checker:
+  # Call 1 — free-form CoT reasoning (unconstrained natural-language output)
+  reasoning_model: "llama-3.3-70b-versatile"
+  reasoning_provider: "groq"
+  reasoning_temperature: 0
+  reasoning_max_tokens: 1500
+
+  # Call 2 — structured JSON verdict
+  verdict_model: "llama-3.3-70b-versatile"
+  verdict_provider: "groq"
+  verdict_temperature: 0
+  verdict_method: "json_mode"
+
+  max_citations: 3                    # Max source URLs included in each verdict
+
+# ── Agent 5: Explanation Generator ───────────────────────────────────────────
+explanation_generator:
+  model: "gemini-2.5-flash"           # Gemini for high-quality natural prose
+  provider: "gemini"
+  temperature: 0.2                    # Intentionally non-zero — natural prose benefits from slight warmth

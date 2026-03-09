@@ -1,135 +1,142 @@
-"""Evidence Retrieval Agent — LangGraph node.
+"""Evidence Retrieval Node for claim verification support.
 
-Purpose: Gather supporting/refuting web evidence for the most important claims.
-
-What it does:
-  1. Takes extracted claims from AgentState.
-  2. Sorts by checkworthiness_score; limits to top MAX_CLAIMS_PER_RUN.
-  3. Uses Tavily search to fetch relevant web snippets per claim.
-  4. Normalizes each result to {url, content} and truncates snippet length.
-  5. Runs retrieval concurrently with a thread pool for speed.
-  6. Outputs an evidence_map keyed by claim text.
-
-Technologies: Tavily Search API, concurrent.futures ThreadPoolExecutor
+This module queries Tavily for the top claims and returns compact evidence
+payloads suitable for downstream fact-checking.
 """
 
 from __future__ import annotations
 
 import os
-from concurrent.futures import ThreadPoolExecutor, as_completed
-from typing import Any
+from concurrent.futures import ThreadPoolExecutor
+from typing import TYPE_CHECKING, Any
 
-import requests
 from dotenv import load_dotenv
+from langchain_community.tools.tavily_search import TavilySearchResults
+
+if TYPE_CHECKING:
+	from agents.claim_extraction import AgentState
 
 load_dotenv()
 
-MAX_CLAIMS_PER_RUN = 5
-MAX_SNIPPET_LENGTH = 1500
-MAX_RESULTS_PER_CLAIM = 5
+try:
+	from core.config import pipeline_config
+except ModuleNotFoundError:
+	import sys as _sys
+	from pathlib import Path as _Path
+	_sys.path.insert(0, str(_Path(__file__).resolve().parent.parent))
+	from core.config import pipeline_config
+
+_er_cfg: dict = pipeline_config.get("evidence_retrieval", {})
+MAX_CLAIMS_PER_RUN: int = _er_cfg.get("max_claims_per_run", 3)
+MAX_SNIPPET_CHARS: int = _er_cfg.get("max_snippet_chars", 500)
 
 
 def _read_env_var(*names: str) -> str:
-    """Read the first non-empty environment variable from candidate names."""
-    for name in names:
-        value = os.getenv(name)
-        if value:
-            return value.strip().strip('"').strip("'")
-    return ""
+	for name in names:
+		value = os.getenv(name)
+		if value:
+			return value.strip().strip('"').strip("'")
+	return ""
 
 
-def _tavily_search(claim_text: str, api_key: str) -> list[dict[str, str]]:
-    """Synchronous Tavily search for a single claim (called inside thread pool)."""
-    print(f"  🔎 Tavily search: \"{claim_text[:80]}...\"")
-
-    try:
-        response = requests.post(
-            "https://api.tavily.com/search",
-            json={
-                "api_key": api_key,
-                "query": claim_text,
-                "search_depth": "advanced",
-                "max_results": MAX_RESULTS_PER_CLAIM,
-            },
-            timeout=30,
-        )
-        response.raise_for_status()
-        data = response.json()
-    except requests.RequestException as exc:
-        print(f"  ⚠️ Tavily error for claim: {exc}")
-        return []
-
-    results: list[dict[str, str]] = []
-    for result in data.get("results", []):
-        url = result.get("url", "")
-        content = result.get("content", "")
-
-        # Only keep valid HTTP/HTTPS URLs
-        if not url or not url.startswith(("http://", "https://")):
-            continue
-
-        # Truncate snippet
-        if len(content) > MAX_SNIPPET_LENGTH:
-            content = content[:MAX_SNIPPET_LENGTH] + "…"
-
-        results.append({"url": url, "content": content})
-
-    print(f"  ✅ Found {len(results)} snippets for claim")
-    return results
+def _truncate_snippet(content: str, limit: int = MAX_SNIPPET_CHARS) -> str:
+	return content[:limit].strip()
 
 
-def evidence_retrieval_node(state: dict[str, Any]) -> dict[str, Any]:
-    """LangGraph node: retrieve web evidence for top-N claims via Tavily."""
-    print("--- EVIDENCE RETRIEVAL START ---")
+def _normalize_results(raw_response: Any) -> list[dict[str, str]]:
+	if isinstance(raw_response, list):
+		candidates = raw_response
+	elif isinstance(raw_response, dict) and isinstance(raw_response.get("results"), list):
+		candidates = raw_response["results"]
+	else:
+		candidates = []
 
-    claims: list[dict[str, Any]] = state.get("claims", [])
-    error = state.get("error", "")
+	normalized: list[dict[str, str]] = []
+	for item in candidates:
+		if not isinstance(item, dict):
+			continue
 
-    # If upstream had an error or produced no claims, pass through
-    if error or not claims:
-        print(f"--- EVIDENCE RETRIEVAL SKIPPED (error={error!r}, claims={len(claims)}) ---")
-        return {
-            "evidence_map": {},
-        }
+		url = str(item.get("url", "")).strip()
+		content = str(item.get("content", "")).strip()
+		if not url or not content:
+			continue
 
-    tavily_api_key = _read_env_var("TAVILY_API_KEY", "tavily_api_key")
-    if not tavily_api_key:
-        print("--- EVIDENCE RETRIEVAL ERROR: Missing TAVILY_API_KEY ---")
-        return {
-            "evidence_map": {},
-            "error": "Missing Tavily API key. Set TAVILY_API_KEY in .env",
-        }
+		normalized.append({"url": url, "content": _truncate_snippet(content)})
 
-    # Sort by checkworthiness (descending) and limit
-    sorted_claims = sorted(
-        claims,
-        key=lambda c: c.get("checkworthiness_score", 0),
-        reverse=True,
-    )
-    top_claims = sorted_claims[:MAX_CLAIMS_PER_RUN]
-    print(f"--- Processing {len(top_claims)} claims (of {len(claims)} total) ---")
+	return normalized
 
-    evidence_map: dict[str, list[dict[str, str]]] = {}
 
-    # Concurrent retrieval using thread pool
-    with ThreadPoolExecutor(max_workers=min(len(top_claims), 5)) as executor:
-        future_to_claim = {
-            executor.submit(_tavily_search, claim["claim_text"], tavily_api_key): claim["claim_text"]
-            for claim in top_claims
-        }
+def get_evidence_for_claim(claim_text: str) -> list[dict[str, str]]:
+	print(f"--- SEARCHING WEB FOR: {claim_text} ---")
 
-        for future in as_completed(future_to_claim):
-            claim_text = future_to_claim[future]
-            try:
-                snippets = future.result()
-                evidence_map[claim_text] = snippets
-            except Exception as exc:  # noqa: BLE001
-                print(f"  ⚠️ Thread error for claim \"{claim_text[:50]}\": {exc}")
-                evidence_map[claim_text] = []
+	clean_claim = str(claim_text or "").strip()
+	if not clean_claim:
+		print("--- EVIDENCE RESULTS: 0 ---")
+		return []
 
-    total_snippets = sum(len(v) for v in evidence_map.values())
-    print(f"--- EVIDENCE RETRIEVAL COMPLETE: {total_snippets} total snippets across {len(evidence_map)} claims ---")
+	tavily_api_key = _read_env_var("TAVILY_API_KEY", "tavily_api_key")
+	if not tavily_api_key:
+		print("--- EVIDENCE RESULTS: 0 ---")
+		return []
 
-    return {
-        "evidence_map": evidence_map,
-    }
+	os.environ["TAVILY_API_KEY"] = tavily_api_key
+
+	try:
+		tool = TavilySearchResults(
+			search_depth=_er_cfg.get("tavily_search_depth", "basic"),
+			max_results=_er_cfg.get("tavily_max_results", 5),
+		)
+		raw_response = tool.invoke(clean_claim)
+		normalized = _normalize_results(raw_response)
+		print(f"--- EVIDENCE RESULTS: {len(normalized)} ---")
+		return normalized
+	except Exception as exc:  # noqa: BLE001
+		print(f"--- EVIDENCE RESULTS: 0 --- ({exc})")
+		return []
+
+
+def _claim_sort_key(claim: dict[str, Any]) -> int:
+	try:
+		return int(claim.get("checkworthiness_score", 0))
+	except (TypeError, ValueError):
+		return 0
+
+
+def evidence_retrieval_node(state: "AgentState") -> "AgentState":
+	try:
+		claims = state.get("claims", [])
+		sorted_claims = sorted(claims, key=_claim_sort_key, reverse=True)
+		selected_claims = sorted_claims[:MAX_CLAIMS_PER_RUN]
+
+		selected_claim_texts = [str(claim.get("claim_text", "")).strip() for claim in selected_claims]
+
+		evidence_map: dict[str, list[dict[str, str]]] = {}
+		futures_by_claim: dict[str, Any] = {}
+
+		with ThreadPoolExecutor(max_workers=_er_cfg.get("max_parallel_workers", 2)) as executor:
+			for claim_text in selected_claim_texts:
+				if claim_text:
+					futures_by_claim[claim_text] = executor.submit(get_evidence_for_claim, claim_text)
+
+			# Preserve deterministic order for the resulting map.
+			for claim_text in selected_claim_texts:
+				if not claim_text:
+					evidence_map[claim_text] = []
+					continue
+				future = futures_by_claim.get(claim_text)
+				if future is None:
+					evidence_map[claim_text] = []
+					continue
+				try:
+					evidence_map[claim_text] = future.result()
+				except Exception:  # noqa: BLE001
+					evidence_map[claim_text] = []
+
+		updated_state = dict(state)
+		updated_state["evidence_map"] = evidence_map
+		return updated_state
+	except Exception as exc:  # noqa: BLE001
+		updated_state = dict(state)
+		updated_state["evidence_map"] = updated_state.get("evidence_map", {})
+		updated_state["error"] = str(exc)
+		return updated_state

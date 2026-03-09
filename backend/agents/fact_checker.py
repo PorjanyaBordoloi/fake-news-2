@@ -1,54 +1,179 @@
-"""Fact Checker Agent — LangGraph node.
+"""Fact-checking decision node for claim verification.
 
-Purpose: Convert claim + evidence into final user-facing verdicts.
-
-What it does:
-  1. For each claim, builds evidence context from valid HTTP/HTTPS snippets.
-  2. Uses Groq LLM with structured JSON schema for FactCheckVerdict.
-  3. Enforces one of 4 labels: SUPPORTED, CONTRADICTED, MISLEADING, UNVERIFIED.
-  4. Returns per claim: verdict, truth_score (0-100), 2-sentence explanation,
-     cleaned citations (deduplicated/canonicalized from evidence URLs only).
-  5. Falls back to safe UNVERIFIED output if no evidence or LLM error.
-
-Technologies: Groq LLM (structured schema output)
+This module consumes claims with retrieved evidence snippets and emits strict,
+UI-ready verdict objects for downstream presentation.
 """
 
 from __future__ import annotations
 
-import json
 import os
-import re
-from typing import Any
-from urllib.parse import urlparse, urlunparse
+import importlib
+import traceback
+from enum import Enum
+from typing import TYPE_CHECKING, Any
+from urllib.parse import urlparse
 
 from dotenv import load_dotenv
-from groq import Groq
+from langchain_core.prompts import ChatPromptTemplate
+from pydantic import BaseModel, Field, field_validator
+
+if TYPE_CHECKING:
+    from agents.claim_extraction import AgentState
 
 load_dotenv()
 
-VALID_VERDICTS = {"SUPPORTED", "CONTRADICTED", "MISLEADING", "UNVERIFIED"}
+try:
+    from core.config import pipeline_config
+except ModuleNotFoundError:
+    import sys as _sys
+    from pathlib import Path as _Path
+    _sys.path.insert(0, str(_Path(__file__).resolve().parent.parent))
+    from core.config import pipeline_config
 
-FACT_CHECK_PROMPT = """You are a fact-checking agent. Given the CLAIM and EVIDENCE below, produce a structured verdict.
+_fc_cfg: dict = pipeline_config.get("fact_checker", {})
+MAX_CITATIONS: int = _fc_cfg.get("max_citations", 3)
+NO_EVIDENCE_EXPLANATION = (
+    "Insufficient reliable evidence was retrieved for this claim. "
+    "The claim remains unverified at this time."
+)
+LLM_ERROR_EXPLANATION = (
+    "The model could not produce a reliable fact-check verdict for this claim. "
+    "The claim is marked unverified pending further evidence."
+)
 
-CLAIM:
-{claim}
 
-EVIDENCE:
-{evidence}
+class VerdictLabel(str, Enum):
+    SUPPORTED = "SUPPORTED"
+    CONTRADICTED = "CONTRADICTED"
+    MISLEADING = "MISLEADING"
+    UNVERIFIED = "UNVERIFIED"
 
-You MUST respond with a single valid JSON object (no markdown fences, no extra text) with exactly these keys:
-- "verdict": one of "SUPPORTED", "CONTRADICTED", "MISLEADING", "UNVERIFIED"
-- "truth_score": integer 0-100
-- "explanation": exactly 2 sentences explaining your verdict
-- "citations": array of evidence URLs that support your verdict (only from the evidence above, deduplicated)
+
+class FactCheckVerdict(BaseModel):
+    claim_text: str = Field(min_length=1)
+    verdict: VerdictLabel
+    truth_score: int = Field(ge=0, le=100)
+    explanation: str = Field(min_length=1)
+    citations: list[str] = Field(default_factory=list)
+    reasoning_summary: str = Field(
+        default="",
+        description="Key points from the reasoning process",
+    )
+    confidence_level: str = Field(
+        default="MEDIUM",
+        description="HIGH / MEDIUM / LOW based on evidence coverage",
+    )
+    evidence_gaps: list[str] = Field(
+        default_factory=list,
+        description="Sub-parts of the claim not addressed by evidence",
+    )
+
+    @field_validator("evidence_gaps", "citations", mode="before")
+    @classmethod
+    def _coerce_str_to_list(cls, value: object) -> object:
+        """Allow the model to return a plain string instead of a JSON array."""
+        if isinstance(value, str):
+            stripped = value.strip()
+            return [stripped] if stripped else []
+        return value
+
+
+REASONING_PROMPT = """
+You are a senior fact-checking analyst. Your job is NOT to give a verdict yet. Your only job right now is to think carefully and document your reasoning process.
+
+CRITICAL RULES:
+- Only reference information explicitly present in the snippets
+- Do not use your training knowledge to fill gaps
+- If evidence does not address something, say "Not in evidence"
+- Do not jump to conclusions before completing all steps
+
+---
+
+STEP 1 — EVIDENCE INVENTORY
+For each snippet provided, write exactly one line:
+"[Domain] (Credibility: [score]/100) says: [one sentence summary of what it claims]"
+If no credibility score is shown for a snippet, note it as "(Credibility: unknown)".
+
+---
+
+STEP 2 — CLAIM DECOMPOSITION
+Break the claim into atomic verifiable sub-parts.
+Each sub-part must be a yes/no checkable question.
+
+---
+
+STEP 3 — EVIDENCE MATCHING
+For each sub-part from Step 2:
+- List which snippets address it
+- State whether they confirm, deny, or are silent on it
+- If silent: mark as "Gap — not addressed in evidence"
+
+---
+
+STEP 4 — CONTRADICTION ANALYSIS
+Do any snippets contradict each other?
+If YES: state which snippets conflict, which source is more credible and why.
+If NO: state "No contradictions detected"
+When snippets conflict, weight higher credibility scores more heavily. A Tier 1 source (score 90+) contradicting a Tier 5 source (score 10) should resolve firmly in favor of the Tier 1 source.
+
+---
+
+STEP 5 — CONFIDENCE ASSESSMENT
+For each sub-part assign one of:
+- CONFIRMED: direct evidence exists
+- CONTRADICTED: direct counter-evidence exists
+- INFERRED: evidence implies but does not state directly
+- GAP: no evidence addresses this sub-part
+
+Then state overall confidence:
+- HIGH: all sub-parts CONFIRMED or CONTRADICTED by evidence
+- MEDIUM: most sub-parts addressed, some gaps exist
+- LOW: significant gaps, evidence is indirect or weak
+
+---
+
+STEP 6 — PRELIMINARY VERDICT REASONING
+Write 3-4 sentences explaining:
+1. What the evidence collectively shows
+2. What gaps remain
+3. What verdict this reasoning points toward and why
+4. Any important caveats
+
+Do NOT output a JSON object. Do NOT output a verdict label yet.
+Output only your reasoning document.
+""".strip()
+
+
+VERDICT_PROMPT = """
+You are a fact-check verdict recorder.
+
+A senior analyst has already completed the reasoning process.
+Your job is to convert that reasoning into a precise structured verdict.
 
 Rules:
-- If evidence strongly confirms the claim → SUPPORTED (truth_score 70-100)
-- If evidence directly contradicts the claim → CONTRADICTED (truth_score 0-30)
-- If evidence partially supports but key details are wrong or exaggerated → MISLEADING (truth_score 30-60)
-- If evidence is insufficient or inconclusive → UNVERIFIED (truth_score 40-60)
-- Only include URLs that actually appear in the EVIDENCE section above
-"""
+- Base your verdict ONLY on the reasoning document provided
+- Do not add new analysis or override the analyst's conclusions
+- Select the verdict label that best matches the reasoning
+- Set truth_score based on confidence level in reasoning:
+    HIGH confidence + SUPPORTED → 85-100
+    MEDIUM confidence + SUPPORTED → 60-84
+    LOW confidence → 40-59
+    CONTRADICTED → 0-30
+    MISLEADING → 30-60
+- Citations must only come from URLs in the evidence snippets
+- Explanation must summarize the reasoning in 2-3 sentences
+
+Verdict labels:
+- SUPPORTED: core claim confirmed by credible evidence
+- CONTRADICTED: core claim directly refuted by evidence
+- MISLEADING: technically true but deceptive framing or missing context
+- UNVERIFIED: insufficient evidence to confirm or deny
+
+You MUST respond with a valid JSON object only. No explanation outside the JSON.
+The JSON must contain exactly these keys:
+  claim_text, verdict, truth_score, explanation, citations,
+  reasoning_summary, confidence_level, evidence_gaps
+""".strip()
 
 
 def _read_env_var(*names: str) -> str:
@@ -59,192 +184,296 @@ def _read_env_var(*names: str) -> str:
     return ""
 
 
+def _build_fact_checker_llm() -> Any:
+    from langchain_groq import ChatGroq
+
+    groq_api_key = _read_env_var("GROQ_API_KEY", "groq_api_key")
+    if not groq_api_key:
+        raise RuntimeError("Missing Groq API key. Set GROQ_API_KEY in .env")
+
+    llm = ChatGroq(
+        model=_fc_cfg.get("verdict_model", "llama-3.3-70b-versatile"),
+        api_key=groq_api_key,
+        temperature=_fc_cfg.get("verdict_temperature", 0),
+    )
+    return llm.with_structured_output(
+        FactCheckVerdict,
+        method=_fc_cfg.get("verdict_method", "json_mode"),
+    )
+
+
+def _build_reasoning_llm() -> Any:
+    """
+    Plain LLM with no structured output constraint.
+    Used for Call 1 (free-form reasoning). Intentionally unconstrained
+    so the model can think in natural language without schema pressure.
+    """
+    from langchain_groq import ChatGroq
+
+    groq_api_key = _read_env_var("GROQ_API_KEY", "groq_api_key")
+    if not groq_api_key:
+        raise RuntimeError("Missing Groq API key. Set GROQ_API_KEY in .env")
+
+    return ChatGroq(
+        model=_fc_cfg.get("reasoning_model", "llama-3.3-70b-versatile"),
+        api_key=groq_api_key,
+        temperature=_fc_cfg.get("reasoning_temperature", 0),
+        max_tokens=_fc_cfg.get("reasoning_max_tokens", 1500),
+    )
+
+
+def _run_reasoning_step(
+    claim_text: str,
+    evidence_context: str,
+    llm: Any,
+) -> str:
+    """
+    Call 1: Free-form chain-of-thought reasoning.
+    Returns reasoning document as plain text.
+    Raises ValueError if output is suspiciously short (model skipped steps).
+    """
+    reasoning_prompt = ChatPromptTemplate.from_messages([
+        ("system", REASONING_PROMPT),
+        (
+            "human",
+            "Claim to analyze:\n{claim_text}\n\n"
+            "Evidence snippets:\n{evidence_context}",
+        ),
+    ])
+
+    chain = reasoning_prompt | llm
+    response = chain.invoke({
+        "claim_text": claim_text,
+        "evidence_context": evidence_context,
+    })
+
+    reasoning_text = response.content
+
+    if len(reasoning_text.strip()) < 100:
+        raise ValueError(
+            f"Reasoning output too short — model may have skipped steps: "
+            f"{reasoning_text}"
+        )
+
+    return reasoning_text
+
+
+def _is_http_url(value: str) -> bool:
+    parsed = urlparse(str(value or "").strip())
+    return parsed.scheme in {"http", "https"} and bool(parsed.netloc)
+
+
+def _build_claim_context(
+    claim_text: str, snippets: list[dict[str, Any]]
+) -> tuple[str, list[str]]:
+    normalized_blocks: list[str] = []
+    allowed_urls: list[str] = []
+
+    for idx, snippet in enumerate(snippets, start=1):
+        url = str(snippet.get("url", "")).strip()
+        content = str(snippet.get("content", "")).strip()
+        if not content or not _is_http_url(url):
+            continue
+
+        allowed_urls.append(url)
+        cred: dict[str, Any] | None = snippet.get("credibility")  # type: ignore[assignment]
+        if cred:
+            cred_line = (
+                f"Credibility: {cred.get('score', '?')}/100 "
+                f"| {cred.get('label', 'Unknown')} "
+                f"| Bias: {cred.get('bias', 'unknown')}"
+            )
+            normalized_blocks.append(
+                f"Snippet {idx}:\nURL: {url}\n{cred_line}\nContent: {content}"
+            )
+        else:
+            normalized_blocks.append(
+                f"Snippet {idx}:\nURL: {url}\nContent: {content}"
+            )
+
+    evidence_context = "\n\n".join(normalized_blocks)
+    return evidence_context, allowed_urls
+
+
 def _canonicalize_url(url: str) -> str:
-    """Normalize a URL: strip trailing slashes, fragments, lowercase scheme+host."""
+    """Normalise URL for comparison: lowercase scheme+host, strip trailing slash, drop fragment."""
     try:
-        parsed = urlparse(url.strip())
-        clean = urlunparse((
-            parsed.scheme.lower(),
-            parsed.netloc.lower(),
-            parsed.path.rstrip("/") or "/",
-            parsed.params,
-            parsed.query,
-            "",  # drop fragment
-        ))
-        return clean
+        parsed = urlparse(url)
+        scheme = parsed.scheme.lower()
+        netloc = parsed.netloc.lower()
+        path = parsed.path.rstrip("/") or "/"
+        normalized = f"{scheme}://{netloc}{path}"
+        if parsed.query:
+            normalized += f"?{parsed.query}"
+        # Fragment intentionally dropped — #section variants should match the base URL.
+        return normalized
     except Exception:  # noqa: BLE001
         return url.strip()
 
 
-def _deduplicate_urls(urls: list[str], evidence_urls: set[str]) -> list[str]:
-    """Deduplicate and filter citations to only those present in retrieved evidence."""
-    seen: set[str] = set()
-    result: list[str] = []
-    for url in urls:
-        canonical = _canonicalize_url(url)
-        if canonical not in seen and canonical in evidence_urls:
-            seen.add(canonical)
-            result.append(canonical)
-    return result
+def _normalize_citations(citations: list[str], allowed_urls: list[str]) -> list[str]:
+    # Build canonical-form → original evidence URL mapping (first occurrence wins).
+    canonical_to_original: dict[str, str] = {}
+    for original in allowed_urls:
+        canon = _canonicalize_url(original)
+        if canon not in canonical_to_original:
+            canonical_to_original[canon] = original
 
+    cleaned: list[str] = []
+    seen: set[str] = set()  # tracks canonical forms already accepted
 
-def _build_evidence_context(snippets: list[dict[str, str]]) -> tuple[str, set[str]]:
-    """Build a text block of evidence snippets and collect canonical evidence URLs."""
-    if not snippets:
-        return "", set()
-
-    evidence_urls: set[str] = set()
-    lines: list[str] = []
-
-    for i, snippet in enumerate(snippets, 1):
-        url = snippet.get("url", "")
-        content = snippet.get("content", "")
-        if not url.startswith(("http://", "https://")):
+    for raw in citations:
+        candidate = str(raw or "").strip()
+        if not candidate or not _is_http_url(candidate):
             continue
-        canonical = _canonicalize_url(url)
-        evidence_urls.add(canonical)
-        lines.append(f"[Source {i}] {url}\n{content}")
+        canon = _canonicalize_url(candidate)
+        if canon not in canonical_to_original or canon in seen:
+            continue
+        # Emit the evidence-side URL, not the model's potentially-mutated variant.
+        cleaned.append(canonical_to_original[canon])
+        seen.add(canon)
+        if len(cleaned) >= MAX_CITATIONS:
+            break
 
-    return "\n\n".join(lines), evidence_urls
-
-
-def _safe_unverified(claim_text: str) -> dict[str, Any]:
-    """Fallback verdict when no evidence or LLM error."""
-    return {
-        "claim_text": claim_text,
-        "verdict": "UNVERIFIED",
-        "truth_score": 50,
-        "explanation": "Insufficient evidence was found to verify this claim. The claim remains unverified pending further information.",
-        "citations": [],
-    }
+    return cleaned
 
 
-def _parse_llm_response(raw_text: str) -> dict[str, Any]:
-    """Parse Groq response, stripping markdown fences if present."""
-    cleaned = raw_text.strip()
+def _fallback_unverified(claim_text: str, reason: str) -> dict[str, Any]:
+    explanation = NO_EVIDENCE_EXPLANATION
+    if reason == "llm_error":
+        explanation = LLM_ERROR_EXPLANATION
 
-    # Strip ```json ... ``` fences
-    fence_match = re.search(r"```(?:json)?\s*(.*?)\s*```", cleaned, re.DOTALL)
-    if fence_match:
-        cleaned = fence_match.group(1).strip()
+    return FactCheckVerdict(
+        claim_text=str(claim_text or "").strip() or "Unknown claim",
+        verdict=VerdictLabel.UNVERIFIED,
+        truth_score=50,
+        explanation=explanation,
+        citations=[],
+    ).model_dump()
 
-    return json.loads(cleaned)
 
-
-def _generate_verdict_for_claim(
-    client: Groq,
-    claim_text: str,
-    evidence_context: str,
-    evidence_urls: set[str],
-) -> dict[str, Any]:
-    """Call Groq for a single claim and return a validated verdict dict."""
-    prompt = FACT_CHECK_PROMPT.format(claim=claim_text, evidence=evidence_context)
-
+def fact_checker_node(state: "AgentState") -> "AgentState":
     try:
-        response = client.chat.completions.create(
-            model="llama-3.3-70b-versatile",
-            messages=[{"role": "user", "content": prompt}],
-            response_format={"type": "json_object"},
-            temperature=0.0,
-        )
-        raw = response.choices[0].message.content or ""
+        claims = state.get("claims", [])
+        evidence_map = state.get("evidence_map", {})
+        verdicts: list[dict[str, Any]] = []
+
+        reasoning_llm = None
+        structured_llm = None
+
+        verdict_prompt = ChatPromptTemplate.from_messages([
+            ("system", VERDICT_PROMPT),
+            (
+                "human",
+                "Claim:\n{claim_text}\n\n"
+                "Evidence snippets (for citation reference only):\n"
+                "{evidence_context}\n\n"
+                "Analyst reasoning document:\n{reasoning_text}\n\n"
+                "Available citation URLs (use only these):\n{available_urls}",
+            ),
+        ])
+
+        for claim in claims:
+            claim_text = str(claim.get("claim_text", "")).strip()
+            print(f"--- FACT-CHECKING CLAIM: {claim_text} ---")
+
+            snippets = evidence_map.get(claim_text, [])
+            if not snippets:
+                fallback = _fallback_unverified(claim_text, reason="no_evidence")
+                verdicts.append(fallback)
+                print(
+                    f"--- VERDICT: {fallback['verdict']} "
+                    f"({fallback['truth_score']}) ---"
+                )
+                continue
+
+            try:
+                evidence_context, allowed_urls = _build_claim_context(
+                    claim_text, snippets
+                )
+                if not evidence_context:
+                    fallback = _fallback_unverified(claim_text, reason="no_evidence")
+                    verdicts.append(fallback)
+                    print(
+                        f"--- VERDICT: {fallback['verdict']} "
+                        f"({fallback['truth_score']}) ---"
+                    )
+                    continue
+
+                # Lazy init both LLMs
+                if reasoning_llm is None:
+                    reasoning_llm = _build_reasoning_llm()
+                if structured_llm is None:
+                    structured_llm = _build_fact_checker_llm()
+
+                # ── CALL 1: Free-form reasoning ──────────────────────────
+                print("--- REASONING STEP (CALL 1) ---")
+                reasoning_text = _run_reasoning_step(
+                    claim_text=claim_text,
+                    evidence_context=evidence_context,
+                    llm=reasoning_llm,
+                )
+                print(
+                    f"--- REASONING COMPLETE "
+                    f"({len(reasoning_text)} chars) ---"
+                )
+
+                # ── CALL 2: Structured verdict using reasoning ────────────
+                print("--- VERDICT STEP (CALL 2) ---")
+                chain = verdict_prompt | structured_llm
+                response = chain.invoke({
+                    "claim_text": claim_text,
+                    "evidence_context": evidence_context,
+                    "reasoning_text": reasoning_text,
+                    "available_urls": "\n".join(allowed_urls),
+                })
+
+                if response is None:
+                    raise ValueError(
+                        "Structured LLM returned None — model produced no output for this claim."
+                    )
+
+                if isinstance(response, FactCheckVerdict):
+                    parsed = response
+                else:
+                    parsed = FactCheckVerdict.model_validate(response)
+
+                normalized = parsed.model_dump()
+                normalized["claim_text"] = claim_text
+                normalized["citations"] = _normalize_citations(
+                    normalized.get("citations", []),
+                    allowed_urls,
+                )
+
+                validated = FactCheckVerdict.model_validate(normalized)
+                verdict_payload = validated.model_dump()
+                verdicts.append(verdict_payload)
+                print(
+                    f"--- VERDICT: {verdict_payload['verdict']} "
+                    f"({verdict_payload['truth_score']}) "
+                    f"[{verdict_payload.get('confidence_level', '?')}] ---"
+                )
+
+            except Exception:  # noqa: BLE001
+                tb_str = traceback.format_exc()
+                print(
+                    f"--- FACT-CHECK ERROR ---\n"
+                    f"  Claim: {claim_text!r}\n"
+                    f"  {tb_str}"
+                )
+                fallback = _fallback_unverified(claim_text, reason="llm_error")
+                verdicts.append(fallback)
+                print(
+                    f"--- VERDICT: {fallback['verdict']} "
+                    f"({fallback['truth_score']}) ---"
+                )
+
+        updated_state = dict(state)
+        updated_state["verdicts"] = verdicts
+        return updated_state
+
     except Exception as exc:  # noqa: BLE001
-        print(f"  ⚠️ Groq API error for claim \"{claim_text[:50]}\": {exc}")
-        return _safe_unverified(claim_text)
-
-    try:
-        parsed = _parse_llm_response(raw)
-    except (json.JSONDecodeError, ValueError) as exc:
-        print(f"  ⚠️ Groq JSON parse error: {exc}")
-        return _safe_unverified(claim_text)
-
-    # Validate and sanitize verdict
-    verdict = str(parsed.get("verdict", "UNVERIFIED")).upper().strip()
-    if verdict not in VALID_VERDICTS:
-        verdict = "UNVERIFIED"
-
-    truth_score = parsed.get("truth_score", 50)
-    if not isinstance(truth_score, (int, float)):
-        truth_score = 50
-    truth_score = max(0, min(100, int(truth_score)))
-
-    explanation = str(parsed.get("explanation", ""))
-    if not explanation:
-        explanation = "The LLM did not provide an explanation. The claim remains unverified."
-
-    raw_citations = parsed.get("citations", [])
-    if not isinstance(raw_citations, list):
-        raw_citations = []
-    citations = _deduplicate_urls(
-        [str(c) for c in raw_citations if isinstance(c, str)],
-        evidence_urls,
-    )
-
-    return {
-        "claim_text": claim_text,
-        "verdict": verdict,
-        "truth_score": truth_score,
-        "explanation": explanation,
-        "citations": citations,
-    }
-
-
-def fact_checker_node(state: dict[str, Any]) -> dict[str, Any]:
-    """LangGraph node: generate verdicts for each claim using evidence + Groq."""
-    print("--- FACT CHECKER START ---")
-
-    claims: list[dict[str, Any]] = state.get("claims", [])
-    evidence_map: dict[str, list[dict[str, str]]] = state.get("evidence_map", {})
-    error = state.get("error", "")
-
-    # If upstream had a fatal error or no claims, return empty verdicts
-    if error or not claims:
-        print(f"--- FACT CHECKER SKIPPED (error={error!r}, claims={len(claims)}) ---")
-        return {
-            "verdicts": [],
-        }
-
-    groq_api_key = _read_env_var("GROQ_API_KEY", "groq_api_key")
-    if not groq_api_key:
-        print("--- FACT CHECKER ERROR: Missing GROQ_API_KEY ---")
-        return {
-            "verdicts": [_safe_unverified(c["claim_text"]) for c in claims],
-            "error": "Missing Groq API key. Set GROQ_API_KEY in .env",
-        }
-
-    client = Groq(api_key=groq_api_key)
-    verdicts: list[dict[str, Any]] = []
-
-    for claim in claims:
-        claim_text = claim.get("claim_text", "")
-        if not claim_text:
-            continue
-
-        print(f"  🔍 Processing claim: \"{claim_text[:80]}...\"")
-
-        # Get evidence for this claim
-        snippets = evidence_map.get(claim_text, [])
-        evidence_context, evidence_urls = _build_evidence_context(snippets)
-
-        if not evidence_context:
-            print(f"  ⚠️ No evidence found — defaulting to UNVERIFIED")
-            verdicts.append(_safe_unverified(claim_text))
-            continue
-
-        verdict = _generate_verdict_for_claim(client, claim_text, evidence_context, evidence_urls)
-        verdicts.append(verdict)
-
-        print(f"  ✅ Verdict: {verdict['verdict']} (truth_score: {verdict['truth_score']})")
-
-    # Summary
-    verdict_counts = {}
-    for v in verdicts:
-        label = v["verdict"]
-        verdict_counts[label] = verdict_counts.get(label, 0) + 1
-
-    summary_parts = [f"{count} {label}" for label, count in sorted(verdict_counts.items())]
-    print(f"--- FACT CHECKER COMPLETE: {', '.join(summary_parts)} ---")
-
-    return {
-        "verdicts": verdicts,
-    }
+        updated_state = dict(state)
+        updated_state["verdicts"] = updated_state.get("verdicts", [])
+        updated_state["error"] = str(exc)
+        return updated_state
