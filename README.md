@@ -604,6 +604,6 @@ The pipeline is engineered to minimize `llama-3.3-70b-versatile` usage:
 ---
 
 <p align="center">
-  <strong>Built for the Antigravity Agentic IDE Hackathon</strong><br/>
+  <strong>Built for Prajyukti Hackathon</strong><br/>
   <em>Fighting misinformation, one claim at a time.</em>
 </p>
