@@ -1,6 +1,6 @@
 {
     "manifest_version": 3,
-    "name": "Fake News Detector",
+    "name": "KREDO",
     "version": "1.0.0",
     "description": "AI-Powered Misinformation Detection — Quick fake/real verdict while browsing.",
     "permissions": [

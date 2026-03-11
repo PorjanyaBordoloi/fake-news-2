@@ -1,0 +1,162 @@
+[
+  {
+    "id": "9aaa7865-755e-4970-9bbb-6dce6fafbc7d",
+    "url": "https://www.democracynow.org/2026/3/9/iran_war",
+    "timestamp": "2026-03-10T17:41:10.573155+00:00",
+    "overall_credibility": "CREDIBLE",
+    "avg_score": 87,
+    "bottom_line": "This article is generally trustworthy, with all verdicts supported by high-confidence evidence from credible sources.",
+    "verdicts": [
+      {
+        "claim_text": "Toxic black rain fell after Israeli strikes on Iranian oil depots.",
+        "verdict": "SUPPORTED",
+        "truth_score": 85,
+        "explanation": "The evidence collectively shows that Israeli strikes occurred on Iranian oil depots and that toxic black rain fell after the strikes. The rain's composition is inferred from the appearance of oil in the rain, but this is not directly stated in the evidence.",
+        "citations": [
+          "https://www.theguardian.com/world/2026/mar/08/dark-like-our-future-iranians-describe-scenes-of-catastrophe-after-tehrans-oil-depots-bombed",
+          "https://english.nv.ua/nation/situation-is-apocalyptic-toxic-rain-hits-tehran-after-israeli-strikes-on-oil-depot-photo-report-50590084.html",
+          "https://www.forbes.com/sites/zacharyfolk/2026/03/08/black-toxic-rain-falls-on-tehran-after-air-strikes-hit-oil-refineries/"
+        ],
+        "reasoning_summary": "The analyst's reasoning confirms that Israeli strikes occurred on Iranian oil depots and toxic black rain fell after the strikes, with the rain's composition inferred from its appearance.",
+        "confidence_level": "HIGH",
+        "evidence_gaps": [
+          "The exact composition of the rain remains uncertain, as it is inferred from its appearance rather than directly stated in the evidence."
+        ]
+      },
+      {
+        "claim_text": "Iran picked a new Supreme Leader.",
+        "verdict": "SUPPORTED",
+        "truth_score": 90,
+        "explanation": "The evidence collectively shows that Iran has indeed picked a new Supreme Leader, Mojtaba Khamenei, who is the son of Ayatollah Ali Khamenei. The Assembly of Experts selected him as the new leader. The claim is confirmed by multiple sources, including the BBC, which is the most credible source.",
+        "citations": [
+          "https://www.bbc.com/news/articles/c78xxg05w0zo",
+          "https://www.cbsnews.com/news/mojtaba-khamenei-iran-new-supreme-leader/"
+        ],
+        "reasoning_summary": "The analyst's reasoning confirms the claim that Iran has picked a new Supreme Leader, Mojtaba Khamenei, who is the son of Ayatollah Ali Khamenei. The evidence is consistent and reliable, with the BBC being the most credible source.",
+        "confidence_level": "HIGH",
+        "evidence_gaps": [
+          "The exact circumstances of Ayatollah Ali Khamenei's death are not directly confirmed by the sources."
+        ]
+      },
+      {
+        "claim_text": "The U.S.-Israeli war on Iran could destabilize the entire region.",
+        "verdict": "SUPPORTED",
+        "truth_score": 85,
+        "explanation": "The evidence collectively shows that there is a US-Israeli war on Iran, which has the potential to destabilize the entire region. The war has already led to a regional conflagration, with Iran retaliating against Israel and US military facilities.",
+        "citations": [
+          "https://www.atlanticcouncil.org/dispatches/experts-react-how-the-world-is-responding-to-the-us-israeli-war-with-iran/",
+          "https://arabcenterdc.org/resource/the-us-israel-war-on-iran-analyses-and-perspectives/",
+          "https://arabamericannews.com/2026/03/06/metro-detroits-arab-and-muslim-leaders-condemn-u-s-israeli-unjustifiable-attack-on-iran-warn-of-wider-regional-war/"
+        ],
+        "reasoning_summary": "The analyst's reasoning involves confirming the existence of a US-Israeli war on Iran and its potential to destabilize the region, based on evidence from multiple sources.",
+        "confidence_level": "HIGH",
+        "evidence_gaps": [
+          "Some gaps remain regarding the specific consequences of the war."
+        ]
+      }
+    ],
+    "explanations": {
+      "by_claim": {
+        "Toxic black rain fell after Israeli strikes on Iranian oil depots.": {
+          "claim_text": "Toxic black rain fell after Israeli strikes on Iranian oil depots.",
+          "plain_english": "Israeli strikes on Iranian oil depots led to toxic black rain. The rain contained oil, but we don\u2019t know its exact composition. This claim is based on reports from established news outlets. The exact composition of the rain remains unknown.",
+          "confidence_statement": "High confidence \u2014 reported by established news outlets.",
+          "source_quality_note": "Reported by established news outlets (Tier 2)",
+          "reader_advisory": "Be cautious of unverified sources, including social media and low-credibility outlets.",
+          "evidence_gaps_plain": "The exact composition of the rain remains unknown."
+        },
+        "Iran picked a new Supreme Leader.": {
+          "claim_text": "Iran picked a new Supreme Leader.",
+          "plain_english": "Iran has indeed picked a new Supreme Leader, Mojtaba Khamenei. He is the son of Ayatollah Ali Khamenei. The Assembly of Experts selected him as the new leader. This claim is confirmed by multiple sources, including the BBC.",
+          "confidence_statement": "High confidence \u2014 confirmed by major wire services.",
+          "source_quality_note": "Confirmed by major wire services (Tier 1)",
+          "reader_advisory": null,
+          "evidence_gaps_plain": "We don\u2019t know the exact circumstances of Ayatollah Ali Khamenei\u2019s death."
+        },
+        "The U.S.-Israeli war on Iran could destabilize the entire region.": {
+          "claim_text": "The U.S.-Israeli war on Iran could destabilize the entire region.",
+          "plain_english": "There is a US-Israeli war on Iran, which has the potential to destabilize the entire region. The war has already led to a regional conflagration, with Iran retaliating against Israel and US military facilities. This claim is based on reports from established news outlets.",
+          "confidence_statement": "High confidence \u2014 reported by established news outlets.",
+          "source_quality_note": "Reported by established news outlets (Tier 2)",
+          "reader_advisory": "Be cautious of unverified sources, including social media and low-credibility outlets.",
+          "evidence_gaps_plain": "We don\u2019t know the specific consequences of the war."
+        }
+      },
+      "overall_credibility": "CREDIBLE",
+      "bottom_line": "This article is generally trustworthy, with all verdicts supported by high-confidence evidence from credible sources."
+    },
+    "source": "webapp"
+  },
+  {
+    "id": "d05204cb-2712-469c-a225-686fc03bf5b3",
+    "url": "https://www.democracynow.org/2026/3/9/iran_war",
+    "timestamp": "2026-03-10T17:39:26.448956+00:00",
+    "overall_credibility": "CREDIBLE",
+    "avg_score": 85,
+    "bottom_line": "This article is generally trustworthy.",
+    "verdicts": [
+      {
+        "claim_text": "Toxic black rain fell after Israeli strikes on Iranian oil depots.",
+        "verdict": "SUPPORTED",
+        "truth_score": 85,
+        "explanation": "The evidence collectively shows that Israeli strikes occurred on Iranian oil depots and that toxic black rain fell after the strikes. The rain's composition is inferred from the appearance of oil in the rain, but this is not directly stated in the evidence.",
+        "citations": [
+          "https://www.theguardian.com/world/2026/mar/08/dark-like-our-future-iranians-describe-scenes-of-catastrophe-after-tehrans-oil-depots-bombed",
+          "https://english.nv.ua/nation/situation-is-apocalyptic-toxic-rain-hits-tehran-after-israeli-strikes-on-oil-depot-photo-report-50590084.html",
+          "https://www.forbes.com/sites/zacharyfolk/2026/03/08/black-toxic-rain-falls-on-tehran-after-air-strikes-hit-oil-refineries/"
+        ],
+        "reasoning_summary": "The analyst's reasoning confirms that Israeli strikes occurred on Iranian oil depots and toxic black rain fell after the strikes, with the rain's composition inferred from its appearance.",
+        "confidence_level": "HIGH",
+        "evidence_gaps": [
+          "The exact composition of the rain remains uncertain, as it is inferred from its appearance rather than directly stated in the evidence."
+        ]
+      },
+      {
+        "claim_text": "Iran picked a new Supreme Leader.",
+        "verdict": "SUPPORTED",
+        "truth_score": 90,
+        "explanation": "The evidence collectively shows that Iran has indeed picked a new Supreme Leader, Mojtaba Khamenei, who is the son of Ayatollah Ali Khamenei. The Assembly of Experts selected him as the new leader, and Ayatollah Ali Khamenei was killed in US-Israeli strikes. The evidence is consistent and reliable, with the BBC being the most credible source.",
+        "citations": [
+          "https://www.bbc.com/news/articles/c78xxg05w0zo",
+          "https://www.cbsnews.com/news/mojtaba-khamenei-iran-new-supreme-leader/"
+        ],
+        "reasoning_summary": "The analyst's reasoning confirms the claim through multiple sources, including the BBC and CBS News, which state that Mojtaba Khamenei has been chosen as the new Supreme Leader of Iran. The evidence consistently supports the claim, with no detected contradictions.",
+        "confidence_level": "HIGH",
+        "evidence_gaps": [
+          "The exact circumstances of Ayatollah Ali Khamenei's death are not directly confirmed by the most credible sources."
+        ]
+      },
+      {
+        "claim_text": "The U.S.-Israeli war on Iran could destabilize the entire region.",
+        "verdict": "SUPPORTED",
+        "truth_score": 80,
+        "explanation": "The evidence collectively shows that there is a US-Israeli war on Iran, which has the potential to destabilize the entire region. The war has already led to a regional conflagration, with Iran retaliating against Israel and US military facilities.",
+        "citations": [
+          "https://www.atlanticcouncil.org/dispatches/experts-react-how-the-world-is-responding-to-the-us-israeli-war-with-iran/",
+          "https://arabcenterdc.org/resource/the-us-israel-war-on-iran-analyses-and-perspectives/",
+          "https://arabamericannews.com/2026/03/06/metro-detroits-arab-and-muslim-leaders-condemn-u-s-israeli-unjustifiable-attack-on-iran-warn-of-wider-regional-war/"
+        ],
+        "reasoning_summary": "The analyst's reasoning involves confirming the existence of a US-Israeli war on Iran and its potential to destabilize the region, based on evidence from multiple sources.",
+        "confidence_level": "HIGH",
+        "evidence_gaps": [
+          "Some gaps remain in understanding the specific consequences of the war."
+        ]
+      }
+    ],
+    "explanations": {
+      "by_claim": {
+        "Toxic black rain fell after Israeli strikes on Iranian oil depots.": {
+          "claim_text": "Toxic black rain fell after Israeli strikes on Iranian oil depots.",
+          "plain_english": "Israeli strikes on Iranian oil depots led to toxic black rain. The rain contained oil, but we don\u2019t know exactly what else was in it. This conclusion is based on the appearance of oil in the rain. The evidence comes from credible sources, including The Guardian.",
+          "confidence_statement": "High confidence \u2014 reported by established news outlets.",
+          "source_quality_note": "Confirmed by major wire services",
+          "reader_advisory": "Treat the information from Facebook and YouTube with caution, as they are social media platforms with low credibility.",
+          "evidence_gaps_plain": "The exact composition of the rain remains unknown."
+        }
+      },
+      "overall_credibility": "CREDIBLE",
+      "bottom_line": "This article is generally trustworthy."
+    },
+    "source": "extension"
+  }
+]
