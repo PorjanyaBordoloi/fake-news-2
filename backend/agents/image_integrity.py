@@ -24,7 +24,9 @@ from __future__ import annotations
 
 import io
 import logging
+import os
 import re
+import tempfile
 from typing import TYPE_CHECKING, Any
 
 import requests
@@ -62,8 +64,6 @@ logger = logging.getLogger(__name__)
 # ---------------------------------------------------------------------------
 
 _MAX_IMAGES: int = int(_img_cfg.get("max_images", 2))
-_OCR_LANGUAGE: str = str(_img_cfg.get("ocr_language", "hi-IN"))
-_OCR_MODEL: str = str(_img_cfg.get("ocr_model", "sarvam-vision:v1"))
 _TRANSLATION_MODEL: str = str(_img_cfg.get("translation_model", "llama-3.3-70b-versatile"))
 _TRANSLATION_TEMPERATURE: float = float(_img_cfg.get("translation_temperature", 0))
 
@@ -131,16 +131,20 @@ def _check_exif(image_bytes: bytes) -> dict[str, Any]:
 
 
 # ---------------------------------------------------------------------------
-# Helper: Sarvam OCR  (SDK → REST fallback)
+# Helper: Sarvam document_intelligence OCR (async job pipeline)
 # ---------------------------------------------------------------------------
 
 def _run_sarvam_ocr(image_bytes: bytes) -> str:
     """
-    Run Sarvam AI vision OCR on raw image bytes.
+    Run OCR via Sarvam AI document_intelligence async job pipeline.
 
-    Strategy:
-    1. Try the ``sarvamai`` Python SDK (preferred — cleaner interface).
-    2. On ImportError or SDK failure, fall back to a direct REST POST.
+    Flow:
+    1. create_job()         — obtain a DocumentIntelligenceJob
+    2. job.upload_file()    — upload image from a temp file path
+    3. job.start()          — kick off processing
+    4. job.wait_until_complete(timeout=120) — block until done
+    5. job.download_output() — download results to a temp dir
+    6. Read first .md file from the output dir
 
     Returns the extracted text string, or "" on all failures.
     """
@@ -149,49 +153,65 @@ def _run_sarvam_ocr(image_bytes: bytes) -> str:
         logger.warning("[Agent6] SARVAM_API_KEY not set — skipping OCR")
         return ""
 
-    # ── Attempt 1: official SDK ───────────────────────────────────────────
     try:
-        from sarvamai import SarvamAI  # optional dependency
+        from sarvamai import SarvamAI
         client = SarvamAI(api_subscription_key=api_key)
-        # Try the documented OCR method — SDK versions differ in attribute name
-        ocr_fn = (
-            getattr(client, "ocr", None)
-            or getattr(getattr(client, "vision", None), "ocr", None)
-            or getattr(getattr(client, "images", None), "ocr", None)
-        )
-        if ocr_fn is None:
-            raise AttributeError("Cannot find OCR method on SarvamAI client")
-        ocr_response = ocr_fn(
-            image_file=image_bytes,
-            language_code=_OCR_LANGUAGE,
-            model=_OCR_MODEL,
-        )
-        return str(ocr_response.text or "").strip()
-    except ImportError:
-        logger.debug("[Agent6] sarvamai SDK not installed — falling back to REST")
-    except Exception as exc:  # noqa: BLE001
-        logger.warning("[Agent6] Sarvam OCR SDK error: %s — falling back to REST", exc)
+        di = client.document_intelligence
 
-    # ── Attempt 2: direct REST call (multipart form-data) ─────────────────
-    sarvam_base = _read_env_var("SARVAM_API_BASE") or "https://api.sarvam.ai"
-    try:
-        resp = requests.post(
-            f"{sarvam_base}/vision/ocr",
-            headers={"api-subscription-key": api_key},
-            files={"file": ("image.jpg", image_bytes, "image/jpeg")},
-            data={"language_code": _OCR_LANGUAGE, "model": _OCR_MODEL},
-            timeout=30,
-        )
-        resp.raise_for_status()
-        data = resp.json()
-        # Sarvam may return {"text": ...} or {"request_id": ..., "pages": [...]}
-        if "text" in data:
-            return str(data["text"]).strip()
-        if "pages" in data:
-            return " ".join(p.get("text", "") for p in data["pages"]).strip()
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            # Detect image format from magic bytes to use correct extension
+            ext = ".jpg"
+            if image_bytes[:8] == b"\x89PNG\r\n\x1a\n":
+                ext = ".png"
+            elif image_bytes[:4] == b"%PDF":
+                ext = ".pdf"
+
+            img_path = os.path.join(tmp_dir, f"page{ext}")
+            with open(img_path, "wb") as f:
+                f.write(image_bytes)
+
+            job = di.create_job(language="hi-IN", output_format="md")
+            logger.info("[Agent6] Sarvam DI job created: %s", job.job_id)
+
+            job.upload_file(img_path)
+            logger.info("[Agent6] Sarvam DI image uploaded")
+
+            # Step 3: start processing
+            job.start()
+            logger.info("[Agent6] Sarvam DI job started")
+
+            # Step 4: wait (blocks the thread; called via asyncio.to_thread in main.py)
+            status_resp = job.wait_until_complete(poll_interval=3.0, timeout=120.0)
+            job_state = getattr(status_resp, "job_state", "") or ""
+            logger.info("[Agent6] Sarvam DI final state: %s", job_state)
+            if job_state.lower() not in ("completed", "success"):
+                logger.warning("[Agent6] Sarvam DI job did not complete: %s", job_state)
+                return ""
+
+            # Step 5: download output ZIP file, then extract .md files
+            zip_path = os.path.join(tmp_dir, "output.zip")
+            job.download_output(zip_path)
+
+            import zipfile
+            with zipfile.ZipFile(zip_path) as zf:
+                md_files = [n for n in zf.namelist() if n.endswith(".md")]
+                if not md_files:
+                    logger.warning("[Agent6] Sarvam DI ZIP has no .md files")
+                    return ""
+                md_texts = [
+                    zf.read(n).decode("utf-8", errors="replace").strip()
+                    for n in md_files
+                ]
+
+            text = "\n\n".join(md_texts).strip()
+            logger.info("[Agent6] Sarvam DI OCR extracted %d chars", len(text))
+            return text
+
+    except ImportError:
+        logger.debug("[Agent6] sarvamai SDK not installed — skipping OCR")
         return ""
     except Exception as exc:  # noqa: BLE001
-        logger.warning("[Agent6] Sarvam OCR REST fallback also failed: %s", exc)
+        logger.warning("[Agent6] Sarvam DI OCR failed: %s", exc)
         return ""
 
 
@@ -209,6 +229,12 @@ def _translate_ocr_to_english(text: str) -> str:
     """
     if not text:
         return ""
+
+    # Truncate to ~6000 chars (~1500 tokens) before sending to LLM to avoid 413 errors
+    _limit = int(_img_cfg.get("ocr_translate_char_limit", 6000))
+    if len(text) > _limit:
+        logger.info("[Agent6] Truncating OCR text from %d to %d chars before translation", len(text), _limit)
+        text = text[:_limit]
 
     groq_api_key = _read_env_var("GROQ_API_KEY", "groq_api_key")
     if not groq_api_key:
@@ -323,9 +349,10 @@ def image_integrity_node(state: "AgentState") -> dict:
         if english_ocr_text:
             print("--- AGENT6 APPENDING OCR TEXT TO PIPELINE INPUT ---")
             current_input: str = state.get("user_input", "") or ""
+            ocr_snippet = english_ocr_text[:3000]  # cap pipeline input enrichment
             result["user_input"] = (
                 current_input
-                + f"\n\n[TEXT FOUND IN ARTICLE IMAGES]: {english_ocr_text}"
+                + f"\n\n[TEXT FOUND IN ARTICLE IMAGES]: {ocr_snippet}"
             )
             result["is_second_pass"] = True
 

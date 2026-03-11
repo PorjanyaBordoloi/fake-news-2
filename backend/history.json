@@ -1,5 +1,566 @@
 [
   {
+    "id": "6e8762a2-4eaf-42ea-a659-bf99b974ab97",
+    "url": "[Image: test3.jpg]",
+    "timestamp": "2026-03-11T17:59:16.965966+00:00",
+    "overall_credibility": "MIXED",
+    "avg_score": 50,
+    "bottom_line": "This article has a mixed credibility due to a combination of unverified and low-quality sources.",
+    "verdicts": [
+      {
+        "claim_text": "Cyber criminals are taking advantage of the LPG gas shortage by creating fake websites, fake booking links, and fraudulent messages related to LPG gas booking.",
+        "verdict": "UNVERIFIED",
+        "truth_score": 50,
+        "explanation": "The model could not produce a reliable fact-check verdict for this claim. The claim is marked unverified pending further evidence.",
+        "citations": [],
+        "reasoning_summary": "",
+        "confidence_level": "MEDIUM",
+        "evidence_gaps": []
+      },
+      {
+        "claim_text": "Many people are searching online for quick LPG gas booking or extra cylinders due to the shortage.",
+        "verdict": "UNVERIFIED",
+        "truth_score": 50,
+        "explanation": "The model could not produce a reliable fact-check verdict for this claim. The claim is marked unverified pending further evidence.",
+        "citations": [],
+        "reasoning_summary": "",
+        "confidence_level": "MEDIUM",
+        "evidence_gaps": []
+      }
+    ],
+    "explanations": {
+      "by_claim": {
+        "Cyber criminals are taking advantage of the LPG gas shortage by creating fake websites, fake booking links, and fraudulent messages related to LPG gas booking.": {
+          "claim_text": "Cyber criminals are taking advantage of the LPG gas shortage by creating fake websites, fake booking links, and fraudulent messages related to LPG gas booking.",
+          "plain_english": "There isn't enough evidence to confirm or deny this claim. However, it's possible that cybercriminals are taking advantage of the LPG gas shortage. This is because people are searching online for quick LPG gas booking or extra cylinders due to the shortage, as we've seen in other reports. But we can't say for sure without more information.",
+          "confidence_statement": "Medium confidence \u2014 based on a mix of low-quality sources.",
+          "source_quality_note": "Sources include a website with low credibility and social media platforms, which can be unreliable.",
+          "reader_advisory": "Be cautious when clicking on links or responding to messages related to LPG gas booking, as they may be fake or malicious.",
+          "evidence_gaps_plain": null
+        },
+        "Many people are searching online for quick LPG gas booking or extra cylinders due to the shortage.": {
+          "claim_text": "Many people are searching online for quick LPG gas booking or extra cylinders due to the shortage.",
+          "plain_english": "There is evidence that people are searching online for quick LPG gas booking or extra cylinders due to the shortage. This is supported by a reputable news outlet. However, we can't confirm the extent of the searches or the impact of the shortage on people's behavior.",
+          "confidence_statement": "Medium confidence \u2014 based on a mix of low-quality sources.",
+          "source_quality_note": "One source is a generally credible news outlet, while others are social media platforms or low-quality websites.",
+          "reader_advisory": null,
+          "evidence_gaps_plain": null
+        }
+      },
+      "overall_credibility": "MIXED",
+      "bottom_line": "This article has a mixed credibility due to a combination of unverified and low-quality sources."
+    },
+    "source": "webapp"
+  },
+  {
+    "id": "d1cab4d7-754d-4f5d-93a8-2d946d1eee05",
+    "url": "[Image: test2.png]",
+    "timestamp": "2026-03-11T17:57:28.727945+00:00",
+    "overall_credibility": "MIXED",
+    "avg_score": 50,
+    "bottom_line": "The credibility of these claims is uncertain due to mixed and unreliable sources.",
+    "verdicts": [
+      {
+        "claim_text": "The memory recall of participants increased by up to 65%.",
+        "verdict": "UNVERIFIED",
+        "truth_score": 50,
+        "explanation": "The model could not produce a reliable fact-check verdict for this claim. The claim is marked unverified pending further evidence.",
+        "citations": [],
+        "reasoning_summary": "",
+        "confidence_level": "MEDIUM",
+        "evidence_gaps": []
+      },
+      {
+        "claim_text": "Drinking lemon with warm water every morning can increase human IQ by up to 20 points in just 2 weeks.",
+        "verdict": "UNVERIFIED",
+        "truth_score": 50,
+        "explanation": "The model could not produce a reliable fact-check verdict for this claim. The claim is marked unverified pending further evidence.",
+        "citations": [],
+        "reasoning_summary": "",
+        "confidence_level": "MEDIUM",
+        "evidence_gaps": []
+      },
+      {
+        "claim_text": "Universities may recommend the lemon water routine to students to improve learning.",
+        "verdict": "UNVERIFIED",
+        "truth_score": 50,
+        "explanation": "The model could not produce a reliable fact-check verdict for this claim. The claim is marked unverified pending further evidence.",
+        "citations": [],
+        "reasoning_summary": "",
+        "confidence_level": "MEDIUM",
+        "evidence_gaps": []
+      }
+    ],
+    "explanations": {
+      "by_claim": {
+        "The memory recall of participants increased by up to 65%.": {
+          "claim_text": "The memory recall of participants increased by up to 65%.",
+          "plain_english": "We couldn't verify this claim because the sources have varying levels of credibility. While some sources suggest a possible increase in memory recall, others are less reliable. More research is needed to confirm this claim.",
+          "confidence_statement": "Medium confidence \u2014 the evidence is mixed.",
+          "source_quality_note": "Sources include moderately credible news outlets and low-credibility websites.",
+          "reader_advisory": null,
+          "evidence_gaps_plain": null
+        },
+        "Drinking lemon with warm water every morning can increase human IQ by up to 20 points in just 2 weeks.": {
+          "claim_text": "Drinking lemon with warm water every morning can increase human IQ by up to 20 points in just 2 weeks.",
+          "plain_english": "We couldn't verify this claim because the sources are unreliable. None of the sources provided have a good track record of accuracy, and there's no scientific evidence to support this claim.",
+          "confidence_statement": "Medium confidence \u2014 the evidence is mixed.",
+          "source_quality_note": "Sources include social media and low-credibility health websites.",
+          "reader_advisory": "Treat this claim with caution as it's sourced from social media and low-credibility websites.",
+          "evidence_gaps_plain": null
+        },
+        "Universities may recommend the lemon water routine to students to improve learning.": {
+          "claim_text": "Universities may recommend the lemon water routine to students to improve learning.",
+          "plain_english": "We couldn't verify this claim because the sources have varying levels of credibility. While some sources suggest that universities might recommend this routine, others are less reliable. More research is needed to confirm this claim.",
+          "confidence_statement": "Medium confidence \u2014 the evidence is mixed.",
+          "source_quality_note": "Sources include moderately credible academic websites and low-credibility news outlets.",
+          "reader_advisory": null,
+          "evidence_gaps_plain": null
+        }
+      },
+      "overall_credibility": "MIXED",
+      "bottom_line": "The credibility of these claims is uncertain due to mixed and unreliable sources."
+    },
+    "source": "webapp"
+  },
+  {
+    "id": "5e76d67d-f41b-4fd9-a664-04aab429e578",
+    "url": "[Image: test1.png]",
+    "timestamp": "2026-03-11T17:55:37.720005+00:00",
+    "overall_credibility": "MIXED",
+    "avg_score": 58,
+    "bottom_line": "This article contains a mix of credible and unverified claims, so be cautious when interpreting the information.",
+    "verdicts": [
+      {
+        "claim_text": "Drinking hot lemon water every morning can permanently boost human IQ by up to 20 points within just two weeks.",
+        "verdict": "UNVERIFIED",
+        "truth_score": 40,
+        "explanation": "The claim that drinking hot lemon water can boost IQ is not supported by credible evidence, with most snippets lacking scientific evidence or relevance to the claim. The available evidence does not address the sub-parts of the claim, leading to a low confidence assessment.",
+        "citations": [
+          "https://townofwilton.ny.gov/wilton/detail/health.html?p=is-lemon-water-good-for-you-in-2026-a-30-day-real-life-test-of-small-sips-subtle-changes-and-honest-results-6983112ce790c",
+          "https://web.stanford.edu/~c213/?id=lemon-water-real-life-results-body-and-routine-changes-by-2026"
+        ],
+        "reasoning_summary": "The analyst found that the evidence does not support the claim, with gaps in addressing the sub-parts and a lack of scientific evidence. The overall confidence is low due to the insufficient evidence.",
+        "confidence_level": "LOW",
+        "evidence_gaps": [
+          "The evidence does not address the sub-parts of the claim, including the effect of lemon water on IQ, the specific increase of 20 points, and the time frame of two weeks."
+        ]
+      },
+      {
+        "claim_text": "Participants who followed the routine showed improved memory recall by 65%.",
+        "verdict": "SUPPORTED",
+        "truth_score": 85,
+        "explanation": "The evidence shows that following a routine can improve memory recall, with one study finding a 65% improvement. Additionally, lifestyle changes such as diet and exercise can enhance brain health, and cognitive training can improve everyday tasks involved with thinking and remembering.",
+        "citations": [
+          "https://www.npr.org/2025/07/28/nx-s1-5477556/aging-brain-health-lifestyle-diet-exercise-social-alzheimers",
+          "https://www.hopkinsmedicine.org/news/newsroom/news-releases/2026/02/cognitive-speed-training-linked-to-lower-dementia-incidence-up-to-20-years-later",
+          "https://seacrestterraces.com/routines-for-cognitive-health/"
+        ],
+        "reasoning_summary": "The analyst's reasoning involves a step-by-step analysis of the evidence, including an inventory of the evidence, claim decomposition, evidence matching, and contradiction analysis. The overall confidence in the verdict is HIGH.",
+        "confidence_level": "HIGH",
+        "evidence_gaps": [
+          "Some gaps in the evidence exist, particularly regarding the specific effects of cognitive training and daily routines on memory recall."
+        ]
+      },
+      {
+        "claim_text": "Participants who followed the routine showed 'dramatic increases in brain neuron growth'.",
+        "verdict": "UNVERIFIED",
+        "truth_score": 50,
+        "explanation": "The model could not produce a reliable fact-check verdict for this claim. The claim is marked unverified pending further evidence.",
+        "citations": [],
+        "reasoning_summary": "",
+        "confidence_level": "MEDIUM",
+        "evidence_gaps": []
+      }
+    ],
+    "explanations": {
+      "by_claim": {
+        "Drinking hot lemon water every morning can permanently boost human IQ by up to 20 points within just two weeks.": {
+          "claim_text": "Drinking hot lemon water every morning can permanently boost human IQ by up to 20 points within just two weeks.",
+          "plain_english": "This claim is not supported by credible evidence. There is no scientific proof that drinking hot lemon water can boost IQ. In fact, the available evidence does not address the specific parts of the claim, making it difficult to determine its accuracy. As a result, we cannot confirm or deny this claim.",
+          "confidence_statement": "Low confidence \u2014 the evidence does not support this claim.",
+          "source_quality_note": "Sourced from outlets with limited editorial standards, including social media.",
+          "reader_advisory": "Treat this claim with caution as it is sourced from social media and has a low credibility score.",
+          "evidence_gaps_plain": "The evidence does not address the specific effects of lemon water on IQ, the increase of 20 points, or the time frame of two weeks."
+        },
+        "Participants who followed the routine showed improved memory recall by 65%.": {
+          "claim_text": "Participants who followed the routine showed improved memory recall by 65%.",
+          "plain_english": "The evidence shows that following a routine can improve memory recall. One study found a 65% improvement, and lifestyle changes such as diet and exercise can enhance brain health. Cognitive training can also improve everyday tasks involved with thinking and remembering. However, more research is needed to fully understand the effects of cognitive training and daily routines on memory recall.",
+          "confidence_statement": "High confidence \u2014 the evidence supports this claim.",
+          "source_quality_note": "Reported by established news outlets, but one source has a low credibility score.",
+          "reader_advisory": null,
+          "evidence_gaps_plain": "Some gaps in the evidence exist, particularly regarding the specific effects of cognitive training and daily routines on memory recall."
+        },
+        "Participants who followed the routine showed 'dramatic increases in brain neuron growth'.": {
+          "claim_text": "Participants who followed the routine showed 'dramatic increases in brain neuron growth'.",
+          "plain_english": "This claim is unverified pending further evidence. There is no reliable evidence to support the claim of dramatic increases in brain neuron growth. More research is needed to determine the accuracy of this claim.",
+          "confidence_statement": "Medium confidence \u2014 the evidence does not support this claim, but more research is needed.",
+          "source_quality_note": "Sourced from outlets with low credibility scores, including social media.",
+          "reader_advisory": "Treat this claim with caution as it is sourced from low-credibility outlets and social media.",
+          "evidence_gaps_plain": null
+        }
+      },
+      "overall_credibility": "MIXED",
+      "bottom_line": "This article contains a mix of credible and unverified claims, so be cautious when interpreting the information."
+    },
+    "source": "webapp"
+  },
+  {
+    "id": "6f3b8e31-60f6-43cf-865c-76e9388b3c8b",
+    "url": "[Image: new_img2.png]",
+    "timestamp": "2026-03-11T17:48:44.461561+00:00",
+    "overall_credibility": "LOW CREDIBILITY",
+    "avg_score": 47,
+    "bottom_line": "Be cautious when considering these claims as they are based on unverified or misleading information.",
+    "verdicts": [
+      {
+        "claim_text": "Rachpal Singh was planning to bring weapons from Pakistan and supply them in Punjab.",
+        "verdict": "MISLEADING",
+        "truth_score": 50,
+        "explanation": "The evidence suggests Rachpal Singh was allegedly involved in sourcing weapons from Pakistan, but there is a gap in evidence regarding his plans to supply weapons in Punjab. The claim is technically true about sourcing from Pakistan but lacks context on the supply part.",
+        "citations": [
+          "https://timesofindia.indiatimes.com/city/chandigarh/weapons-from-pakistan-arming-gangsters-in-punjab-cops/articleshow/122939971.cms",
+          "https://www.facebook.com/thesaveraonline/videos/punjab-police-seize-isi-sponsored-weapons-shipment-from-pakistan-in-major-crackd/673588845744269/"
+        ],
+        "reasoning_summary": "The evidence indicates Rachpal Singh's involvement in sourcing weapons from Pakistan but lacks sufficient information to confirm his plans to supply these weapons in Punjab.",
+        "confidence_level": "MEDIUM",
+        "evidence_gaps": [
+          "Gaps exist regarding Rachpal Singh's plans to supply weapons in Punjab."
+        ]
+      },
+      {
+        "claim_text": "Five Pakistani intruders who were killed by the Border Security Force (BSF) in Tarn Taran's Amarkot sector on Saturday were planning to carry out a major attack in Punjab and Delhi.",
+        "verdict": "UNVERIFIED",
+        "truth_score": 50,
+        "explanation": "The evidence confirms that five Pakistani intruders were killed by the BSF in Tarn Taran's Amarkot sector, but there is no direct evidence to support the claim that they were planning to carry out a major attack in Punjab and Delhi.",
+        "citations": [
+          "https://www.firstpost.com/india/bsf-shoots-down-five-intruders-along-india-pakistan-international-border-in-punjab-8741361.html",
+          "https://www.ibtimes.co.in/five-intruders-shot-dead-by-bsf-near-indo-pak-border-punjabs-tarn-taran-826847"
+        ],
+        "reasoning_summary": "The analyst's reasoning involves confirming the first part of the claim through multiple sources but finds a significant gap in evidence regarding the intruders' intentions to carry out a major attack.",
+        "confidence_level": "LOW",
+        "evidence_gaps": [
+          "Lack of direct evidence on the intruders' plans to carry out a major attack in Punjab and Delhi."
+        ]
+      },
+      {
+        "claim_text": "Rachpal Singh, also known as Dholabucha, had been to Pakistan 10 times since 2016.",
+        "verdict": "UNVERIFIED",
+        "truth_score": 40,
+        "explanation": "The claim about Rachpal Singh's alias and travel history to Pakistan remains unverified due to a lack of relevant evidence. None of the provided evidence snippets address these specific claims, resulting in significant gaps in understanding Rachpal Singh's identity and activities.",
+        "citations": [],
+        "reasoning_summary": "The analyst's reasoning highlights the absence of evidence supporting or refuting the claim, leading to a low confidence assessment. The available evidence does not mention Rachpal Singh's alias or travel history to Pakistan, making it impossible to verify the claim.",
+        "confidence_level": "LOW",
+        "evidence_gaps": [
+          "The claim's two main components - Rachpal Singh's alias and his travel history to Pakistan - are not addressed in the provided evidence snippets."
+        ]
+      }
+    ],
+    "explanations": {
+      "by_claim": {
+        "Rachpal Singh was planning to bring weapons from Pakistan and supply them in Punjab.": {
+          "claim_text": "Rachpal Singh was planning to bring weapons from Pakistan and supply them in Punjab.",
+          "plain_english": "The claim that Rachpal Singh was planning to bring weapons from Pakistan and supply them in Punjab is misleading. The evidence suggests he was involved in sourcing weapons from Pakistan, but we don't have enough information to confirm his plans to supply them in Punjab. This claim contains a misleading element because it implies Rachpal Singh was planning to supply weapons in Punjab, but the evidence only confirms his involvement in sourcing weapons from Pakistan. We can't confirm the supply part of the claim.",
+          "confidence_statement": "Medium confidence \u2014 the evidence suggests Rachpal Singh was involved in sourcing weapons from Pakistan, but there's a gap in evidence regarding his plans to supply weapons in Punjab.",
+          "source_quality_note": "Sourced from outlets with limited editorial standards.",
+          "reader_advisory": "Treat this claim with caution as it's based on sources with limited editorial standards.",
+          "evidence_gaps_plain": "There's a gap in evidence regarding Rachpal Singh's plans to supply weapons in Punjab."
+        },
+        "Five Pakistani intruders who were killed by the Border Security Force (BSF) in Tarn Taran's Amarkot sector on Saturday were planning to carry out a major attack in Punjab and Delhi.": {
+          "claim_text": "Five Pakistani intruders who were killed by the Border Security Force (BSF) in Tarn Taran's Amarkot sector on Saturday were planning to carry out a major attack in Punjab and Delhi.",
+          "plain_english": "The claim that five Pakistani intruders were planning to carry out a major attack in Punjab and Delhi is unverified. The evidence confirms that they were killed by the BSF in Tarn Taran's Amarkot sector, but we don't have enough information to confirm their plans to carry out a major attack. We can't confirm the attack part of the claim because there's no direct evidence to support it. This leaves us with a significant gap in understanding the intruders' intentions.",
+          "confidence_statement": "Low confidence \u2014 the evidence confirms the intruders were killed by the BSF, but there's no direct evidence to support their plans to carry out a major attack.",
+          "source_quality_note": "Sources have varying credibility.",
+          "reader_advisory": "Treat this claim with caution as it's based on sources with varying credibility.",
+          "evidence_gaps_plain": "There's a lack of direct evidence on the intruders' plans to carry out a major attack in Punjab and Delhi."
+        },
+        "Rachpal Singh, also known as Dholabucha, had been to Pakistan 10 times since 2016.": {
+          "claim_text": "Rachpal Singh, also known as Dholabucha, had been to Pakistan 10 times since 2016.",
+          "plain_english": "The claim about Rachpal Singh's alias and travel history to Pakistan remains unverified. None of the provided evidence snippets address these specific claims, resulting in significant gaps in understanding Rachpal Singh's identity and activities. We can't confirm the claim because the available evidence doesn't mention Rachpal Singh's alias or travel history to Pakistan. This leaves us with a lack of information about Rachpal Singh's identity and activities.",
+          "confidence_statement": "Low confidence \u2014 the available evidence does not mention Rachpal Singh's alias or travel history to Pakistan, making it impossible to verify the claim.",
+          "source_quality_note": "Generally credible sources, but the evidence doesn't support the claim.",
+          "reader_advisory": "Treat this claim with caution as it's based on generally credible sources, but the evidence doesn't support the claim.",
+          "evidence_gaps_plain": "The claim's two main components - Rachpal Singh's alias and his travel history to Pakistan - are not addressed in the provided evidence snippets."
+        }
+      },
+      "overall_credibility": "LOW CREDIBILITY",
+      "bottom_line": "Be cautious when considering these claims as they are based on unverified or misleading information."
+    },
+    "source": "webapp"
+  },
+  {
+    "id": "2e317410-4c50-4489-95ec-0b75671646a5",
+    "url": "[Image: new_img3.jpeg]",
+    "timestamp": "2026-03-11T17:47:54.699887+00:00",
+    "overall_credibility": "UNRELIABLE",
+    "avg_score": 0,
+    "bottom_line": "",
+    "verdicts": [],
+    "explanations": {},
+    "source": "webapp"
+  },
+  {
+    "id": "5b1e32c3-3213-457a-aaa4-689ea0d9aa3c",
+    "url": "[Image: new_img3.jpeg]",
+    "timestamp": "2026-03-11T17:43:52.717769+00:00",
+    "overall_credibility": "UNRELIABLE",
+    "avg_score": 0,
+    "bottom_line": "",
+    "verdicts": [],
+    "explanations": {},
+    "source": "webapp"
+  },
+  {
+    "id": "50ca58fe-e504-43cc-bf16-5070f92ba92c",
+    "url": "[Image: new_img3.jpeg]",
+    "timestamp": "2026-03-11T17:40:39.334005+00:00",
+    "overall_credibility": "UNRELIABLE",
+    "avg_score": 0,
+    "bottom_line": "",
+    "verdicts": [],
+    "explanations": {},
+    "source": "webapp"
+  },
+  {
+    "id": "9861f05a-87cf-4643-bf69-1073e65c95cc",
+    "url": "[Image: new_img2.png]",
+    "timestamp": "2026-03-11T17:37:09.242929+00:00",
+    "overall_credibility": "LOW CREDIBILITY",
+    "avg_score": 47,
+    "bottom_line": "This fact-checking effort has low credibility due to multiple unverified claims and limited evidence.",
+    "verdicts": [
+      {
+        "claim_text": "Tarn Taran SSP Dhruman H. Nimbale said that Rachpal was planning to bring arms from Pakistan and supply them in Punjab in the coming days.",
+        "verdict": "UNVERIFIED",
+        "truth_score": 40,
+        "explanation": "The claim about Rachpal's plans to bring arms from Pakistan and supply them in Punjab cannot be verified due to a lack of relevant evidence. The provided evidence snippets discuss unrelated topics and do not address the claim directly.",
+        "citations": [
+          "https://www.hindustantimes.com/cities/chandigarh-news/tarn-taran-cross-border-weapon-smuggling-module-busted-2-held-101749150044698.html",
+          "https://www.hindustantimes.com/cities/chandigarh-news/crossborder-arms-smuggling-racket-busted-4-held-in-punjab-s-tarn-taran-101753559620923.html",
+          "https://www.hindustantimes.com/cities/others/punjab-police-restoring-british-era-building-in-tarn-taran-101625761766321.html"
+        ],
+        "reasoning_summary": "The analyst's reasoning involves a step-by-step analysis of the evidence, which reveals significant gaps in addressing the claim about Rachpal's plans. The evidence discusses unrelated topics, leading to a conclusion that the claim cannot be verified.",
+        "confidence_level": "LOW",
+        "evidence_gaps": [
+          "The evidence does not address the claim about Rachpal's plans to bring arms from Pakistan and supply them in Punjab, resulting in significant gaps."
+        ]
+      },
+      {
+        "claim_text": "Five intruders who were killed by the BSF in Tarn Taran's Amarkot sector on Saturday were planning to carry out a major attack in Punjab and Delhi.",
+        "verdict": "MISLEADING",
+        "truth_score": 50,
+        "explanation": "The claim that five intruders were killed by the BSF in Tarn Taran's Amarkot sector is supported by evidence, but there is no direct evidence to support the claim that they were planning to carry out a major attack in Punjab and Delhi.",
+        "citations": [
+          "https://www.hindustantimes.com/india-news/bsf-shoots-down-5-intruders-at-india-pakistan-border-in-punjab-s-tarn-taran/story-UZWJ7bEZxuaG9CDv8hjuzL-amp.html",
+          "https://www.firstpost.com/india/bsf-shoots-down-five-intruders-along-india-pakistan-international-border-in-punjab-8741361.html",
+          "https://www.ibtimes.co.in/five-intruders-shot-dead-by-bsf-near-indo-pak-border-punjabs-tarn-taran-826847"
+        ],
+        "reasoning_summary": "The evidence confirms that five intruders were killed by the BSF, but lacks direct evidence regarding their planned attack, leading to a misleading claim.",
+        "confidence_level": "MEDIUM",
+        "evidence_gaps": [
+          "No direct evidence supports the claim that the intruders were planning to carry out a major attack in Punjab and Delhi."
+        ]
+      },
+      {
+        "claim_text": "Rachpal Singh, a resident of Daula Bhucho, was spying for Pakistan and had brought heroin from Pakistan ten times since 2016.",
+        "verdict": "MISLEADING",
+        "truth_score": 50,
+        "explanation": "The claim that Rachpal Singh was spying for Pakistan is partially supported by evidence of similar activities by other individuals, but there is no direct evidence linking him to such activities. Additionally, there is no evidence to support the claim that he brought heroin from Pakistan ten times since 2016.",
+        "citations": [
+          "https://www.hindustantimes.com/cities/chandigarh-news/construction-supervisor-held-in-ambala-for-spying-for-pakistan-101767604379716.html",
+          "https://www.hindustantimes.com/cities/chandigarh-news/construction-supervisor-held-in-ambala-for-spying-for-pakistan-101767604379716-amp.html",
+          "https://www.firstpost.com/explainers/youtuber-jasbir-singh-punjab-arrested-spying-pakistan-13894326.html"
+        ],
+        "reasoning_summary": "The evidence suggests that while there have been instances of individuals spying for Pakistan, there is no direct evidence linking Rachpal Singh to such activities. Furthermore, there is no evidence to support the claim of heroin smuggling.",
+        "confidence_level": "MEDIUM",
+        "evidence_gaps": [
+          "Lack of direct evidence linking Rachpal Singh to spying for Pakistan and heroin smuggling activities."
+        ]
+      }
+    ],
+    "explanations": {
+      "by_claim": {
+        "Tarn Taran SSP Dhruman H. Nimbale said that Rachpal was planning to bring arms from Pakistan and supply them in Punjab in the coming days.": {
+          "claim_text": "Tarn Taran SSP Dhruman H. Nimbale said that Rachpal was planning to bring arms from Pakistan and supply them in Punjab in the coming days.",
+          "plain_english": "We couldn't find any information to confirm or deny the claim that Rachpal was planning to bring arms from Pakistan and supply them in Punjab. The evidence we have is about unrelated topics. We need more information to make a decision about this claim.",
+          "confidence_statement": "Low confidence \u2014 the evidence does not directly address the claim.",
+          "source_quality_note": "Reported by established news outlets (hindustantimes.com) and sourced from outlets with limited editorial standards (tribuneindia.com, truescoopnews.com)",
+          "reader_advisory": "Treat this claim with caution as the evidence is limited and does not directly address the claim.",
+          "evidence_gaps_plain": "The evidence does not mention Rachpal's plans to bring arms from Pakistan and supply them in Punjab."
+        }
+      },
+      "overall_credibility": "LOW CREDIBILITY",
+      "bottom_line": "This fact-checking effort has low credibility due to multiple unverified claims and limited evidence."
+    },
+    "source": "webapp"
+  },
+  {
+    "id": "235a256a-e440-407f-904c-2edf086b79c8",
+    "url": "[Image: new_img.png]",
+    "timestamp": "2026-03-11T17:35:31.517015+00:00",
+    "overall_credibility": "MIXED",
+    "avg_score": 77,
+    "bottom_line": "The information about the 9/11 attacks has mixed credibility due to the use of low-quality sources and some gaps in the evidence.",
+    "verdicts": [
+      {
+        "claim_text": "The Twin Towers were destroyed by hijacked jets.",
+        "verdict": "SUPPORTED",
+        "truth_score": 70,
+        "explanation": "The evidence collectively shows that the Twin Towers were destroyed by hijacked planes, and the hijackers were affiliated with a terrorist organization. Although there are some gaps in the evidence, the majority of the sub-parts of the claim are addressed.",
+        "citations": [
+          "https://millercenter.org/remembering-september-11/september-11-terrorist-attacks",
+          "https://www.911memorial.org/911-faqs",
+          "https://archive.nytimes.com/www.nytimes.com/learning/general/onthisday/big/0911.html"
+        ],
+        "reasoning_summary": "The analyst's reasoning involves inventorying the evidence, decomposing the claim, matching the evidence to the claim, analyzing for contradictions, and assessing confidence. The evidence from multiple sources confirms that the Twin Towers were destroyed by hijacked planes, and the hijackers were affiliated with al-Qaeda.",
+        "confidence_level": "MEDIUM",
+        "evidence_gaps": [
+          "Some gaps exist in the evidence, such as the intentional crashing of the planes into the Twin Towers, which is inferred but not directly stated in all sources."
+        ]
+      },
+      {
+        "claim_text": "The Pentagon was hit by a hijacked jet.",
+        "verdict": "SUPPORTED",
+        "truth_score": 90,
+        "explanation": "The evidence collectively shows that American Airlines Flight 77 was involved in the attack on the Pentagon, crashed into the west side of the building, and was successful in terms of the hijackers' goals. The attack occurred at 9:37 a.m. and resulted in the deaths of 184 people. The evidence is consistent across all sources, with no contradictions detected.",
+        "citations": [
+          "https://museum.dea.gov/museum-collection/collection-spotlight/artifact/pentagon-rubble",
+          "https://en.wikipedia.org/wiki/American_Airlines_Flight_77",
+          "https://www.pbs.org/video/911-inside-pentagon-attack-pentagon/"
+        ],
+        "reasoning_summary": "The analyst's reasoning involves a step-by-step analysis of the evidence, including an inventory of the evidence, decomposition of the claim, evidence matching, contradiction analysis, confidence assessment, and preliminary verdict reasoning. The evidence shows that American Airlines Flight 77 crashed into the Pentagon, resulting in significant damage and loss of life.",
+        "confidence_level": "HIGH",
+        "evidence_gaps": [
+          "The most significant gap in the evidence is the lack of information on the hijackers' strategy and the investigation that followed."
+        ]
+      },
+      {
+        "claim_text": "The New York metropolitan area was affected by the attacks.",
+        "verdict": "SUPPORTED",
+        "truth_score": 70,
+        "explanation": "The evidence shows that the New York metropolitan area was affected by attacks, including a hatchet attack on NYPD officers and attempts to carry out bombings or other explosive attacks. While there are gaps in the evidence regarding the relationship between these attacks and ISIS terrorism, the available information supports the claim that the area was affected by attacks.",
+        "citations": [
+          "https://en.wikipedia.org/wiki/List_of_terrorist_incidents_in_New_York_City",
+          "https://www.news8000.com/news/national-world/explosives-thrown-near-new-york-city-mayors-residence-investigated-as-isis-related-terrorism/article_48d6906a-d2a4-570e-a696-b2b5806617a9.html",
+          "https://abc7ny.com/post/gracie-mansion-protest-bomb-incident-outside-nyc-mayors-home-investigated-possible-act-isis-terrorism/18695027/"
+        ],
+        "reasoning_summary": "The analyst's reasoning involves inventorying the evidence, decomposing the claim, matching the evidence to the claim, analyzing for contradictions, and assessing confidence. The evidence collectively supports the claim that the New York metropolitan area was affected by attacks.",
+        "confidence_level": "MEDIUM",
+        "evidence_gaps": [
+          "Gaps exist in the evidence regarding the relationship between the attacks and ISIS terrorism, as well as direct evidence addressing whether the New York metropolitan area was affected by the attacks."
+        ]
+      }
+    ],
+    "explanations": {
+      "by_claim": {
+        "The Twin Towers were destroyed by hijacked jets.": {
+          "claim_text": "The Twin Towers were destroyed by hijacked jets.",
+          "plain_english": "The evidence suggests that the Twin Towers were destroyed by hijacked planes. However, there are some gaps in the evidence, like how the planes were intentionally crashed into the towers. The majority of the evidence supports this claim, but it's not entirely clear. This appears to be accurate, but with some uncertainty.",
+          "confidence_statement": "Medium confidence \u2014 supported by multiple sources, but some gaps in evidence.",
+          "source_quality_note": "Sourced from outlets with limited editorial standards.",
+          "reader_advisory": "Treat this information with caution due to the low credibility of the sources used.",
+          "evidence_gaps_plain": "Some gaps exist in the evidence, such as the intentional crashing of the planes into the Twin Towers, which is inferred but not directly stated in all sources."
+        },
+        "The Pentagon was hit by a hijacked jet.": {
+          "claim_text": "The Pentagon was hit by a hijacked jet.",
+          "plain_english": "The evidence clearly shows that American Airlines Flight 77 crashed into the Pentagon, causing significant damage and loss of life. This attack occurred at 9:37 a.m. and resulted in the deaths of 184 people. The evidence is consistent across all sources, with no contradictions detected. This appears to be accurate.",
+          "confidence_statement": "High confidence \u2014 confirmed by multiple reliable sources.",
+          "source_quality_note": "Reported by established news outlets.",
+          "reader_advisory": null,
+          "evidence_gaps_plain": "The most significant gap in the evidence is the lack of information on the hijackers' strategy and the investigation that followed."
+        },
+        "The New York metropolitan area was affected by the attacks.": {
+          "claim_text": "The New York metropolitan area was affected by the attacks.",
+          "plain_english": "The evidence shows that the New York metropolitan area was affected by attacks, including a hatchet attack on NYPD officers and attempts to carry out bombings or other explosive attacks. However, there are gaps in the evidence regarding the relationship between these attacks and ISIS terrorism. This appears to be accurate, but with some uncertainty.",
+          "confidence_statement": "Medium confidence \u2014 supported by multiple sources, but some gaps in evidence.",
+          "source_quality_note": "Sourced from outlets with limited editorial standards.",
+          "reader_advisory": "Treat this information with caution due to the low credibility of the sources used.",
+          "evidence_gaps_plain": "Gaps exist in the evidence regarding the relationship between the attacks and ISIS terrorism, as well as direct evidence addressing whether the New York metropolitan area was affected by the attacks."
+        }
+      },
+      "overall_credibility": "MIXED",
+      "bottom_line": "The information about the 9/11 attacks has mixed credibility due to the use of low-quality sources and some gaps in the evidence."
+    },
+    "source": "webapp"
+  },
+  {
+    "id": "b3889c74-d01e-42b9-9c67-8eb7c8e63ff5",
+    "url": "[Image: new_img2.png]",
+    "timestamp": "2026-03-11T17:33:16.560938+00:00",
+    "overall_credibility": "UNRELIABLE",
+    "avg_score": 0,
+    "bottom_line": "",
+    "verdicts": [],
+    "explanations": {},
+    "source": "webapp"
+  },
+  {
+    "id": "87aa99dd-410e-40f6-ac30-e3606906f6ff",
+    "url": "[Image: new_img2.png]",
+    "timestamp": "2026-03-11T17:32:34.669463+00:00",
+    "overall_credibility": "UNRELIABLE",
+    "avg_score": 0,
+    "bottom_line": "",
+    "verdicts": [],
+    "explanations": {},
+    "source": "webapp"
+  },
+  {
+    "id": "cd2dcfda-63e6-4eed-9441-bfd87a3abd5f",
+    "url": "[Image: new_img.png]",
+    "timestamp": "2026-03-11T17:32:06.953772+00:00",
+    "overall_credibility": "UNRELIABLE",
+    "avg_score": 0,
+    "bottom_line": "",
+    "verdicts": [],
+    "explanations": {},
+    "source": "webapp"
+  },
+  {
+    "id": "427bfed7-3a29-4360-b611-836a005c1a16",
+    "url": "[Image: new_img.png]",
+    "timestamp": "2026-03-11T17:29:28.977945+00:00",
+    "overall_credibility": "UNRELIABLE",
+    "avg_score": 0,
+    "bottom_line": "",
+    "verdicts": [],
+    "explanations": {},
+    "source": "webapp"
+  },
+  {
+    "id": "bd2245fd-346f-4a14-8112-c1948458c5b8",
+    "url": "[Image: new_img2.png]",
+    "timestamp": "2026-03-11T17:29:17.540516+00:00",
+    "overall_credibility": "UNRELIABLE",
+    "avg_score": 0,
+    "bottom_line": "",
+    "verdicts": [],
+    "explanations": {},
+    "source": "webapp"
+  },
+  {
+    "id": "9d8d9b26-e3c2-44a9-9c03-3bbc76184446",
+    "url": "[Image: new_img2.png]",
+    "timestamp": "2026-03-11T17:27:19.662453+00:00",
+    "overall_credibility": "UNRELIABLE",
+    "avg_score": 0,
+    "bottom_line": "",
+    "verdicts": [],
+    "explanations": {},
+    "source": "webapp"
+  },
+  {
+    "id": "8973b885-10c9-4765-8329-b0800dc6fab0",
+    "url": "[Image: new_img2.png]",
+    "timestamp": "2026-03-11T17:23:10.545849+00:00",
+    "overall_credibility": "UNRELIABLE",
+    "avg_score": 0,
+    "bottom_line": "",
+    "verdicts": [],
+    "explanations": {},
+    "source": "webapp"
+  },
+  {
     "id": "804e27ca-7b8d-41fc-9ad3-27279797c3f5",
     "url": "[Image: new_img.png]",
     "timestamp": "2026-03-11T16:29:57.709371+00:00",

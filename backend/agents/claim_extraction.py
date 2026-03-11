@@ -22,7 +22,7 @@ from dotenv import load_dotenv
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_groq import ChatGroq
 from langgraph.graph import END, START, StateGraph
-from pydantic import AliasChoices, BaseModel, Field, ValidationError, field_validator
+from pydantic import AliasChoices, BaseModel, Field, ValidationError
 
 try:
     from utils.helpers import read_env_var as _read_env_var
@@ -122,13 +122,6 @@ class Claim(BaseModel):
 
 class ClaimExtractionResult(BaseModel):
     claims: list[Claim]
-
-    @field_validator("claims")
-    @classmethod
-    def validate_claims_non_empty(cls, value: list[Claim]) -> list[Claim]:
-        if not value:
-            raise ValueError("At least one claim is required")
-        return value
 
 
 CLAIM_PROMPT = """
@@ -364,12 +357,12 @@ def _extract_claims_with_llm(markdown: str, top_n: int) -> list[dict[str, Any]]:
         raise RuntimeError(f"Structured output validation failed: {exc}") from exc
 
     selected_claims = _rank_and_select_claims(parsed.claims, top_n=top_n)
-    if not selected_claims:
-        raise RuntimeError("Structured output returned zero claims after ranking")
-
     claims_payload = [claim.model_dump() for claim in selected_claims]
 
-    print("--- CLAIM EXTRACTION COMPLETE ---")
+    if not claims_payload:
+        print("--- CLAIM EXTRACTION: NO CHECKABLE CLAIMS FOUND ---")
+    else:
+        print("--- CLAIM EXTRACTION COMPLETE ---")
     return claims_payload
 
 
