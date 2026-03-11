@@ -4,6 +4,7 @@ import { AgentThought } from '../hooks/useAgentStream';
 interface Props {
     thoughts: AgentThought[];
     isComplete: boolean;
+    isHistory?: boolean;
 }
 
 interface LogEntry {
@@ -11,7 +12,7 @@ interface LogEntry {
     type: 'status' | 'detail' | 'success' | 'search' | 'score' | 'verdict' | 'final';
 }
 
-export default function AgentChain({ thoughts, isComplete }: Props) {
+export default function AgentChain({ thoughts, isComplete, isHistory }: Props) {
     const [logs, setLogs] = useState<LogEntry[]>([]);
     const [visibleCount, setVisibleCount] = useState(0);
     const bottomRef = useRef<HTMLDivElement>(null);
@@ -30,7 +31,7 @@ export default function AgentChain({ thoughts, isComplete }: Props) {
 
     // Agent 1: Claim Extraction
     useEffect(() => {
-        const t = thoughts.find(t => t.agent === 'claim_extraction');
+        const t = [...thoughts].reverse().find(t => t.agent === 'claim_extraction');
         if (t?.data) {
             const claims = t.data.claims || [];
             setLogs(prev => {
@@ -50,7 +51,7 @@ export default function AgentChain({ thoughts, isComplete }: Props) {
 
     // Agent 2: Evidence Retrieval
     useEffect(() => {
-        const t = thoughts.find(t => t.agent === 'evidence_retrieval');
+        const t = [...thoughts].reverse().find(t => t.agent === 'evidence_retrieval');
         if (t?.data) {
             const evMap = t.data.evidence_map || {};
             const total = Object.values(evMap).reduce((acc: number, arr: any) => acc + arr.length, 0);
@@ -69,7 +70,7 @@ export default function AgentChain({ thoughts, isComplete }: Props) {
 
     // Agent 3: Source Credibility
     useEffect(() => {
-        const t = thoughts.find(t => t.agent === 'source_credibility');
+        const t = [...thoughts].reverse().find(t => t.agent === 'source_credibility');
         if (t?.data) {
             const credMap = t.data.credibility_map || {};
             setLogs(prev => {
@@ -94,7 +95,7 @@ export default function AgentChain({ thoughts, isComplete }: Props) {
 
     // Agent 4: Fact Checker
     useEffect(() => {
-        const t = thoughts.find(t => t.agent === 'fact_checker');
+        const t = [...thoughts].reverse().find(t => t.agent === 'fact_checker');
         if (t?.data) {
             const verdicts = t.data.verdicts || [];
             setLogs(prev => {
@@ -117,7 +118,7 @@ export default function AgentChain({ thoughts, isComplete }: Props) {
 
     // Agent 5: Explanation Generator
     useEffect(() => {
-        const t = thoughts.find(t => t.agent === 'explanation_generator');
+        const t = [...thoughts].reverse().find(t => t.agent === 'explanation_generator');
         if (t?.data) {
             const expl = t.data.explanations || {};
             setLogs(prev => {
@@ -178,6 +179,11 @@ export default function AgentChain({ thoughts, isComplete }: Props) {
     // Animate new logs appearing one by one
     useEffect(() => {
         if (logs.length > prevLogCount.current) {
+            if (isHistory) {
+                setVisibleCount(logs.length);
+                prevLogCount.current = logs.length;
+                return;
+            }
             const newEntries = logs.length - prevLogCount.current;
             let i = 0;
             const interval = setInterval(() => {
@@ -188,7 +194,7 @@ export default function AgentChain({ thoughts, isComplete }: Props) {
             prevLogCount.current = logs.length;
             return () => clearInterval(interval);
         }
-    }, [logs]);
+    }, [logs, isHistory]);
 
     // Auto-scroll as new lines appear
     useEffect(() => {
@@ -198,29 +204,55 @@ export default function AgentChain({ thoughts, isComplete }: Props) {
     const visibleLogs = logs.slice(0, visibleCount);
 
     return (
-        <div className="agent-stream">
-            {visibleLogs.map((log, i) => (
-                <div
-                    key={i}
-                    className={`stream-line stream-${log.type} stream-enter`}
-                    style={{ animationDelay: '0ms' }}
-                >
-                    <span className="stream-indicator">{getIndicator(log.type)}</span>
-                    <span className="stream-text">{log.text}</span>
-                </div>
-            ))}
-            {!isComplete && visibleCount >= logs.length && (
-                <div className="stream-line stream-thinking">
-                    <span className="stream-indicator">
-                        <span className="thinking-dots">
-                            <span>.</span><span>.</span><span>.</span>
-                        </span>
-                    </span>
-                    <span className="stream-text stream-text-thinking">Thinking</span>
+        <>
+            {isComplete ? (
+                <details className="agent-logs-accordion" open={!isComplete}>
+                    <summary className="agent-logs-summary">
+                        <span className="stream-indicator">✓</span>
+                        Pipeline checkpoints (Completed)
+                    </summary>
+                    <div className="agent-logs-content">
+                        <div className="agent-stream">
+                            {visibleLogs.map((log, i) => (
+                                <div
+                                    key={i}
+                                    className={`stream-line stream-${log.type} stream-enter`}
+                                    style={{ animationDelay: '0ms' }}
+                                >
+                                    <span className="stream-indicator">{getIndicator(log.type)}</span>
+                                    <span className="stream-text">{log.text}</span>
+                                </div>
+                            ))}
+                            <div ref={bottomRef} />
+                        </div>
+                    </div>
+                </details>
+            ) : (
+                <div className="agent-stream">
+                    {visibleLogs.map((log, i) => (
+                        <div
+                            key={i}
+                            className={`stream-line stream-${log.type} stream-enter`}
+                            style={{ animationDelay: '0ms' }}
+                        >
+                            <span className="stream-indicator">{getIndicator(log.type)}</span>
+                            <span className="stream-text">{log.text}</span>
+                        </div>
+                    ))}
+                    {!isComplete && visibleCount >= logs.length && (
+                        <div className="stream-line stream-thinking">
+                            <span className="stream-indicator">
+                                <span className="thinking-dots">
+                                    <span>.</span><span>.</span><span>.</span>
+                                </span>
+                            </span>
+                            <span className="stream-text stream-text-thinking">Thinking</span>
+                        </div>
+                    )}
+                    <div ref={bottomRef} />
                 </div>
             )}
-            <div ref={bottomRef} />
-        </div>
+        </>
     );
 }
 

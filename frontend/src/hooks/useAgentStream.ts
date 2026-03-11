@@ -201,7 +201,13 @@ export function useAgentStream() {
             const read = () => {
                 reader.read().then(({ done, value }) => {
                     if (controller.signal.aborted) return;
-                    if (done) return;
+                    if (done) {
+                        // Flush any remaining buffered data
+                        if (buffer.startsWith('data: ')) {
+                            try { processEvent(JSON.parse(buffer.slice(6))); } catch { /* ignore */ }
+                        }
+                        return;
+                    }
                     buffer += decoder.decode(value, { stream: true });
                     const lines = buffer.split('\n');
                     buffer = lines.pop() || '';

@@ -1,14 +1,14 @@
 [
   {
-    "id": "6e8762a2-4eaf-42ea-a659-bf99b974ab97",
-    "url": "[Image: test3.jpg]",
-    "timestamp": "2026-03-11T17:59:16.965966+00:00",
+    "id": "0cee9f37-fca7-432d-abdc-788d3c1daa61",
+    "url": "https://images.news18.com/assam/uploads/2026/03/Dipankar-2026-03-4930c10bbbc32b0ccf97663985c6119b.jpg?impolicy=website&width=827&height=620",
+    "timestamp": "2026-03-11T21:16:03.818063+00:00",
     "overall_credibility": "MIXED",
     "avg_score": 50,
-    "bottom_line": "This article has a mixed credibility due to a combination of unverified and low-quality sources.",
+    "bottom_line": "The credibility of these claims is mixed due to a lack of reliable sources.",
     "verdicts": [
       {
-        "claim_text": "Cyber criminals are taking advantage of the LPG gas shortage by creating fake websites, fake booking links, and fraudulent messages related to LPG gas booking.",
+        "claim_text": "The government stated that the new tax reform policy will allocate \u20b9500 crore for flood relief.",
         "verdict": "UNVERIFIED",
         "truth_score": 50,
         "explanation": "The model could not produce a reliable fact-check verdict for this claim. The claim is marked unverified pending further evidence.",
@@ -18,7 +18,17 @@
         "evidence_gaps": []
       },
       {
-        "claim_text": "Many people are searching online for quick LPG gas booking or extra cylinders due to the shortage.",
+        "claim_text": "The Indian government announced a new tax reform policy.",
+        "verdict": "UNVERIFIED",
+        "truth_score": 50,
+        "explanation": "The model could not produce a reliable fact-check verdict for this claim. The claim is marked unverified pending further evidence.",
+        "citations": [],
+        "reasoning_summary": "",
+        "confidence_level": "MEDIUM",
+        "evidence_gaps": []
+      },
+      {
+        "claim_text": "The Indian government will allocate \u20b9500 crore for flood relief.",
         "verdict": "UNVERIFIED",
         "truth_score": 50,
         "explanation": "The model could not produce a reliable fact-check verdict for this claim. The claim is marked unverified pending further evidence.",
@@ -30,58 +40,46 @@
     ],
     "explanations": {
       "by_claim": {
-        "Cyber criminals are taking advantage of the LPG gas shortage by creating fake websites, fake booking links, and fraudulent messages related to LPG gas booking.": {
-          "claim_text": "Cyber criminals are taking advantage of the LPG gas shortage by creating fake websites, fake booking links, and fraudulent messages related to LPG gas booking.",
-          "plain_english": "There isn't enough evidence to confirm or deny this claim. However, it's possible that cybercriminals are taking advantage of the LPG gas shortage. This is because people are searching online for quick LPG gas booking or extra cylinders due to the shortage, as we've seen in other reports. But we can't say for sure without more information.",
-          "confidence_statement": "Medium confidence \u2014 based on a mix of low-quality sources.",
-          "source_quality_note": "Sources include a website with low credibility and social media platforms, which can be unreliable.",
-          "reader_advisory": "Be cautious when clicking on links or responding to messages related to LPG gas booking, as they may be fake or malicious.",
+        "The government stated that the new tax reform policy will allocate \u20b9500 crore for flood relief.": {
+          "claim_text": "The government stated that the new tax reform policy will allocate \u20b9500 crore for flood relief.",
+          "plain_english": "We couldn\u2019t find enough reliable sources to confirm that the government said the new tax reform policy will allocate \u20b9500 crore for flood relief. The sources we found have varying levels of credibility, and we need more information to make a decision. This claim is currently unverified.",
+          "confidence_statement": "Medium confidence \u2014 we couldn\u2019t find enough reliable sources to confirm this claim.",
+          "source_quality_note": "Sources include generally credible news outlets, but some have low credibility scores.",
+          "reader_advisory": null,
           "evidence_gaps_plain": null
         },
-        "Many people are searching online for quick LPG gas booking or extra cylinders due to the shortage.": {
-          "claim_text": "Many people are searching online for quick LPG gas booking or extra cylinders due to the shortage.",
-          "plain_english": "There is evidence that people are searching online for quick LPG gas booking or extra cylinders due to the shortage. This is supported by a reputable news outlet. However, we can't confirm the extent of the searches or the impact of the shortage on people's behavior.",
-          "confidence_statement": "Medium confidence \u2014 based on a mix of low-quality sources.",
-          "source_quality_note": "One source is a generally credible news outlet, while others are social media platforms or low-quality websites.",
+        "The Indian government announced a new tax reform policy.": {
+          "claim_text": "The Indian government announced a new tax reform policy.",
+          "plain_english": "We couldn\u2019t find enough reliable sources to confirm that the Indian government announced a new tax reform policy. The sources we found have varying levels of credibility, and we need more information to make a decision. This claim is currently unverified.",
+          "confidence_statement": "Medium confidence \u2014 we couldn\u2019t find enough reliable sources to confirm this claim.",
+          "source_quality_note": "Sources include a government website, but also some low credibility outlets and social media.",
+          "reader_advisory": null,
+          "evidence_gaps_plain": null
+        },
+        "The Indian government will allocate \u20b9500 crore for flood relief.": {
+          "claim_text": "The Indian government will allocate \u20b9500 crore for flood relief.",
+          "plain_english": "We couldn\u2019t find enough reliable sources to confirm that the Indian government will allocate \u20b9500 crore for flood relief. The sources we found have varying levels of credibility, and we need more information to make a decision. This claim is currently unverified.",
+          "confidence_statement": "Medium confidence \u2014 we couldn\u2019t find enough reliable sources to confirm this claim.",
+          "source_quality_note": "Sources include generally credible news outlets, but some have low credibility scores.",
           "reader_advisory": null,
           "evidence_gaps_plain": null
         }
       },
       "overall_credibility": "MIXED",
-      "bottom_line": "This article has a mixed credibility due to a combination of unverified and low-quality sources."
+      "bottom_line": "The credibility of these claims is mixed due to a lack of reliable sources."
     },
     "source": "webapp"
   },
   {
-    "id": "d1cab4d7-754d-4f5d-93a8-2d946d1eee05",
-    "url": "[Image: test2.png]",
-    "timestamp": "2026-03-11T17:57:28.727945+00:00",
+    "id": "e80c0a07-fc72-4979-ae27-39814f183902",
+    "url": "https://assam.news18.com/photogallery/assam/big-news-regarding-teacher-recruitment-in-the-state-appointment-letters-will-be-issued-to-4500-lp-and-up-teachers-dd-520480-page-4.html",
+    "timestamp": "2026-03-11T20:08:44.845777+00:00",
     "overall_credibility": "MIXED",
     "avg_score": 50,
-    "bottom_line": "The credibility of these claims is uncertain due to mixed and unreliable sources.",
+    "bottom_line": "This claim is unverified due to unreliable sources, so take it with a grain of salt.",
     "verdicts": [
       {
-        "claim_text": "The memory recall of participants increased by up to 65%.",
-        "verdict": "UNVERIFIED",
-        "truth_score": 50,
-        "explanation": "The model could not produce a reliable fact-check verdict for this claim. The claim is marked unverified pending further evidence.",
-        "citations": [],
-        "reasoning_summary": "",
-        "confidence_level": "MEDIUM",
-        "evidence_gaps": []
-      },
-      {
-        "claim_text": "Drinking lemon with warm water every morning can increase human IQ by up to 20 points in just 2 weeks.",
-        "verdict": "UNVERIFIED",
-        "truth_score": 50,
-        "explanation": "The model could not produce a reliable fact-check verdict for this claim. The claim is marked unverified pending further evidence.",
-        "citations": [],
-        "reasoning_summary": "",
-        "confidence_level": "MEDIUM",
-        "evidence_gaps": []
-      },
-      {
-        "claim_text": "Universities may recommend the lemon water routine to students to improve learning.",
+        "claim_text": "The Assam government will issue appointment letters to 4500 LP and UP teachers.",
         "verdict": "UNVERIFIED",
         "truth_score": 50,
         "explanation": "The model could not produce a reliable fact-check verdict for this claim. The claim is marked unverified pending further evidence.",
@@ -93,592 +91,1088 @@
     ],
     "explanations": {
       "by_claim": {
-        "The memory recall of participants increased by up to 65%.": {
-          "claim_text": "The memory recall of participants increased by up to 65%.",
-          "plain_english": "We couldn't verify this claim because the sources have varying levels of credibility. While some sources suggest a possible increase in memory recall, others are less reliable. More research is needed to confirm this claim.",
-          "confidence_statement": "Medium confidence \u2014 the evidence is mixed.",
-          "source_quality_note": "Sources include moderately credible news outlets and low-credibility websites.",
-          "reader_advisory": null,
-          "evidence_gaps_plain": null
-        },
-        "Drinking lemon with warm water every morning can increase human IQ by up to 20 points in just 2 weeks.": {
-          "claim_text": "Drinking lemon with warm water every morning can increase human IQ by up to 20 points in just 2 weeks.",
-          "plain_english": "We couldn't verify this claim because the sources are unreliable. None of the sources provided have a good track record of accuracy, and there's no scientific evidence to support this claim.",
-          "confidence_statement": "Medium confidence \u2014 the evidence is mixed.",
-          "source_quality_note": "Sources include social media and low-credibility health websites.",
-          "reader_advisory": "Treat this claim with caution as it's sourced from social media and low-credibility websites.",
-          "evidence_gaps_plain": null
-        },
-        "Universities may recommend the lemon water routine to students to improve learning.": {
-          "claim_text": "Universities may recommend the lemon water routine to students to improve learning.",
-          "plain_english": "We couldn't verify this claim because the sources have varying levels of credibility. While some sources suggest that universities might recommend this routine, others are less reliable. More research is needed to confirm this claim.",
-          "confidence_statement": "Medium confidence \u2014 the evidence is mixed.",
-          "source_quality_note": "Sources include moderately credible academic websites and low-credibility news outlets.",
-          "reader_advisory": null,
-          "evidence_gaps_plain": null
+        "The Assam government will issue appointment letters to 4500 LP and UP teachers.": {
+          "claim_text": "The Assam government will issue appointment letters to 4500 LP and UP teachers.",
+          "plain_english": "We couldn\u2019t verify this claim because the sources we found are not very trustworthy. The information came from a few websites with low credibility and some social media posts, which are not reliable sources. We need more evidence to confirm or deny this claim. For now, we can\u2019t say for sure if the Assam government will issue appointment letters to 4500 LP and UP teachers.",
+          "confidence_statement": "Medium confidence \u2014 some evidence exists, but it\u2019s unclear if it\u2019s accurate.",
+          "source_quality_note": "Sourced from outlets with limited editorial standards and social media, which are not reliable sources.",
+          "reader_advisory": "Treat this claim with caution because the sources are not very trustworthy.",
+          "evidence_gaps_plain": "We don\u2019t have enough information to confirm this claim."
         }
       },
       "overall_credibility": "MIXED",
-      "bottom_line": "The credibility of these claims is uncertain due to mixed and unreliable sources."
+      "bottom_line": "This claim is unverified due to unreliable sources, so take it with a grain of salt."
     },
     "source": "webapp"
   },
   {
-    "id": "5e76d67d-f41b-4fd9-a664-04aab429e578",
-    "url": "[Image: test1.png]",
-    "timestamp": "2026-03-11T17:55:37.720005+00:00",
-    "overall_credibility": "MIXED",
-    "avg_score": 58,
-    "bottom_line": "This article contains a mix of credible and unverified claims, so be cautious when interpreting the information.",
+    "id": "22fd8472-eb0b-419d-89a0-5e1bd6950b50",
+    "url": "In this picture, a person is seen giving a speech on the stage. He is wearing a light-colored shirt and a brown jacket, and has a blue patterned scarf around his neck. Two microphones are placed in front of him. In the background, there is a large banner with a picture of another person on it. The scene appears to be a formal event or gathering.\n\nDepartmental sources have informed that the administration has made special arrangements to ensure the event is completed smoothly. All candidates have been asked to be present on time with the necessary documents.",
+    "timestamp": "2026-03-11T20:03:42.046219+00:00",
+    "overall_credibility": "MOSTLY CREDIBLE",
+    "avg_score": 78,
+    "bottom_line": "Most of the claims are accurate, but some sources have low credibility.",
     "verdicts": [
       {
-        "claim_text": "Drinking hot lemon water every morning can permanently boost human IQ by up to 20 points within just two weeks.",
-        "verdict": "UNVERIFIED",
-        "truth_score": 40,
-        "explanation": "The claim that drinking hot lemon water can boost IQ is not supported by credible evidence, with most snippets lacking scientific evidence or relevance to the claim. The available evidence does not address the sub-parts of the claim, leading to a low confidence assessment.",
-        "citations": [
-          "https://townofwilton.ny.gov/wilton/detail/health.html?p=is-lemon-water-good-for-you-in-2026-a-30-day-real-life-test-of-small-sips-subtle-changes-and-honest-results-6983112ce790c",
-          "https://web.stanford.edu/~c213/?id=lemon-water-real-life-results-body-and-routine-changes-by-2026"
-        ],
-        "reasoning_summary": "The analyst found that the evidence does not support the claim, with gaps in addressing the sub-parts and a lack of scientific evidence. The overall confidence is low due to the insufficient evidence.",
-        "confidence_level": "LOW",
-        "evidence_gaps": [
-          "The evidence does not address the sub-parts of the claim, including the effect of lemon water on IQ, the specific increase of 20 points, and the time frame of two weeks."
-        ]
-      },
-      {
-        "claim_text": "Participants who followed the routine showed improved memory recall by 65%.",
+        "claim_text": "The administration made special arrangements to ensure the event is completed smoothly.",
         "verdict": "SUPPORTED",
         "truth_score": 85,
-        "explanation": "The evidence shows that following a routine can improve memory recall, with one study finding a 65% improvement. Additionally, lifestyle changes such as diet and exercise can enhance brain health, and cognitive training can improve everyday tasks involved with thinking and remembering.",
+        "explanation": "The administration made special arrangements to ensure the event is completed smoothly, including confirming attendance in advance, publishing a timetable of events, completing vendor contracts, and ensuring effective communication.",
         "citations": [
-          "https://www.npr.org/2025/07/28/nx-s1-5477556/aging-brain-health-lifestyle-diet-exercise-social-alzheimers",
-          "https://www.hopkinsmedicine.org/news/newsroom/news-releases/2026/02/cognitive-speed-training-linked-to-lower-dementia-incidence-up-to-20-years-later",
-          "https://seacrestterraces.com/routines-for-cognitive-health/"
+          "https://www.amfund.org/ensuring-a-smooth-event-the-importance-of-confirming-attendance-in-advance/",
+          "https://www.quora.com/How-do-you-ensure-that-an-event-runs-smoothly-and-stays-on-schedule",
+          "https://www.brightonsbm.com/news/top-10-tips-successful-event-management/"
         ],
-        "reasoning_summary": "The analyst's reasoning involves a step-by-step analysis of the evidence, including an inventory of the evidence, claim decomposition, evidence matching, and contradiction analysis. The overall confidence in the verdict is HIGH.",
+        "reasoning_summary": "The evidence collectively suggests that the administration made special arrangements to ensure the event is completed smoothly, including confirming attendance in advance, publishing a timetable of events, completing vendor contracts, and ensuring effective communication.",
         "confidence_level": "HIGH",
         "evidence_gaps": [
-          "Some gaps in the evidence exist, particularly regarding the specific effects of cognitive training and daily routines on memory recall."
+          "No gaps in the evidence"
         ]
       },
       {
-        "claim_text": "Participants who followed the routine showed 'dramatic increases in brain neuron growth'.",
-        "verdict": "UNVERIFIED",
-        "truth_score": 50,
-        "explanation": "The model could not produce a reliable fact-check verdict for this claim. The claim is marked unverified pending further evidence.",
-        "citations": [],
-        "reasoning_summary": "",
+        "claim_text": "All candidates have been asked to be present on time with the necessary documents.",
+        "verdict": "SUPPORTED",
+        "truth_score": 70,
+        "explanation": "The claim is supported by evidence from the Canadian citizenship help Facebook group, which advises candidates to be present on time and bring necessary documents to the interview. Although there are gaps in understanding the specific requirements, the available evidence collectively points toward the importance of following these instructions.",
+        "citations": [
+          "https://www.facebook.com/groups/canadiancitizenshiphelp/posts/3141985169282294/",
+          "https://www.facebook.com/groups/canadiancitizenshiphelp/posts/3158027301011414/"
+        ],
+        "reasoning_summary": "The evidence from the Facebook group posts confirms that candidates are advised to be present on time and bring necessary documents, but gaps remain in understanding the specific requirements.",
         "confidence_level": "MEDIUM",
-        "evidence_gaps": []
+        "evidence_gaps": [
+          "Gaps exist in understanding the necessary documents and physical presence requirements, as the immigration website snippets do not address these specific requirements."
+        ]
       }
     ],
     "explanations": {
       "by_claim": {
-        "Drinking hot lemon water every morning can permanently boost human IQ by up to 20 points within just two weeks.": {
-          "claim_text": "Drinking hot lemon water every morning can permanently boost human IQ by up to 20 points within just two weeks.",
-          "plain_english": "This claim is not supported by credible evidence. There is no scientific proof that drinking hot lemon water can boost IQ. In fact, the available evidence does not address the specific parts of the claim, making it difficult to determine its accuracy. As a result, we cannot confirm or deny this claim.",
-          "confidence_statement": "Low confidence \u2014 the evidence does not support this claim.",
-          "source_quality_note": "Sourced from outlets with limited editorial standards, including social media.",
-          "reader_advisory": "Treat this claim with caution as it is sourced from social media and has a low credibility score.",
-          "evidence_gaps_plain": "The evidence does not address the specific effects of lemon water on IQ, the increase of 20 points, or the time frame of two weeks."
-        },
-        "Participants who followed the routine showed improved memory recall by 65%.": {
-          "claim_text": "Participants who followed the routine showed improved memory recall by 65%.",
-          "plain_english": "The evidence shows that following a routine can improve memory recall. One study found a 65% improvement, and lifestyle changes such as diet and exercise can enhance brain health. Cognitive training can also improve everyday tasks involved with thinking and remembering. However, more research is needed to fully understand the effects of cognitive training and daily routines on memory recall.",
-          "confidence_statement": "High confidence \u2014 the evidence supports this claim.",
-          "source_quality_note": "Reported by established news outlets, but one source has a low credibility score.",
+        "The administration made special arrangements to ensure the event is completed smoothly.": {
+          "claim_text": "The administration made special arrangements to ensure the event is completed smoothly.",
+          "plain_english": "The administration made special arrangements to ensure the event went smoothly. They confirmed attendance in advance, published a schedule, and completed vendor contracts. This helps to avoid any last-minute issues. The evidence shows that they took steps to prepare for the event.",
+          "confidence_statement": "High confidence \u2014 reported by established news outlets.",
+          "source_quality_note": "reported by specialist or regional sources",
           "reader_advisory": null,
-          "evidence_gaps_plain": "Some gaps in the evidence exist, particularly regarding the specific effects of cognitive training and daily routines on memory recall."
+          "evidence_gaps_plain": null
+        }
+      },
+      "overall_credibility": "MOSTLY CREDIBLE",
+      "bottom_line": "Most of the claims are accurate, but some sources have low credibility."
+    },
+    "source": "webapp"
+  },
+  {
+    "id": "35615bfc-1a75-4cc8-adda-9752daecb3fd",
+    "url": "Notably, on Wednesday, the Directorate of Elementary Education (DEE) under the Education Department released the final list of LP and UP teacher appointments. This list was published on the department's official website dee.assam.gov.in. Candidates who made it to the list have been instructed to be present at the appointment ceremony on March 12.",
+    "timestamp": "2026-03-11T20:02:40.857395+00:00",
+    "overall_credibility": "CREDIBLE",
+    "avg_score": 75,
+    "bottom_line": "This claim is generally trustworthy based on the evidence.",
+    "verdicts": [
+      {
+        "claim_text": "The list of LP and UP teacher appointments was published on the department's official website dee.assam.gov.in.",
+        "verdict": "SUPPORTED",
+        "truth_score": 85,
+        "explanation": "The department's official website dee.assam.gov.in contains a notice for withheld candidates, a final select list of teachers for UPS, and a district-wise list of candidates, which can be accessed by the public. Although there are gaps in the evidence regarding the list of LP teacher appointments, the available evidence suggests that the list of appointments is published on the department's official website.",
+        "citations": [
+          "https://dee.assam.gov.in/portlets/recruitment-in-4500-posts-of-teachers",
+          "https://dee.assam.gov.in/documents-detail/final-select-list-of-regular-teachers-of-lp-and-up-schools-0",
+          "https://dee.assam.gov.in/documents-detail/district-wise-list-of-candidates-of-regular-teachers-of-lp-and-up-schools-for"
+        ],
+        "reasoning_summary": "The evidence collectively shows that the list of LP and UP teacher appointments is published on the department's official website dee.assam.gov.in, and the list of UP teacher appointments is published in a format that can be accessed by the public.",
+        "confidence_level": "HIGH",
+        "evidence_gaps": [
+          "Gaps in the evidence regarding the list of LP teacher appointments"
+        ]
+      },
+      {
+        "claim_text": "The Directorate of Elementary Education (DEE) released the final list of LP and UP teacher appointments.",
+        "verdict": "SUPPORTED",
+        "truth_score": 90,
+        "explanation": "The evidence collectively shows that the Directorate of Elementary Education (DEE) is involved in releasing the final list of LP and UP teacher appointments, and the final list has been released. The final list is available on the official website of DEE Assam.",
+        "citations": [
+          "https://dee.assam.gov.in/documents-detail/final-select-list-of-regular-teachers-of-lp-and-up-schools-0",
+          "https://www.jagranjosh.com/articles/dee-assam-result-2026-out-download-lp-up-merit-list-at-deeassamgovin-1800008947-1",
+          "https://www.assamcareer.com/2022/01/dee-assam-merit-list.html"
+        ],
+        "reasoning_summary": "The analyst's reasoning involves confirming the involvement of DEE in releasing the final list, the release of the final list, and its availability on the DEE Assam website. However, there is a gap in evidence regarding the basis of appointments.",
+        "confidence_level": "HIGH",
+        "evidence_gaps": [
+          "The basis of the appointments, whether they are based on the merit list, is unclear due to a gap in the evidence."
+        ]
+      },
+      {
+        "claim_text": "Candidates who made it to the list have been instructed to be present at the appointment ceremony on March 12.",
+        "verdict": "UNVERIFIED",
+        "truth_score": 50,
+        "explanation": "The evidence confirms that candidates have been nominated for various positions, but it does not provide information about the appointment ceremony's date or instructions for candidates to be present. Gaps remain in the evidence regarding the appointment ceremony's date and instructions for candidates.",
+        "citations": [
+          "https://www.whitehouse.gov/presidential-actions/2026/03/nominations-sent-to-the-senate-4e42/",
+          "https://www.gov.ca.gov/2026/03/03/governor-newsom-announces-appointments-3-3-2026/",
+          "https://www.whitehouse.gov/presidential-actions/2026/03/nominations-sent-to-the-senate-b376/"
+        ],
+        "reasoning_summary": "The claim is partially supported by evidence of candidate nominations, but lacks information on the appointment ceremony's date and instructions for candidates.",
+        "confidence_level": "MEDIUM",
+        "evidence_gaps": [
+          "Date of the appointment ceremony",
+          "Instructions for candidates to be present at the appointment ceremony"
+        ]
+      }
+    ],
+    "explanations": {
+      "by_claim": {
+        "The list of LP and UP teacher appointments was published on the department": {
+          "claim_text": "The list of LP and UP teacher appointments was published on the department",
+          "plain_english": "The list of LP and UP teacher appointments is indeed published on the department's official website dee.assam.gov.in. However, there are some gaps in the evidence regarding the list of LP teacher appointments. The list of UP teacher appointments is available in a format that can be accessed by the public. Overall, the evidence suggests that the list of appointments is published on the department's official website.",
+          "confidence_statement": "High confidence \u2014 confirmed by established news outlets.",
+          "source_quality_note": "Confirmed by major wire services",
+          "reader_advisory": null,
+          "evidence_gaps_plain": "There are gaps in the evidence regarding the list of LP teacher appointments."
+        }
+      },
+      "overall_credibility": "CREDIBLE",
+      "bottom_line": "This claim is generally trustworthy based on the evidence."
+    },
+    "source": "webapp"
+  },
+  {
+    "id": "be721c29-b0d4-4c74-b6dc-d8e422858f53",
+    "url": "Notably, on Wednesday, the Directorate of Elementary Education (DEE) under the Education Department published the final list of LP and UP teacher recruitment. This list was published on the department's official website dee.assam.gov.in. Candidates who have made it to the list have been instructed to be present at the appointment ceremony on March 12.",
+    "timestamp": "2026-03-11T19:59:39.671931+00:00",
+    "overall_credibility": "MIXED",
+    "avg_score": 60,
+    "bottom_line": "This article's credibility is mixed, with some claims supported and others unverified due to unclear information.",
+    "verdicts": [
+      {
+        "claim_text": "The Directorate of Elementary Education (DEE) published the final list of LP and UP teacher recruitment.",
+        "verdict": "SUPPORTED",
+        "truth_score": 70,
+        "explanation": "The evidence suggests that the DEE is responsible for publishing the final list of LP and UP teacher recruitment and that the final list has been published, although the exact date and online availability are unclear.",
+        "citations": [
+          "https://www.ndtv.com/education/assam-directorate-of-elementary-education-publishes-final-teacher-recruitment-results-online-9601669",
+          "https://www.jagranjosh.com/articles/dee-assam-result-2026-out-download-lp-up-merit-list-at-deeassamgovin-1800008947-1",
+          "https://www.youtube.com/watch?v=bLfhhnXPRnk"
+        ],
+        "reasoning_summary": "The analyst's reasoning involves confirming the DEE's responsibility for publishing the final list, inferring the publication of the final list, and identifying gaps in information regarding the online availability and exact date of publication.",
+        "confidence_level": "MEDIUM",
+        "evidence_gaps": [
+          "The exact date of publication and the online availability of the final list are unclear."
+        ]
+      },
+      {
+        "claim_text": "Candidates who made it to the list have been instructed to be present at the appointment ceremony on March 12.",
+        "verdict": "UNVERIFIED",
+        "truth_score": 50,
+        "explanation": "The evidence confirms that candidates have been nominated for various positions, but it does not provide information about the appointment ceremony's date or instructions for candidates to be present. Gaps remain in the evidence regarding the appointment ceremony's date and instructions for candidates.",
+        "citations": [
+          "https://www.whitehouse.gov/presidential-actions/2026/03/nominations-sent-to-the-senate-4e42/",
+          "https://www.gov.ca.gov/2026/03/03/governor-newsom-announces-appointments-3-3-2026/",
+          "https://www.whitehouse.gov/presidential-actions/2026/03/nominations-sent-to-the-senate-b376/"
+        ],
+        "reasoning_summary": "The analyst's reasoning involves breaking down the claim into sub-parts, matching them with available evidence, and assessing the confidence level. While the evidence confirms the existence of nominated candidates, it lacks information about the appointment ceremony's date and instructions for candidates.",
+        "confidence_level": "MEDIUM",
+        "evidence_gaps": [
+          "The appointment ceremony's date",
+          "Instructions for candidates to be present at the appointment ceremony"
+        ]
+      }
+    ],
+    "explanations": {
+      "by_claim": {
+        "The Directorate of Elementary Education (DEE) published the final list of LP and UP teacher recruitment.": {
+          "claim_text": "The Directorate of Elementary Education (DEE) published the final list of LP and UP teacher recruitment.",
+          "plain_english": "The Directorate of Elementary Education is responsible for publishing the final list of LP and UP teacher recruitment. The evidence confirms this, but we don't know when the list was published or how to find it online. We can't confirm the exact date or online availability. The sources used are generally credible, but one source has low credibility.",
+          "confidence_statement": "Medium confidence \u2014 the evidence suggests the DEE is responsible, but some details are unclear.",
+          "source_quality_note": "Confirmed by established news outlets, but one source has limited editorial standards.",
+          "reader_advisory": "Be cautious when relying on this information, as some sources have low credibility.",
+          "evidence_gaps_plain": "The exact date of publication and the online availability of the final list are unclear."
         },
-        "Participants who followed the routine showed 'dramatic increases in brain neuron growth'.": {
-          "claim_text": "Participants who followed the routine showed 'dramatic increases in brain neuron growth'.",
-          "plain_english": "This claim is unverified pending further evidence. There is no reliable evidence to support the claim of dramatic increases in brain neuron growth. More research is needed to determine the accuracy of this claim.",
-          "confidence_statement": "Medium confidence \u2014 the evidence does not support this claim, but more research is needed.",
-          "source_quality_note": "Sourced from outlets with low credibility scores, including social media.",
-          "reader_advisory": "Treat this claim with caution as it is sourced from low-credibility outlets and social media.",
+        "Candidates who made it to the list have been instructed to be present at the appointment ceremony on March 12.": {
+          "claim_text": "Candidates who made it to the list have been instructed to be present at the appointment ceremony on March 12.",
+          "plain_english": "We know that candidates have been nominated for various positions, but we can't confirm the date of the appointment ceremony or if they've been instructed to be present. The sources used are from government websites and are generally credible.",
+          "confidence_statement": "Medium confidence \u2014 we know candidates were nominated, but not about the appointment ceremony.",
+          "source_quality_note": "Reported by established news outlets.",
+          "reader_advisory": null,
+          "evidence_gaps_plain": "The appointment ceremony's date and instructions for candidates to be present are unclear."
+        }
+      },
+      "overall_credibility": "MIXED",
+      "bottom_line": "This article's credibility is mixed, with some claims supported and others unverified due to unclear information."
+    },
+    "source": "webapp"
+  },
+  {
+    "id": "55bdad3d-1fb1-4ca9-8f1b-a7cafaedbe35",
+    "url": "https://images.news18.com/assam/uploads/2026/01/ranoj-pegu-4-2026-01-4a7e8c89d9cc1da3e2dfac3bf15d6d28.jpg?impolicy=website&width=827&height=620",
+    "timestamp": "2026-03-11T19:56:48.256587+00:00",
+    "overall_credibility": "MIXED",
+    "avg_score": 50,
+    "bottom_line": "This article contains a mix of accurate and misleading information, with some claims being partially true but also partially false. Be cautious when reading this article and verify the information through multiple sources.",
+    "verdicts": [
+      {
+        "claim_text": "The government stated that the new tax reform policy will allocate \u20b9500 crore for flood relief.",
+        "verdict": "MISLEADING",
+        "truth_score": 50,
+        "explanation": "The evidence confirms the government is allocating \u20b9500 crore for flood relief, but it does not explicitly state this allocation is part of a tax reform policy, making the claim technically true but deceptive due to missing context.",
+        "citations": [
+          "https://www.thehindu.com/news/national/tamil-nadu/Rs.500-cr.-for-flood-relief-restoration-works/article15585180.ece",
+          "https://www.ndtv.com/india-news/uttarakhand-pm-announces-rs-500-cr-for-flood-relief-432672",
+          "https://timesofindia.indiatimes.com/india/pm-announces-immediate-relief-of-rs-500-crore-to-flood-hit-kerala/articleshow/65449812.cms"
+        ],
+        "reasoning_summary": "The government's allocation of \u20b9500 crore for flood relief is confirmed, but its connection to a tax reform policy is not explicitly stated in the evidence, leading to a misleading claim.",
+        "confidence_level": "MEDIUM",
+        "evidence_gaps": [
+          "The evidence lacks explicit confirmation that the \u20b9500 crore allocation for flood relief is part of a tax reform policy."
+        ]
+      },
+      {
+        "claim_text": "The government announced a new tax reform policy.",
+        "verdict": "UNVERIFIED",
+        "truth_score": 50,
+        "explanation": "The evidence suggests that there is a new tax reform policy related to taxation, but it is unclear who announced it and whether it is a new policy or an extension of existing policies. The gaps in the evidence make it difficult to draw a definitive conclusion.",
+        "citations": [
+          "https://www.irs.gov/tax-reform",
+          "https://www.finance.senate.gov/tax-reform-2025",
+          "https://www.gfoa.org/federal-tax-reform-2025"
+        ],
+        "reasoning_summary": "The analyst's reasoning involves a step-by-step analysis of the evidence, including an inventory of the evidence, decomposition of the claim, evidence matching, contradiction analysis, confidence assessment, and preliminary verdict reasoning. The evidence collectively shows that there is a new tax reform policy related to taxation, but it is unclear who announced it and whether it is a new policy or an extension of existing policies.",
+        "confidence_level": "MEDIUM",
+        "evidence_gaps": [
+          "Lack of information on who announced the new tax reform policy",
+          "Uncertainty about whether the policy is new or an extension of existing policies"
+        ]
+      },
+      {
+        "claim_text": "The man in the photo is giving a speech in front of an orange film screen.",
+        "verdict": "MISLEADING",
+        "truth_score": 50,
+        "explanation": "The evidence confirms the man in the photo is giving a speech, but it does not support the claim that he is in front of an orange film screen; instead, it describes a red curtain and white background.",
+        "citations": [
+          "https://digital.library.unt.edu/ark:/67531/metadc1349961/"
+        ],
+        "reasoning_summary": "The claim is misleading because while the man is indeed giving a speech, the available evidence does not support the specific detail about the orange film screen.",
+        "confidence_level": "MEDIUM",
+        "evidence_gaps": [
+          "The color of the film screen is not addressed by the credible evidence."
+        ]
+      }
+    ],
+    "explanations": {
+      "by_claim": {
+        "The government stated that the new tax reform policy will allocate \u20b9500 crore for flood relief.": {
+          "claim_text": "The government stated that the new tax reform policy will allocate \u20b9500 crore for flood relief.",
+          "plain_english": "The government is allocating \u20b9500 crore for flood relief, which is true. However, the claim is misleading because it implies that this allocation is part of a tax reform policy, but the evidence doesn\u2019t support this. This means the claim is partially true but also partially false. The government has indeed allocated money for flood relief, but we don\u2019t know if it\u2019s related to a tax reform policy or not. This is an important distinction because it changes the context of the claim.",
+          "confidence_statement": "Medium confidence \u2014 the evidence confirms the allocation, but the connection to a tax reform policy is unclear.",
+          "source_quality_note": "Sourced from established news outlets with generally credible sources, but one source has limited editorial standards.",
+          "reader_advisory": "Be cautious of this claim because it contains a misleading element and the sources used have varying credibility.",
+          "evidence_gaps_plain": "The evidence does not explicitly confirm that the \u20b9500 crore allocation for flood relief is part of a tax reform policy."
+        },
+        "The government announced a new tax reform policy.": {
+          "claim_text": "The government announced a new tax reform policy.",
+          "plain_english": "The evidence suggests that there is a new tax reform policy related to taxation, but we don\u2019t know who announced it or whether it\u2019s a new policy or an extension of existing ones. This makes it difficult to draw a definitive conclusion. The evidence collectively shows that there is a new tax reform policy, but we need more information to confirm the details.",
+          "confidence_statement": "Medium confidence \u2014 the evidence suggests a new tax reform policy, but key details are unclear.",
+          "source_quality_note": "Sourced from moderately credible sources, but some sources have low credibility.",
+          "reader_advisory": "Be cautious of this claim because it is unverified and the sources used have varying credibility.",
+          "evidence_gaps_plain": "It is unclear who announced the new tax reform policy and whether it is a new policy or an extension of existing policies."
+        },
+        "The man in the photo is giving a speech in front of an orange film screen.": {
+          "claim_text": "The man in the photo is giving a speech in front of an orange film screen.",
+          "plain_english": "The evidence confirms the man in the photo is giving a speech, but it does not support the claim that he is in front of an orange film screen. Instead, it describes a red curtain and white background. This means the claim is partially true but also partially false. The man is indeed giving a speech, but the details about the film screen are not accurate.",
+          "confidence_statement": "Medium confidence \u2014 the evidence confirms the man is giving a speech, but the film screen color is disputed.",
+          "source_quality_note": "Sourced from moderately credible sources, but some sources have low credibility and are social media-based.",
+          "reader_advisory": "Be cautious of this claim because it contains a misleading element and the sources used have varying credibility.",
+          "evidence_gaps_plain": "The color of the film screen is not supported by the credible evidence."
+        }
+      },
+      "overall_credibility": "MIXED",
+      "bottom_line": "This article contains a mix of accurate and misleading information, with some claims being partially true but also partially false. Be cautious when reading this article and verify the information through multiple sources."
+    },
+    "source": "webapp"
+  },
+  {
+    "id": "b9e99c2d-c5dc-40aa-97f6-08ca58e26c49",
+    "url": "https://assam.news18.com/photogallery/assam/big-news-regarding-teacher-recruitment-in-the-state-appointment-letters-will-be-issued-to-4500-lp-and-up-teachers-dd-520480.html",
+    "timestamp": "2026-03-11T19:55:34.063596+00:00",
+    "overall_credibility": "LOW CREDIBILITY",
+    "avg_score": 50,
+    "bottom_line": "This article has low credibility due to multiple unverified claims and low-credibility sources.",
+    "verdicts": [
+      {
+        "claim_text": "Unprotected Mac are 93% more vulnerable to suffer from malware.",
+        "verdict": "UNVERIFIED",
+        "truth_score": 40,
+        "explanation": "The claim that unprotected Macs are 93% more vulnerable to malware is based on low-credibility sources and lacks concrete evidence to support the exact percentage. While one source suggests unprotected Macs are more vulnerable, the evidence is insufficient to confirm or deny the claim.",
+        "citations": [
+          "https://www.enigmasoftware.fr/securitycentertotalprotectionpopupscam-supprimer/"
+        ],
+        "reasoning_summary": "The analysis found that the evidence is indirect or weak, with significant gaps in addressing the claim, particularly regarding the exact percentage of vulnerability.",
+        "confidence_level": "LOW",
+        "evidence_gaps": [
+          "Lack of concrete evidence to support the exact percentage of vulnerability, and most sources refer to PCs rather than Macs."
+        ]
+      },
+      {
+        "claim_text": "Your Mac is infected with 18 viruses!",
+        "verdict": "CONTRADICTED",
+        "truth_score": 60,
+        "explanation": "The claim that a Mac is infected with 18 viruses is contradicted by evidence from multiple sources, which state that such notifications are typically fake and designed to deceive users.",
+        "citations": [
+          "https://www.justanswer.com/computer/rwfmn-right-side-screen-virus-noyices.html",
+          "https://www.pcrisk.com/removal-guides/32092-norton-this-mac-is-infected-with-viruses-pop-up-scam-mac",
+          "https://discussions.apple.com/thread/254931986"
+        ],
+        "reasoning_summary": "The evidence shows that notifications claiming 18 viruses detected on a Mac are fake, and the claims made by these scams are false, thus contradicting the claim.",
+        "confidence_level": "MEDIUM",
+        "evidence_gaps": [
+          "There are gaps in the evidence regarding the possibility of a Mac being infected with viruses and whether it can be completely cleaned of an infection without wiping it to factory settings."
+        ]
+      },
+      {
+        "claim_text": "Viruses found on this Mac most likely track internet activity to collect banking details and login credentials.",
+        "verdict": "MISLEADING",
+        "truth_score": 50,
+        "explanation": "The claim is partially supported by evidence that viruses on Macs can track internet activity and collect login credentials, but there is no direct evidence to support the claim that they collect banking details.",
+        "citations": [
+          "https://www.facebook.com/groups/2408899619294901/posts/3080135605504629/"
+        ],
+        "reasoning_summary": "The evidence suggests that viruses found on this Mac may track internet activity and collect login credentials, but gaps in the evidence make it difficult to draw a definitive conclusion about collecting banking details.",
+        "confidence_level": "MEDIUM",
+        "evidence_gaps": [
+          "collecting banking details"
+        ]
+      }
+    ],
+    "explanations": {
+      "by_claim": {
+        "Unprotected Mac are 93% more vulnerable to suffer from malware.": {
+          "claim_text": "Unprotected Mac are 93% more vulnerable to suffer from malware.",
+          "plain_english": "This claim could not be verified. The evidence is indirect and weak, and we can't confirm or deny the claim. Some sources suggest that unprotected Macs are more vulnerable, but we need more concrete evidence to be sure. The sources we have are low-credibility and refer to PCs rather than Macs.",
+          "confidence_statement": "Low confidence \u2014 based on indirect evidence and weak sources.",
+          "source_quality_note": "Sourced from outlets with limited editorial standards.",
+          "reader_advisory": "Treat this claim with caution, as the sources are low-credibility and the evidence is indirect.",
+          "evidence_gaps_plain": "There is no concrete evidence to support the exact percentage of vulnerability, and most sources refer to PCs rather than Macs."
+        },
+        "Your Mac is infected with 18 viruses!": {
+          "claim_text": "Your Mac is infected with 18 viruses!",
+          "plain_english": "This claim is false based on available evidence. Notifications claiming 18 viruses detected on a Mac are typically fake and designed to deceive users. We have evidence from multiple sources that these claims are false. However, there are still some gaps in the evidence regarding Mac infections and cleaning them.",
+          "confidence_statement": "Medium confidence \u2014 confirmed by multiple sources.",
+          "source_quality_note": "Sourced from outlets with limited editorial standards.",
+          "reader_advisory": "Be aware that this claim is false and designed to deceive users.",
+          "evidence_gaps_plain": "There are gaps in the evidence regarding the possibility of a Mac being infected with viruses and whether it can be completely cleaned of an infection without wiping it to factory settings."
+        },
+        "Viruses found on this Mac most likely track internet activity to collect banking details and login credentials.": {
+          "claim_text": "Viruses found on this Mac most likely track internet activity to collect banking details and login credentials.",
+          "plain_english": "This claim contains a misleading element. Viruses on Macs can track internet activity and collect login credentials, but we can't confirm that they collect banking details. The evidence is indirect, and we need more concrete evidence to be sure. Some sources suggest that viruses can collect login credentials, but we don't have direct evidence for banking details.",
+          "confidence_statement": "Medium confidence \u2014 partially supported by evidence.",
+          "source_quality_note": "Sourced from outlets with limited editorial standards.",
+          "reader_advisory": "Be aware that this claim is partially supported, but there is no direct evidence to support the claim about collecting banking details.",
+          "evidence_gaps_plain": "There is no direct evidence to support the claim that viruses collect banking details."
+        }
+      },
+      "overall_credibility": "LOW CREDIBILITY",
+      "bottom_line": "This article has low credibility due to multiple unverified claims and low-credibility sources."
+    },
+    "source": "webapp"
+  },
+  {
+    "id": "53099b1a-5895-4997-a74a-b2ce1820af42",
+    "url": "https://images.news18.com/assam/uploads/2026/03/Dipankar-2026-03-4930c10bbbc32b0ccf97663985c6119b.jpg?impolicy=website&width=827&height=620",
+    "timestamp": "2026-03-11T19:49:47.742962+00:00",
+    "overall_credibility": "CREDIBLE",
+    "avg_score": 80,
+    "bottom_line": "Overall, the claims are trustworthy and accurate, but some details are missing.",
+    "verdicts": [
+      {
+        "claim_text": "The man announced a new tax reform policy.",
+        "verdict": "SUPPORTED",
+        "truth_score": 90,
+        "explanation": "The evidence collectively shows that there is a new tax reform policy announced by the New Democrat Coalition and President Trump, with the main goals of lowering costs, expanding economic opportunity, and promoting fiscal responsibility. However, the claim refers to 'the man', which is assumed to be President Trump, and while the evidence confirms a new tax reform policy, it does not explicitly state that 'the man' announced it. Despite this, the overall evidence supports the existence of a new tax reform policy.",
+        "citations": [
+          "https://newdemocratcoalition.house.gov/media-center/press-releases/new-dems-unveil-comprehensive-tax-reform-framework-to-lower-costs-expand-economic-opportunity-and-promote-fiscal-responsibility",
+          "https://www.finance.senate.gov/taxreform",
+          "https://www.duanemorris.com/alerts/the_2025_tax_bill_is_now_new_law_delivering_significant_tax_changes_new_opportunities_0725.html"
+        ],
+        "reasoning_summary": "The evidence confirms a new tax reform policy announced by the New Democrat Coalition and President Trump, with goals including lowering costs and promoting fiscal responsibility. The claim's reference to 'the man' is assumed to be President Trump, and while not explicitly stated, the evidence supports the existence of a new tax reform policy.",
+        "confidence_level": "HIGH",
+        "evidence_gaps": [
+          "Specific details of the policy and its implementation, as well as explicit confirmation that 'the man' announced the policy."
+        ]
+      },
+      {
+        "claim_text": "The Indian man stated that the state will allocate \u20b9500 crore for flood relief.",
+        "verdict": "SUPPORTED",
+        "truth_score": 70,
+        "explanation": "The evidence collectively shows that the state is allocating \u20b9500 crore for flood relief in various states in India, which suggests that the claim may be true in a broader sense. However, there are gaps in the evidence regarding the specific allocation for the state of India.",
+        "citations": [
+          "https://www.thehindu.com/news/national/karnataka/500-crore-sought-from-centre-state-for-flood-relief/article29249056.ece",
+          "https://www.tribuneindia.com/news/archive/nation/modi-announces-rs-500-cr-relief-for-flood-hit-bihar-457720/",
+          "https://timesofindia.indiatimes.com/india/pm-announces-immediate-relief-of-rs-500-crore-to-flood-hit-kerala/articleshow/65449812.cms"
+        ],
+        "reasoning_summary": "The analyst's reasoning involves a step-by-step analysis of the evidence, which confirms the allocation of \u20b9500 crore for flood relief in various states in India. However, there are gaps in the evidence regarding the specific allocation for the state of India.",
+        "confidence_level": "MEDIUM",
+        "evidence_gaps": [
+          "The evidence does not specifically address the allocation for the state of India, and there are gaps in the evidence regarding the allocation for flood relief in India."
+        ]
+      }
+    ],
+    "explanations": {
+      "by_claim": {
+        "The man announced a new tax reform policy.": {
+          "claim_text": "The man announced a new tax reform policy.",
+          "plain_english": "This claim checks out. The New Democrat Coalition and President Trump have announced a new tax reform policy with goals of lowering costs and promoting fiscal responsibility. However, the claim refers to 'the man', which is assumed to be President Trump, and the evidence doesn't explicitly state that he announced the policy. Still, the overall evidence supports the existence of a new tax reform policy.",
+          "confidence_statement": "High confidence \u2014 confirmed by major wire services.",
+          "source_quality_note": "Reported by established news outlets.",
+          "reader_advisory": null,
+          "evidence_gaps_plain": "Specific details of the policy and its implementation, as well as explicit confirmation that 'the man' announced the policy."
+        },
+        "The Indian man stated that the state will allocate \u20b9500 crore for flood relief.": {
+          "claim_text": "The Indian man stated that the state will allocate \u20b9500 crore for flood relief.",
+          "plain_english": "This claim could be true, but we can't be sure. The evidence suggests that the state is allocating \u20b9500 crore for flood relief in various states in India, but it doesn't specifically address the allocation for the state of India. We need more information to confirm this claim.",
+          "confidence_statement": "Medium confidence \u2014 reported by established news outlets.",
+          "source_quality_note": "Reported by established news outlets.",
+          "reader_advisory": null,
+          "evidence_gaps_plain": "The evidence does not specifically address the allocation for the state of India, and there are gaps in the evidence regarding the allocation for flood relief in India."
+        }
+      },
+      "overall_credibility": "CREDIBLE",
+      "bottom_line": "Overall, the claims are trustworthy and accurate, but some details are missing."
+    },
+    "source": "webapp"
+  },
+  {
+    "id": "8d69ab8b-73d4-4d9c-9d80-45ebf57b0f6a",
+    "url": "https://www.instagram.com/p/DVv2N3Jk7DK/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+    "timestamp": "2026-03-11T19:13:39.166124+00:00",
+    "overall_credibility": "MIXED",
+    "avg_score": 72,
+    "bottom_line": "This article's credibility is mixed due to a combination of supported and unverified claims, as well as low credibility sources.",
+    "verdicts": [
+      {
+        "claim_text": "Instagram is owned by Meta.",
+        "verdict": "SUPPORTED",
+        "truth_score": 85,
+        "explanation": "The evidence collectively shows that Instagram is owned by Meta, with multiple sources confirming this relationship. Meta is a publicly-traded company, and Mark Zuckerberg owns a significant portion of its shares.",
+        "citations": [
+          "https://en.wikipedia.org/wiki/Instagram",
+          "https://en.wikipedia.org/wiki/Meta_Platforms",
+          "https://www.oreateai.com/blog/the-ownership-of-instagram-a-deep-dive-into-metas-digital-empire/172b7a8b1f114d09704ee174aaff73ea"
+        ],
+        "reasoning_summary": "The analyst's reasoning involves confirming the claim through multiple evidence snippets, assessing the confidence level, and determining the verdict based on the evidence.",
+        "confidence_level": "HIGH",
+        "evidence_gaps": [
+          "The relationship between Meta and Instagram's ownership is not explicitly stated in the evidence snippets."
+        ]
+      },
+      {
+        "claim_text": "Instagram has a feature called Meta Verified.",
+        "verdict": "SUPPORTED",
+        "truth_score": 70,
+        "explanation": "The evidence confirms that Meta Verified is a paid subscription that provides tools to help build confidence with new audiences and offers enhanced support as a customer service benefit for subscribers. While some features like brand protection from impersonation and account verification are inferred or have limited confirmation, the core claim about the existence and some benefits of Meta Verified is supported.",
+        "citations": [
+          "https://help.instagram.com/732454618598400",
+          "https://www.meta.com/meta-verified/?srsltid=AfmBOoqBCOTLgrrK-vHUpdncEVC3Ht_ewzTN17_9wGgZoHEXz8TLPg6k",
+          "https://help.instagram.com/2419286908233223"
+        ],
+        "reasoning_summary": "The analyst's reasoning involves confirming the existence of Meta Verified as a paid subscription with benefits like building confidence with new audiences and enhanced support. However, the analysis notes that some aspects, such as brand protection and account verification, are either inferred or not fully confirmed.",
+        "confidence_level": "MEDIUM",
+        "evidence_gaps": [
+          "More information is needed to fully understand all features of Meta Verified, particularly regarding brand protection from impersonation and whether it includes account verification."
+        ]
+      },
+      {
+        "claim_text": "Instagram has a feature called Threads.",
+        "verdict": "SUPPORTED",
+        "truth_score": 60,
+        "explanation": "The evidence collectively shows that Instagram has a feature called Threads, which is an app that allows users to post threads, including short pieces of text, photos, videos, or any combination of them. Threads is a text-based updates sharing platform that requires an Instagram account to set up an account and allows users to cross-post between the two platforms.",
+        "citations": [
+          "https://help.instagram.com/788669719351544/",
+          "https://www.adobe.com/express/learn/blog/all-about-threads",
+          "https://www.cnn.com/2023/07/06/tech/instagram-threads-app-explained"
+        ],
+        "reasoning_summary": "The analyst's reasoning involves a step-by-step analysis of the evidence, including an inventory of the evidence, decomposition of the claim, evidence matching, contradiction analysis, confidence assessment, and preliminary verdict reasoning. The evidence is consistent across all sources, and no contradictions were detected.",
+        "confidence_level": "MEDIUM",
+        "evidence_gaps": [
+          "The credibility of the sources is low, which may affect the overall confidence in the findings."
+        ]
+      }
+    ],
+    "explanations": {
+      "by_claim": {
+        "Instagram is owned by Meta.": {
+          "claim_text": "Instagram is owned by Meta.",
+          "plain_english": "This claim checks out. Instagram is indeed owned by Meta, a publicly-traded company. Mark Zuckerberg owns a significant portion of Meta's shares. However, the evidence doesn't explicitly state the exact nature of their ownership relationship.",
+          "confidence_statement": "High confidence \u2014 reported by established news outlets.",
+          "source_quality_note": "Sourced from outlets with limited editorial standards.",
+          "reader_advisory": "Be cautious of the low credibility sources used to support this claim.",
+          "evidence_gaps_plain": "The exact nature of Meta and Instagram's ownership relationship is unclear."
+        },
+        "Instagram has a feature called Meta Verified.": {
+          "claim_text": "Instagram has a feature called Meta Verified.",
+          "plain_english": "This claim is mostly accurate. Meta Verified is a paid subscription that provides tools to help build confidence with new audiences and offers enhanced support. However, some features like brand protection from impersonation and account verification are not fully confirmed. More information is needed to understand all aspects of Meta Verified.",
+          "confidence_statement": "Medium confidence \u2014 reported by established news outlets.",
+          "source_quality_note": "Sourced from outlets with limited editorial standards.",
+          "reader_advisory": "Be cautious of the low credibility sources used to support this claim and the limited confirmation of some features.",
+          "evidence_gaps_plain": "More information is needed to fully understand all features of Meta Verified, particularly regarding brand protection from impersonation and account verification."
+        },
+        "Instagram has a feature called Threads.": {
+          "claim_text": "Instagram has a feature called Threads.",
+          "plain_english": "This claim checks out. Instagram has a feature called Threads, which is an app that allows users to post threads, including short pieces of text, photos, videos, or any combination of them. Threads is a text-based updates sharing platform that requires an Instagram account to set up an account and allows users to cross-post between the two platforms.",
+          "confidence_statement": "Medium confidence \u2014 reported by established news outlets.",
+          "source_quality_note": "Sourced from outlets with limited editorial standards.",
+          "reader_advisory": "Be cautious of the low credibility sources used to support this claim.",
+          "evidence_gaps_plain": "The credibility of the sources is low, which may affect the overall confidence in the findings."
+        }
+      },
+      "overall_credibility": "MIXED",
+      "bottom_line": "This article's credibility is mixed due to a combination of supported and unverified claims, as well as low credibility sources."
+    },
+    "source": "webapp"
+  },
+  {
+    "id": "b06511bf-e79e-4ae5-99f1-6c9ae126c044",
+    "url": "https://assam.news18.com/photogallery/assam/big-news-regarding-teacher-recruitment-in-the-state-appointment-letters-will-be-issued-to-4500-lp-and-up-teachers-dd-520480.html",
+    "timestamp": "2026-03-11T19:11:29.963298+00:00",
+    "overall_credibility": "MOSTLY CREDIBLE",
+    "avg_score": 85,
+    "bottom_line": "This claim is mostly credible, but some details are still unclear.",
+    "verdicts": [
+      {
+        "claim_text": "The Assam government will issue appointment letters to 4500 LP and UP teachers.",
+        "verdict": "SUPPORTED",
+        "truth_score": 85,
+        "explanation": "The evidence collectively shows that the Assam government plans to issue appointment letters to 4500 LP and UP teachers, which is related to the recruitment of 4500 posts of Assistant Teacher in Lower and Upper Primary Schools. The final merit list for LP & UP Assistant Teachers has been published, and a verification list for 4500 LP, UP teacher posts is to be released.",
+        "citations": [
+          "https://jobassam.in/dee-merit-list/",
+          "https://www.indiatodayne.in/assam/story/assam-to-release-verification-list-for-4500-lp-up-teacher-posts-on-january-26-1336292-2026-01-25",
+          "https://www.assamcareer.com/2021/09/dee-lp-up-teacher.html"
+        ],
+        "reasoning_summary": "The analyst's reasoning involves a step-by-step analysis of the evidence, including claim decomposition, evidence matching, and contradiction analysis. The evidence shows that the Assam government plans to issue appointment letters to 4500 LP and UP teachers, which is related to the recruitment of 4500 posts of Assistant Teacher in Lower and Upper Primary Schools.",
+        "confidence_level": "HIGH",
+        "evidence_gaps": [
+          "Some gaps in the evidence, such as the exact date of the appointment letter issuance and the details of the verification list."
+        ]
+      }
+    ],
+    "explanations": {
+      "by_claim": {
+        "The Assam government will issue appointment letters to 4500 LP and UP teachers.": {
+          "claim_text": "The Assam government will issue appointment letters to 4500 LP and UP teachers.",
+          "plain_english": "The Assam government plans to issue appointment letters to 4500 LP and UP teachers. This is related to the recruitment of 4500 posts of Assistant Teacher in Lower and Upper Primary Schools. The final merit list for LP & UP Assistant Teachers has been published, and a verification list for 4500 LP, UP teacher posts is to be released. However, some details are still unclear, such as the exact date of the appointment letter issuance and the verification list.",
+          "confidence_statement": "High confidence \u2014 reported by established news outlets.",
+          "source_quality_note": "Sourced from outlets with limited editorial standards",
+          "reader_advisory": "Treat the information with caution as some sources have low credibility.",
+          "evidence_gaps_plain": "Some details, such as the exact date of the appointment letter issuance and the verification list, are still unknown."
+        }
+      },
+      "overall_credibility": "MOSTLY CREDIBLE",
+      "bottom_line": "This claim is mostly credible, but some details are still unclear."
+    },
+    "source": "webapp"
+  },
+  {
+    "id": "3eb8f28f-8dbf-4e69-8429-ffd46cda9f98",
+    "url": "https://assam.news18.com/photogallery/assam/big-news-regarding-teacher-recruitment-in-the-state-appointment-letters-will-be-issued-to-4500-lp-and-up-teachers-dd-520480.html",
+    "timestamp": "2026-03-11T18:51:42.913496+00:00",
+    "overall_credibility": "MOSTLY CREDIBLE",
+    "avg_score": 85,
+    "bottom_line": "Mostly credible information supports this claim, but some sources have limited editorial standards.",
+    "verdicts": [
+      {
+        "claim_text": "The Assam government will issue appointment letters to 4500 LP and UP teachers.",
+        "verdict": "SUPPORTED",
+        "truth_score": 85,
+        "explanation": "The evidence collectively shows that the Assam government plans to issue appointment letters to 4500 LP and UP teachers, which is related to the recruitment of 4500 posts of Assistant Teacher in Lower and Upper Primary Schools. The final merit list for LP & UP Assistant Teachers has been published, and a verification list for 4500 LP, UP teacher posts is to be released.",
+        "citations": [
+          "https://jobassam.in/dee-merit-list/",
+          "https://www.indiatodayne.in/assam/story/assam-to-release-verification-list-for-4500-lp-up-teacher-posts-on-january-26-1336292-2026-01-25",
+          "https://www.assamcareer.com/2021/09/dee-lp-up-teacher.html"
+        ],
+        "reasoning_summary": "The analyst's reasoning involves a step-by-step analysis of the evidence, including claim decomposition, evidence matching, and contradiction analysis. The evidence collectively supports the claim, with multiple sources confirming the Assam government's plan to issue appointment letters to 4500 LP and UP teachers.",
+        "confidence_level": "HIGH",
+        "evidence_gaps": [
+          "Some gaps in the evidence exist, such as the exact date of the appointment letter issuance and the details of the verification list."
+        ]
+      }
+    ],
+    "explanations": {
+      "by_claim": {
+        "The Assam government will issue appointment letters to 4500 LP and UP teachers.": {
+          "claim_text": "The Assam government will issue appointment letters to 4500 LP and UP teachers.",
+          "plain_english": "This claim checks out. The Assam government plans to issue appointment letters to 4500 LP and UP teachers. This is related to the recruitment of 4500 posts of Assistant Teacher in Lower and Upper Primary Schools. A verification list for 4500 LP, UP teacher posts is to be released.",
+          "confidence_statement": "High confidence \u2014 reported by established news outlets.",
+          "source_quality_note": "Sourced from outlets with limited editorial standards",
+          "reader_advisory": "Note that some sources used to support this claim have limited editorial standards.",
+          "evidence_gaps_plain": "Some details are still unknown, such as the exact date of the appointment letter issuance and the details of the verification list."
+        }
+      },
+      "overall_credibility": "MOSTLY CREDIBLE",
+      "bottom_line": "Mostly credible information supports this claim, but some sources have limited editorial standards."
+    },
+    "source": "webapp"
+  },
+  {
+    "id": "bbb9bc91-a955-4588-91c9-bc6d37e53111",
+    "url": "https://assam.news18.com/photogallery/assam/big-news-regarding-teacher-recruitment-in-the-state-appointment-letters-will-be-issued-to-4500-lp-and-up-teachers-dd-520480.html",
+    "timestamp": "2026-03-11T18:51:11.312704+00:00",
+    "overall_credibility": "MOSTLY CREDIBLE",
+    "avg_score": 80,
+    "bottom_line": "Mostly credible information, but some gaps in the evidence.",
+    "verdicts": [
+      {
+        "claim_text": "The Assam government will issue appointment letters to 4500 LP and UP teachers.",
+        "verdict": "SUPPORTED",
+        "truth_score": 80,
+        "explanation": "The evidence collectively shows that the Assam government plans to issue appointment letters to 4500 LP and UP teachers, which is related to the recruitment of 4500 posts of Assistant Teacher in Lower and Upper Primary Schools. The final merit list for LP & UP Assistant Teachers has been published, and a verification list for 4500 LP, UP teacher posts is to be released.",
+        "citations": [
+          "https://jobassam.in/dee-merit-list/",
+          "https://www.indiatodayne.in/assam/story/assam-to-release-verification-list-for-4500-lp-up-teacher-posts-on-january-26-1336292-2026-01-25",
+          "https://www.assamcareer.com/2021/09/dee-lp-up-teacher.html"
+        ],
+        "reasoning_summary": "The analyst's reasoning involves a step-by-step analysis of the evidence, including claim decomposition, evidence matching, and contradiction analysis. The evidence collectively supports the claim, with some gaps in the details.",
+        "confidence_level": "HIGH",
+        "evidence_gaps": [
+          "Some gaps in the evidence, such as the exact date of the appointment letter issuance and the details of the verification list."
+        ]
+      }
+    ],
+    "explanations": {
+      "by_claim": {
+        "The Assam government will issue appointment letters to 4500 LP and UP teachers.": {
+          "claim_text": "The Assam government will issue appointment letters to 4500 LP and UP teachers.",
+          "plain_english": "The Assam government plans to issue appointment letters to 4500 LP and UP teachers. This is related to the recruitment of 4500 posts of Assistant Teacher in Lower and Upper Primary Schools. A verification list for 4500 LP, UP teacher posts is to be released. However, we don't know the exact date of the appointment letter issuance.",
+          "confidence_statement": "High confidence \u2014 reported by established news outlets.",
+          "source_quality_note": "Sourced from outlets with limited editorial standards",
+          "reader_advisory": null,
+          "evidence_gaps_plain": "Some gaps in the evidence, such as the exact date of the appointment letter issuance and the details of the verification list."
+        }
+      },
+      "overall_credibility": "MOSTLY CREDIBLE",
+      "bottom_line": "Mostly credible information, but some gaps in the evidence."
+    },
+    "source": "webapp"
+  },
+  {
+    "id": "ae1c47f6-94fa-4918-8570-270701be815c",
+    "url": "https://assam.news18.com/photogallery/assam/big-news-regarding-teacher-recruitment-in-the-state-appointment-letters-will-be-issued-to-4500-lp-and-up-teachers-dd-520480.html",
+    "timestamp": "2026-03-11T18:49:22.219742+00:00",
+    "overall_credibility": "MOSTLY CREDIBLE",
+    "avg_score": 85,
+    "bottom_line": "The claim is mostly credible, but some sources have low credibility.",
+    "verdicts": [
+      {
+        "claim_text": "The Assam government will issue appointment letters to 4500 LP and UP teachers.",
+        "verdict": "SUPPORTED",
+        "truth_score": 85,
+        "explanation": "The evidence collectively shows that the Assam government plans to issue appointment letters to 4500 LP and UP teachers, which is related to the recruitment of 4500 posts of Assistant Teacher in Lower and Upper Primary Schools. The final merit list for LP & UP Assistant Teachers has been published, and a verification list for 4500 LP, UP teacher posts is to be released.",
+        "citations": [
+          "https://jobassam.in/dee-merit-list/",
+          "https://www.indiatodayne.in/assam/story/assam-to-release-verification-list-for-4500-lp-up-teacher-posts-on-january-26-1336292-2026-01-25",
+          "https://www.assamcareer.com/2021/09/dee-lp-up-teacher.html"
+        ],
+        "reasoning_summary": "The analyst's reasoning involves a step-by-step analysis of the evidence, including claim decomposition, evidence matching, and contradiction analysis. The evidence collectively supports the claim, with some gaps in the details.",
+        "confidence_level": "HIGH",
+        "evidence_gaps": [
+          "Some gaps in the evidence, such as the exact date of the appointment letter issuance and the details of the verification list."
+        ]
+      }
+    ],
+    "explanations": {
+      "by_claim": {
+        "The Assam government will issue appointment letters to 4500 LP and UP teachers.": {
+          "claim_text": "The Assam government will issue appointment letters to 4500 LP and UP teachers.",
+          "plain_english": "The Assam government plans to issue appointment letters to 4500 LP and UP teachers. This is related to the recruitment of 4500 posts of Assistant Teacher in Lower and Upper Primary Schools. The final merit list for LP & UP Assistant Teachers has been published, and a verification list for 4500 LP, UP teacher posts is to be released. However, we don't know the exact date when the appointment letters will be issued.",
+          "confidence_statement": "High confidence \u2014 reported by established news outlets.",
+          "source_quality_note": "Sourced from outlets with limited editorial standards",
+          "reader_advisory": "Treat the information with caution as some of the sources have low credibility.",
+          "evidence_gaps_plain": "Some gaps in the evidence, such as the exact date of the appointment letter issuance and the details of the verification list."
+        }
+      },
+      "overall_credibility": "MOSTLY CREDIBLE",
+      "bottom_line": "The claim is mostly credible, but some sources have low credibility."
+    },
+    "source": "webapp"
+  },
+  {
+    "id": "354ba093-9c56-4ae9-8b7a-7592147d88a5",
+    "url": "https://assam.news18.com/photogallery/assam/big-news-regarding-teacher-recruitment-in-the-state-appointment-letters-will-be-issued-to-4500-lp-and-up-teachers-dd-520480.html",
+    "timestamp": "2026-03-11T18:48:35.575054+00:00",
+    "overall_credibility": "MOSTLY CREDIBLE",
+    "avg_score": 80,
+    "bottom_line": "Mostly credible \u2014 reported by established news outlets, but some details are still unknown.",
+    "verdicts": [
+      {
+        "claim_text": "The Assam government will issue appointment letters to 4500 LP and UP teachers.",
+        "verdict": "SUPPORTED",
+        "truth_score": 80,
+        "explanation": "The evidence collectively shows that the Assam government plans to issue appointment letters to 4500 LP and UP teachers, which is related to the recruitment of 4500 posts of Assistant Teacher in Lower and Upper Primary Schools. The final merit list for LP & UP Assistant Teachers has been published, and a verification list for 4500 LP, UP teacher posts is to be released.",
+        "citations": [
+          "https://jobassam.in/dee-merit-list/",
+          "https://www.indiatodayne.in/assam/story/assam-to-release-verification-list-for-4500-lp-up-teacher-posts-on-january-26-1336292-2026-01-25",
+          "https://www.assamcareer.com/2021/09/dee-lp-up-teacher.html"
+        ],
+        "reasoning_summary": "The analyst's reasoning involves a step-by-step analysis of the evidence, including claim decomposition, evidence matching, and contradiction analysis. The evidence shows that the Assam government plans to issue appointment letters to 4500 LP and UP teachers, which is related to the recruitment of 4500 posts of Assistant Teacher in Lower and Upper Primary Schools.",
+        "confidence_level": "HIGH",
+        "evidence_gaps": [
+          "Some gaps in the evidence, such as the exact date of the appointment letter issuance and the details of the verification list."
+        ]
+      }
+    ],
+    "explanations": {
+      "by_claim": {
+        "The Assam government will issue appointment letters to 4500 LP and UP teachers.": {
+          "claim_text": "The Assam government will issue appointment letters to 4500 LP and UP teachers.",
+          "plain_english": "The Assam government plans to issue appointment letters to 4500 LP and UP teachers. This is related to the recruitment of 4500 posts of Assistant Teacher in Lower and Upper Primary Schools. The final merit list for LP & UP Assistant Teachers has been published, and a verification list for 4500 LP, UP teacher posts is to be released. However, we don't know the exact date when the appointment letters will be issued or the details of the verification list.",
+          "confidence_statement": "High confidence \u2014 reported by established news outlets.",
+          "source_quality_note": "Reported by specialist or regional sources",
+          "reader_advisory": "Treat the information with caution as some sources have low credibility.",
+          "evidence_gaps_plain": "Some details, like the exact date of the appointment letter issuance and the verification list, are still unknown."
+        }
+      },
+      "overall_credibility": "MOSTLY CREDIBLE",
+      "bottom_line": "Mostly credible \u2014 reported by established news outlets, but some details are still unknown."
+    },
+    "source": "webapp"
+  },
+  {
+    "id": "df7f0745-4cb3-4f43-9e78-da16b27761a7",
+    "url": "https://assam.news18.com/photogallery/assam/big-news-regarding-teacher-recruitment-in-the-state-appointment-letters-will-be-issued-to-4500-lp-and-up-teachers-dd-520480.html",
+    "timestamp": "2026-03-11T18:43:55.176864+00:00",
+    "overall_credibility": "MOSTLY CREDIBLE",
+    "avg_score": 80,
+    "bottom_line": "Mostly credible information, but some details are unclear.",
+    "verdicts": [
+      {
+        "claim_text": "The Assam government will issue appointment letters to 4500 LP and UP teachers.",
+        "verdict": "SUPPORTED",
+        "truth_score": 80,
+        "explanation": "The evidence collectively shows that the Assam government plans to issue appointment letters to 4500 LP and UP teachers, which is related to the recruitment of 4500 posts of Assistant Teacher in Lower and Upper Primary Schools. The final merit list for LP & UP Assistant Teachers has been published, and a verification list for 4500 LP, UP teacher posts is to be released.",
+        "citations": [
+          "https://jobassam.in/dee-merit-list/",
+          "https://www.indiatodayne.in/assam/story/assam-to-release-verification-list-for-4500-lp-up-teacher-posts-on-january-26-1336292-2026-01-25",
+          "https://www.assamcareer.com/2021/09/dee-lp-up-teacher.html"
+        ],
+        "reasoning_summary": "The analyst's reasoning involves a step-by-step analysis of the evidence, including claim decomposition, evidence matching, and contradiction analysis. The evidence collectively supports the claim, with some gaps in the details.",
+        "confidence_level": "HIGH",
+        "evidence_gaps": [
+          "Some gaps in the evidence, such as the exact date of the appointment letter issuance and the details of the verification list."
+        ]
+      }
+    ],
+    "explanations": {
+      "by_claim": {
+        "The Assam government will issue appointment letters to 4500 LP and UP teachers.": {
+          "claim_text": "The Assam government will issue appointment letters to 4500 LP and UP teachers.",
+          "plain_english": "The Assam government plans to issue appointment letters to 4500 LP and UP teachers. This is related to the recruitment of 4500 posts of Assistant Teacher in Lower and Upper Primary Schools. The final merit list for LP & UP Assistant Teachers has been published, and a verification list for 4500 LP, UP teacher posts is to be released. However, some details are still unclear, like when the appointment letters will be issued.",
+          "confidence_statement": "High confidence \u2014 reported by established news outlets.",
+          "source_quality_note": "Sourced from outlets with limited editorial standards",
+          "reader_advisory": "Treat the information with some caution as some sources have low credibility.",
+          "evidence_gaps_plain": "Some gaps in the evidence, such as the exact date of the appointment letter issuance and the details of the verification list."
+        }
+      },
+      "overall_credibility": "MOSTLY CREDIBLE",
+      "bottom_line": "Mostly credible information, but some details are unclear."
+    },
+    "source": "webapp"
+  },
+  {
+    "id": "27b761b0-1b0a-46b8-a685-c77e19949d3e",
+    "url": "https://assam.news18.com/news/assam/no-lpg-crisis-in-assam-chief-secretary-urges-not-to-spread-fake-news-skd-ws-l-520530.html",
+    "timestamp": "2026-03-11T18:43:03.480759+00:00",
+    "overall_credibility": "MIXED",
+    "avg_score": 90,
+    "bottom_line": "Explanation generation encountered an error. Please review the raw verdicts.",
+    "verdicts": [
+      {
+        "claim_text": "There is no LPG crisis in Assam.",
+        "verdict": "SUPPORTED",
+        "truth_score": 90,
+        "explanation": "The Indian Oil Corporation and the Assam CM have stated there is no LPG shortage in Assam, despite a commercial LPG shortage in Guwahati. The Assam CM has assured enough LPG supply, and a 25-day lock-in rule is enforced to stabilize demand.",
+        "citations": [
+          "https://www.guwahatiplus.com/commercial-lpg-shortage-hits-hospitality-sector-amid-west-asia-conflict",
+          "https://www.instagram.com/reel/DVvIcMakeFp/",
+          "https://www.facebook.com/TheAssamTribune/posts/the-indian-oil-corporation-ioc-has-said-that-there-is-no-shortage-of-lpg-as-of-n/1375557311283295/"
+        ],
+        "reasoning_summary": "The evidence shows no LPG shortage in Assam, as stated by the IOC and the Assam CM, but a commercial shortage exists in Guwahati.",
+        "confidence_level": "HIGH",
+        "evidence_gaps": [
+          "Extent of commercial shortage and its impact on the general population"
+        ]
+      },
+      {
+        "claim_text": "The Chief Secretary of Assam urged people not to spread fake news.",
+        "verdict": "SUPPORTED",
+        "truth_score": 90,
+        "explanation": "The Chief Secretary of Assam is urging people not to spread fake news, as confirmed by multiple sources, including a credible news article and social media posts. However, there is a gap in the evidence regarding the specific action being taken or threatened against those spreading fake news.",
+        "citations": [
+          "https://theprint.in/india/sarma-urges-people-to-reject-fake-news-report-those-trying-to-undermine-armed-forces/2620015/",
+          "https://morungexpress.com/assam-govt-warns-against-fake-news",
+          "https://www.syllad.com/no-candidate-list-yet-fake-news-being-spread-assam-bjp-chief-warns-of-action-against-rumour-mongers/"
+        ],
+        "reasoning_summary": "The evidence collectively shows that the Chief Secretary of Assam is urging people not to spread fake news, and the Assam government or government officials are warning against fake news.",
+        "confidence_level": "HIGH",
+        "evidence_gaps": [
+          "There is a gap in the evidence regarding the specific action being taken or threatened against those spreading fake news."
+        ]
+      }
+    ],
+    "explanations": {
+      "by_claim": {
+        "There is no LPG crisis in Assam.": {
+          "claim_text": "There is no LPG crisis in Assam.",
+          "plain_english": "This claim could not be explained at this time due to a processing error.",
+          "confidence_statement": "Confidence unknown \u2014 explanation generation failed.",
+          "source_quality_note": "Source quality assessment unavailable.",
+          "reader_advisory": null,
+          "evidence_gaps_plain": null
+        },
+        "The Chief Secretary of Assam urged people not to spread fake news.": {
+          "claim_text": "The Chief Secretary of Assam urged people not to spread fake news.",
+          "plain_english": "This claim could not be explained at this time due to a processing error.",
+          "confidence_statement": "Confidence unknown \u2014 explanation generation failed.",
+          "source_quality_note": "Source quality assessment unavailable.",
+          "reader_advisory": null,
           "evidence_gaps_plain": null
         }
       },
       "overall_credibility": "MIXED",
-      "bottom_line": "This article contains a mix of credible and unverified claims, so be cautious when interpreting the information."
+      "bottom_line": "Explanation generation encountered an error. Please review the raw verdicts."
     },
     "source": "webapp"
   },
   {
-    "id": "6f3b8e31-60f6-43cf-865c-76e9388b3c8b",
-    "url": "[Image: new_img2.png]",
-    "timestamp": "2026-03-11T17:48:44.461561+00:00",
-    "overall_credibility": "LOW CREDIBILITY",
-    "avg_score": 47,
-    "bottom_line": "Be cautious when considering these claims as they are based on unverified or misleading information.",
+    "id": "4d0e8d95-02ae-4e14-8f98-24d65d684838",
+    "url": "https://assam.news18.com/news/assam/no-lpg-crisis-in-assam-chief-secretary-urges-not-to-spread-fake-news-skd-ws-l-520530.html",
+    "timestamp": "2026-03-11T18:33:00.488869+00:00",
+    "overall_credibility": "CREDIBLE",
+    "avg_score": 90,
+    "bottom_line": "This article is generally trustworthy, with all claims supported by high-confidence evidence from credible sources.",
     "verdicts": [
       {
-        "claim_text": "Rachpal Singh was planning to bring weapons from Pakistan and supply them in Punjab.",
-        "verdict": "MISLEADING",
-        "truth_score": 50,
-        "explanation": "The evidence suggests Rachpal Singh was allegedly involved in sourcing weapons from Pakistan, but there is a gap in evidence regarding his plans to supply weapons in Punjab. The claim is technically true about sourcing from Pakistan but lacks context on the supply part.",
-        "citations": [
-          "https://timesofindia.indiatimes.com/city/chandigarh/weapons-from-pakistan-arming-gangsters-in-punjab-cops/articleshow/122939971.cms",
-          "https://www.facebook.com/thesaveraonline/videos/punjab-police-seize-isi-sponsored-weapons-shipment-from-pakistan-in-major-crackd/673588845744269/"
-        ],
-        "reasoning_summary": "The evidence indicates Rachpal Singh's involvement in sourcing weapons from Pakistan but lacks sufficient information to confirm his plans to supply these weapons in Punjab.",
-        "confidence_level": "MEDIUM",
-        "evidence_gaps": [
-          "Gaps exist regarding Rachpal Singh's plans to supply weapons in Punjab."
-        ]
-      },
-      {
-        "claim_text": "Five Pakistani intruders who were killed by the Border Security Force (BSF) in Tarn Taran's Amarkot sector on Saturday were planning to carry out a major attack in Punjab and Delhi.",
-        "verdict": "UNVERIFIED",
-        "truth_score": 50,
-        "explanation": "The evidence confirms that five Pakistani intruders were killed by the BSF in Tarn Taran's Amarkot sector, but there is no direct evidence to support the claim that they were planning to carry out a major attack in Punjab and Delhi.",
-        "citations": [
-          "https://www.firstpost.com/india/bsf-shoots-down-five-intruders-along-india-pakistan-international-border-in-punjab-8741361.html",
-          "https://www.ibtimes.co.in/five-intruders-shot-dead-by-bsf-near-indo-pak-border-punjabs-tarn-taran-826847"
-        ],
-        "reasoning_summary": "The analyst's reasoning involves confirming the first part of the claim through multiple sources but finds a significant gap in evidence regarding the intruders' intentions to carry out a major attack.",
-        "confidence_level": "LOW",
-        "evidence_gaps": [
-          "Lack of direct evidence on the intruders' plans to carry out a major attack in Punjab and Delhi."
-        ]
-      },
-      {
-        "claim_text": "Rachpal Singh, also known as Dholabucha, had been to Pakistan 10 times since 2016.",
-        "verdict": "UNVERIFIED",
-        "truth_score": 40,
-        "explanation": "The claim about Rachpal Singh's alias and travel history to Pakistan remains unverified due to a lack of relevant evidence. None of the provided evidence snippets address these specific claims, resulting in significant gaps in understanding Rachpal Singh's identity and activities.",
-        "citations": [],
-        "reasoning_summary": "The analyst's reasoning highlights the absence of evidence supporting or refuting the claim, leading to a low confidence assessment. The available evidence does not mention Rachpal Singh's alias or travel history to Pakistan, making it impossible to verify the claim.",
-        "confidence_level": "LOW",
-        "evidence_gaps": [
-          "The claim's two main components - Rachpal Singh's alias and his travel history to Pakistan - are not addressed in the provided evidence snippets."
-        ]
-      }
-    ],
-    "explanations": {
-      "by_claim": {
-        "Rachpal Singh was planning to bring weapons from Pakistan and supply them in Punjab.": {
-          "claim_text": "Rachpal Singh was planning to bring weapons from Pakistan and supply them in Punjab.",
-          "plain_english": "The claim that Rachpal Singh was planning to bring weapons from Pakistan and supply them in Punjab is misleading. The evidence suggests he was involved in sourcing weapons from Pakistan, but we don't have enough information to confirm his plans to supply them in Punjab. This claim contains a misleading element because it implies Rachpal Singh was planning to supply weapons in Punjab, but the evidence only confirms his involvement in sourcing weapons from Pakistan. We can't confirm the supply part of the claim.",
-          "confidence_statement": "Medium confidence \u2014 the evidence suggests Rachpal Singh was involved in sourcing weapons from Pakistan, but there's a gap in evidence regarding his plans to supply weapons in Punjab.",
-          "source_quality_note": "Sourced from outlets with limited editorial standards.",
-          "reader_advisory": "Treat this claim with caution as it's based on sources with limited editorial standards.",
-          "evidence_gaps_plain": "There's a gap in evidence regarding Rachpal Singh's plans to supply weapons in Punjab."
-        },
-        "Five Pakistani intruders who were killed by the Border Security Force (BSF) in Tarn Taran's Amarkot sector on Saturday were planning to carry out a major attack in Punjab and Delhi.": {
-          "claim_text": "Five Pakistani intruders who were killed by the Border Security Force (BSF) in Tarn Taran's Amarkot sector on Saturday were planning to carry out a major attack in Punjab and Delhi.",
-          "plain_english": "The claim that five Pakistani intruders were planning to carry out a major attack in Punjab and Delhi is unverified. The evidence confirms that they were killed by the BSF in Tarn Taran's Amarkot sector, but we don't have enough information to confirm their plans to carry out a major attack. We can't confirm the attack part of the claim because there's no direct evidence to support it. This leaves us with a significant gap in understanding the intruders' intentions.",
-          "confidence_statement": "Low confidence \u2014 the evidence confirms the intruders were killed by the BSF, but there's no direct evidence to support their plans to carry out a major attack.",
-          "source_quality_note": "Sources have varying credibility.",
-          "reader_advisory": "Treat this claim with caution as it's based on sources with varying credibility.",
-          "evidence_gaps_plain": "There's a lack of direct evidence on the intruders' plans to carry out a major attack in Punjab and Delhi."
-        },
-        "Rachpal Singh, also known as Dholabucha, had been to Pakistan 10 times since 2016.": {
-          "claim_text": "Rachpal Singh, also known as Dholabucha, had been to Pakistan 10 times since 2016.",
-          "plain_english": "The claim about Rachpal Singh's alias and travel history to Pakistan remains unverified. None of the provided evidence snippets address these specific claims, resulting in significant gaps in understanding Rachpal Singh's identity and activities. We can't confirm the claim because the available evidence doesn't mention Rachpal Singh's alias or travel history to Pakistan. This leaves us with a lack of information about Rachpal Singh's identity and activities.",
-          "confidence_statement": "Low confidence \u2014 the available evidence does not mention Rachpal Singh's alias or travel history to Pakistan, making it impossible to verify the claim.",
-          "source_quality_note": "Generally credible sources, but the evidence doesn't support the claim.",
-          "reader_advisory": "Treat this claim with caution as it's based on generally credible sources, but the evidence doesn't support the claim.",
-          "evidence_gaps_plain": "The claim's two main components - Rachpal Singh's alias and his travel history to Pakistan - are not addressed in the provided evidence snippets."
-        }
-      },
-      "overall_credibility": "LOW CREDIBILITY",
-      "bottom_line": "Be cautious when considering these claims as they are based on unverified or misleading information."
-    },
-    "source": "webapp"
-  },
-  {
-    "id": "2e317410-4c50-4489-95ec-0b75671646a5",
-    "url": "[Image: new_img3.jpeg]",
-    "timestamp": "2026-03-11T17:47:54.699887+00:00",
-    "overall_credibility": "UNRELIABLE",
-    "avg_score": 0,
-    "bottom_line": "",
-    "verdicts": [],
-    "explanations": {},
-    "source": "webapp"
-  },
-  {
-    "id": "5b1e32c3-3213-457a-aaa4-689ea0d9aa3c",
-    "url": "[Image: new_img3.jpeg]",
-    "timestamp": "2026-03-11T17:43:52.717769+00:00",
-    "overall_credibility": "UNRELIABLE",
-    "avg_score": 0,
-    "bottom_line": "",
-    "verdicts": [],
-    "explanations": {},
-    "source": "webapp"
-  },
-  {
-    "id": "50ca58fe-e504-43cc-bf16-5070f92ba92c",
-    "url": "[Image: new_img3.jpeg]",
-    "timestamp": "2026-03-11T17:40:39.334005+00:00",
-    "overall_credibility": "UNRELIABLE",
-    "avg_score": 0,
-    "bottom_line": "",
-    "verdicts": [],
-    "explanations": {},
-    "source": "webapp"
-  },
-  {
-    "id": "9861f05a-87cf-4643-bf69-1073e65c95cc",
-    "url": "[Image: new_img2.png]",
-    "timestamp": "2026-03-11T17:37:09.242929+00:00",
-    "overall_credibility": "LOW CREDIBILITY",
-    "avg_score": 47,
-    "bottom_line": "This fact-checking effort has low credibility due to multiple unverified claims and limited evidence.",
-    "verdicts": [
-      {
-        "claim_text": "Tarn Taran SSP Dhruman H. Nimbale said that Rachpal was planning to bring arms from Pakistan and supply them in Punjab in the coming days.",
-        "verdict": "UNVERIFIED",
-        "truth_score": 40,
-        "explanation": "The claim about Rachpal's plans to bring arms from Pakistan and supply them in Punjab cannot be verified due to a lack of relevant evidence. The provided evidence snippets discuss unrelated topics and do not address the claim directly.",
-        "citations": [
-          "https://www.hindustantimes.com/cities/chandigarh-news/tarn-taran-cross-border-weapon-smuggling-module-busted-2-held-101749150044698.html",
-          "https://www.hindustantimes.com/cities/chandigarh-news/crossborder-arms-smuggling-racket-busted-4-held-in-punjab-s-tarn-taran-101753559620923.html",
-          "https://www.hindustantimes.com/cities/others/punjab-police-restoring-british-era-building-in-tarn-taran-101625761766321.html"
-        ],
-        "reasoning_summary": "The analyst's reasoning involves a step-by-step analysis of the evidence, which reveals significant gaps in addressing the claim about Rachpal's plans. The evidence discusses unrelated topics, leading to a conclusion that the claim cannot be verified.",
-        "confidence_level": "LOW",
-        "evidence_gaps": [
-          "The evidence does not address the claim about Rachpal's plans to bring arms from Pakistan and supply them in Punjab, resulting in significant gaps."
-        ]
-      },
-      {
-        "claim_text": "Five intruders who were killed by the BSF in Tarn Taran's Amarkot sector on Saturday were planning to carry out a major attack in Punjab and Delhi.",
-        "verdict": "MISLEADING",
-        "truth_score": 50,
-        "explanation": "The claim that five intruders were killed by the BSF in Tarn Taran's Amarkot sector is supported by evidence, but there is no direct evidence to support the claim that they were planning to carry out a major attack in Punjab and Delhi.",
-        "citations": [
-          "https://www.hindustantimes.com/india-news/bsf-shoots-down-5-intruders-at-india-pakistan-border-in-punjab-s-tarn-taran/story-UZWJ7bEZxuaG9CDv8hjuzL-amp.html",
-          "https://www.firstpost.com/india/bsf-shoots-down-five-intruders-along-india-pakistan-international-border-in-punjab-8741361.html",
-          "https://www.ibtimes.co.in/five-intruders-shot-dead-by-bsf-near-indo-pak-border-punjabs-tarn-taran-826847"
-        ],
-        "reasoning_summary": "The evidence confirms that five intruders were killed by the BSF, but lacks direct evidence regarding their planned attack, leading to a misleading claim.",
-        "confidence_level": "MEDIUM",
-        "evidence_gaps": [
-          "No direct evidence supports the claim that the intruders were planning to carry out a major attack in Punjab and Delhi."
-        ]
-      },
-      {
-        "claim_text": "Rachpal Singh, a resident of Daula Bhucho, was spying for Pakistan and had brought heroin from Pakistan ten times since 2016.",
-        "verdict": "MISLEADING",
-        "truth_score": 50,
-        "explanation": "The claim that Rachpal Singh was spying for Pakistan is partially supported by evidence of similar activities by other individuals, but there is no direct evidence linking him to such activities. Additionally, there is no evidence to support the claim that he brought heroin from Pakistan ten times since 2016.",
-        "citations": [
-          "https://www.hindustantimes.com/cities/chandigarh-news/construction-supervisor-held-in-ambala-for-spying-for-pakistan-101767604379716.html",
-          "https://www.hindustantimes.com/cities/chandigarh-news/construction-supervisor-held-in-ambala-for-spying-for-pakistan-101767604379716-amp.html",
-          "https://www.firstpost.com/explainers/youtuber-jasbir-singh-punjab-arrested-spying-pakistan-13894326.html"
-        ],
-        "reasoning_summary": "The evidence suggests that while there have been instances of individuals spying for Pakistan, there is no direct evidence linking Rachpal Singh to such activities. Furthermore, there is no evidence to support the claim of heroin smuggling.",
-        "confidence_level": "MEDIUM",
-        "evidence_gaps": [
-          "Lack of direct evidence linking Rachpal Singh to spying for Pakistan and heroin smuggling activities."
-        ]
-      }
-    ],
-    "explanations": {
-      "by_claim": {
-        "Tarn Taran SSP Dhruman H. Nimbale said that Rachpal was planning to bring arms from Pakistan and supply them in Punjab in the coming days.": {
-          "claim_text": "Tarn Taran SSP Dhruman H. Nimbale said that Rachpal was planning to bring arms from Pakistan and supply them in Punjab in the coming days.",
-          "plain_english": "We couldn't find any information to confirm or deny the claim that Rachpal was planning to bring arms from Pakistan and supply them in Punjab. The evidence we have is about unrelated topics. We need more information to make a decision about this claim.",
-          "confidence_statement": "Low confidence \u2014 the evidence does not directly address the claim.",
-          "source_quality_note": "Reported by established news outlets (hindustantimes.com) and sourced from outlets with limited editorial standards (tribuneindia.com, truescoopnews.com)",
-          "reader_advisory": "Treat this claim with caution as the evidence is limited and does not directly address the claim.",
-          "evidence_gaps_plain": "The evidence does not mention Rachpal's plans to bring arms from Pakistan and supply them in Punjab."
-        }
-      },
-      "overall_credibility": "LOW CREDIBILITY",
-      "bottom_line": "This fact-checking effort has low credibility due to multiple unverified claims and limited evidence."
-    },
-    "source": "webapp"
-  },
-  {
-    "id": "235a256a-e440-407f-904c-2edf086b79c8",
-    "url": "[Image: new_img.png]",
-    "timestamp": "2026-03-11T17:35:31.517015+00:00",
-    "overall_credibility": "MIXED",
-    "avg_score": 77,
-    "bottom_line": "The information about the 9/11 attacks has mixed credibility due to the use of low-quality sources and some gaps in the evidence.",
-    "verdicts": [
-      {
-        "claim_text": "The Twin Towers were destroyed by hijacked jets.",
-        "verdict": "SUPPORTED",
-        "truth_score": 70,
-        "explanation": "The evidence collectively shows that the Twin Towers were destroyed by hijacked planes, and the hijackers were affiliated with a terrorist organization. Although there are some gaps in the evidence, the majority of the sub-parts of the claim are addressed.",
-        "citations": [
-          "https://millercenter.org/remembering-september-11/september-11-terrorist-attacks",
-          "https://www.911memorial.org/911-faqs",
-          "https://archive.nytimes.com/www.nytimes.com/learning/general/onthisday/big/0911.html"
-        ],
-        "reasoning_summary": "The analyst's reasoning involves inventorying the evidence, decomposing the claim, matching the evidence to the claim, analyzing for contradictions, and assessing confidence. The evidence from multiple sources confirms that the Twin Towers were destroyed by hijacked planes, and the hijackers were affiliated with al-Qaeda.",
-        "confidence_level": "MEDIUM",
-        "evidence_gaps": [
-          "Some gaps exist in the evidence, such as the intentional crashing of the planes into the Twin Towers, which is inferred but not directly stated in all sources."
-        ]
-      },
-      {
-        "claim_text": "The Pentagon was hit by a hijacked jet.",
+        "claim_text": "There is no LPG crisis in Assam.",
         "verdict": "SUPPORTED",
         "truth_score": 90,
-        "explanation": "The evidence collectively shows that American Airlines Flight 77 was involved in the attack on the Pentagon, crashed into the west side of the building, and was successful in terms of the hijackers' goals. The attack occurred at 9:37 a.m. and resulted in the deaths of 184 people. The evidence is consistent across all sources, with no contradictions detected.",
+        "explanation": "The Indian Oil Corporation and the Assam CM have stated there is no LPG shortage in Assam, despite a commercial LPG shortage in Guwahati. The evidence collectively supports the claim, but with some caveats.",
         "citations": [
-          "https://museum.dea.gov/museum-collection/collection-spotlight/artifact/pentagon-rubble",
-          "https://en.wikipedia.org/wiki/American_Airlines_Flight_77",
-          "https://www.pbs.org/video/911-inside-pentagon-attack-pentagon/"
+          "https://www.guwahatiplus.com/commercial-lpg-shortage-hits-hospitality-sector-amid-west-asia-conflict",
+          "https://www.instagram.com/reel/DVvIcMakeFp/",
+          "https://www.facebook.com/TheAssamTribune/posts/the-indian-oil-corporation-ioc-has-said-that-there-is-no-shortage-of-lpg-as-of-n/1375557311283295/"
         ],
-        "reasoning_summary": "The analyst's reasoning involves a step-by-step analysis of the evidence, including an inventory of the evidence, decomposition of the claim, evidence matching, contradiction analysis, confidence assessment, and preliminary verdict reasoning. The evidence shows that American Airlines Flight 77 crashed into the Pentagon, resulting in significant damage and loss of life.",
+        "reasoning_summary": "The evidence shows no LPG shortage in Assam, as stated by the IOC and the Assam CM, but a commercial LPG shortage exists in Guwahati.",
         "confidence_level": "HIGH",
         "evidence_gaps": [
-          "The most significant gap in the evidence is the lack of information on the hijackers' strategy and the investigation that followed."
+          "The extent of the commercial shortage and its impact on the general population are not well understood."
         ]
       },
       {
-        "claim_text": "The New York metropolitan area was affected by the attacks.",
+        "claim_text": "The Chief Secretary of Assam urged people not to spread fake news.",
         "verdict": "SUPPORTED",
-        "truth_score": 70,
-        "explanation": "The evidence shows that the New York metropolitan area was affected by attacks, including a hatchet attack on NYPD officers and attempts to carry out bombings or other explosive attacks. While there are gaps in the evidence regarding the relationship between these attacks and ISIS terrorism, the available information supports the claim that the area was affected by attacks.",
+        "truth_score": 90,
+        "explanation": "The Chief Secretary of Assam is urging people not to spread fake news, as confirmed by multiple sources, including a credible news article and social media posts. However, there is a gap in the evidence regarding the specific action being taken or threatened against those spreading fake news.",
         "citations": [
-          "https://en.wikipedia.org/wiki/List_of_terrorist_incidents_in_New_York_City",
-          "https://www.news8000.com/news/national-world/explosives-thrown-near-new-york-city-mayors-residence-investigated-as-isis-related-terrorism/article_48d6906a-d2a4-570e-a696-b2b5806617a9.html",
-          "https://abc7ny.com/post/gracie-mansion-protest-bomb-incident-outside-nyc-mayors-home-investigated-possible-act-isis-terrorism/18695027/"
+          "https://theprint.in/india/sarma-urges-people-to-reject-fake-news-report-those-trying-to-undermine-armed-forces/2620015/",
+          "https://morungexpress.com/assam-govt-warns-against-fake-news",
+          "https://www.syllad.com/no-candidate-list-yet-fake-news-being-spread-assam-bjp-chief-warns-of-action-against-rumour-mongers/"
         ],
-        "reasoning_summary": "The analyst's reasoning involves inventorying the evidence, decomposing the claim, matching the evidence to the claim, analyzing for contradictions, and assessing confidence. The evidence collectively supports the claim that the New York metropolitan area was affected by attacks.",
-        "confidence_level": "MEDIUM",
+        "reasoning_summary": "The evidence collectively shows that the Chief Secretary of Assam is urging people not to spread fake news, and the Assam government or government officials are warning against fake news.",
+        "confidence_level": "HIGH",
         "evidence_gaps": [
-          "Gaps exist in the evidence regarding the relationship between the attacks and ISIS terrorism, as well as direct evidence addressing whether the New York metropolitan area was affected by the attacks."
+          "There is a gap in the evidence regarding the specific action being taken or threatened against those spreading fake news."
         ]
       }
     ],
     "explanations": {
       "by_claim": {
-        "The Twin Towers were destroyed by hijacked jets.": {
-          "claim_text": "The Twin Towers were destroyed by hijacked jets.",
-          "plain_english": "The evidence suggests that the Twin Towers were destroyed by hijacked planes. However, there are some gaps in the evidence, like how the planes were intentionally crashed into the towers. The majority of the evidence supports this claim, but it's not entirely clear. This appears to be accurate, but with some uncertainty.",
-          "confidence_statement": "Medium confidence \u2014 supported by multiple sources, but some gaps in evidence.",
-          "source_quality_note": "Sourced from outlets with limited editorial standards.",
-          "reader_advisory": "Treat this information with caution due to the low credibility of the sources used.",
-          "evidence_gaps_plain": "Some gaps exist in the evidence, such as the intentional crashing of the planes into the Twin Towers, which is inferred but not directly stated in all sources."
+        "There is no LPG crisis in Assam.": {
+          "claim_text": "There is no LPG crisis in Assam.",
+          "plain_english": "The Indian Oil Corporation and the Assam Chief Minister have stated that there is no LPG shortage in Assam. However, a commercial LPG shortage does exist in Guwahati. This means that while the claim is mostly true, there are some caveats to consider. The evidence shows that the LPG shortage is mainly a commercial issue, not a crisis affecting the general population.",
+          "confidence_statement": "High confidence \u2014 confirmed by major wire services.",
+          "source_quality_note": "Sourced from a mix of credible and low-credibility sources, including a major wire service and social media.",
+          "reader_advisory": "Treat with caution due to a commercial LPG shortage in Guwahati.",
+          "evidence_gaps_plain": "The extent of the commercial shortage and its impact on the general population are not well understood."
         },
-        "The Pentagon was hit by a hijacked jet.": {
-          "claim_text": "The Pentagon was hit by a hijacked jet.",
-          "plain_english": "The evidence clearly shows that American Airlines Flight 77 crashed into the Pentagon, causing significant damage and loss of life. This attack occurred at 9:37 a.m. and resulted in the deaths of 184 people. The evidence is consistent across all sources, with no contradictions detected. This appears to be accurate.",
-          "confidence_statement": "High confidence \u2014 confirmed by multiple reliable sources.",
-          "source_quality_note": "Reported by established news outlets.",
+        "The Chief Secretary of Assam urged people not to spread fake news.": {
+          "claim_text": "The Chief Secretary of Assam urged people not to spread fake news.",
+          "plain_english": "The Chief Secretary of Assam has indeed urged people not to spread fake news. This is supported by credible sources, including a news article and social media posts. However, there is a gap in the evidence regarding what action will be taken against those who spread fake news. It is unclear what specific consequences people who spread fake news may face.",
+          "confidence_statement": "High confidence \u2014 confirmed by major wire services.",
+          "source_quality_note": "Sourced from a mix of credible and low-credibility sources, including a generally credible news outlet and social media.",
+          "reader_advisory": "Treat with caution due to a gap in the evidence regarding consequences for spreading fake news.",
+          "evidence_gaps_plain": "There is a gap in the evidence regarding the specific action being taken or threatened against those spreading fake news."
+        }
+      },
+      "overall_credibility": "CREDIBLE",
+      "bottom_line": "This article is generally trustworthy, with all claims supported by high-confidence evidence from credible sources."
+    },
+    "source": "webapp"
+  },
+  {
+    "id": "30621677-13a8-4bd8-8760-822be4794902",
+    "url": "https://www.livelaw.in/news-updates/lpg-cylinder-shortage-delhi-high-court-iran-israel-war-west-asia-conflict-525973",
+    "timestamp": "2026-03-11T18:27:21.967231+00:00",
+    "overall_credibility": "LOW CREDIBILITY",
+    "avg_score": 64,
+    "bottom_line": "This information has low credibility due to the sources' low credibility and the uncertainty about the government's honesty.",
+    "verdicts": [
+      {
+        "claim_text": "The Delhi High Court Lawyers' Canteen suspended the main course food due to the LPG cylinder shortage.",
+        "verdict": "SUPPORTED",
+        "truth_score": 60,
+        "explanation": "The Lawyers' Canteen at the Delhi High Court has suspended main course meal preparation due to an LPG cylinder shortage. The unavailability of LPG is the reason for this decision. However, there is a gap in the evidence regarding the availability of food options at the canteen.",
+        "citations": [
+          "https://m.economictimes.com/news/new-updates/lpg-shortage-delhi-hc-canteen-halts-main-meals-while-cylinder-crisis-triggers-long-queues-at-several-gas-agencies/articleshow/129449828.cms",
+          "https://www.babushahi.com/view-news.php?id=218280&headline=Breaking:-Gas-supply-shortage-in-Delhi-HC-canteen,-only-cold-drinks-and-non-cooking-eatables-available",
+          "https://www.thehansindia.com/news/national/delhi-high-court-lawyers-canteen-suspends-main-course-meals-amid-lpg-crunch-1055656"
+        ],
+        "reasoning_summary": "The evidence collectively shows that the Lawyers' Canteen at the Delhi High Court has suspended main course meal preparation due to an LPG cylinder shortage.",
+        "confidence_level": "MEDIUM",
+        "evidence_gaps": [
+          "The exact nature of the food options available at the canteen is unclear."
+        ]
+      },
+      {
+        "claim_text": "The LPG cylinder shortage is affecting the Delhi High Court Lawyers' Canteen.",
+        "verdict": "SUPPORTED",
+        "truth_score": 60,
+        "explanation": "The evidence collectively shows that there is an LPG cylinder shortage affecting the Delhi High Court Lawyers' Canteen, causing it to stop serving main course meals. All snippets confirm this, with no contradictions detected.",
+        "citations": [
+          "https://www.siasat.com/lpg-cylinder-shortage-no-main-course-at-delhi-hc-canteen-3433053/amp/",
+          "https://www.ndtvprofit.com/india/delhi-hc-lawyers-039-canteen-halts-main-courses-amid-lpg-crisis-tied-to-iran-conflict-11199493",
+          "https://www.dynamitenews.com/national/middle-east-conflict-delhi-hc-canteen-stops-serving-main-course-cites-unavailability-of-lpg-cylinders/amp"
+        ],
+        "reasoning_summary": "The analyst found that all evidence snippets confirm the claim, with no contradictions detected. However, the credibility of the sources is low.",
+        "confidence_level": "MEDIUM",
+        "evidence_gaps": [
+          "The credibility of the sources is low, which may indicate that the information is not entirely reliable. Further verification from higher-credibility sources would be beneficial."
+        ]
+      },
+      {
+        "claim_text": "The LPG cylinder shortage is related to the Iran-Israel war and the West Asia conflict.",
+        "verdict": "SUPPORTED",
+        "truth_score": 72,
+        "explanation": "The evidence suggests that there is a shortage of LPG cylinders in India, and it is related to the West Asia conflict. The Iran-Israel war is also implied to be a factor in the shortage. However, the evidence is not conclusive about the government's honesty regarding the situation.",
+        "citations": [
+          "https://www.business-standard.com/india-news/west-asia-war-israel-iran-conflict-india-lpg-fuel-trump-us-strait-of-hormuz-126031100158_1.html",
+          "https://www.bbc.com/news/articles/cy4w92408ywo"
+        ],
+        "reasoning_summary": "The analyst's reasoning involves evidence inventory, claim decomposition, evidence matching, contradiction analysis, confidence assessment, and preliminary verdict reasoning. The evidence collectively suggests a connection between the LPG cylinder shortage, the West Asia conflict, and the Iran-Israel war.",
+        "confidence_level": "MEDIUM",
+        "evidence_gaps": [
+          "Gaps exist in the evidence regarding the government's honesty about the LPG cylinder shortage situation."
+        ]
+      }
+    ],
+    "explanations": {
+      "by_claim": {
+        "The Delhi High Court Lawyers' Canteen suspended the main course food due to the LPG cylinder shortage.": {
+          "claim_text": "The Delhi High Court Lawyers' Canteen suspended the main course food due to the LPG cylinder shortage.",
+          "plain_english": "The Delhi High Court Lawyers' Canteen stopped serving main course meals because of a shortage of LPG cylinders. This is based on reports from several news outlets, but we can't be entirely sure. The canteen might still offer other food options, but we don't know what they are. This decision was likely made due to the LPG shortage.",
+          "confidence_statement": "Medium confidence \u2014 based on evidence from multiple news outlets, but with some uncertainty.",
+          "source_quality_note": "Sourced from outlets with limited editorial standards.",
+          "reader_advisory": "Treat this information with caution, as the sources have low credibility.",
+          "evidence_gaps_plain": "We don't know exactly what food options are available at the canteen."
+        },
+        "The LPG cylinder shortage is affecting the Delhi High Court Lawyers' Canteen.": {
+          "claim_text": "The LPG cylinder shortage is affecting the Delhi High Court Lawyers' Canteen.",
+          "plain_english": "There is an LPG cylinder shortage affecting the Delhi High Court Lawyers' Canteen, causing it to stop serving main course meals. This is based on reports from several news outlets, but we can't be entirely sure about the reliability of the information. Further verification from higher-credibility sources would be beneficial.",
+          "confidence_statement": "Medium confidence \u2014 confirmed by multiple news outlets, but with some uncertainty about the sources' credibility.",
+          "source_quality_note": "Sourced from outlets with limited editorial standards.",
+          "reader_advisory": "Treat this information with caution, as the sources have low credibility.",
+          "evidence_gaps_plain": "The credibility of the sources is low, which may indicate that the information is not entirely reliable."
+        },
+        "The LPG cylinder shortage is related to the Iran-Israel war and the West Asia conflict.": {
+          "claim_text": "The LPG cylinder shortage is related to the Iran-Israel war and the West Asia conflict.",
+          "plain_english": "There is a shortage of LPG cylinders in India, and it is related to the West Asia conflict. The Iran-Israel war is also implied to be a factor in the shortage. However, the evidence is not conclusive about the government's honesty regarding the situation. It's possible that the government is not being entirely truthful about the LPG shortage.",
+          "confidence_statement": "Medium confidence \u2014 based on evidence suggesting a connection, but with some uncertainty about the government's honesty.",
+          "source_quality_note": "Sourced from a mix of generally credible and low-credibility sources.",
+          "reader_advisory": "Treat this information with caution, as the government's honesty about the situation is unclear.",
+          "evidence_gaps_plain": "We don't know for sure if the government is being honest about the LPG cylinder shortage situation."
+        }
+      },
+      "overall_credibility": "LOW CREDIBILITY",
+      "bottom_line": "This information has low credibility due to the sources' low credibility and the uncertainty about the government's honesty."
+    },
+    "source": "webapp"
+  },
+  {
+    "id": "8bba6739-f018-4702-a6d8-06901276b1db",
+    "url": "India wins the cricket world cup 2024 by 50 runs",
+    "timestamp": "2026-03-11T17:47:30.467933+00:00",
+    "overall_credibility": "CREDIBLE",
+    "avg_score": 90,
+    "bottom_line": "This claim is mostly accurate, but we can't confirm the exact margin of victory.",
+    "verdicts": [
+      {
+        "claim_text": "India wins the cricket world cup 2024 by 50 runs",
+        "verdict": "SUPPORTED",
+        "truth_score": 90,
+        "explanation": "The evidence collectively shows that India won the 2024 T20 World Cup, but the margin of victory in the final is not directly stated as 50 runs. However, India did win a match against Bangladesh by 50 runs in the tournament.",
+        "citations": [
+          "https://www.theguardian.com/sport/live/2024/jun/22/india-v-bangladesh-t20-cricket-world-cup-live",
+          "https://www.olympics.com/en/news/t20-world-cup-2024-super-8-india-vs-bangladesh-cricket-match-result-score",
+          "https://www.cnn.com/2024/06/29/sport/india-south-africa-t20-mens-world-cup-final-spt-intl"
+        ],
+        "reasoning_summary": "The analyst's reasoning confirms India's participation and win in the 2024 T20 World Cup, as well as a win against Bangladesh by 50 runs. However, the final margin of victory is not directly stated in the evidence.",
+        "confidence_level": "HIGH",
+        "evidence_gaps": [
+          "The final margin of victory for India in the 2024 T20 World Cup is not directly stated in the evidence."
+        ]
+      }
+    ],
+    "explanations": {
+      "by_claim": {
+        "India wins the cricket world cup 2024 by 50 runs": {
+          "claim_text": "India wins the cricket world cup 2024 by 50 runs",
+          "plain_english": "This claim checks out, but we can't confirm the exact margin of victory. India did win the 2024 T20 World Cup, and they also won a match against Bangladesh by 50 runs. However, the final margin of victory is not stated in the evidence we have. We're pretty sure India won the tournament, but we can't be 100% sure about the margin.",
+          "confidence_statement": "High confidence \u2014 confirmed by major wire services.",
+          "source_quality_note": "Reported by established news outlets",
           "reader_advisory": null,
-          "evidence_gaps_plain": "The most significant gap in the evidence is the lack of information on the hijackers' strategy and the investigation that followed."
-        },
-        "The New York metropolitan area was affected by the attacks.": {
-          "claim_text": "The New York metropolitan area was affected by the attacks.",
-          "plain_english": "The evidence shows that the New York metropolitan area was affected by attacks, including a hatchet attack on NYPD officers and attempts to carry out bombings or other explosive attacks. However, there are gaps in the evidence regarding the relationship between these attacks and ISIS terrorism. This appears to be accurate, but with some uncertainty.",
-          "confidence_statement": "Medium confidence \u2014 supported by multiple sources, but some gaps in evidence.",
-          "source_quality_note": "Sourced from outlets with limited editorial standards.",
-          "reader_advisory": "Treat this information with caution due to the low credibility of the sources used.",
-          "evidence_gaps_plain": "Gaps exist in the evidence regarding the relationship between the attacks and ISIS terrorism, as well as direct evidence addressing whether the New York metropolitan area was affected by the attacks."
+          "evidence_gaps_plain": "The final margin of victory for India in the 2024 T20 World Cup is not directly stated in the evidence."
+        }
+      },
+      "overall_credibility": "CREDIBLE",
+      "bottom_line": "This claim is mostly accurate, but we can't confirm the exact margin of victory."
+    },
+    "source": "extension"
+  },
+  {
+    "id": "46617f18-cbda-4c7b-bf60-1dd6127a4e65",
+    "url": "India wins the cricket world cup 2024 by 50 runs.",
+    "timestamp": "2026-03-11T17:45:47.201340+00:00",
+    "overall_credibility": "MIXED",
+    "avg_score": 50,
+    "bottom_line": "This claim is partially true, but it contains a misleading element and some sources have low credibility.",
+    "verdicts": [
+      {
+        "claim_text": "India wins the cricket world cup 2024 by 50 runs.",
+        "verdict": "MISLEADING",
+        "truth_score": 50,
+        "explanation": "The evidence shows India won the 2024 T20 World Cup, but the margin of victory in the final match is not 50 runs, it was 7 runs against South Africa. The 50-run margin of victory is from a match against Bangladesh.",
+        "citations": [
+          "https://www.theguardian.com/sport/live/2024/jun/22/india-v-bangladesh-t20-cricket-world-cup-live",
+          "https://www.olympics.com/en/news/t20-world-cup-2024-super-8-india-vs-bangladesh-cricket-match-result-score",
+          "https://www.cnn.com/2024/06/29/sport/india-south-africa-t20-mens-world-cup-final-spt-intl"
+        ],
+        "reasoning_summary": "The claim is misleading because while India did win the 2024 T20 World Cup, the final match was won by 7 runs, not 50. The 50-run margin of victory mentioned in the claim refers to a different match against Bangladesh.",
+        "confidence_level": "MEDIUM",
+        "evidence_gaps": [
+          "The final margin of victory for India in the 2024 T20 World Cup is not directly stated in the evidence snippets, but is implied to be 7 runs against South Africa, not 50 runs."
+        ]
+      }
+    ],
+    "explanations": {
+      "by_claim": {
+        "India wins the cricket world cup 2024 by 50 runs.": {
+          "claim_text": "India wins the cricket world cup 2024 by 50 runs.",
+          "plain_english": "India did win the 2024 T20 World Cup, but the claim that they won by 50 runs is misleading. The actual margin of victory was 7 runs against South Africa, not 50 runs. This 50-run margin of victory is actually from a different match against Bangladesh. So, the claim is partially true, but it's not entirely accurate.",
+          "confidence_statement": "Medium confidence \u2014 the evidence confirms some parts of the claim, but not all.",
+          "source_quality_note": "The claim is reported by established news outlets (theguardian.com) and specialist sources (olympics.com, cnn.com), but some sources have limited editorial standards (youtube.com, instagram.com) and are unverified.",
+          "reader_advisory": "Be cautious with this claim as it contains a misleading element and some sources have low credibility.",
+          "evidence_gaps_plain": "The final margin of victory for India in the 2024 T20 World Cup is not directly stated in the evidence."
         }
       },
       "overall_credibility": "MIXED",
-      "bottom_line": "The information about the 9/11 attacks has mixed credibility due to the use of low-quality sources and some gaps in the evidence."
+      "bottom_line": "This claim is partially true, but it contains a misleading element and some sources have low credibility."
     },
-    "source": "webapp"
-  },
-  {
-    "id": "b3889c74-d01e-42b9-9c67-8eb7c8e63ff5",
-    "url": "[Image: new_img2.png]",
-    "timestamp": "2026-03-11T17:33:16.560938+00:00",
-    "overall_credibility": "UNRELIABLE",
-    "avg_score": 0,
-    "bottom_line": "",
-    "verdicts": [],
-    "explanations": {},
-    "source": "webapp"
-  },
-  {
-    "id": "87aa99dd-410e-40f6-ac30-e3606906f6ff",
-    "url": "[Image: new_img2.png]",
-    "timestamp": "2026-03-11T17:32:34.669463+00:00",
-    "overall_credibility": "UNRELIABLE",
-    "avg_score": 0,
-    "bottom_line": "",
-    "verdicts": [],
-    "explanations": {},
-    "source": "webapp"
-  },
-  {
-    "id": "cd2dcfda-63e6-4eed-9441-bfd87a3abd5f",
-    "url": "[Image: new_img.png]",
-    "timestamp": "2026-03-11T17:32:06.953772+00:00",
-    "overall_credibility": "UNRELIABLE",
-    "avg_score": 0,
-    "bottom_line": "",
-    "verdicts": [],
-    "explanations": {},
-    "source": "webapp"
-  },
-  {
-    "id": "427bfed7-3a29-4360-b611-836a005c1a16",
-    "url": "[Image: new_img.png]",
-    "timestamp": "2026-03-11T17:29:28.977945+00:00",
-    "overall_credibility": "UNRELIABLE",
-    "avg_score": 0,
-    "bottom_line": "",
-    "verdicts": [],
-    "explanations": {},
-    "source": "webapp"
-  },
-  {
-    "id": "bd2245fd-346f-4a14-8112-c1948458c5b8",
-    "url": "[Image: new_img2.png]",
-    "timestamp": "2026-03-11T17:29:17.540516+00:00",
-    "overall_credibility": "UNRELIABLE",
-    "avg_score": 0,
-    "bottom_line": "",
-    "verdicts": [],
-    "explanations": {},
-    "source": "webapp"
-  },
-  {
-    "id": "9d8d9b26-e3c2-44a9-9c03-3bbc76184446",
-    "url": "[Image: new_img2.png]",
-    "timestamp": "2026-03-11T17:27:19.662453+00:00",
-    "overall_credibility": "UNRELIABLE",
-    "avg_score": 0,
-    "bottom_line": "",
-    "verdicts": [],
-    "explanations": {},
-    "source": "webapp"
-  },
-  {
-    "id": "8973b885-10c9-4765-8329-b0800dc6fab0",
-    "url": "[Image: new_img2.png]",
-    "timestamp": "2026-03-11T17:23:10.545849+00:00",
-    "overall_credibility": "UNRELIABLE",
-    "avg_score": 0,
-    "bottom_line": "",
-    "verdicts": [],
-    "explanations": {},
-    "source": "webapp"
-  },
-  {
-    "id": "804e27ca-7b8d-41fc-9ad3-27279797c3f5",
-    "url": "[Image: new_img.png]",
-    "timestamp": "2026-03-11T16:29:57.709371+00:00",
-    "overall_credibility": "UNRELIABLE",
-    "avg_score": 0,
-    "bottom_line": "",
-    "verdicts": [],
-    "explanations": {},
-    "source": "webapp"
-  },
-  {
-    "id": "2a618c93-fa2b-456f-9dd0-a3e65f45bbc6",
-    "url": "[Image: new_img.png]",
-    "timestamp": "2026-03-11T16:14:49.795123+00:00",
-    "overall_credibility": "UNRELIABLE",
-    "avg_score": 0,
-    "bottom_line": "",
-    "verdicts": [],
-    "explanations": {},
-    "source": "webapp"
-  },
-  {
-    "id": "f8ede090-6779-4394-87f7-c5f399dc82bb",
-    "url": "[Image: new_img.png]",
-    "timestamp": "2026-03-11T16:00:04.660012+00:00",
-    "overall_credibility": "UNRELIABLE",
-    "avg_score": 0,
-    "bottom_line": "",
-    "verdicts": [],
-    "explanations": {},
-    "source": "webapp"
-  },
-  {
-    "id": "e439347a-2f1e-45f0-9606-d7dacaceb01d",
-    "url": "https://www.amarujala.com/world/west-asia-conflict-war-will-end-any-time-i-want-donald-trump-makes-big-claim-2026-03-11?src=tlh&position=1",
-    "timestamp": "2026-03-11T15:55:01.155626+00:00",
-    "overall_credibility": "LOW CREDIBILITY",
-    "avg_score": 55,
-    "bottom_line": "The credibility of the sources used in these fact-checks is low, which may indicate that the information is not entirely reliable.",
-    "verdicts": [
-      {
-        "claim_text": "Donald Trump stated that the war with Iran will end any time he wants.",
-        "verdict": "MISLEADING",
-        "truth_score": 50,
-        "explanation": "The evidence shows that Donald Trump stated the war with Iran could end soon, but the conditions for the war to end are unclear, with one source stating it will end when military objectives have been met. This lack of clarity makes the claim misleading.",
-        "citations": [
-          "https://www.cnbc.com/2026/03/09/trump-iran-war-end.html",
-          "https://www.lemonde.fr/en/international/article/2026/03/10/trump-says-war-on-iran-will-end-very-soon-calls-conflict-very-complete_6751266_4.html",
-          "https://www.nbcnews.com/now/video/white-house-iran-war-will-end-when-trump-says-military-objectives-have-been-met-259065925569"
-        ],
-        "reasoning_summary": "The evidence collectively indicates that while Donald Trump suggested the war with Iran could end soon, the conditions under which it would end are not clearly defined across all sources, leading to a misleading narrative.",
-        "confidence_level": "MEDIUM",
-        "evidence_gaps": [
-          "The conditions for the war to end are not consistently addressed across all evidence snippets."
-        ]
-      },
-      {
-        "claim_text": "Donald Trump said that there is almost nothing left to target in the conflict.",
-        "verdict": "SUPPORTED",
-        "truth_score": 60,
-        "explanation": "The evidence collectively shows that Donald Trump said there is almost nothing left to target in the conflict and that the conflict will soon end. However, the credibility of the sources is low, which may indicate that the information is not entirely reliable.",
-        "citations": [
-          "https://uk.news.yahoo.com/trump-says-practically-nothing-left-143206260.html",
-          "https://english.news.cn/northamerica/20260311/320cb335d843464c927f91effa422e41/c.html",
-          "https://www.timesofisrael.com/liveblog_entry/trump-tells-axios-war-in-iran-will-end-soon-practically-nothing-left-to-target/"
-        ],
-        "reasoning_summary": "The analyst's reasoning confirms that Donald Trump made the statement, but notes the low credibility of the sources.",
-        "confidence_level": "MEDIUM",
-        "evidence_gaps": [
-          "Low credibility of sources"
-        ]
-      }
-    ],
-    "explanations": {
-      "by_claim": {
-        "Donald Trump stated that the war with Iran will end any time he wants.": {
-          "claim_text": "Donald Trump stated that the war with Iran will end any time he wants.",
-          "plain_english": "This claim contains a misleading element. Donald Trump stated the war with Iran could end soon, but the conditions for the war to end are unclear. One source suggests it will end when military objectives have been met, but this is not consistently stated across all sources. This lack of clarity makes the claim misleading.",
-          "confidence_statement": "Medium confidence \u2014 the evidence shows Trump made the statement, but the conditions for the war to end are unclear.",
-          "source_quality_note": "Sourced from outlets with limited editorial standards.",
-          "reader_advisory": "Treat with caution \u2014 the sources used have low credibility.",
-          "evidence_gaps_plain": "The conditions for the war to end are not consistently addressed across all evidence."
-        },
-        "Donald Trump said that there is almost nothing left to target in the conflict.": {
-          "claim_text": "Donald Trump said that there is almost nothing left to target in the conflict.",
-          "plain_english": "This claim checks out. Donald Trump said there is almost nothing left to target in the conflict and that the conflict will soon end. However, it's worth noting that the sources used have low credibility, which may indicate that the information is not entirely reliable.",
-          "confidence_statement": "Medium confidence \u2014 the evidence shows Trump made the statement, but the credibility of the sources is low.",
-          "source_quality_note": "Sourced from outlets with limited editorial standards.",
-          "reader_advisory": "Treat with caution \u2014 the sources used have low credibility.",
-          "evidence_gaps_plain": "The credibility of the sources is low."
-        }
-      },
-      "overall_credibility": "LOW CREDIBILITY",
-      "bottom_line": "The credibility of the sources used in these fact-checks is low, which may indicate that the information is not entirely reliable."
-    },
-    "source": "webapp"
-  },
-  {
-    "id": "9eca8450-a3e9-467c-a461-3d1101226b4e",
-    "url": "[Image: new_img2.png]",
-    "timestamp": "2026-03-11T15:53:16.038054+00:00",
-    "overall_credibility": "UNRELIABLE",
-    "avg_score": 0,
-    "bottom_line": "",
-    "verdicts": [],
-    "explanations": {},
-    "source": "webapp"
-  },
-  {
-    "id": "a9bd6e73-eeed-4a41-a523-448bafcf3f1e",
-    "url": "[Image: new_img.png]",
-    "timestamp": "2026-03-11T15:51:09.054757+00:00",
-    "overall_credibility": "UNRELIABLE",
-    "avg_score": 0,
-    "bottom_line": "",
-    "verdicts": [],
-    "explanations": {},
-    "source": "webapp"
+    "source": "extension"
   },
   {
     "id": "9b902904-7e2a-4309-9787-f70b657c5d6a",

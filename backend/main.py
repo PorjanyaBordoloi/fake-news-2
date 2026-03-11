@@ -20,7 +20,7 @@ from pathlib import Path
 
 import uvicorn
 from dotenv import load_dotenv
-from fastapi import FastAPI, File, UploadFile
+from fastapi import FastAPI, File, UploadFile, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
@@ -41,16 +41,16 @@ except Exception:  # noqa: BLE001
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     _load_history()
-    logger.info("🚀 Fake News Detector API starting up...")
+    logger.info("🚀 KREDO API starting up...")
     yield
-    logger.info("🛑 Fake News Detector API shutting down...")
+    logger.info("🛑 KREDO API shutting down...")
 
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 # App instance
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 app = FastAPI(
-    title="Fake News Detector API",
+    title="KREDO API",
     version="1.0.0",
     lifespan=lifespan,
 )
@@ -164,7 +164,7 @@ def run_pipeline(user_input: str, top_n: int = 3) -> dict:
 # Endpoints
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 @app.get("/api/analyze-stream")
-async def analyze_stream(user_input: str):
+async def analyze_stream(user_input: str, top_n: int = 3):
     """
     Streaming endpoint for the website (shows chain of thought).
     Returns SSE stream of agent execution events.
@@ -172,7 +172,7 @@ async def analyze_stream(user_input: str):
     from agents.claim_extraction import claim_extraction_graph
 
     async def event_generator():
-        initial_state = _build_initial_state(user_input)
+        initial_state = _build_initial_state(user_input, top_n=top_n)
         _detected_lang_name: str | None = None  # track across agent0_pre → agent0_post
         # Stream events from the compiled LangGraph
         for event in claim_extraction_graph.stream(initial_state):
@@ -193,7 +193,8 @@ async def analyze_stream(user_input: str):
 
                 # Agent 0 post — emit localization log
                 if node_name == "agent0_post" and node_data.get("localized_output") and _detected_lang_name:
-                    yield f"data: {json.dumps({'type': 'agent_log', 'symbol': '\u2713', 'message': f'Verdicts localized back to {_detected_lang_name}'})}\n\n"
+                    yield f"data: {json.dumps({'type': 'agent_log', 'symbol': '✓', 'message': f'Verdicts localized back to {_detected_lang_name}'})}\n\n"
+
                 # Agent 6 — image integrity log events
                 if node_name == "image_integrity":
                     num_images = len(node_data.get("image_urls") or [])
@@ -206,8 +207,8 @@ async def analyze_stream(user_input: str):
                         yield f"data: {json.dumps({'type': 'agent_log', 'symbol': '⚠', 'message': 'Agent 6: Editing software (Photoshop/GIMP) detected in image EXIF metadata'})}\n\n"
                     if ocr_found:
                         yield f"data: {json.dumps({'type': 'agent_log', 'symbol': '→', 'message': 'Agent 6: Text found in images — re-running pipeline with OCR content'})}\n\n"
-                    if node_data.get("is_second_pass") is False and node_data.get("images_processed"):
-                        yield f"data: {json.dumps({'type': 'agent_log', 'symbol': '✓', 'message': 'Agent 6: Second-pass verification complete'})}\n\n"
+                    elif node_data.get("images_processed"):
+                        yield f"data: {json.dumps({'type': 'agent_log', 'symbol': '✓', 'message': 'Agent 6: Image scan complete — no embedded text found'})}\n\n"
         yield f"data: {json.dumps({'status': 'complete'})}\n\n"
 
     return StreamingResponse(
@@ -301,6 +302,31 @@ async def analyze_simple(user_input: str):
     return result
 
 
+@app.post("/api/extract-image")
+async def extract_image(file: UploadFile = File(...)):
+    """
+    Extracts text from an uploaded image using Sarvam AI OCR,
+    translates it to English if needed, and returns the text.
+    """
+    import asyncio
+    try:
+        from agents.image_integrity import _run_sarvam_ocr, _translate_ocr_to_english
+        
+        image_bytes = await file.read()
+        if not image_bytes:
+            raise HTTPException(status_code=400, detail="Empty file")
+            
+        raw_ocr = await asyncio.to_thread(_run_sarvam_ocr, image_bytes)
+        if not raw_ocr:
+            return {"extracted_text": ""}
+            
+        english_text = await asyncio.to_thread(_translate_ocr_to_english, raw_ocr)
+        return {"extracted_text": english_text}
+    except Exception as exc:
+        logger.error(f"Image extraction failed: {exc}")
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
 @app.get("/health")
 async def health_check():
     return {"status": "healthy"}
@@ -376,13 +402,14 @@ async def translate_to_english(req: TranslateRequest):
         # Determine source language
         if not source_lang:
             source_lang, confidence = _detect_language(text)
-            # If API + heuristic both say English or confidence too low, skip
-            if source_lang.startswith("en"):
-                return {"translated_text": text, "source_language": source_lang}
             # If API returned its fallback (en-IN, 1.0) but text has non-ASCII,
             # run the heuristic directly as a second opinion
             if confidence == 1.0 and source_lang == "en-IN":
                 source_lang, confidence = _heuristic_detect(text)
+
+            # If API + heuristic both say English or confidence too low, skip
+            if source_lang.startswith("en"):
+                return {"translated_text": text, "source_language": source_lang}
 
         if source_lang.startswith("en"):
             return {"translated_text": text, "source_language": source_lang}

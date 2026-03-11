@@ -9,28 +9,22 @@ import { saveHistory } from './services/api';
 function App() {
     const [isAnalyzing, setIsAnalyzing] = useState<boolean>(false);
     const [submittedUrl, setSubmittedUrl] = useState<string>('');
-    const [submittedImage, setSubmittedImage] = useState<File | null>(null);
     const [showHistory, setShowHistory] = useState(false);
-    const [analysisId, setAnalysisId] = useState(0);
 
     const { thoughts, isComplete, finalResult, startStream, startImageStream, resetStream } = useAgentStream();
 
     const handleSubmit = useCallback((url: string) => {
         setSubmittedUrl(url);
-        setSubmittedImage(null);
         setIsAnalyzing(true);
         setShowHistory(false);
-        setAnalysisId(prev => prev + 1);
         resetStream();
         startStream(url);
     }, [resetStream, startStream]);
 
-    const handleImageSubmit = useCallback((file: File) => {
-        setSubmittedUrl(`[Image: ${file.name}]`);
-        setSubmittedImage(file);
+    const handleSubmitImage = useCallback((file: File) => {
+        setSubmittedUrl(`Image: ${file.name}`);
         setIsAnalyzing(true);
         setShowHistory(false);
-        setAnalysisId(prev => prev + 1);
         resetStream();
         startImageStream(file);
     }, [resetStream, startImageStream]);
@@ -66,6 +60,13 @@ function App() {
         if (!isComplete) hasSavedRef.current = false;
     }, [isComplete]);
 
+    // Mark analysis done when stream completes
+    useEffect(() => {
+        if (isComplete) setIsAnalyzing(false);
+    }, [isComplete]);
+
+    const isChatMode = isAnalyzing || thoughts.length > 0;
+
     return (
         <div className="app">
             <header className="app-header">
@@ -80,16 +81,18 @@ function App() {
                 </div>
             </header>
 
-            <main className="app-main">
+            <main className={`app-main ${isChatMode && !showHistory ? 'chat-layout' : ''}`}>
                 {showHistory ? (
                     <HistoryPanel onAnalyze={handleSubmit} />
                 ) : (
                     <>
-                        {!isAnalyzing && !submittedUrl && (
+                        {!isChatMode && !submittedUrl && (
                             <h1 className="hero-title">Lets Verify !</h1>
                         )}
 
-                        <URLInput onSubmit={handleSubmit} onSubmitImage={handleImageSubmit} isLoading={isAnalyzing && !isComplete} />
+                        {!isChatMode && (
+                            <URLInput onSubmit={handleSubmit} onSubmitImage={handleSubmitImage} isLoading={isAnalyzing && !isComplete} />
+                        )}
 
                         {(isAnalyzing || thoughts.length > 0) && (
                             <div className="chat-container">
@@ -97,13 +100,7 @@ function App() {
                                 <div className="chat-message user-message">
                                     <div className="chat-bubble" style={{ wordBreak: 'break-word', whiteSpace: 'pre-wrap' }}>
                                         Please verify this content to feed into the truth engine:<br /><br />
-                                        {submittedImage ? (
-                                            <span>
-                                                <span style={{ fontSize: '1.1rem' }}>📎</span>{' '}
-                                                <span style={{ fontWeight: 600 }}>{submittedImage.name}</span>
-                                                <span style={{ display: 'block', fontSize: '0.8rem', opacity: 0.6, marginTop: '0.3rem' }}>Image upload — EXIF &amp; OCR analysis</span>
-                                            </span>
-                                        ) : submittedUrl.startsWith('http') ? (
+                                        {submittedUrl.startsWith('http') ? (
                                             <a href={submittedUrl} target="_blank" rel="noreferrer" style={{ color: '#fff', textDecoration: 'underline' }}>
                                                 {submittedUrl}
                                             </a>
@@ -115,14 +112,13 @@ function App() {
                                     </div>
                                 </div>
 
-                                {/* Assistant Message Bubble */}
                                 <div className="chat-message assistant-message">
                                     <div className="chat-bubble assistant-bg">
                                         <p className="assistant-greeting">
                                             Perfect! Let me orchestrate the multi-agent pipeline to extract claims, retrieve evidence, and fact-check this article.
                                         </p>
 
-                                        <AgentChain key={analysisId} thoughts={thoughts} isComplete={isComplete} />
+                                        <AgentChain thoughts={thoughts} isComplete={isComplete} />
 
                                         {isComplete && finalResult && (
                                             <div className="final-result-wrapper fade-in">
@@ -131,6 +127,16 @@ function App() {
                                         )}
                                     </div>
                                 </div>
+
+                                {/* Chat-mode bottom input */}
+                                {isChatMode && (
+                                    <URLInput
+                                        onSubmit={handleSubmit}
+                                        onSubmitImage={handleSubmitImage}
+                                        isLoading={isAnalyzing && !isComplete}
+                                        isChatMode={true}
+                                    />
+                                )}
                             </div>
                         )}
                     </>

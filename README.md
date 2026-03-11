@@ -7,11 +7,11 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Agents-5-blue?style=flat-square" alt="5 Agents"/>
+  <img src="https://img.shields.io/badge/Agents-6-blue?style=flat-square" alt="6 Agents"/>
   <img src="https://img.shields.io/badge/LLM-Groq_Llama_3-green?style=flat-square" alt="Groq"/>
   <img src="https://img.shields.io/badge/Framework-LangGraph-purple?style=flat-square" alt="LangGraph"/>
   <img src="https://img.shields.io/badge/Frontend-React_+_Vite-cyan?style=flat-square" alt="React"/>
-  <img src="https://img.shields.io/badge/API-FastAPI-009688?style=flat-square" alt="FastAPI"/>
+  <img src="https://img.shields.io/badge/Vision-Sarvam_AI-orange?style=flat-square" alt="Sarvam AI"/>
 </p>
 
 ---
@@ -21,7 +21,7 @@
 - [Overview](#overview)
 - [Why This Matters — Real-World Impact](#why-this-matters--real-world-impact)
 - [System Architecture](#system-architecture)
-- [The 5-Agent Pipeline — Deep Dive](#the-5-agent-pipeline--deep-dive)
+- [The 6-Agent Pipeline — Deep Dive](#the-6-agent-pipeline--deep-dive)
 - [Technology Stack](#technology-stack)
 - [Project Structure](#project-structure)
 - [Getting Started](#getting-started)
@@ -38,12 +38,13 @@
 
 The Fake News Detector is a production-grade, multi-agent AI system that autonomously fact-checks news articles in real time. Given any news URL or pasted text, it:
 
-1. **Scrapes** the article content using Jina Reader
+1. **Scrapes** the article content using Jina Reader (or accepts image uploads directly)
 2. **Extracts** structured, checkable claims via LLM
 3. **Retrieves** corroborating/contradicting evidence from the live web
 4. **Scores** the credibility of each evidence source using domain-tier analysis
 5. **Reasons** through the evidence using a 2-call Chain-of-Thought architecture
 6. **Generates** plain-English explanations readable by any non-expert
+7. **Analyzes Images** via Optical Character Recognition (OCR) and EXIF data, dynamically looping extracted text back into the pipeline
 
 The entire pipeline is orchestrated as a **LangGraph StateGraph** — a directed acyclic graph where each agent is a node with strict typed state contracts, ensuring deterministic execution, graceful fallbacks, and real-time SSE streaming to the frontend.
 
@@ -64,8 +65,8 @@ Misinformation is one of the defining challenges of the digital age. According t
 
 | Problem | How We Solve It |
 |---------|-----------------|
-| **Speed** — Fact-checking organizations take hours to days to verify a single claim | Our 5-agent pipeline returns verdicts in **30-60 seconds** |
-| **Scale** — Manual fact-checkers cannot keep up with the volume of online content | The system processes any URL or text input **autonomously**, 24/7 |
+| **Speed** — Fact-checking organizations take hours to days to verify a single claim | Our 6-agent pipeline returns verdicts in **30-60 seconds** |
+| **Scale** — Manual fact-checkers cannot keep up with the volume of online content | The system processes any URL, text input, or screenshot **autonomously**, 24/7 |
 | **Accessibility** — Fact-check reports are often published separately from viral content | The **Chrome Extension** puts the verdict directly where the user reads the article |
 | **Source Bias** — Readers struggle to evaluate source credibility on their own | **Agent 3 (Source Credibility)** automatically scores 60+ domains and surfaces which tier each source belongs to |
 | **Complexity** — Existing verdicts use jargon that non-experts cannot parse | **Agent 5 (Explanation Generator)** produces plain-English explanations at a 10th-grade reading level |
@@ -141,7 +142,7 @@ India has **800+ million internet users** and the world's largest WhatsApp user 
 
 ---
 
-## The 5-Agent Pipeline — Deep Dive
+## The 6-Agent Pipeline — Deep Dive
 
 ### Agent 1: Claim Extraction
 
@@ -296,6 +297,23 @@ class VerdictExplanation(BaseModel):
     reader_advisory: str | None   # Warning if sources are weak
     evidence_gaps_plain: str | None  # What's still unknown
 ```
+
+```
+
+---
+
+### Agent 6: Image Integrity (OCR)
+
+**File:** `backend/agents/image_integrity.py`
+**APIs:** Sarvam AI (Vision) + Groq (Translation)
+**Purpose:** Extract, translate, and feed text hidden within images/screenshots back into the fact-checking engine.
+
+**Process:**
+1. **Extraction** — Automatically downloads images embedded in the article or uploaded directly via the UI.
+2. **Analysis** — Checks EXIF metadata for signs of digital tampering (e.g., Photoshop, GIMP).
+3. **Indic OCR** — Processes the image bytes through the Sarvam AI Document Intelligence API to extract text (supports multiple Indian scripts alongside English).
+4. **Translation** — Routes the extracted text through a Groq translation node to convert it into clear English.
+5. **Re-Verification Loop** — Dynamically appends the translated text to the article's markdown block and conditionally loops the pipeline back to Agent 1. This ensures the truth engine catches and fact-checks claims made *inside* screenshots, memes, and infographics!
 
 ---
 

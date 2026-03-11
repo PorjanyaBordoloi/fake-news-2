@@ -391,8 +391,21 @@ def extraction_node(state: AgentState) -> AgentState:
             "error": "user_input is required",
         }
 
+    is_second_pass = state.get("is_second_pass", False)
+
     try:
-        if input_is_url:
+        if is_second_pass:
+            print("--- RUNNING CLAIM EXTRACTION ON ENRICHED SECOND PASS ---")
+            raw_markdown = state.get("raw_markdown", "")
+            truncated_markdown = _truncate_markdown(
+                raw_markdown,
+                limit=_ce_cfg.get("markdown_truncation_limit", 10000),
+            )
+            pub_date = state.get("pub_date")
+            author = state.get("author")
+            source_domain = state.get("source_domain")
+
+        elif input_is_url:
             print("--- DETECTED INPUT TYPE: URL ---")
             try:
                 raw_markdown = scrape_article(resolved_input)

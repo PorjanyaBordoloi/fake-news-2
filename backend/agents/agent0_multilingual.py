@@ -184,7 +184,8 @@ def _detect_language(text: str) -> tuple[str, float]:
         response.raise_for_status()
         data = response.json()
         lang_code = str(data.get("language_code", "en-IN"))
-        confidence = float(data.get("confidence", 0.0))
+        # Sarvam doesn't always return confidence, default to 1.0 if not present
+        confidence = float(data.get("confidence", 1.0))
         return lang_code, confidence
     except Exception as exc:  # noqa: BLE001
         logger.warning("[Agent0] Language detection API failed: %s — using script heuristic", exc)

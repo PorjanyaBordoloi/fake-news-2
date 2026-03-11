@@ -11,10 +11,10 @@ claim_extraction:
   provider: "groq"
   temperature: 0                       # Deterministic — keep at 0
   structured_output_method: "json_mode"
-  markdown_truncation_limit: 4500     # Reduced from 10000 — non-Latin scripts (Assamese, Bengali,
+  markdown_truncation_limit: 3500     # Reduced from 10000 — non-Latin scripts (Assamese, Bengali,
                                       # Devanagari etc.) tokenise at ~0.67 tok/char vs ~0.25 for
                                       # English, so 10k chars → 6600+ tokens exceeds the 6000 TPM
-                                      # limit on llama-3.1-8b-instant. 4500 chars ≈ 3000 tokens max.
+                                      # limit on llama-3.1-8b-instant. 3500 chars ≈ 2300 tokens max.
 
 # ── Agent 2: Evidence Retrieval ───────────────────────────────────────────────
 evidence_retrieval:
@@ -22,7 +22,7 @@ evidence_retrieval:
   max_snippet_chars: 500              # Truncate each Tavily snippet to this many chars
   tavily_search_depth: "basic"        # "basic" or "advanced" (advanced uses more quota)
   tavily_max_results: 5               # Number of web results fetched per claim
-  max_parallel_workers: 2             # ThreadPoolExecutor workers for concurrent fetches
+  max_parallel_workers: 5             # ThreadPoolExecutor workers for concurrent fetches
 
 # ── Agent 3: Source Credibility ───────────────────────────────────────────────
 source_credibility:

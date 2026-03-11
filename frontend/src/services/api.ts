@@ -1,7 +1,7 @@
 /**
  * API Client
  *
- * Provides functions for communicating with the Fake News Detector backend.
+ * Provides functions for communicating with the KREDO backend.
  */
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
@@ -10,11 +10,10 @@ const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
  * Simple (non-streaming) analysis — used by Chrome extension or fallback.
  */
 export async function analyzeSimple(url: string) {
-    const response = await fetch(`${API_BASE_URL}/api/analyze-simple`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ url }),
-    });
+    const response = await fetch(
+        `${API_BASE_URL}/api/analyze-simple?user_input=${encodeURIComponent(url)}`,
+        { method: 'POST' },
+    );
 
     if (!response.ok) {
         throw new Error(`API error: ${response.status}`);
