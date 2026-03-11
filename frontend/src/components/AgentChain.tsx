@@ -134,6 +134,20 @@ export default function AgentChain({ thoughts, isComplete }: Props) {
         }
     }, [thoughts]);
 
+    // Agent 0: agent_log SSE events (language detection + localization messages)
+    useEffect(() => {
+        const agentLogs = thoughts.filter(t => t.agent === 'agent_log');
+        agentLogs.forEach(t => {
+            const message: string = t.data?.message || '';
+            if (!message) return;
+            setLogs(prev => {
+                if (prev.some(l => l.text === message)) return prev;
+                const type: LogEntry['type'] = t.data?.symbol === '✓' ? 'success' : 'status';
+                return [...prev, { text: message, type }];
+            });
+        });
+    }, [thoughts]);
+
     // Pipeline complete
     useEffect(() => {
         if (isComplete) {

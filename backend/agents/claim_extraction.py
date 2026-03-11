@@ -59,6 +59,11 @@ try:
 except ModuleNotFoundError:
     from explanation_generator import explanation_generator_node
 
+try:
+    from agents.agent0_multilingual import agent0_pre_node, agent0_post_node
+except ModuleNotFoundError:
+    from agent0_multilingual import agent0_pre_node, agent0_post_node  # type: ignore[no-redef]
+
 load_dotenv()
 
 try:
@@ -86,6 +91,12 @@ class AgentState(TypedDict):
     author: Optional[str]
     source_domain: Optional[str]
     error: str
+    # --- Multilingual Agent 0 fields ---
+    source_language: NotRequired[str]       # Sarvam language code e.g. "bn-IN"
+    original_text: NotRequired[str]         # Raw input before translation
+    is_translated: NotRequired[bool]        # True if Agent 0 translated input
+    translated_input: NotRequired[str]      # English version passed to pipeline
+    localized_output: NotRequired[dict]     # Verdicts translated back to source lang
 
 
 class Claim(BaseModel):
@@ -451,19 +462,29 @@ def extraction_node(state: AgentState) -> AgentState:
 
 
 def build_claim_extraction_graph():
-    """Build and compile the parser graph for claim extraction."""
+    """Build and compile the full pipeline graph with multilingual support."""
     builder = StateGraph(AgentState)
-    builder.add_node("claim_extraction", extraction_node)
-    builder.add_node("evidence_retrieval", evidence_retrieval_node)
-    builder.add_node("source_credibility", source_credibility_node)
-    builder.add_node("fact_checker", fact_checker_node)
+
+    # Agent 0 — pre (language detection + translation)
+    builder.add_node("agent0_pre",            agent0_pre_node)
+    # Agents 1–5 — unchanged
+    builder.add_node("claim_extraction",      extraction_node)
+    builder.add_node("evidence_retrieval",    evidence_retrieval_node)
+    builder.add_node("source_credibility",    source_credibility_node)
+    builder.add_node("fact_checker",          fact_checker_node)
     builder.add_node("explanation_generator", explanation_generator_node)
-    builder.add_edge(START, "claim_extraction")
-    builder.add_edge("claim_extraction", "evidence_retrieval")
-    builder.add_edge("evidence_retrieval", "source_credibility")
-    builder.add_edge("source_credibility", "fact_checker")
-    builder.add_edge("fact_checker", "explanation_generator")
-    builder.add_edge("explanation_generator", END)
+    # Agent 0 — post (localize output back to source language)
+    builder.add_node("agent0_post",           agent0_post_node)
+
+    builder.add_edge(START,                   "agent0_pre")
+    builder.add_edge("agent0_pre",            "claim_extraction")
+    builder.add_edge("claim_extraction",      "evidence_retrieval")
+    builder.add_edge("evidence_retrieval",    "source_credibility")
+    builder.add_edge("source_credibility",    "fact_checker")
+    builder.add_edge("fact_checker",          "explanation_generator")
+    builder.add_edge("explanation_generator", "agent0_post")
+    builder.add_edge("agent0_post",           END)
+
     return builder.compile()
 
 

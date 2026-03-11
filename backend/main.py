@@ -28,6 +28,11 @@ load_dotenv()
 
 logger = logging.getLogger(__name__)
 
+try:
+    from agents.agent0_multilingual import SUPPORTED_LANGUAGES as _MULTILINGUAL_LANGUAGES
+except Exception:  # noqa: BLE001
+    _MULTILINGUAL_LANGUAGES: dict = {}
+
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 # Lifespan — startup / shutdown hooks
@@ -167,15 +172,27 @@ async def analyze_stream(user_input: str):
 
     async def event_generator():
         initial_state = _build_initial_state(user_input)
+        _detected_lang_name: str | None = None  # track across agent0_pre → agent0_post
         # Stream events from the compiled LangGraph
         for event in claim_extraction_graph.stream(initial_state):
             for node_name, node_output in event.items():
+                node_data = node_output or {}
                 payload = {
                     "agent": node_name,
-                    "status": "error" if node_output.get("error") else "success",
-                    "data": node_output,
+                    "status": "error" if node_data.get("error") else "success",
+                    "data": node_data,
                 }
                 yield f"data: {json.dumps(payload)}\n\n"
+
+                # Agent 0 pre — emit language detection log
+                if node_name == "agent0_pre" and node_data.get("is_translated"):
+                    src_lang = node_data.get("source_language", "")
+                    _detected_lang_name = _MULTILINGUAL_LANGUAGES.get(src_lang, src_lang)
+                    yield f"data: {json.dumps({'type': 'agent_log', 'symbol': '→', 'message': f'Detected {_detected_lang_name} — translating to English via Sarvam AI'})}\n\n"
+
+                # Agent 0 post — emit localization log
+                if node_name == "agent0_post" and node_data.get("localized_output") and _detected_lang_name:
+                    yield f"data: {json.dumps({'type': 'agent_log', 'symbol': '\u2713', 'message': f'Verdicts localized back to {_detected_lang_name}'})}\n\n"
 
         yield f"data: {json.dumps({'status': 'complete'})}\n\n"
 
@@ -239,7 +256,63 @@ async def delete_history_entry(entry_id: str):
 
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# Translate endpoint — used by frontend claim translate button
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+class TranslateRequest(BaseModel):
+    text: str
+    source_language: str = ""  # optional: if empty, auto-detected via Sarvam
+
+
+@app.post("/api/translate")
+async def translate_to_english(req: TranslateRequest):
+    """
+    Translate arbitrary text to English using Sarvam AI.
+    Auto-detects source language if not provided.
+    Used by the frontend 'Translate to English' button on claim cards.
+    """
+    try:
+        from agents.agent0_multilingual import (
+            SUPPORTED_LANGUAGES,
+            _detect_language,
+            _heuristic_detect,
+            _translate_to_english,
+        )
+
+        text = req.text.strip()
+        if not text:
+            return {"translated_text": text, "source_language": "en-IN"}
+
+        source_lang = req.source_language.strip()
+
+        # Determine source language
+        if not source_lang:
+            source_lang, confidence = _detect_language(text)
+            # If API + heuristic both say English or confidence too low, skip
+            if source_lang.startswith("en"):
+                return {"translated_text": text, "source_language": source_lang}
+            # If API returned its fallback (en-IN, 1.0) but text has non-ASCII,
+            # run the heuristic directly as a second opinion
+            if confidence == 1.0 and source_lang == "en-IN":
+                source_lang, confidence = _heuristic_detect(text)
+
+        if source_lang.startswith("en"):
+            return {"translated_text": text, "source_language": source_lang}
+
+        translated = _translate_to_english(text, source_lang)
+        lang_name = SUPPORTED_LANGUAGES.get(source_lang, source_lang)
+        return {
+            "translated_text": translated,
+            "source_language": source_lang,
+            "source_language_name": lang_name,
+        }
+    except Exception as exc:  # noqa: BLE001
+        logger.warning("[/api/translate] error: %s", exc)
+        return {"translated_text": req.text, "source_language": "", "error": str(exc)}
+
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 # Uvicorn entry point
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 if __name__ == "__main__":
-    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
+    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True, reload_includes=["*.yaml"])

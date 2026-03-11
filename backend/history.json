@@ -1,5 +1,662 @@
 [
   {
+    "id": "9b902904-7e2a-4309-9787-f70b657c5d6a",
+    "url": "\u098f\u09b2 \u09aa\u09bf \u099c\u09bf \u09b8\u0982\u0995\u099f : \u09a6\u09c1\u0987 \u0995\u09c7\u09a8\u09cd\u09a6\u09cd\u09f0\u09c0\u09df \u09ae\u09a8\u09cd\u09a4\u09cd\u09f0\u09c0 \u098f\u099b \u099c\u09df\u09b6\u0982\u0995\u09f0- \u09b9\u09f0\u09a6\u09c0\u09aa \u09b8\u09bf\u0982 \u09aa\u09c1\u09f0\u09c0\u09f0\u09c7 \u09aa\u09cd\u09f0\u09a7\u09be\u09a8\u09ae\u09a8\u09cd\u09a4\u09cd\u09f0\u09c0\u09f0 \u09ac\u09c8\u09a0\u0995",
+    "timestamp": "2026-03-11T10:07:47.605601+00:00",
+    "overall_credibility": "CREDIBLE",
+    "avg_score": 80,
+    "bottom_line": "This claim is trustworthy and accurate, but there is some uncertainty about the meeting's specific focus.",
+    "verdicts": [
+      {
+        "claim_text": "The meeting between S Jaishankar and Hardeep Singh Puri and the Prime Minister was related to the LPG crisis.",
+        "verdict": "SUPPORTED",
+        "truth_score": 90,
+        "explanation": "The evidence collectively shows that a meeting between S Jaishankar, Hardeep Singh Puri, and the Prime Minister was held, and it was related to the LPG crisis. The meeting was confirmed by multiple credible sources, including news articles from NDTV and Firstpost.",
+        "citations": [
+          "https://www.ndtv.com/india-news/pm-modi-meets-oil-and-foreign-ministers-over-lpg-concerns-amid-iran-war-11194417",
+          "https://www.firstpost.com/india/as-iran-war-fuels-lpg-crisis-pm-modi-holds-review-meeting-with-jaishankar-puri-13988083.html"
+        ],
+        "reasoning_summary": "The analyst's reasoning involved inventorying the evidence, decomposing the claim, matching the evidence to the claim components, analyzing for contradictions, and assessing confidence. The evidence confirmed the meeting and its relation to the LPG crisis, leading to a high confidence level in the verdict.",
+        "confidence_level": "HIGH",
+        "evidence_gaps": [
+          "There is a gap in the evidence regarding whether the meeting was specifically focused on managing the situation amidst the Iran war, as not all snippets mention this context."
+        ]
+      },
+      {
+        "claim_text": "Two central ministers, S Jaishankar and Hardeep Singh Puri, met with the Prime Minister.",
+        "verdict": "SUPPORTED",
+        "truth_score": 70,
+        "explanation": "The evidence confirms that S Jaishankar and Hardeep Singh Puri attended a meeting with the Prime Minister, although some details about the meeting are unclear or inferred.",
+        "citations": [
+          "https://www.dynamitenews.com/national/us-iran-war-pm-modi-reviews-lpg-situation-in-meeting-with-eam-s-jaishankar-oil-minister-hardeep-puri",
+          "https://www.facebook.com/IndiaToday/posts/union-petroleum-minister-hardeep-singh-puri-meets-pm-in-parliament-eam-s-jaishan/1519020380261505/",
+          "https://www.facebook.com/dnaindia/posts/prime-minister-narendra-modi-on-tuesday-held-a-meeting-with-petroleum-minister-h/1399333705569903/"
+        ],
+        "reasoning_summary": "The analyst's reasoning confirms the attendance of S Jaishankar and Hardeep Singh Puri at a meeting with the Prime Minister based on multiple evidence snippets, despite some gaps in details.",
+        "confidence_level": "MEDIUM",
+        "evidence_gaps": [
+          "Location and purpose of the meeting, with some details inferred rather than directly stated."
+        ]
+      }
+    ],
+    "explanations": {
+      "by_claim": {
+        "The meeting between S Jaishankar and Hardeep Singh Puri and the Prime Minister was related to the LPG crisis.": {
+          "claim_text": "The meeting between S Jaishankar and Hardeep Singh Puri and the Prime Minister was related to the LPG crisis.",
+          "plain_english": "A meeting between S Jaishankar, Hardeep Singh Puri, and the Prime Minister was held, and it was related to the LPG crisis. The evidence confirms this, but we don't know if the meeting was specifically about managing the situation during the Iran war. This information is not mentioned in all sources. The meeting was reported by established news outlets, including NDTV and Firstpost.",
+          "confidence_statement": "High confidence \u2014 confirmed by multiple credible sources.",
+          "source_quality_note": "confirmed by major wire services",
+          "reader_advisory": "Treat the information from youtube.com with caution, as it has a low credibility score.",
+          "evidence_gaps_plain": "There is a gap in the evidence regarding whether the meeting was specifically focused on managing the situation amidst the Iran war, as not all snippets mention this context."
+        }
+      },
+      "overall_credibility": "CREDIBLE",
+      "bottom_line": "This claim is trustworthy and accurate, but there is some uncertainty about the meeting's specific focus."
+    },
+    "source": "webapp"
+  },
+  {
+    "id": "ca6e059e-42b0-4863-b436-b307f744ce6c",
+    "url": "\u0908\u0930\u093e\u0928 \u0915\u0947 \u092a\u093e\u0938 \u092a\u0930\u092e\u093e\u0923\u0941 \u0939\u0948...! \u0939\u092e\u0932\u0947 \u0938\u0947 \u0907\u091c\u0930\u093e\u092f\u0932 \u0939\u0940 \u0928\u0939\u0940\u0902 \u0915\u0908 \u0916\u093e\u0921\u093c\u0940 \u092e\u0941\u0932\u094d\u0915 \u092d\u0940 \u0939\u094b \u0938\u0915\u0924\u0947 \u0939\u0948\u0902 \u0924\u092c\u093e\u0939 https://www.aajtak.in/world/story/iran-attacks-israel-dimona-nuclear-site-warning-america-war-news-mnrd-dskc-2492589-2026-03-11",
+    "timestamp": "2026-03-11T10:06:53.792562+00:00",
+    "overall_credibility": "MIXED",
+    "avg_score": 52,
+    "bottom_line": "This article's overall trustworthiness is MIXED due to a mix of supported and unverified claims.",
+    "verdicts": [
+      {
+        "claim_text": "Multiple Gulf countries could be destroyed in an attack.",
+        "verdict": "SUPPORTED",
+        "truth_score": 75,
+        "explanation": "The evidence suggests that Iran is targeting Gulf Arab states in retaliation for a joint attack on Iran, and multiple Gulf countries are vulnerable to destruction in an attack. The Gulf region's extraordinary vulnerabilities will be exposed as the war goes on, and multiple Gulf countries could be destroyed in an attack.",
+        "citations": [
+          "https://www.aljazeera.com/news/2026/2/28/multiple-gulf-arab-states-that-host-us-assets-targeted-in-iran-retaliation",
+          "https://www.theatlantic.com/international/2026/03/gulf-countries-iran-us-war/686272/"
+        ],
+        "reasoning_summary": "The analyst's reasoning involves evidence inventory, claim decomposition, evidence matching, contradiction analysis, confidence assessment, and preliminary verdict reasoning. The evidence collectively suggests that Iran is targeting Gulf Arab states and multiple Gulf countries are vulnerable to destruction in an attack.",
+        "confidence_level": "MEDIUM",
+        "evidence_gaps": [
+          "The extent of Gulf states' participation in counter-attacks on Iran is uncertain, and the credibility of some sources is lower."
+        ]
+      },
+      {
+        "claim_text": "Iran has nuclear capabilities.",
+        "verdict": "UNVERIFIED",
+        "truth_score": 40,
+        "explanation": "The evidence suggests Iran has a nuclear program and has exceeded nuclear deal limits, but there are significant gaps regarding its possession of nuclear capabilities. The available evidence is indirect or weak, leading to a low confidence assessment.",
+        "citations": [
+          "https://www.cfr.org/articles/what-are-irans-nuclear-and-missile-capabilities",
+          "https://en.wikipedia.org/wiki/Nuclear_program_of_Iran",
+          "https://www.cnn.com/world/middleeast/irans-nuclear-capabilities-fast-facts"
+        ],
+        "reasoning_summary": "The analyst's reasoning involves decomposing the claim into sub-parts, matching evidence to these sub-parts, and assessing the confidence in the evidence. The evidence shows Iran has a nuclear program and has exceeded nuclear deal limits, but gaps remain regarding its nuclear capabilities.",
+        "confidence_level": "LOW",
+        "evidence_gaps": [
+          "Gaps remain in the evidence regarding Iran's possession of nuclear capabilities and the hardening of its facilities."
+        ]
+      },
+      {
+        "claim_text": "Israel could be destroyed in an attack.",
+        "verdict": "UNVERIFIED",
+        "truth_score": 40,
+        "explanation": "The claim that Israel could be destroyed in an attack is not supported by sufficient credible evidence, and the available evidence has low credibility and lacks direct statements on key aspects of the claim.",
+        "citations": [
+          "https://www.iranintl.com/en/202502215094",
+          "https://www.youtube.com/watch?v=SiE53LK_cf8",
+          "https://www.reddit.com/r/geopolitics/comments/1g9eit6/what_would_happen_if_israel_were_to_lose_this_war/"
+        ],
+        "reasoning_summary": "The analyst's reasoning highlights significant gaps in the evidence, including the capability of Israel being destroyed, Iran's threats, past attacks, and damage suffered by Israel. The low credibility of sources and lack of direct evidence lead to a low confidence level in the claim.",
+        "confidence_level": "LOW",
+        "evidence_gaps": [
+          "Gaps in evidence regarding Israel's capability to be destroyed, Iran's threats, past attacks, and damage suffered by Israel."
+        ]
+      }
+    ],
+    "explanations": {
+      "by_claim": {
+        "Multiple Gulf countries could be destroyed in an attack.": {
+          "claim_text": "Multiple Gulf countries could be destroyed in an attack.",
+          "plain_english": "The evidence suggests that Iran is targeting Gulf Arab states in retaliation for a joint attack on Iran. Multiple Gulf countries are vulnerable to destruction in an attack. However, we don't know how Gulf states will respond to Iran's attacks. This uncertainty makes it difficult to confirm the claim.",
+          "confidence_statement": "Medium confidence \u2014 based on evidence from multiple credible sources, but some gaps remain.",
+          "source_quality_note": "Reported by established news outlets, but one source has lower credibility.",
+          "reader_advisory": "Be cautious when considering this claim, as some sources have lower credibility.",
+          "evidence_gaps_plain": "The extent of Gulf states' participation in counter-attacks on Iran is still unknown, and some sources have lower credibility."
+        },
+        "Iran has nuclear capabilities.": {
+          "claim_text": "Iran has nuclear capabilities.",
+          "plain_english": "Iran has a nuclear program and has exceeded nuclear deal limits, but we don't know for sure if it has nuclear capabilities. The available evidence is indirect or weak, leading to a low confidence assessment.",
+          "confidence_statement": "Low confidence \u2014 indirect evidence and gaps remain.",
+          "source_quality_note": "Sourced from outlets with limited editorial standards.",
+          "reader_advisory": "Treat this claim with caution, as the evidence is indirect and some sources have lower credibility.",
+          "evidence_gaps_plain": "Gaps remain in the evidence regarding Iran's possession of nuclear capabilities and the hardening of its facilities."
+        },
+        "Israel could be destroyed in an attack.": {
+          "claim_text": "Israel could be destroyed in an attack.",
+          "plain_english": "We don't have enough credible evidence to confirm or deny the claim that Israel could be destroyed in an attack. The available evidence has low credibility and lacks direct statements on key aspects of the claim.",
+          "confidence_statement": "Low confidence \u2014 significant gaps in the evidence and low credibility of sources.",
+          "source_quality_note": "Sourced primarily from social media \u2014 treat with caution.",
+          "reader_advisory": "Treat this claim with extreme caution, as the evidence is weak and some sources are unverified.",
+          "evidence_gaps_plain": "Gaps in evidence regarding Israel's capability to be destroyed, Iran's threats, past attacks, and damage suffered by Israel."
+        }
+      },
+      "overall_credibility": "MIXED",
+      "bottom_line": "This article's overall trustworthiness is MIXED due to a mix of supported and unverified claims."
+    },
+    "source": "webapp"
+  },
+  {
+    "id": "5c8e227a-d8d8-498d-9ba3-cbd1a5707310",
+    "url": "Chhagan Bhujbal: \u0917\u0945\u0938\u091a\u094d\u092f\u093e \u0924\u0941\u091f\u0935\u0921\u094d\u092f\u093e\u0928\u0947 \u091a\u093f\u0902\u0924\u093e\u0917\u094d\u0930\u0938\u094d\u0924 \u091d\u093e\u0932\u0947\u0932\u094d\u092f\u093e \u0939\u0949\u091f\u0947\u0932 \u0935\u094d\u092f\u093e\u0935\u0938\u093e\u092f\u093f\u0915\u093e\u0902\u091a\u0940 \u0938\u0930\u0915\u093e\u0930\u0915\u0921\u0947 \u0927\u093e\u0935, \u091b\u0917\u0928 \u092d\u0941\u091c\u092c\u0933 \u092e\u094d\u0939\u0923\u093e\u0932\u0947, \u0924\u0941\u092e\u094d\u0939\u0940 \u0915\u0947\u0930\u094b\u0938\u093f\u0928 \u0935\u093e\u092a\u0930\u093e, \u092a\u0923...",
+    "timestamp": "2026-03-11T10:04:32.354709+00:00",
+    "overall_credibility": "MIXED",
+    "avg_score": 72,
+    "bottom_line": "This article has a mixed credibility level due to the varying quality of sources and the presence of some unsupported claims.",
+    "verdicts": [
+      {
+        "claim_text": "Chhagan Bhujbal suggested that the government should allow the use of kerosene.",
+        "verdict": "SUPPORTED",
+        "truth_score": 60,
+        "explanation": "Chhagan Bhujbal suggested the temporary use of kerosene, as confirmed by multiple news sources. However, there are gaps in the evidence regarding the government's consideration of this suggestion and the suitability of kerosene as an alternative to LPG.",
+        "citations": [
+          "https://english.gujaratsamachar.com/news/mumbai/lpg-shortage-forces-20-of-mumbai-restaurants-to-shut-more-to-follow-53321838585.html",
+          "https://www.mid-day.com/mumbai/mumbai-news/article/maharashtra-to-give-free-rations-kerosene-to-flood-hit-people-says-minister-chhagan-bhujbal-23184513"
+        ],
+        "reasoning_summary": "The evidence confirms Chhagan Bhujbal's suggestion for temporary use of kerosene, but lacks information on the government's consideration and kerosene's suitability as an LPG alternative.",
+        "confidence_level": "MEDIUM",
+        "evidence_gaps": [
+          "Government consideration of Chhagan Bhujbal's suggestion",
+          "Suitability of kerosene as an alternative to LPG"
+        ]
+      },
+      {
+        "claim_text": "Chhagan Bhujbal said that hotel businessmen who are worried about the gas shortage are running to the government.",
+        "verdict": "SUPPORTED",
+        "truth_score": 85,
+        "explanation": "The evidence collectively shows that Chhagan Bhujbal did say that hotel businessmen are worried about the gas shortage and are running to the government, as reported by multiple news sources.",
+        "citations": [
+          "https://www.msn.com/en-in/news/India/hotels-may-face-cut-in-commercial-lpg-supply-says-maharashtra-minister/ar-AA1XUHCV?ocid=finance-verthp-feeds",
+          "https://m.youtube.com/shorts/gfwr3anmtg4",
+          "https://www.thestatesman.com/india/hoteliers-meet-minister-to-discuss-cooking-gas-shortage-due-to-war-1503568622.html/amp"
+        ],
+        "reasoning_summary": "The claim is supported by multiple news sources, including MSN, YouTube, The Statesman, and Uni India, which report that Chhagan Bhujbal met with hotel owners to discuss their concerns about potential LPG supply shortages.",
+        "confidence_level": "HIGH",
+        "evidence_gaps": [
+          "Lack of direct quotes from Chhagan Bhujbal"
+        ]
+      }
+    ],
+    "explanations": {
+      "by_claim": {
+        "Chhagan Bhujbal suggested that the government should allow the use of kerosene.": {
+          "claim_text": "Chhagan Bhujbal suggested that the government should allow the use of kerosene.",
+          "plain_english": "Chhagan Bhujbal suggested using kerosene temporarily, but we don't know if the government is considering this or if kerosene is a good alternative to LPG. Multiple news sources confirm Chhagan Bhujbal's suggestion, but they lack information on these important details. This means we can't be entirely sure about the government's plans or kerosene's suitability. We need more information to fully understand the situation.",
+          "confidence_statement": "Medium confidence \u2014 the evidence confirms Chhagan Bhujbal's suggestion, but lacks information on the government's consideration and kerosene's suitability.",
+          "source_quality_note": "Sourced from outlets with limited editorial standards.",
+          "reader_advisory": "Treat this claim with caution because the sources used have limited editorial standards.",
+          "evidence_gaps_plain": "There is no information on whether the government is considering Chhagan Bhujbal's suggestion, and it's unclear if kerosene is a suitable alternative to LPG."
+        },
+        "Chhagan Bhujbal said that hotel businessmen who are worried about the gas shortage are running to the government.": {
+          "claim_text": "Chhagan Bhujbal said that hotel businessmen who are worried about the gas shortage are running to the government.",
+          "plain_english": "Chhagan Bhujbal said that hotel businessmen are worried about the gas shortage and are running to the government. Multiple news sources confirm this, but we don't have direct quotes from Chhagan Bhujbal to know exactly what he said. This means we can trust that he made this statement, but we can't be sure of the exact words he used.",
+          "confidence_statement": "High confidence \u2014 the evidence collectively shows that Chhagan Bhujbal made this statement, although we don't have direct quotes from him.",
+          "source_quality_note": "Reported by established news outlets, but one source is a social media platform, so treat with caution.",
+          "reader_advisory": null,
+          "evidence_gaps_plain": "We don't have direct quotes from Chhagan Bhujbal to confirm his exact words."
+        }
+      },
+      "overall_credibility": "MIXED",
+      "bottom_line": "This article has a mixed credibility level due to the varying quality of sources and the presence of some unsupported claims."
+    },
+    "source": "webapp"
+  },
+  {
+    "id": "364edb00-8e98-4791-b4a8-b3110f913d1e",
+    "url": "https://marathi.abplive.com/sports/cricket/shivam-dube-travelled-by-train-from-ahmedabad-to-mumbai-after-win-t20-world-cup-2026-shivam-dube-travel-in-train-marathi-news-1415835",
+    "timestamp": "2026-03-11T10:03:31.152176+00:00",
+    "overall_credibility": "MIXED",
+    "avg_score": 55,
+    "bottom_line": "This article contains a mix of verified and unverified information, so be cautious when reading it.",
+    "verdicts": [
+      {
+        "claim_text": "Shivam Dube travelled by train from Ahmedabad to Mumbai after winning the T20 World Cup 2026.",
+        "verdict": "SUPPORTED",
+        "truth_score": 70,
+        "explanation": "The evidence collectively shows that Shivam Dube traveled by train from Ahmedabad to Mumbai after the T20 World Cup 2026 win. Although the specifics of the travel, such as the reason for taking the train and the type of train, are not entirely clear, the core claim of traveling by train is confirmed by multiple sources.",
+        "citations": [
+          "https://www.republicworld.com/cricket/shivam-dube-and-wife-take-3rd-ac-train-from-ahmedabad-to-mumbai-after-t20-wc-win-here-s-why",
+          "https://crictoday.com/cricket/news/indias-t20-world-cup-hero-hides-under-blankets-in-train-dodges-tc-questioning-to-travel-in-3rd-ac-hours-post-title-win/",
+          "https://sports.ndtv.com/t20-world-cup-2026/shivam-dube-kaun-cricketer-a-secret-train-journey-and-a-lie-to-ticket-checker-11198657"
+        ],
+        "reasoning_summary": "The analyst's reasoning involves confirming Shivam Dube's train travel from Ahmedabad to Mumbai after the T20 World Cup 2026 win through multiple low-credibility sources, with some details like the reason for the train travel and the type of train taken being inferred rather than directly confirmed.",
+        "confidence_level": "MEDIUM",
+        "evidence_gaps": [
+          "The reason for Shivam Dube's train travel and the type of train taken are not conclusively established by the available evidence."
+        ]
+      },
+      {
+        "claim_text": "Shivam Dube and his wife caused a commotion at the TCS office.",
+        "verdict": "UNVERIFIED",
+        "truth_score": 40,
+        "explanation": "The claim that Shivam Dube and his wife caused a commotion at the TCS office cannot be confirmed or denied due to a lack of evidence addressing this specific incident. While there is evidence of Shivam Dube's wife being involved in a controversy with a BJP leader and the couple facing online abuse, there is no direct evidence related to the TCS office incident.",
+        "citations": [],
+        "reasoning_summary": "The analyst's reasoning process found gaps in the evidence that make it difficult to draw a definitive conclusion about the claim. The available evidence confirms Shivam Dube's wife's involvement in a controversy and the couple facing online abuse but does not address the TCS office incident.",
+        "confidence_level": "LOW",
+        "evidence_gaps": [
+          "No evidence directly addresses the claim of Shivam Dube and his wife causing a commotion at the TCS office."
+        ]
+      }
+    ],
+    "explanations": {
+      "by_claim": {
+        "Shivam Dube travelled by train from Ahmedabad to Mumbai after winning the T20 World Cup 2026.": {
+          "claim_text": "Shivam Dube travelled by train from Ahmedabad to Mumbai after winning the T20 World Cup 2026.",
+          "plain_english": "We found that Shivam Dube did travel by train from Ahmedabad to Mumbai after the T20 World Cup 2026 win. However, we couldn't confirm why he took the train or what type of train he took. The available evidence suggests that he traveled by train, but we can't provide more details.",
+          "confidence_statement": "Medium confidence \u2014 confirmed by multiple low-credibility sources.",
+          "source_quality_note": "Sourced from outlets with limited editorial standards.",
+          "reader_advisory": "Treat this information with caution since the sources used are of low credibility.",
+          "evidence_gaps_plain": "The reason for Shivam Dube's train travel and the type of train taken are not entirely clear."
+        },
+        "Shivam Dube and his wife caused a commotion at the TCS office.": {
+          "claim_text": "Shivam Dube and his wife caused a commotion at the TCS office.",
+          "plain_english": "We couldn't find any evidence to confirm or deny the claim that Shivam Dube and his wife caused a commotion at the TCS office. While there is evidence of Shivam Dube's wife being involved in a controversy, it doesn't relate to this specific incident.",
+          "confidence_statement": "Low confidence \u2014 insufficient evidence.",
+          "source_quality_note": "Sourced primarily from social media \u2014 treat with caution",
+          "reader_advisory": "This information is unverified and may not be accurate.",
+          "evidence_gaps_plain": "There is no direct evidence addressing this specific incident."
+        }
+      },
+      "overall_credibility": "MIXED",
+      "bottom_line": "This article contains a mix of verified and unverified information, so be cautious when reading it."
+    },
+    "source": "webapp"
+  },
+  {
+    "id": "2da194c5-4fbe-4971-b4a3-df2dcebad5ec",
+    "url": "https://www.asomiyapratidin.in/homepage/lpg-crisis-two-central-ministers-s-jaishankar-and-hardeep-singh-puri-meet-with-the-prime-minister-11193666",
+    "timestamp": "2026-03-11T09:58:55.700881+00:00",
+    "overall_credibility": "MOSTLY CREDIBLE",
+    "avg_score": 72,
+    "bottom_line": "Most of the fact-checked claims are trustworthy, but some sources have lower credibility.",
+    "verdicts": [
+      {
+        "claim_text": "\u09aa\u09c7\u099f\u09cd\u09f0\u09b2\u09bf\u09af\u09bc\u09be\u09ae \u09ae\u09a8\u09cd\u09a4\u09cd\u09f0\u09c0 \u09b9\u09f0\u09a6\u09c0\u09aa \u09b8\u09bf\u0982 \u09aa\u09c1\u09f0\u09c0 \u0986\u09f0\u09c1 \u09ac\u09c8\u09a6\u09c7\u09b6\u09bf\u0995 \u09aa\u09f0\u09bf\u0995\u09cd\u09f0\u09ae\u09be \u09ae\u09a8\u09cd\u09a4\u09cd\u09f0\u09c0 \u098f\u099b \u099c\u09af\u09bc\u09b6\u0982\u0995\u09f0 \u09aa\u09cd\u09f0\u09a7\u09be\u09a8\u09ae\u09a8\u09cd\u09a4\u09cd\u09f0\u09c0 \u09a8\u09f0\u09c7\u09a8\u09cd\u09a6\u09cd\u09f0 \u09ae\u09cb\u09a1\u09c0\u09f0 \u09b8\u09c8\u09a4\u09c7 \u09ac\u09c8\u09a0\u0995\u09a4 \u09ae\u09bf\u09b2\u09bf\u09a4 \u09b9\u09af\u09bc",
+        "verdict": "SUPPORTED",
+        "truth_score": 85,
+        "explanation": "The claim is supported by evidence from a moderately credible source, which states that the meeting between the Petroleum Minister, the Foreign Minister, and the Prime Minister took place. The evidence also mentions the context of the meeting, which was to review the LPG situation amid the Iran war.",
+        "citations": [
+          "https://assam.news18.com/news/nation/pm-narendra-modi-meeting-with-jaishankar-oil-minister-hardeep-puri-to-review-lpg-situation-amid-iran-war-dd-520343.html"
+        ],
+        "reasoning_summary": "The analyst found evidence from a credible source that supports the claim. The evidence mentions the meeting between the Petroleum Minister, the Foreign Minister, and the Prime Minister, and provides context for the meeting.",
+        "confidence_level": "HIGH",
+        "evidence_gaps": [
+          "There are no significant gaps in the evidence, but the credibility of some sources could be higher."
+        ]
+      },
+      {
+        "claim_text": "\u0987\u09f0\u09be\u09a8\u09f0 \u09af\u09c1\u09a6\u09cd\u09a7 \u09aa\u09f0\u09bf\u09b8\u09cd\u09a5\u09bf\u09a4\u09bf\u09af\u09bc\u09c7 \u09b6\u0995\u09cd\u09a4\u09bf \u09af\u09cb\u0997\u09be\u09a8\u09f0 \u09b8\u09ae\u09cd\u09ad\u09be\u09f1\u09cd\u09af \u09b8\u0982\u0995\u099f\u09f0 \u09ac\u09be\u09ac\u09c7 \u0989\u09a6\u09cd\u09ac\u09c7\u0997 \u09aa\u09cd\u09f0\u0995\u09be\u09b6 \u0995\u09f0\u09bf\u099b\u09c7",
+        "verdict": "SUPPORTED",
+        "truth_score": 60,
+        "explanation": "The claim that Iran's war situation has raised concerns about a potential energy crisis is supported by multiple sources, including news articles from Asomiya Pratidin and News18. These sources report on the potential impact of the war on the global energy market and the concerns raised by various countries.",
+        "citations": [
+          "https://www.asomiyapratidin.in/homepage/lpg-crisis-two-central-ministers-s-jaishankar-and-hardeep-singh-puri-meet-with-the-prime-minister-11193666",
+          "https://assam.news18.com/amp/news/world/iran-warns-that-not-even-1-liter-of-crude-oil-will-be-exported-from-hormuz-if-the-war-does-not-stop-tv-moni-subham-g-520345.html"
+        ],
+        "reasoning_summary": "The analyst has reviewed multiple sources, including news articles and opinion pieces, to assess the claim. The sources suggest that the war in Iran has raised concerns about a potential energy crisis, which supports the claim.",
+        "confidence_level": "MEDIUM",
+        "evidence_gaps": [
+          "The sources used to support the claim have low credibility, which may impact the confidence in the verdict."
+        ]
+      }
+    ],
+    "explanations": {
+      "by_claim": {
+        "\u09aa\u09c7\u099f\u09cd\u09f0\u09b2\u09bf\u09af\u09bc\u09be\u09ae \u09ae\u09a8\u09cd\u09a4\u09cd\u09f0\u09c0 \u09b9\u09f0\u09a6\u09c0\u09aa \u09b8\u09bf\u0982 \u09aa\u09c1\u09f0\u09c0 \u0986\u09f0\u09c1 \u09ac\u09c8\u09a6\u09c7\u09b6\u09bf\u0995 \u09aa\u09f0\u09bf\u0995\u09cd\u09f0\u09ae\u09be \u09ae\u09a8\u09cd\u09a4\u09cd\u09f0\u09c0 \u098f\u099b \u099c\u09af\u09bc\u09b6\u0982\u0995\u09f0 \u09aa\u09cd\u09f0\u09a7\u09be\u09a8\u09ae\u09a8\u09cd\u09a4\u09cd\u09f0\u09c0 \u09a8\u09f0\u09c7\u09a8\u09cd\u09a6\u09cd\u09f0 \u09ae\u09cb\u09a1\u09c0\u09f0 \u09b8\u09c8\u09a4\u09c7 \u09ac\u09c8\u09a0\u0995\u09a4 \u09ae\u09bf\u09b2\u09bf\u09a4 \u09b9\u09af\u09bc": {
+          "claim_text": "\u09aa\u09c7\u099f\u09cd\u09f0\u09b2\u09bf\u09af\u09bc\u09be\u09ae \u09ae\u09a8\u09cd\u09a4\u09cd\u09f0\u09c0 \u09b9\u09f0\u09a6\u09c0\u09aa \u09b8\u09bf\u0982 \u09aa\u09c1\u09f0\u09c0 \u0986\u09f0\u09c1 \u09ac\u09c8\u09a6\u09c7\u09b6\u09bf\u0995 \u09aa\u09f0\u09bf\u0995\u09cd\u09f0\u09ae\u09be \u09ae\u09a8\u09cd\u09a4\u09cd\u09f0\u09c0 \u098f\u099b \u099c\u09af\u09bc\u09b6\u0982\u0995\u09f0 \u09aa\u09cd\u09f0\u09a7\u09be\u09a8\u09ae\u09a8\u09cd\u09a4\u09cd\u09f0\u09c0 \u09a8\u09f0\u09c7\u09a8\u09cd\u09a6\u09cd\u09f0 \u09ae\u09cb\u09a1\u09c0\u09f0 \u09b8\u09c8\u09a4\u09c7 \u09ac\u09c8\u09a0\u0995\u09a4 \u09ae\u09bf\u09b2\u09bf\u09a4 \u09b9\u09af\u09bc",
+          "plain_english": "This claim checks out. The Petroleum Minister, Foreign Minister, and Prime Minister did meet. They were discussing the LPG situation amid the Iran war. This information comes from a moderately credible source.",
+          "confidence_statement": "High confidence \u2014 confirmed by a moderately credible source.",
+          "source_quality_note": "reported by established news outlets",
+          "reader_advisory": null,
+          "evidence_gaps_plain": "The credibility of some sources could be higher."
+        }
+      },
+      "overall_credibility": "MOSTLY CREDIBLE",
+      "bottom_line": "Most of the fact-checked claims are trustworthy, but some sources have lower credibility."
+    },
+    "source": "webapp"
+  },
+  {
+    "id": "d0c704b7-4e7a-4420-991e-e809f820230d",
+    "url": "https://www.asomiyapratidin.in/homepage/lpg-crisis-two-central-ministers-s-jaishankar-and-hardeep-singh-puri-meet-with-the-prime-minister-11193666",
+    "timestamp": "2026-03-11T09:52:45.965606+00:00",
+    "overall_credibility": "MIXED",
+    "avg_score": 65,
+    "bottom_line": "This article contains mixed information, with some claims supported by credible sources and others supported by less trustworthy sources.",
+    "verdicts": [
+      {
+        "claim_text": "\u09aa\u09c7\u099f\u09cd\u09f0\u09b2\u09bf\u09af\u09bc\u09be\u09ae \u09ae\u09a8\u09cd\u09a4\u09cd\u09f0\u09c0 \u09b9\u09f0\u09a6\u09c0\u09aa \u09b8\u09bf\u0982 \u09aa\u09c1\u09f0\u09c0 \u0986\u09f0\u09c1 \u09ac\u09c8\u09a6\u09c7\u09b6\u09bf\u0995 \u09aa\u09f0\u09bf\u0995\u09cd\u09f0\u09ae\u09be \u09ae\u09a8\u09cd\u09a4\u09cd\u09f0\u09c0 \u098f\u099b \u099c\u09af\u09bc\u09b6\u0982\u0995\u09f0 \u09aa\u09cd\u09f0\u09a7\u09be\u09a8\u09ae\u09a8\u09cd\u09a4\u09cd\u09f0\u09c0 \u09a8\u09f0\u09c7\u09a8\u09cd\u09a6\u09cd\u09f0 \u09ae\u09cb\u09a1\u09c0\u09f0 \u09b8\u09c8\u09a4\u09c7 \u09ac\u09c8\u09a0\u0995\u09a4 \u09ae\u09bf\u09b2\u09bf\u09a4 \u09b9\u09af\u09bc",
+        "verdict": "SUPPORTED",
+        "truth_score": 70,
+        "explanation": "The claim that Petroleum Minister Hardeep Singh Puri and Foreign Minister S Jaishankar met with Prime Minister Narendra Modi is supported by social media evidence, although the credibility of these sources is low. The meeting is reported to have taken place during an LPG crisis.",
+        "citations": [
+          "https://x.com/News18Northeast/status/2031359072314995041"
+        ],
+        "reasoning_summary": "The claim is supported by social media evidence, but the credibility of these sources is low. The meeting is reported to have taken place during an LPG crisis.",
+        "confidence_level": "MEDIUM",
+        "evidence_gaps": [
+          "Lack of official government confirmation, low credibility of social media sources"
+        ]
+      },
+      {
+        "claim_text": "\u0987\u09f0\u09be\u09a8\u09f0 \u09af\u09c1\u09a6\u09cd\u09a7 \u09aa\u09f0\u09bf\u09b8\u09cd\u09a5\u09bf\u09a4\u09bf\u09af\u09bc\u09c7 \u09b6\u0995\u09cd\u09a4\u09bf \u09af\u09cb\u0997\u09be\u09a8\u09f0 \u09b8\u09ae\u09cd\u09ad\u09be\u09f1\u09cd\u09af \u09b8\u0982\u0995\u099f\u09f0 \u09ac\u09be\u09ac\u09c7 \u0989\u09a6\u09cd\u09ac\u09c7\u0997 \u09aa\u09cd\u09f0\u0995\u09be\u09b6 \u0995\u09f0\u09bf\u099b\u09c7",
+        "verdict": "SUPPORTED",
+        "truth_score": 60,
+        "explanation": "The claim that Iran's war situation has raised concerns about a potential energy crisis is supported by multiple sources, including news articles from Asomiya Pratidin and News18. These sources report on the potential impact of the war on the global energy market and the concerns raised by various countries.",
+        "citations": [
+          "https://www.asomiyapratidin.in/homepage/lpg-crisis-two-central-ministers-s-jaishankar-and-hardeep-singh-puri-meet-with-the-prime-minister-11193666",
+          "https://assam.news18.com/amp/news/world/iran-warns-that-not-even-1-liter-of-crude-oil-will-be-exported-from-hormuz-if-the-war-does-not-stop-tv-moni-subham-g-520345.html"
+        ],
+        "reasoning_summary": "The analyst has reviewed multiple sources, including news articles and opinion pieces, to assess the claim. The sources suggest that the war in Iran has raised concerns about a potential energy crisis, which supports the claim.",
+        "confidence_level": "MEDIUM",
+        "evidence_gaps": [
+          "The sources used to support the claim have low credibility, which may impact the confidence in the verdict."
+        ]
+      }
+    ],
+    "explanations": {
+      "by_claim": {
+        "\u09aa\u09c7\u099f\u09cd\u09f0\u09b2\u09bf\u09af\u09bc\u09be\u09ae \u09ae\u09a8\u09cd\u09a4\u09cd\u09f0\u09c0 \u09b9\u09f0\u09a6\u09c0\u09aa \u09b8\u09bf\u0982 \u09aa\u09c1\u09f0\u09c0 \u0986\u09f0\u09c1 \u09ac\u09c8\u09a6\u09c7\u09b6\u09bf\u0995 \u09aa\u09f0\u09bf\u0995\u09cd\u09f0\u09ae\u09be \u09ae\u09a8\u09cd\u09a4\u09cd\u09f0\u09c0 \u098f\u099b \u099c\u09af\u09bc\u09b6\u0982\u0995\u09f0 \u09aa\u09cd\u09f0\u09a7\u09be\u09a8\u09ae\u09a8\u09cd\u09a4\u09cd\u09f0\u09c0 \u09a8\u09f0\u09c7\u09a8\u09cd\u09a6\u09cd\u09f0 \u09ae\u09cb\u09a1\u09c0\u09f0 \u09b8\u09c8\u09a4\u09c7 \u09ac\u09c8\u09a0\u0995\u09a4 \u09ae\u09bf\u09b2\u09bf\u09a4 \u09b9\u09af\u09bc": {
+          "claim_text": "\u09aa\u09c7\u099f\u09cd\u09f0\u09b2\u09bf\u09af\u09bc\u09be\u09ae \u09ae\u09a8\u09cd\u09a4\u09cd\u09f0\u09c0 \u09b9\u09f0\u09a6\u09c0\u09aa \u09b8\u09bf\u0982 \u09aa\u09c1\u09f0\u09c0 \u0986\u09f0\u09c1 \u09ac\u09c8\u09a6\u09c7\u09b6\u09bf\u0995 \u09aa\u09f0\u09bf\u0995\u09cd\u09f0\u09ae\u09be \u09ae\u09a8\u09cd\u09a4\u09cd\u09f0\u09c0 \u098f\u099b \u099c\u09af\u09bc\u09b6\u0982\u0995\u09f0 \u09aa\u09cd\u09f0\u09a7\u09be\u09a8\u09ae\u09a8\u09cd\u09a4\u09cd\u09f0\u09c0 \u09a8\u09f0\u09c7\u09a8\u09cd\u09a6\u09cd\u09f0 \u09ae\u09cb\u09a1\u09c0\u09f0 \u09b8\u09c8\u09a4\u09c7 \u09ac\u09c8\u09a0\u0995\u09a4 \u09ae\u09bf\u09b2\u09bf\u09a4 \u09b9\u09af\u09bc",
+          "plain_english": "This claim suggests that Petroleum Minister Hardeep Singh Puri and Foreign Minister S Jaishankar met with Prime Minister Narendra Modi. However, the evidence for this claim comes from social media, which is not very trustworthy. The meeting is said to have taken place during an LPG crisis. We cannot confirm this information because the government has not officially confirmed it.",
+          "confidence_statement": "Medium confidence \u2014 supported by social media evidence, but credibility of sources is low.",
+          "source_quality_note": "The claim is sourced from social media, which has a credibility score of 10/100.",
+          "reader_advisory": "Be cautious when relying on this information, as the sources are not very credible.",
+          "evidence_gaps_plain": "There is no official government confirmation, and the credibility of social media sources is low."
+        },
+        "\u0987\u09f0\u09be\u09a8\u09f0 \u09af\u09c1\u09a6\u09cd\u09a7 \u09aa\u09f0\u09bf\u09b8\u09cd\u09a5\u09bf\u09a4\u09bf\u09af\u09bc\u09c7 \u09b6\u0995\u09cd\u09a4\u09bf \u09af\u09cb\u0997\u09be\u09a8\u09f0 \u09b8\u09ae\u09cd\u09ad\u09be\u09f1\u09cd\u09af \u09b8\u0982\u0995\u099f\u09f0 \u09ac\u09be\u09ac\u09c7 \u0989\u09a6\u09cd\u09ac\u09c7\u0997 \u09aa\u09cd\u09f0\u0995\u09be\u09b6 \u0995\u09f0\u09bf\u099b\u09c7": {
+          "claim_text": "\u0987\u09f0\u09be\u09a8\u09f0 \u09af\u09c1\u09a6\u09cd\u09a7 \u09aa\u09f0\u09bf\u09b8\u09cd\u09a5\u09bf\u09a4\u09bf\u09af\u09bc\u09c7 \u09b6\u0995\u09cd\u09a4\u09bf \u09af\u09cb\u0997\u09be\u09a8\u09f0 \u09b8\u09ae\u09cd\u09ad\u09be\u09f1\u09cd\u09af \u09b8\u0982\u0995\u099f\u09f0 \u09ac\u09be\u09ac\u09c7 \u0989\u09a6\u09cd\u09ac\u09c7\u0997 \u09aa\u09cd\u09f0\u0995\u09be\u09b6 \u0995\u09f0\u09bf\u099b\u09c7",
+          "plain_english": "This claim suggests that the war in Iran has raised concerns about a potential energy crisis. Multiple news sources, including Asomiya Pratidin and News18, report on the potential impact of the war on the global energy market and the concerns raised by various countries. However, these sources are not very trustworthy, and their credibility is low. We cannot be very confident in this information because of the low credibility of the sources.",
+          "confidence_statement": "Medium confidence \u2014 supported by multiple news sources, but credibility of sources is low.",
+          "source_quality_note": "The claim is sourced from news articles with a credibility score of 35/100.",
+          "reader_advisory": "Be cautious when relying on this information, as the sources are not very credible.",
+          "evidence_gaps_plain": "The sources used to support the claim have low credibility, which may impact the confidence in the verdict."
+        }
+      },
+      "overall_credibility": "MIXED",
+      "bottom_line": "This article contains mixed information, with some claims supported by credible sources and others supported by less trustworthy sources."
+    },
+    "source": "webapp"
+  },
+  {
+    "id": "3201463e-d6f7-4d28-89af-c12a71fc9459",
+    "url": "\u09ae\u09a7\u09cd\u09af \u09aa\u09cd\u09f0\u09be\u099a\u09cd\u09af\u09a4 \u09af\u09c1\u09a6\u09cd\u09a7\u0983 \u09aa\u09f0\u09bf\u09a3\u09be\u09ae \u09ad\u09c1\u0997\u09bf\u099b\u09c7 \u09b8\u09ae\u0997\u09cd\u09f0 \u09ac\u09bf\u09b6\u09cd\u09ac\u0987",
+    "timestamp": "2026-03-11T09:46:25.770736+00:00",
+    "overall_credibility": "MIXED",
+    "avg_score": 50,
+    "bottom_line": "This claim contains some truth, but it's exaggerated and should be treated with caution due to the mix of credible and low credibility sources.",
+    "verdicts": [
+      {
+        "claim_text": "The entire world has been affected by the war in the Middle East.",
+        "verdict": "MISLEADING",
+        "truth_score": 50,
+        "explanation": "The war in the Middle East has had significant regional and global implications, with nearly every country in the Middle East sustaining damage, but the evidence does not explicitly state that every country in the world has been affected.",
+        "citations": [
+          "https://apnews.com/article/iran-us-war-israel-strait-or-hormuz-deaths-f1619c6bfbbd5fe10857ff0af073aa0e",
+          "https://www.npr.org/2026/03/06/nx-s1-5740543/the-effects-of-a-widening-war-in-the-middle-east"
+        ],
+        "reasoning_summary": "The evidence shows significant regional damage and global implications, but lacks explicit statements on the entire world being affected.",
+        "confidence_level": "MEDIUM",
+        "evidence_gaps": [
+          "The specific extent of global impact and the exact nature of the damage in the region."
+        ]
+      }
+    ],
+    "explanations": {
+      "by_claim": {
+        "The entire world has been affected by the war in the Middle East.": {
+          "claim_text": "The entire world has been affected by the war in the Middle East.",
+          "plain_english": "The war in the Middle East has had significant regional and global implications, but it's not clear if every single country in the world has been affected. The evidence shows that nearly every country in the Middle East has been damaged, but it doesn't explicitly state that the entire world has been affected. This claim contains some truth, but it's exaggerated. The war has had a significant impact on the region and the world, but we can't say for sure if every country has been affected.",
+          "confidence_statement": "Medium confidence \u2014 the evidence shows some global implications, but lacks explicit statements on the entire world being affected.",
+          "source_quality_note": "This claim is sourced from a mix of highly credible and low credibility sources, including apnews.com and nbcwashington.com.",
+          "reader_advisory": "Be cautious of this claim as it has been sourced from outlets with limited editorial standards.",
+          "evidence_gaps_plain": "The specific extent of global impact and the exact nature of the damage in the region are still unknown."
+        }
+      },
+      "overall_credibility": "MIXED",
+      "bottom_line": "This claim contains some truth, but it's exaggerated and should be treated with caution due to the mix of credible and low credibility sources."
+    },
+    "source": "webapp"
+  },
+  {
+    "id": "041ea210-d573-4510-aa16-ba91b8508aa9",
+    "url": "\u0995\u09be\u0995\u09c8 \u0989\u099a\u09cd\u099a \u09ae\u09be\u09a7\u09cd\u09af\u09ae\u09bf\u0995 \u09ac\u09bf\u09a6\u09cd\u09af\u09be\u09b2\u09df\u09a4 \u09b8\u09ae\u09cd\u09aa\u09a8\u09cd\u09a8 \u09ac\u09bf\u099c\u09cd\u099e\u09be\u09a8 \u0985\u09a8\u09c1\u09b8\u09a8\u09cd\u09a7\u09be\u09a8-\u09b6\u09bf\u09b6\u09c1 \u09ac\u09bf\u099c\u09cd\u099e\u09be\u09a8 \u09b8\u09ae\u09be\u09f0\u09cb\u09b9",
+    "timestamp": "2026-03-11T09:45:41.964935+00:00",
+    "overall_credibility": "MIXED",
+    "avg_score": 40,
+    "bottom_line": "This claim is uncertain due to a lack of reliable information confirming the Kakai Higher Secondary School's participation in the Science Exploration-Child Science Exhibition.",
+    "verdicts": [
+      {
+        "claim_text": "The Kakai Higher Secondary School completed the Science Exploration-Child Science Exhibition.",
+        "verdict": "UNVERIFIED",
+        "truth_score": 40,
+        "explanation": "The evidence shows that a Science Exploration-Child Science Exhibition was held, featuring hands-on models and original science ideas, but there is a significant gap in the evidence regarding the participation of the Kakai Higher Secondary School. The available evidence does not confirm the school's participation.",
+        "citations": [
+          "https://www.youtube.com/watch?v=m0_FUATdwgo",
+          "https://www.instagram.com/reel/DUSldAMD7eY/",
+          "https://www.instagram.com/reel/DVqVZnJjJ9g/"
+        ],
+        "reasoning_summary": "The analyst's reasoning involves inventorying the evidence, decomposing the claim, matching the evidence to the claim components, analyzing for contradictions, and assessing confidence. The evidence confirms the exhibition was held and featured hands-on models, but there is a gap regarding the Kakai Higher Secondary School's participation.",
+        "confidence_level": "MEDIUM",
+        "evidence_gaps": [
+          "The participation of the Kakai Higher Secondary School in the Science Exploration-Child Science Exhibition is not addressed in the evidence."
+        ]
+      }
+    ],
+    "explanations": {
+      "by_claim": {
+        "The Kakai Higher Secondary School completed the Science Exploration-Child Science Exhibition.": {
+          "claim_text": "The Kakai Higher Secondary School completed the Science Exploration-Child Science Exhibition.",
+          "plain_english": "A Science Exploration-Child Science Exhibition was held, featuring hands-on models and original science ideas. However, we couldn't find any information confirming the Kakai Higher Secondary School's participation in the event. The available evidence doesn't support the claim that the school completed the exhibition. We're not sure if the school was involved or not.",
+          "confidence_statement": "Medium confidence \u2014 the evidence confirms the exhibition was held, but there's a gap regarding the school's participation.",
+          "source_quality_note": "Sourced primarily from social media \u2014 treat with caution",
+          "reader_advisory": "Treat this claim with caution as the sources are unverified social media posts.",
+          "evidence_gaps_plain": "The participation of the Kakai Higher Secondary School in the Science Exploration-Child Science Exhibition is not addressed in the evidence."
+        }
+      },
+      "overall_credibility": "MIXED",
+      "bottom_line": "This claim is uncertain due to a lack of reliable information confirming the Kakai Higher Secondary School's participation in the Science Exploration-Child Science Exhibition."
+    },
+    "source": "webapp"
+  },
+  {
+    "id": "6f076d2d-50d2-4f51-bd6d-dcad4852ed2f",
+    "url": "https://www.aajtak.in/world/story/iran-attacks-israel-dimona-nuclear-site-warning-america-war-news-mnrd-dskc-2492589-2026-03-11",
+    "timestamp": "2026-03-11T09:42:39.835267+00:00",
+    "overall_credibility": "MIXED",
+    "avg_score": 58,
+    "bottom_line": "This article has a mixed credibility due to a combination of supported and unverified claims.",
+    "verdicts": [
+      {
+        "claim_text": "\u0907\u091c\u0930\u093e\u092f\u0932 \u0939\u092e\u0932\u0947 \u0938\u0947 \u0915\u0908 \u0916\u093e\u0921\u093c\u0940 \u092e\u0941\u0932\u094d\u0915 \u092d\u0940 \u0924\u092c\u093e\u0939 \u0939\u094b \u0938\u0915\u0924\u0947 \u0939\u0948\u0902",
+        "verdict": "UNVERIFIED",
+        "truth_score": 50,
+        "explanation": "\u0915\u0941\u091b \u0938\u093e\u0915\u094d\u0937\u094d\u092f \u0907\u091c\u0930\u093e\u092f\u0932 \u0914\u0930 \u0916\u093e\u0921\u093c\u0940 \u0926\u0947\u0936\u094b\u0902 \u092a\u0930 \u0939\u092e\u0932\u094b\u0902 \u0915\u0940 \u0938\u0902\u092d\u093e\u0935\u0928\u093e \u0915\u0940 \u092a\u0941\u0937\u094d\u091f\u093f \u0915\u0930\u0924\u0947 \u0939\u0948\u0902, \u0932\u0947\u0915\u093f\u0928 \u092f\u0939 \u0938\u093e\u092c\u093f\u0924 \u0928\u0939\u0940\u0902 \u0939\u094b\u0924\u093e \u0939\u0948 \u0915\u093f \u0939\u092e\u0932\u0947 \u0938\u0947 \u0915\u0908 \u0916\u093e\u0921\u093c\u0940 \u092e\u0941\u0932\u094d\u0915 \u0924\u092c\u093e\u0939 \u0939\u094b \u0938\u0915\u0924\u0947 \u0939\u0948\u0902\u0964",
+        "citations": [
+          "https://www.bbc.com/hindi/articles/cd6zp4q7qxgo",
+          "https://www.livehindustan.com/middle-east/iran-launches-new-attacks-on-israel-gulf-countries-as-part-of-pressure-strategy-201773164973539.html"
+        ],
+        "reasoning_summary": "\u0938\u093e\u0915\u094d\u0937\u094d\u092f \u0907\u091c\u0930\u093e\u092f\u0932 \u0914\u0930 \u0916\u093e\u0921\u093c\u0940 \u0926\u0947\u0936\u094b\u0902 \u092a\u0930 \u0939\u092e\u0932\u094b\u0902 \u0915\u0940 \u0938\u0902\u092d\u093e\u0935\u0928\u093e \u0915\u0940 \u092a\u0941\u0937\u094d\u091f\u093f \u0915\u0930\u0924\u0947 \u0939\u0948\u0902, \u0932\u0947\u0915\u093f\u0928 \u0939\u092e\u0932\u0947 \u0938\u0947 \u0915\u0908 \u0916\u093e\u0921\u093c\u0940 \u092e\u0941\u0932\u094d\u0915 \u0924\u092c\u093e\u0939 \u0939\u094b\u0928\u0947 \u0915\u0947 \u092c\u093e\u0930\u0947 \u092e\u0947\u0902 \u0915\u094b\u0908 \u091c\u093e\u0928\u0915\u093e\u0930\u0940 \u0928\u0939\u0940\u0902 \u0939\u0948\u0964",
+        "confidence_level": "MEDIUM",
+        "evidence_gaps": [
+          "\u0939\u092e\u0932\u0947 \u0938\u0947 \u0915\u0908 \u0916\u093e\u0921\u093c\u0940 \u092e\u0941\u0932\u094d\u0915 \u0924\u092c\u093e\u0939 \u0939\u094b\u0928\u0947 \u0915\u0947 \u092c\u093e\u0930\u0947 \u092e\u0947\u0902 \u0915\u094b\u0908 \u091c\u093e\u0928\u0915\u093e\u0930\u0940 \u0928\u0939\u0940\u0902 \u0939\u0948\u0964"
+        ]
+      },
+      {
+        "claim_text": "\u0908\u0930\u093e\u0928 \u0915\u0947 \u092a\u093e\u0938 \u092a\u0930\u092e\u093e\u0923\u0941 \u0939\u0948",
+        "verdict": "UNVERIFIED",
+        "truth_score": 40,
+        "explanation": "The evidence collectively suggests that \u0907\u0930\u093e\u0928 \u092a\u0930\u092e\u093e\u0923\u0941 \u0915\u093e\u0930\u094d\u092f\u0915\u094d\u0930\u092e \u0915\u0947 \u0936\u093e\u0902\u0924\u093f\u092a\u094d\u0930\u094d\u0935\u0935 \u0909\u0926\u094d\u0926\u0947\u0936\u094d\u092f\u094b\u0902 \u0915\u0947 \u0932\u093f\u0947 \u0939\u0948, \u0932\u0947\u0915\u093f\u0928 \u0915\u094b\u0938\u093f \u0938\u093f\u0926\u093e \u0938\u093f\u092c\u0941\u0924 \u0909\u0939\u0948 \u0907\u0930\u093e\u0928 \u0915\u0947 \u092a\u093e\u0938 \u092a\u0930\u092e\u093a\u0923\u0941 \u0939\u0948 \u0915\u0940 \u092a\u094d\u0935\u094a\u0937\u094d\u0924\u093f \u0909\u0939\u0948 \u0905\u0935\u0935\u0932\u094b\u0915 \u0909\u0938\u0938\u0947 \u0938\u093f\u0926\u093e \u0938\u093f\u092c\u0941\u0924 \u0909\u0939\u0948 \u0905\u0935\u0935\u0932\u094b\u0915 \u0909\u0938\u0938\u0947 \u0938\u093f\u0926\u093e \u0938\u093f\u092c\u0941\u0924 \u0939\u0948",
+        "citations": [
+          "https://hi.wikipedia.org/wiki/%E0%A4%88%E0%A4%B0%E0%A4%BE%E0%A4%A8_%E0%A4%95%E0%A4%BE_%E0%A4%AA%E0%A4%B0%E0%A4%AE%E0%A4%BE%E0%A4%A3%E0%A5%81_%E0%A4%95%E0%A4%BE%E0%A4%B0%E0%A5%8D%E0%A4%AF%E0%A4%95%E0%A5%8D%E0%A4%B0%E0%A4%AE",
+          "https://www.abplive.com/business/middle-east-tension-is-iran-have-nuclear-arsenal-know-what-cia-report-says-3096445"
+        ],
+        "reasoning_summary": "The analyst's reasoning document concludes that there is no direct evidence to confirm or deny the claim that \u0907\u0930\u093e\u0928 \u0915\u0947 \u092a\u093e\u0938 \u092a\u0930\u092e\u093a\u0923\u0941 \u0939\u0948. The evidence suggests that \u0907\u0930\u093e\u0928 \u092a\u0930\u092e\u093a\u0923\u0941 \u0915\u093e\u0930\u094d\u092f\u0915\u094d\u0930\u092e \u0915\u0947 \u0936\u093e\u0902\u0924\u093f\u092a\u094d\u0930\u094d\u0935\u0935 \u0909\u0926\u094d\u0926\u0947\u0936\u094d\u092f\u094b\u0902 \u0915\u0947 \u0932\u093f\u0947 \u0939\u0948, \u0932\u0947\u0915\u093f\u0928 \u0915\u094b\u0938\u093f \u0938\u093f\u0926\u093e \u0938\u093f\u092c\u0941\u0924 \u0909\u0939\u0948 \u0905\u0935\u0935\u0932\u094b\u0915 \u0909\u0938\u0938\u0947 \u0938\u093f\u0926\u093e \u0938\u093f\u092c\u0941\u0924 \u0909\u0939\u0948 \u0905\u0935\u0935\u0932\u094b\u0915 \u0909\u0938\u0938\u0947 \u0938\u093f\u0926\u093e \u0938\u093f\u092c\u0941\u0924 \u0939\u0948",
+        "confidence_level": "LOW",
+        "evidence_gaps": [
+          "The evidence does not provide a clear answer to the claim that \u0907\u0930\u093a\u0928 \u0915\u0947 \u092a\u093e\u0938 \u092a\u0930\u092e\u093a\u0923\u0941 \u0939\u0948"
+        ]
+      },
+      {
+        "claim_text": "\u0905\u092e\u0947\u0930\u093f\u0915\u093e \u0915\u094b \u092f\u0941\u0926\u094d\u0927 \u0915\u0940 \u091a\u0947\u0924\u093e\u0935\u0928\u0940 \u0926\u0940 \u0917\u0908 \u0939\u0948",
+        "verdict": "SUPPORTED",
+        "truth_score": 85,
+        "explanation": "\u091a\u0940\u0928 \u0928\u0947 \u0905\u092e\u0947\u0930\u093f\u0915\u093e \u0915\u094b \u0938\u0940\u0927\u0940 \u0914\u0930 \u0916\u0941\u0932\u0940 \u091a\u0947\u0924\u093e\u0935\u0928\u0940 \u0926\u0940 \u0939\u0948 \u0915\u093f \u092f\u0926\u093f \u092f\u0941\u0926\u094d\u0927 \u091a\u093e\u0939\u0924\u0947 \u0939\u094b \u0924\u094b..., \u0914\u0930 \u0905\u092e\u0947\u0930\u093f\u0915\u093e \u0914\u0930 \u0908\u0930\u093e\u0928 \u0915\u0947 \u092c\u0940\u091a \u092f\u0941\u0926\u094d\u0927 \u0939\u094b \u0930\u0939\u093e \u0939\u0948\u0964 \u0905\u092e\u0947\u0930\u093f\u0915\u093e \u0915\u0947 \u0930\u0915\u094d\u0937\u093e \u092e\u0902\u0924\u094d\u0930\u0940 \u0928\u0947 \u091a\u0947\u0924\u093e\u0935\u0928\u0940 \u0926\u0940 \u0939\u0948 \u0915\u093f \u0908\u0930\u093e\u0928 \u092a\u0930 \u0939\u092e\u0932\u0947 \u0939\u094b\u0902\u0917\u0947\u0964",
+        "citations": [
+          "https://www.msn.com/hi-in/news/other/china-warns-us-%E0%A4%9A-%E0%A4%A8-%E0%A4%A8%E0%A5%87-%E0%A4%85%E0%A4%AE%E0%A5%87%E0%A4%B0-%E0%A4%95-%E0%A4%95-%E0%A4%A6%E0%A5%87-%E0%A4%A1-%E0%A4%B2-%E0%A4%96%E0%A5%81%E0%A4%B2-%E0%A4%9A%E0%A5%87%E0%A4%A4-%E0%A4%B5%E0%A4%A8-%E0%A4%AF%E0%A5%81%E0%A4%A6%E0%A5%8D%E0%A4%A7-%E0%A4%9A-%E0%A4%B9%E0%A4%A4%E0%A5%87-%E0%A4%B9-%E0%A4%A4/ar-AA1ObRp2",
+          "https://www.aajtak.in/short-videos/video/us-iran-war-largest-strike-tonight-in-iran-by-america-scott-bessent-warns-check-details-mmtm-2488553-2026-03-07",
+          "https://www.youtube.com/watch?v=Ts0OHlidrwE"
+        ],
+        "reasoning_summary": "\u091a\u0940\u0928 \u0928\u0947 \u0905\u092e\u0947\u0930\u093f\u0915\u093e \u0915\u094b \u092f\u0941\u0926\u094d\u0927 \u0915\u0940 \u091a\u0947\u0924\u093e\u0935\u0928\u0940 \u0926\u0940 \u0939\u0948, \u0914\u0930 \u0905\u092e\u0947\u0930\u093f\u0915\u093e \u0914\u0930 \u0908\u0930\u093e\u0928 \u0915\u0947 \u092c\u0940\u091a \u092f\u0941\u0926\u094d\u0927 \u0939\u094b \u0930\u0939\u093e \u0939\u0948\u0964",
+        "confidence_level": "HIGH",
+        "evidence_gaps": [
+          "\u0915\u0941\u091b \u0917\u0948\u092a\u094d\u0938 \u0939\u0948\u0902 \u091c\u0948\u0938\u0947 \u0915\u093f \u091a\u0947\u0924\u093e\u0935\u0928\u0940 \u0926\u0947\u0928\u0947 \u0935\u093e\u0932\u0947 \u0926\u0947\u0936 \u0915\u0940 \u092a\u0941\u0937\u094d\u091f\u093f \u0915\u0930\u0928\u0947 \u0915\u0947 \u0932\u093f\u090f \u0914\u0930 \u0938\u092c\u0942\u0924\u094b\u0902 \u0915\u0940 \u0906\u0935\u0936\u094d\u092f\u0915\u0924\u093e \u0939\u0948\u0964"
+        ]
+      }
+    ],
+    "explanations": {
+      "by_claim": {
+        "\u0907\u091c\u0930\u093e\u092f\u0932 \u0939\u092e\u0932\u0947 \u0938\u0947 \u0915\u0908 \u0916\u093e\u0921\u093c\u0940 \u092e\u0941\u0932\u094d\u0915 \u092d\u0940 \u0924\u092c\u093e\u0939 \u0939\u094b \u0938\u0915\u0924\u0947 \u0939\u0948\u0902": {
+          "claim_text": "\u0907\u091c\u0930\u093e\u092f\u0932 \u0939\u092e\u0932\u0947 \u0938\u0947 \u0915\u0908 \u0916\u093e\u0921\u093c\u0940 \u092e\u0941\u0932\u094d\u0915 \u092d\u0940 \u0924\u092c\u093e\u0939 \u0939\u094b \u0938\u0915\u0924\u0947 \u0939\u0948\u0902",
+          "plain_english": "Some evidence suggests that an Israeli attack could happen, but we don't know if it will affect many Gulf countries. The sources we have are not clear on this point. We need more information to confirm or deny this claim.",
+          "confidence_statement": "Medium confidence \u2014 some evidence supports this claim, but it's unclear if many Gulf countries will be affected.",
+          "source_quality_note": "Reported by established news outlets, but one source has limited editorial standards.",
+          "reader_advisory": "Treat this claim with caution as some sources have low credibility.",
+          "evidence_gaps_plain": "There is no information about the potential impact of an Israeli attack on many Gulf countries."
+        },
+        "\u0908\u0930\u093e\u0928 \u0915\u0947 \u092a\u093e\u0938 \u092a\u0930\u092e\u093e\u0923\u0941 \u0939\u0948": {
+          "claim_text": "\u0908\u0930\u093e\u0928 \u0915\u0947 \u092a\u093e\u0938 \u092a\u0930\u092e\u093e\u0923\u0941 \u0939\u0948",
+          "plain_english": "The evidence suggests that Iran's nuclear program is for peaceful purposes, but we don't know for sure if they have nuclear weapons. The sources we have are not clear on this point. We need more information to confirm or deny this claim.",
+          "confidence_statement": "Low confidence \u2014 there is no clear evidence to confirm or deny this claim.",
+          "source_quality_note": "Sourced from outlets with limited editorial standards.",
+          "reader_advisory": "Treat this claim with caution as some sources have low credibility.",
+          "evidence_gaps_plain": "The evidence does not provide a clear answer to the claim that Iran has nuclear weapons."
+        },
+        "\u0905\u092e\u0947\u0930\u093f\u0915\u093e \u0915\u094b \u092f\u0941\u0926\u094d\u0927 \u0915\u0940 \u091a\u0947\u0924\u093e\u0935\u0928\u0940 \u0926\u0940 \u0917\u0908 \u0939\u0948": {
+          "claim_text": "\u0905\u092e\u0947\u0930\u093f\u0915\u093e \u0915\u094b \u092f\u0941\u0926\u094d\u0927 \u0915\u0940 \u091a\u0947\u0924\u093e\u0935\u0928\u0940 \u0926\u0940 \u0917\u0908 \u0939\u0948",
+          "plain_english": "China has directly and openly warned the US that if they want war, they can have it. There is also evidence of a war between the US and Iran. The US Defense Minister has warned that attacks on Iran will happen.",
+          "confidence_statement": "High confidence \u2014 there is clear evidence that the US has been warned of war.",
+          "source_quality_note": "Reported by moderately credible sources.",
+          "reader_advisory": null,
+          "evidence_gaps_plain": "Some gaps exist, such as confirming the warning was given by a specific country."
+        }
+      },
+      "overall_credibility": "MIXED",
+      "bottom_line": "This article has a mixed credibility due to a combination of supported and unverified claims."
+    },
+    "source": "webapp"
+  },
+  {
+    "id": "aef1b3e1-e6a6-47ef-96e8-e8dd3f5c71df",
+    "url": "https://www.asomiyapratidin.in/homepage/dhakuwakhana-news-today-11194646",
+    "timestamp": "2026-03-11T09:34:46.999540+00:00",
+    "overall_credibility": "MIXED",
+    "avg_score": 53,
+    "bottom_line": "The credibility of the sources is a concern, and some claims could not be verified.",
+    "verdicts": [
+      {
+        "claim_text": "\u09ac\u09bf\u099c\u09cd\u099e\u09be\u09a8 \u0985\u09a8\u09c1\u09b8\u09a8\u09cd\u09a7\u09be\u09a8-\u09b6\u09bf\u09b6\u09c1 \u09ac\u09bf\u099c\u09cd\u099e\u09be\u09a8 \u09b8\u09ae\u09be\u09f0\u09cb\u09b9(\u09e8\u09e6\u09e8\u09eb-\u09e8\u09ec) \u0985\u09a8\u09c1\u09b7\u09cd\u09a0\u09bf\u09a4 \u09b9\u09df\u09c7\u099b\u09c7",
+        "verdict": "SUPPORTED",
+        "truth_score": 60,
+        "explanation": "The claim that the science exploration: children's science conference (2025-26) was held is supported by multiple sources, including news articles and social media posts. However, the credibility of these sources is relatively low, which reduces the confidence in the verdict.",
+        "citations": [
+          "https://epaper.asombarta.in/uploads/epaper/2026-01/695dfe833a998.pdf",
+          "https://www.asomiyapratidin.in/homepage/hauraghat-news-11143516",
+          "https://www.facebook.com/100082243130728/photos/d41d8cd9/889820343769395/"
+        ],
+        "reasoning_summary": "The analyst found multiple sources that mention the science exploration: children's science conference (2025-26), including news articles and social media posts. While the credibility of these sources is relatively low, they provide sufficient evidence to support the claim.",
+        "confidence_level": "MEDIUM",
+        "evidence_gaps": [
+          "The analyst notes that the credibility of the sources is relatively low, which reduces the confidence in the verdict. Additionally, there is limited information available about the conference, which makes it difficult to fully verify the claim."
+        ]
+      },
+      {
+        "claim_text": "\u09ac\u09bf\u099c\u09cd\u099e\u09be\u09a8 \u0985\u09a8\u09c1\u09b8\u09a8\u09cd\u09a7\u09be\u09a8-\u09b6\u09bf\u09b6\u09c1 \u09ac\u09bf\u099c\u09cd\u099e\u09be\u09a8 \u09b8\u09ae\u09be\u09f0\u09cb\u09b9(\u09e8\u09e6\u09e8\u09eb-\u09e8\u09ec) \u0985\u09a8\u09c1\u09b7\u09cd\u09a0\u09bf\u09a4 \u09b9\u09df\u09c7\u099b\u09c7",
+        "verdict": "SUPPORTED",
+        "truth_score": 60,
+        "explanation": "The claim that the science exploration: children's science conference (2025-26) was held is supported by multiple sources, including news articles and social media posts. However, the credibility of these sources is relatively low, which reduces the confidence in the verdict.",
+        "citations": [
+          "https://epaper.asombarta.in/uploads/epaper/2026-01/695dfe833a998.pdf",
+          "https://www.asomiyapratidin.in/homepage/hauraghat-news-11143516",
+          "https://www.facebook.com/100082243130728/photos/d41d8cd9/889820343769395/"
+        ],
+        "reasoning_summary": "The claim is supported by multiple sources, but the credibility of these sources is relatively low. The sources provide information about the event, including the number of projects presented by students, but do not provide definitive proof of the event's occurrence.",
+        "confidence_level": "MEDIUM",
+        "evidence_gaps": [
+          "The evidence provided is mostly from low-credibility sources, and there is a lack of definitive proof of the event's occurrence."
+        ]
+      },
+      {
+        "claim_text": "\u09f0\u09be\u09b7\u09cd\u099f\u09cd\u09f0\u09c0\u09df \u0986\u09f1\u09bf\u09b7\u09cd\u0995\u09be\u09f0 \u0985\u09ad\u09bf\u09af\u09be\u09a8\u09f0 \u0985\u09a7\u09c0\u09a8\u09a4 '\u09ac\u09bf\u099c\u09cd\u099e\u09be\u09a8 \u0985\u09a8\u09c1\u09b8\u09a8\u09cd\u09a7\u09be\u09a8-\u09b6\u09bf\u09b6\u09c1 \u09ac\u09bf\u099c\u09cd\u099e\u09be\u09a8 \u09b8\u09ae\u09be\u09f0\u09cb\u09b9(\u09e8\u09e6\u09e8\u09eb-\u09e8\u09ec)'\u09f0 \u09b2\u0996\u09bf\u09ae\u09aa\u09c1\u09f0 \u099c\u09bf\u09b2\u09be\u09ad\u09bf\u09a4\u09cd\u09a4\u09bf\u0995 \u09aa\u09cd\u09b0\u09a4\u09bf\u09af\u09cb\u0997\u09bf\u09a4\u09be\u09b8\u09ae\u09c2\u09b9 \u0995\u09be\u0995\u09c8 \u0989\u099a\u09cd\u099a \u09ae\u09be\u09a7\u09cd\u09af\u09ae\u09bf\u0995 \u09ac\u09bf\u09a6\u09cd\u09af\u09be\u09b2\u09df\u09a4 \u0985\u09a8\u09c1\u09b7\u09cd\u09a0\u09bf\u09a4 \u09b9\u09df",
+        "verdict": "UNVERIFIED",
+        "truth_score": 40,
+        "explanation": "The claim states that the 'Vigyan Prasar-Child Science Congress (2025-26)' was held at Kakoi Higher Secondary School in Lakhimpur district. However, the provided evidence snippets do not confirm this specific claim, and most of the sources have low credibility.",
+        "citations": [
+          "https://www.asomiyapratidin.in/bigyansamaruh",
+          "https://www.instagram.com/p/DENSkVSSQ-d/",
+          "https://www.facebook.com/assamfocuss/videos/live/2295347000840769/"
+        ],
+        "reasoning_summary": "The claim is about the 'Vigyan Prasar-Child Science Congress (2025-26)' being held at Kakoi Higher Secondary School in Lakhimpur district. The provided evidence snippets do not confirm this specific claim and have low credibility.",
+        "confidence_level": "LOW",
+        "evidence_gaps": [
+          "Lack of credible sources confirming the specific claim, and most of the provided evidence snippets have low credibility."
+        ]
+      }
+    ],
+    "explanations": {
+      "by_claim": {
+        "\u09ac\u09bf\u099c\u09cd\u099e\u09be\u09a8 \u0985\u09a8\u09c1\u09b8\u09a8\u09cd\u09a7\u09be\u09a8-\u09b6\u09bf\u09b6\u09c1 \u09ac\u09bf\u099c\u09cd\u099e\u09be\u09a8 \u09b8\u09ae\u09be\u09f0\u09cb\u09b9(\u09e8\u09e6\u09e8\u09eb-\u09e8\u09ec) \u0985\u09a8\u09c1\u09b7\u09cd\u09a0\u09bf\u09a4 \u09b9\u09df\u09c7\u099b\u09c7": {
+          "claim_text": "\u09ac\u09bf\u099c\u09cd\u099e\u09be\u09a8 \u0985\u09a8\u09c1\u09b8\u09a8\u09cd\u09a7\u09be\u09a8-\u09b6\u09bf\u09b6\u09c1 \u09ac\u09bf\u099c\u09cd\u099e\u09be\u09a8 \u09b8\u09ae\u09be\u09f0\u09cb\u09b9(\u09e8\u09e6\u09e8\u09eb-\u09e8\u09ec) \u0985\u09a8\u09c1\u09b7\u09cd\u09a0\u09bf\u09a4 \u09b9\u09df\u09c7\u099b\u09c7",
+          "plain_english": "We found multiple sources that mention the science exploration: children's science conference (2025-26), including news articles and social media posts. However, these sources are not very trustworthy, and we can't confirm all the details about the conference. This suggests that the conference might have taken place, but we can't be sure.",
+          "confidence_statement": "Medium confidence \u2014 supported by multiple sources, but with low credibility.",
+          "source_quality_note": "Sourced from outlets with limited editorial standards.",
+          "reader_advisory": "Treat the information with caution due to the low credibility of the sources.",
+          "evidence_gaps_plain": "The credibility of the sources is relatively low, and there is limited information available about the conference."
+        },
+        "\u09f0\u09be\u09b7\u09cd\u099f\u09cd\u09f0\u09c0\u09df \u0986\u09f1\u09bf\u09b7\u09cd\u0995\u09be\u09f0 \u0985\u09ad\u09bf\u09af\u09be\u09a8\u09f0 \u0985\u09a7\u09c0\u09a8\u09a4 '\u09ac\u09bf\u099c\u09cd\u099e\u09be\u09a8 \u0985\u09a8\u09c1\u09b8\u09a8\u09cd\u09a7\u09be\u09a8-\u09b6\u09bf\u09b6\u09c1 \u09ac\u09bf\u099c\u09cd\u099e\u09be\u09a8 \u09b8\u09ae\u09be\u09f0\u09cb\u09b9(\u09e8\u09e6\u09e8\u09eb-\u09e8\u09ec)'\u09f0 \u09b2\u0996\u09bf\u09ae\u09aa\u09c1\u09f0 \u099c\u09bf\u09b2\u09be\u09ad\u09bf\u09a4\u09cd\u09a4\u09bf\u0995 \u09aa\u09cd\u09b0\u09a4\u09bf\u09af\u09cb\u0997\u09bf\u09a4\u09be\u09b8\u09ae\u09c2\u09b9 \u0995\u09be\u0995\u09c8 \u0989\u099a\u09cd\u099a \u09ae\u09be\u09a7\u09cd\u09af\u09ae\u09bf\u0995 \u09ac\u09bf\u09a6\u09cd\u09af\u09be\u09b2\u09df\u09a4 \u0985\u09a8\u09c1\u09b7\u09cd\u09a0\u09bf\u09a4 \u09b9\u09df": {
+          "claim_text": "\u09f0\u09be\u09b7\u09cd\u099f\u09cd\u09f0\u09c0\u09df \u0986\u09f1\u09bf\u09b7\u09cd\u0995\u09be\u09f0 \u0985\u09ad\u09bf\u09af\u09be\u09a8\u09f0 \u0985\u09a7\u09c0\u09a8\u09a4 '\u09ac\u09bf\u099c\u09cd\u099e\u09be\u09a8 \u0985\u09a8\u09c1\u09b8\u09a8\u09cd\u09a7\u09be\u09a8-\u09b6\u09bf\u09b6\u09c1 \u09ac\u09bf\u099c\u09cd\u099e\u09be\u09a8 \u09b8\u09ae\u09be\u09f0\u09cb\u09b9(\u09e8\u09e6\u09e8\u09eb-\u09e8\u09ec)'\u09f0 \u09b2\u0996\u09bf\u09ae\u09aa\u09c1\u09f0 \u099c\u09bf\u09b2\u09be\u09ad\u09bf\u09a4\u09cd\u09a4\u09bf\u0995 \u09aa\u09cd\u09b0\u09a4\u09bf\u09af\u09cb\u0997\u09bf\u09a4\u09be\u09b8\u09ae\u09c2\u09b9 \u0995\u09be\u0995\u09c8 \u0989\u099a\u09cd\u099a \u09ae\u09be\u09a7\u09cd\u09af\u09ae\u09bf\u0995 \u09ac\u09bf\u09a6\u09cd\u09af\u09be\u09b2\u09df\u09a4 \u0985\u09a8\u09c1\u09b7\u09cd\u09a0\u09bf\u09a4 \u09b9\u09df",
+          "plain_english": "We couldn't find any reliable sources that confirm the science exploration: children's science conference (2025-26) was held at Kakoi Higher Secondary School in Lakhimpur district. The sources we have are not trustworthy, and we can't confirm the details about the conference.",
+          "confidence_statement": "Low confidence \u2014 lack of credible sources confirming the specific claim.",
+          "source_quality_note": "Sourced from outlets with limited editorial standards.",
+          "reader_advisory": "Treat the information with caution due to the lack of credible sources.",
+          "evidence_gaps_plain": "We don't have any credible sources that confirm the specific claim about the conference being held at Kakoi Higher Secondary School in Lakhimpur district."
+        }
+      },
+      "overall_credibility": "MIXED",
+      "bottom_line": "The credibility of the sources is a concern, and some claims could not be verified."
+    },
+    "source": "webapp"
+  },
+  {
+    "id": "d2964973-8ed2-488f-9b38-2b6933c7eff3",
+    "url": "https://www.asomiyapratidin.in/homepage/dhakuwakhana-news-today-11194646",
+    "timestamp": "2026-03-11T09:31:33.331953+00:00",
+    "overall_credibility": "UNRELIABLE",
+    "avg_score": 0,
+    "bottom_line": "",
+    "verdicts": [],
+    "explanations": {},
+    "source": "webapp"
+  },
+  {
+    "id": "a847766b-e351-4de9-aaa9-0f953bb5e640",
+    "url": "https://www.asomiyapratidin.in/homepage/dhakuwakhana-news-today-11194646",
+    "timestamp": "2026-03-11T09:27:57.566224+00:00",
+    "overall_credibility": "UNRELIABLE",
+    "avg_score": 0,
+    "bottom_line": "",
+    "verdicts": [],
+    "explanations": {},
+    "source": "webapp"
+  },
+  {
     "id": "9aaa7865-755e-4970-9bbb-6dce6fafbc7d",
     "url": "https://www.democracynow.org/2026/3/9/iran_war",
     "timestamp": "2026-03-10T17:41:10.573155+00:00",

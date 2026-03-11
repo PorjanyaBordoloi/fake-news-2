@@ -11,7 +11,10 @@ claim_extraction:
   provider: "groq"
   temperature: 0                       # Deterministic — keep at 0
   structured_output_method: "json_mode"
-  markdown_truncation_limit: 10000    # Max chars of article markdown fed to LLM
+  markdown_truncation_limit: 4500     # Reduced from 10000 — non-Latin scripts (Assamese, Bengali,
+                                      # Devanagari etc.) tokenise at ~0.67 tok/char vs ~0.25 for
+                                      # English, so 10k chars → 6600+ tokens exceeds the 6000 TPM
+                                      # limit on llama-3.1-8b-instant. 4500 chars ≈ 3000 tokens max.
 
 # ── Agent 2: Evidence Retrieval ───────────────────────────────────────────────
 evidence_retrieval:
@@ -51,3 +54,16 @@ explanation_generator:
   model: "llama-3.1-8b-instant"       # 8b to save 70b quota — prose generation is adequate
   provider: "groq"
   temperature: 0.2                    # Intentionally non-zero — natural prose benefits from slight warmth
+
+# ── Agent 0: Multilingual Bridge (Sarvam AI) ─────────────────────────────────
+multilingual:
+  enabled: true
+  min_detection_confidence: 0.7
+  default_language: "en-IN"
+  translate_fields:
+    - plain_english
+    - confidence_statement
+    - source_quality_note
+    - reader_advisory
+    - evidence_gaps_plain
+    - bottom_line

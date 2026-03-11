@@ -9,6 +9,9 @@ export interface AgentThought {
 export interface StreamResult {
     verdicts: any[];
     explanations: any;
+    localizedOutput?: any;
+    isTranslated?: boolean;
+    sourceLanguage?: string;
 }
 
 export function useAgentStream() {
@@ -34,6 +37,9 @@ export function useAgentStream() {
 
         let collectedVerdicts: any[] = [];
         let collectedExplanations: any = null;
+        let collectedLocalizedOutput: any = null;
+        let collectedIsTranslated: boolean = false;
+        let collectedSourceLanguage: string = '';
 
         eventSource.onmessage = (event) => {
             try {
@@ -44,9 +50,16 @@ export function useAgentStream() {
                     setFinalResult({
                         verdicts: collectedVerdicts,
                         explanations: collectedExplanations,
+                        localizedOutput: collectedLocalizedOutput,
+                        isTranslated: collectedIsTranslated,
+                        sourceLanguage: collectedSourceLanguage,
                     });
                     eventSource.close();
                     eventSourceRef.current = null;
+                } else if (data.type === 'agent_log') {
+                    // Agent 0 SSE log events — push as synthetic thought for AgentChain
+                    const logThought = { agent: 'agent_log', status: 'success', data: { symbol: data.symbol, message: data.message } };
+                    setThoughts((prev) => [...prev, logThought]);
                 } else if (data.agent) {
                     setThoughts((prev) => [...prev, data]);
 
@@ -57,6 +70,14 @@ export function useAgentStream() {
                     // Collect explanations from explanation_generator
                     if (data.agent === 'explanation_generator' && data.data?.explanations) {
                         collectedExplanations = data.data.explanations;
+                    }
+                    // Collect multilingual data from Agent 0
+                    if (data.agent === 'agent0_pre' && data.data?.is_translated) {
+                        collectedIsTranslated = true;
+                        collectedSourceLanguage = data.data.source_language || '';
+                    }
+                    if (data.agent === 'agent0_post' && data.data?.localized_output) {
+                        collectedLocalizedOutput = data.data.localized_output;
                     }
                 }
             } catch (err) {
