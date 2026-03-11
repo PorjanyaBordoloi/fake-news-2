@@ -1,5 +1,125 @@
 [
   {
+    "id": "804e27ca-7b8d-41fc-9ad3-27279797c3f5",
+    "url": "[Image: new_img.png]",
+    "timestamp": "2026-03-11T16:29:57.709371+00:00",
+    "overall_credibility": "UNRELIABLE",
+    "avg_score": 0,
+    "bottom_line": "",
+    "verdicts": [],
+    "explanations": {},
+    "source": "webapp"
+  },
+  {
+    "id": "2a618c93-fa2b-456f-9dd0-a3e65f45bbc6",
+    "url": "[Image: new_img.png]",
+    "timestamp": "2026-03-11T16:14:49.795123+00:00",
+    "overall_credibility": "UNRELIABLE",
+    "avg_score": 0,
+    "bottom_line": "",
+    "verdicts": [],
+    "explanations": {},
+    "source": "webapp"
+  },
+  {
+    "id": "f8ede090-6779-4394-87f7-c5f399dc82bb",
+    "url": "[Image: new_img.png]",
+    "timestamp": "2026-03-11T16:00:04.660012+00:00",
+    "overall_credibility": "UNRELIABLE",
+    "avg_score": 0,
+    "bottom_line": "",
+    "verdicts": [],
+    "explanations": {},
+    "source": "webapp"
+  },
+  {
+    "id": "e439347a-2f1e-45f0-9606-d7dacaceb01d",
+    "url": "https://www.amarujala.com/world/west-asia-conflict-war-will-end-any-time-i-want-donald-trump-makes-big-claim-2026-03-11?src=tlh&position=1",
+    "timestamp": "2026-03-11T15:55:01.155626+00:00",
+    "overall_credibility": "LOW CREDIBILITY",
+    "avg_score": 55,
+    "bottom_line": "The credibility of the sources used in these fact-checks is low, which may indicate that the information is not entirely reliable.",
+    "verdicts": [
+      {
+        "claim_text": "Donald Trump stated that the war with Iran will end any time he wants.",
+        "verdict": "MISLEADING",
+        "truth_score": 50,
+        "explanation": "The evidence shows that Donald Trump stated the war with Iran could end soon, but the conditions for the war to end are unclear, with one source stating it will end when military objectives have been met. This lack of clarity makes the claim misleading.",
+        "citations": [
+          "https://www.cnbc.com/2026/03/09/trump-iran-war-end.html",
+          "https://www.lemonde.fr/en/international/article/2026/03/10/trump-says-war-on-iran-will-end-very-soon-calls-conflict-very-complete_6751266_4.html",
+          "https://www.nbcnews.com/now/video/white-house-iran-war-will-end-when-trump-says-military-objectives-have-been-met-259065925569"
+        ],
+        "reasoning_summary": "The evidence collectively indicates that while Donald Trump suggested the war with Iran could end soon, the conditions under which it would end are not clearly defined across all sources, leading to a misleading narrative.",
+        "confidence_level": "MEDIUM",
+        "evidence_gaps": [
+          "The conditions for the war to end are not consistently addressed across all evidence snippets."
+        ]
+      },
+      {
+        "claim_text": "Donald Trump said that there is almost nothing left to target in the conflict.",
+        "verdict": "SUPPORTED",
+        "truth_score": 60,
+        "explanation": "The evidence collectively shows that Donald Trump said there is almost nothing left to target in the conflict and that the conflict will soon end. However, the credibility of the sources is low, which may indicate that the information is not entirely reliable.",
+        "citations": [
+          "https://uk.news.yahoo.com/trump-says-practically-nothing-left-143206260.html",
+          "https://english.news.cn/northamerica/20260311/320cb335d843464c927f91effa422e41/c.html",
+          "https://www.timesofisrael.com/liveblog_entry/trump-tells-axios-war-in-iran-will-end-soon-practically-nothing-left-to-target/"
+        ],
+        "reasoning_summary": "The analyst's reasoning confirms that Donald Trump made the statement, but notes the low credibility of the sources.",
+        "confidence_level": "MEDIUM",
+        "evidence_gaps": [
+          "Low credibility of sources"
+        ]
+      }
+    ],
+    "explanations": {
+      "by_claim": {
+        "Donald Trump stated that the war with Iran will end any time he wants.": {
+          "claim_text": "Donald Trump stated that the war with Iran will end any time he wants.",
+          "plain_english": "This claim contains a misleading element. Donald Trump stated the war with Iran could end soon, but the conditions for the war to end are unclear. One source suggests it will end when military objectives have been met, but this is not consistently stated across all sources. This lack of clarity makes the claim misleading.",
+          "confidence_statement": "Medium confidence \u2014 the evidence shows Trump made the statement, but the conditions for the war to end are unclear.",
+          "source_quality_note": "Sourced from outlets with limited editorial standards.",
+          "reader_advisory": "Treat with caution \u2014 the sources used have low credibility.",
+          "evidence_gaps_plain": "The conditions for the war to end are not consistently addressed across all evidence."
+        },
+        "Donald Trump said that there is almost nothing left to target in the conflict.": {
+          "claim_text": "Donald Trump said that there is almost nothing left to target in the conflict.",
+          "plain_english": "This claim checks out. Donald Trump said there is almost nothing left to target in the conflict and that the conflict will soon end. However, it's worth noting that the sources used have low credibility, which may indicate that the information is not entirely reliable.",
+          "confidence_statement": "Medium confidence \u2014 the evidence shows Trump made the statement, but the credibility of the sources is low.",
+          "source_quality_note": "Sourced from outlets with limited editorial standards.",
+          "reader_advisory": "Treat with caution \u2014 the sources used have low credibility.",
+          "evidence_gaps_plain": "The credibility of the sources is low."
+        }
+      },
+      "overall_credibility": "LOW CREDIBILITY",
+      "bottom_line": "The credibility of the sources used in these fact-checks is low, which may indicate that the information is not entirely reliable."
+    },
+    "source": "webapp"
+  },
+  {
+    "id": "9eca8450-a3e9-467c-a461-3d1101226b4e",
+    "url": "[Image: new_img2.png]",
+    "timestamp": "2026-03-11T15:53:16.038054+00:00",
+    "overall_credibility": "UNRELIABLE",
+    "avg_score": 0,
+    "bottom_line": "",
+    "verdicts": [],
+    "explanations": {},
+    "source": "webapp"
+  },
+  {
+    "id": "a9bd6e73-eeed-4a41-a523-448bafcf3f1e",
+    "url": "[Image: new_img.png]",
+    "timestamp": "2026-03-11T15:51:09.054757+00:00",
+    "overall_credibility": "UNRELIABLE",
+    "avg_score": 0,
+    "bottom_line": "",
+    "verdicts": [],
+    "explanations": {},
+    "source": "webapp"
+  },
+  {
     "id": "9b902904-7e2a-4309-9787-f70b657c5d6a",
     "url": "\u098f\u09b2 \u09aa\u09bf \u099c\u09bf \u09b8\u0982\u0995\u099f : \u09a6\u09c1\u0987 \u0995\u09c7\u09a8\u09cd\u09a6\u09cd\u09f0\u09c0\u09df \u09ae\u09a8\u09cd\u09a4\u09cd\u09f0\u09c0 \u098f\u099b \u099c\u09df\u09b6\u0982\u0995\u09f0- \u09b9\u09f0\u09a6\u09c0\u09aa \u09b8\u09bf\u0982 \u09aa\u09c1\u09f0\u09c0\u09f0\u09c7 \u09aa\u09cd\u09f0\u09a7\u09be\u09a8\u09ae\u09a8\u09cd\u09a4\u09cd\u09f0\u09c0\u09f0 \u09ac\u09c8\u09a0\u0995",
     "timestamp": "2026-03-11T10:07:47.605601+00:00",

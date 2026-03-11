@@ -113,7 +113,7 @@ body {
 
 .url-input {
   width: 100%;
-  padding: 1.25rem 2rem 1.25rem 4rem;
+  padding: 1.25rem 4rem 1.25rem 4rem;
   font-size: 1.1rem;
   background: #2f2f2f;
   /* Claude input box bg */
@@ -131,6 +131,68 @@ body {
 .url-input:focus {
   background: #3b3b3b;
   border-color: rgba(255, 255, 255, 0.2);
+}
+
+.image-upload-btn {
+  position: absolute;
+  right: 1.25rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.55);
+  cursor: pointer;
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s;
+  line-height: 0;
+}
+
+.image-upload-btn:hover:not(:disabled) {
+  color: #fff;
+}
+
+.image-upload-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.image-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 700px;
+  width: fit-content;
+}
+
+.image-chip-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 520px;
+}
+
+.image-chip-remove {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.45);
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  line-height: 0;
+}
+
+.image-chip-remove:hover {
+  color: #fff;
 }
 
 .input-hint {
@@ -456,6 +518,52 @@ body {
   font-style: italic;
   margin-top: 0.5rem;
   margin-bottom: 0;
+}
+
+.media-risk-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.875rem 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+}
+
+.media-risk-high {
+  background: rgba(252, 165, 165, 0.1);
+  border-color: rgba(252, 165, 165, 0.3);
+}
+
+.media-risk-low {
+  background: rgba(134, 239, 172, 0.08);
+  border-color: rgba(134, 239, 172, 0.2);
+}
+
+.media-risk-icon {
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.media-risk-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.media-risk-title {
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: #fca5a5;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.25rem;
+}
+
+.media-risk-detail {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.4;
 }
 
 .claim-assessment {

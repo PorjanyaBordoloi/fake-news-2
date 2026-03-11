@@ -14,6 +14,11 @@ export default function ScoreDisplay({ result }: Props) {
     const localizedOutput = result?.localizedOutput || null;
     const isTranslated = result?.isTranslated || false;
     const sourceLanguageName = localizedOutput?.language_name || '';
+    const mediaRiskLevel = result?.mediaRiskLevel || '';
+    const mediaVerdicts = result?.mediaVerdicts || [];
+    const imageUrls = result?.imageUrls || [];
+    const hasTamper = mediaVerdicts.some((v: any) => v.exif_tamper_flag);
+    const hasOcrText = mediaVerdicts.some((v: any) => v.ocr_text);
 
     // Per-claim translation state: claimText → translated string (or null while loading)
     const [translatedClaims, setTranslatedClaims] = useState<Record<string, string | null>>({});
@@ -45,7 +50,39 @@ export default function ScoreDisplay({ result }: Props) {
     // Detect non-ASCII (non-English) text — shows translate button on those claims
     const hasNonAscii = (text: string) => /[^\x00-\x7F]/.test(text);
 
-    if (verdicts.length === 0) return null;
+    if (verdicts.length === 0 && !mediaRiskLevel && mediaVerdicts.length === 0) return null;
+
+    // Image-only analysis: no verdicts but we have media data — show only the media panel
+    if (verdicts.length === 0) {
+        return (
+            <div className="score-display-container">
+                {mediaRiskLevel && (
+                    <div className={`media-risk-banner media-risk-${mediaRiskLevel.toLowerCase()}`}>
+                        <span className="media-risk-icon">{mediaRiskLevel === 'HIGH' ? '⚠' : '✓'}</span>
+                        <div className="media-risk-content">
+                            <div className="media-risk-title">
+                                {mediaRiskLevel === 'HIGH' ? 'Media Integrity Alert' : 'Image Scan Complete'}
+                            </div>
+                            <div className="media-risk-detail">
+                                {hasTamper && 'Image editing software detected in EXIF metadata. '}
+                                {hasOcrText ? 'Text found in image — no claims detected after full pipeline. ' : 'No text found in image. '}
+                                {imageUrls.length > 0 && `${imageUrls.length} image(s) scanned.`}
+                            </div>
+                        </div>
+                    </div>
+                )}
+                {!mediaRiskLevel && (
+                    <div className="overall-verdict-card">
+                        <div className="verdict-header">
+                            <ShieldQuestion color="#94a3b8" size={24} />
+                            <span className="verdict-title" style={{ color: '#94a3b8' }}>No Claims Found</span>
+                        </div>
+                        <p className="bottom-line-text">No verifiable claims were extracted from this image.</p>
+                    </div>
+                )}
+            </div>
+        );
+    }
 
     const scores = verdicts.map((v: any) => v.truth_score || 50);
     const averageScore = scores.length > 0 ? Math.round(scores.reduce((a: number, b: number) => a + b, 0) / scores.length) : 0;
@@ -81,6 +118,21 @@ export default function ScoreDisplay({ result }: Props) {
             {isTranslated && localizedOutput && (
                 <div className="language-badge">
                     Analyzed in {sourceLanguageName} · Translated via Sarvam AI
+                </div>
+            )}
+
+            {/* Media Risk Banner — shown when Agent 6 detected HIGH risk */}
+            {mediaRiskLevel === 'HIGH' && (
+                <div className={`media-risk-banner media-risk-${mediaRiskLevel.toLowerCase()}`}>
+                    <span className="media-risk-icon">⚠</span>
+                    <div className="media-risk-content">
+                        <div className="media-risk-title">Media Integrity Alert</div>
+                        <div className="media-risk-detail">
+                            {hasTamper && 'Image editing software detected in EXIF metadata. '}
+                            {hasOcrText && 'Text extracted from images was included in analysis. '}
+                            {imageUrls.length > 0 && `${imageUrls.length} image(s) scanned.`}
+                        </div>
+                    </div>
                 </div>
             )}
 

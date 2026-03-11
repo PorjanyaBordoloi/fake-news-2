@@ -10,6 +10,7 @@ This file:
   5. Runs uvicorn
 """
 
+import asyncio
 import json
 import logging
 import uuid
@@ -19,7 +20,7 @@ from pathlib import Path
 
 import uvicorn
 from dotenv import load_dotenv
-from fastapi import FastAPI
+from fastapi import FastAPI, File, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
@@ -193,7 +194,94 @@ async def analyze_stream(user_input: str):
                 # Agent 0 post — emit localization log
                 if node_name == "agent0_post" and node_data.get("localized_output") and _detected_lang_name:
                     yield f"data: {json.dumps({'type': 'agent_log', 'symbol': '\u2713', 'message': f'Verdicts localized back to {_detected_lang_name}'})}\n\n"
+                # Agent 6 — image integrity log events
+                if node_name == "image_integrity":
+                    num_images = len(node_data.get("image_urls") or [])
+                    tamper = any(v.get("exif_tamper_flag") for v in (node_data.get("media_verdicts") or []))
+                    ocr_found = bool(node_data.get("ocr_text"))
+                    risk = node_data.get("media_risk_level", "")
+                    if num_images > 0:
+                        yield f"data: {json.dumps({'type': 'agent_log', 'symbol': '→', 'message': f'Agent 6: Analysed {num_images} image(s) — risk level {risk}'})}\n\n"
+                    if tamper:
+                        yield f"data: {json.dumps({'type': 'agent_log', 'symbol': '⚠', 'message': 'Agent 6: Editing software (Photoshop/GIMP) detected in image EXIF metadata'})}\n\n"
+                    if ocr_found:
+                        yield f"data: {json.dumps({'type': 'agent_log', 'symbol': '→', 'message': 'Agent 6: Text found in images — re-running pipeline with OCR content'})}\n\n"
+                    if node_data.get("is_second_pass") is False and node_data.get("images_processed"):
+                        yield f"data: {json.dumps({'type': 'agent_log', 'symbol': '✓', 'message': 'Agent 6: Second-pass verification complete'})}\n\n"
+        yield f"data: {json.dumps({'status': 'complete'})}\n\n"
 
+    return StreamingResponse(
+        event_generator(),
+        media_type="text/event-stream",
+    )
+
+
+@app.post("/api/analyze-image-stream")
+async def analyze_image_stream_endpoint(file: UploadFile = File(...)):
+    """
+    Upload an image to check EXIF metadata for editing software and run
+    Sarvam OCR. If text is found the full fact-check pipeline runs on it.
+    Returns an SSE stream of agent events in the same format as
+    /api/analyze-stream so the frontend can reuse the same hook.
+    """
+    image_bytes = await file.read()
+    filename = file.filename or "uploaded_image"
+
+    async def event_generator():
+        from agents.image_integrity import _check_exif, _run_sarvam_ocr, _translate_ocr_to_english
+        from agents.claim_extraction import claim_extraction_graph
+
+        # ── Step 1: EXIF check ────────────────────────────────────────────
+        yield f"data: {json.dumps({'type': 'agent_log', 'symbol': '→', 'message': f'Scanning EXIF metadata for {filename}...'})}\n\n"
+        exif_result = await asyncio.to_thread(_check_exif, image_bytes)
+        exif_flag = exif_result.get("exif_tamper_flag", False)
+        exif_software = exif_result.get("exif_software", "") or ""
+        if exif_flag:
+            yield f"data: {json.dumps({'type': 'agent_log', 'symbol': '⚠', 'message': f'Editing software detected in EXIF: {exif_software}'})}\n\n"
+        else:
+            yield f"data: {json.dumps({'type': 'agent_log', 'symbol': '✓', 'message': 'No editing software detected in EXIF metadata'})}\n\n"
+
+        # ── Step 2: OCR ───────────────────────────────────────────────────
+        yield f"data: {json.dumps({'type': 'agent_log', 'symbol': '→', 'message': 'Running Sarvam OCR to extract text from image...'})}\n\n"
+        ocr_text = await asyncio.to_thread(_run_sarvam_ocr, image_bytes)
+
+        image_result = {
+            "image_urls": [f"upload:{filename}"],
+            "media_verdicts": [{"url": filename, "exif_tamper_flag": exif_flag, "exif_software": exif_software, "ocr_text": ocr_text}],
+            "ocr_text": ocr_text,
+            "media_risk_level": "HIGH" if exif_flag else "LOW",
+        }
+
+        if ocr_text:
+            yield f"data: {json.dumps({'type': 'agent_log', 'symbol': '✓', 'message': f'Text extracted ({len(ocr_text)} chars) — translating...'})}\n\n"
+            translated = await asyncio.to_thread(_translate_ocr_to_english, ocr_text)
+            pipeline_input = translated if translated else ocr_text
+            yield f"data: {json.dumps({'type': 'agent_log', 'symbol': '→', 'message': 'Running full fact-check pipeline on extracted image text...'})}\n\n"
+
+            # ── Step 3: full pipeline on OCR text ─────────────────────────
+            _detected_lang_name: str | None = None
+            pipeline_events = await asyncio.to_thread(
+                lambda: list(claim_extraction_graph.stream(_build_initial_state(pipeline_input)))
+            )
+            for event in pipeline_events:
+                for node_name, node_output in event.items():
+                    node_data = node_output or {}
+                    payload = {
+                        "agent": node_name,
+                        "status": "error" if node_data.get("error") else "success",
+                        "data": node_data,
+                    }
+                    yield f"data: {json.dumps(payload)}\n\n"
+                    if node_name == "agent0_pre" and node_data.get("is_translated"):
+                        src_lang = node_data.get("source_language", "")
+                        _detected_lang_name = _MULTILINGUAL_LANGUAGES.get(src_lang, src_lang)
+                        yield f"data: {json.dumps({'type': 'agent_log', 'symbol': '→', 'message': f'Detected {_detected_lang_name} — translating via Sarvam AI'})}\n\n"
+                    if node_name == "agent0_post" and node_data.get("localized_output") and _detected_lang_name:
+                        yield f"data: {json.dumps({'type': 'agent_log', 'symbol': '✓', 'message': f'Verdicts localized back to {_detected_lang_name}'})}\n\n"
+        else:
+            yield f"data: {json.dumps({'type': 'agent_log', 'symbol': '·', 'message': 'No text found in image — EXIF analysis complete'})}\n\n"
+
+        yield f"data: {json.dumps({'type': 'image_result', 'data': image_result})}\n\n"
         yield f"data: {json.dumps({'status': 'complete'})}\n\n"
 
     return StreamingResponse(
@@ -224,7 +312,7 @@ async def health_check():
 class HistorySaveRequest(BaseModel):
     url: str
     verdicts: list = []
-    explanations: dict = {}
+    explanations: dict | None = None
     source: str = "webapp"
 
 
@@ -239,7 +327,7 @@ async def save_history(req: HistorySaveRequest):
     """Save a history entry (called by frontend after stream completes)."""
     entry = _make_history_entry(
         req.url,
-        {"verdicts": req.verdicts, "explanations": req.explanations},
+        {"verdicts": req.verdicts or [], "explanations": req.explanations or {}},
         source=req.source,
     )
     _append_history(entry)

@@ -64,6 +64,11 @@ try:
 except ModuleNotFoundError:
     from agent0_multilingual import agent0_pre_node, agent0_post_node  # type: ignore[no-redef]
 
+try:
+    from agents.image_integrity import image_integrity_node
+except ModuleNotFoundError:
+    from image_integrity import image_integrity_node  # type: ignore[no-redef]
+
 load_dotenv()
 
 try:
@@ -97,6 +102,13 @@ class AgentState(TypedDict):
     is_translated: NotRequired[bool]        # True if Agent 0 translated input
     translated_input: NotRequired[str]      # English version passed to pipeline
     localized_output: NotRequired[dict]     # Verdicts translated back to source lang
+    # --- Image Integrity Agent 6 fields ---
+    image_urls: NotRequired[list[str]]      # Markdown image URLs found in article
+    media_verdicts: NotRequired[list[dict]] # Per-image EXIF + OCR results
+    ocr_text: NotRequired[str]             # English-translated OCR text from images
+    media_risk_level: NotRequired[str]     # "HIGH" if OCR text found, else "LOW"
+    is_second_pass: NotRequired[bool]      # True while pipeline loops after OCR
+    images_processed: NotRequired[bool]   # True once image_integrity has run
 
 
 class Claim(BaseModel):
@@ -461,8 +473,23 @@ def extraction_node(state: AgentState) -> AgentState:
         }
 
 
+def should_loop_back(state: AgentState) -> str:
+    """
+    Routing function for the image_integrity conditional edge.
+
+    - "re_verify": OCR text was found on the first pass. ``is_second_pass``
+      is True (set by image_integrity_node) — send back to claim_extraction
+      so the pipeline re-runs with the enriched user_input.
+    - "end": No OCR text found, OR this is already the second pass
+      (image_integrity_node resets ``is_second_pass`` to False before routing).
+    """
+    if state.get("is_second_pass") and state.get("ocr_text"):
+        return "re_verify"
+    return "end"
+
+
 def build_claim_extraction_graph():
-    """Build and compile the full pipeline graph with multilingual support."""
+    """Build and compile the full pipeline graph with multilingual and image integrity support."""
     builder = StateGraph(AgentState)
 
     # Agent 0 — pre (language detection + translation)
@@ -475,6 +502,8 @@ def build_claim_extraction_graph():
     builder.add_node("explanation_generator", explanation_generator_node)
     # Agent 0 — post (localize output back to source language)
     builder.add_node("agent0_post",           agent0_post_node)
+    # Agent 6 — image integrity + OCR re-verify loop
+    builder.add_node("image_integrity",       image_integrity_node)
 
     builder.add_edge(START,                   "agent0_pre")
     builder.add_edge("agent0_pre",            "claim_extraction")
@@ -483,7 +512,12 @@ def build_claim_extraction_graph():
     builder.add_edge("source_credibility",    "fact_checker")
     builder.add_edge("fact_checker",          "explanation_generator")
     builder.add_edge("explanation_generator", "agent0_post")
-    builder.add_edge("agent0_post",           END)
+    builder.add_edge("agent0_post",           "image_integrity")
+    builder.add_conditional_edges(
+        "image_integrity",
+        should_loop_back,
+        {"re_verify": "claim_extraction", "end": END},
+    )
 
     return builder.compile()
 

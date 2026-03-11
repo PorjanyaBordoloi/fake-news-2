@@ -55,6 +55,15 @@ explanation_generator:
   provider: "groq"
   temperature: 0.2                    # Intentionally non-zero — natural prose benefits from slight warmth
 
+# ── Agent 6: Image Integrity (Sarvam Vision OCR) ────────────────────────────
+image_integrity:
+  max_images: 2                         # Max images processed per run (quota guard)
+  ocr_language: "en-IN"                 # Sarvam OCR language hint (handles Hinglish/Indic)
+  ocr_model: "sarvam-vision:v1"         # Sarvam vision model
+  translation_model: "llama-3.3-70b-versatile"  # Groq model for OCR→English translation
+  translation_provider: "groq"
+  translation_temperature: 0
+
 # ── Agent 0: Multilingual Bridge (Sarvam AI) ─────────────────────────────────
 multilingual:
   enabled: true

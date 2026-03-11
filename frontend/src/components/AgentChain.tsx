@@ -148,6 +148,23 @@ export default function AgentChain({ thoughts, isComplete }: Props) {
         });
     }, [thoughts]);
 
+    // Agent 6: Image Integrity
+    useEffect(() => {
+        const t = thoughts.find(t => t.agent === 'image_integrity');
+        if (t?.data) {
+            const numImages = (t.data.image_urls || []).length;
+            const risk = t.data.media_risk_level || '';
+            setLogs(prev => {
+                if (prev.some(l => l.text.startsWith("Image integrity scan"))) return prev;
+                const newLogs: LogEntry[] = [];
+                if (numImages > 0) {
+                    newLogs.push({ text: `Image integrity scan: ${numImages} image(s) — media risk ${risk}`, type: 'score' });
+                }
+                return [...prev, ...newLogs];
+            });
+        }
+    }, [thoughts]);
+
     // Pipeline complete
     useEffect(() => {
         if (isComplete) {
