@@ -298,7 +298,7 @@ class VerdictExplanation(BaseModel):
     evidence_gaps_plain: str | None  # What's still unknown
 ```
 
-```
+
 
 ---
 
