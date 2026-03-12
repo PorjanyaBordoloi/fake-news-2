@@ -72,7 +72,17 @@ _EXIF_SOFTWARE_TAG: int = 305
 _TAMPER_KEYWORDS: tuple[str, ...] = ("photoshop", "gimp", "affinity", "lightroom")
 
 # Regex: find all markdown-embedded HTTPS image URLs — ![alt](url)
-_IMAGE_URL_RE = re.compile(r'!\[.*?\]\((https?://[^\s)]+)\)')
+# Uses a lazy \S+? match so the LAST ) before whitespace/end is taken as
+# the markdown closing paren, correctly handling URLs like
+# https://cdn.example.com/filters:format(webp)/image.jpg
+_IMAGE_URL_RE = re.compile(r'!\[[^\]]*\]\((https?://\S+?)\)(?=\s|\[|!|$)', re.MULTILINE)
+
+# Non-raster/vector extensions and MIME types that Sarvam OCR and Pillow reject
+_SKIP_OCR_EXTENSIONS = frozenset({".svg", ".gif", ".bmp", ".ico", ".tiff", ".tif"})
+_SKIP_OCR_MIME_TYPES = frozenset({
+    "image/svg+xml", "text/html", "application/xml", "text/xml",
+    "text/plain", "application/json",
+})
 
 # Single reusable prompt template for OCR → English translation
 _TRANSLATE_PROMPT = ChatPromptTemplate.from_messages([
@@ -91,10 +101,26 @@ _TRANSLATE_PROMPT = ChatPromptTemplate.from_messages([
 # ---------------------------------------------------------------------------
 
 def _fetch_image_bytes(url: str) -> bytes | None:
-    """Download image bytes from a URL. Returns None on any network failure."""
+    """Download image bytes from a URL.
+
+    Skips non-raster formats (SVG, GIF, BMP, ICO, TIFF) that Sarvam OCR
+    and Pillow cannot process. Returns None on any failure or unsupported format.
+    """
+    # Pre-flight extension check — avoids a network round-trip for obvious misses
+    url_path = url.lower().split("?")[0]
+    ext = os.path.splitext(url_path)[1]
+    if ext in _SKIP_OCR_EXTENSIONS:
+        logger.info("[Agent6] Skipping unsupported extension %s: %s", ext, url)
+        return None
+
     try:
         resp = requests.get(url, timeout=15, stream=True)
         resp.raise_for_status()
+        # Secondary check: verify Content-Type to catch SVGs served without extension
+        content_type = resp.headers.get("Content-Type", "").split(";")[0].strip().lower()
+        if content_type in _SKIP_OCR_MIME_TYPES:
+            logger.info("[Agent6] Skipping unsupported Content-Type %s: %s", content_type, url)
+            return None
         return resp.content
     except Exception as exc:  # noqa: BLE001
         logger.warning("[Agent6] Failed to fetch image %s: %s", url, exc)

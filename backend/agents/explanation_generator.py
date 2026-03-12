@@ -12,6 +12,7 @@ Pipeline position: fact_checker → explanation_generator → END
 
 from __future__ import annotations
 
+import json
 import os
 import traceback
 from typing import TYPE_CHECKING, Any, Optional
@@ -171,8 +172,22 @@ OVERALL CREDIBILITY RULES:
 - LOW CREDIBILITY: Multiple UNVERIFIED or one CONTRADICTED
 - UNRELIABLE:      Multiple CONTRADICTED or fabricated claims detected
 
-OUTPUT: Follow the structured schema exactly.
-Produce one VerdictExplanation per verdict in the same order as input.
+OUTPUT FORMAT: Return a single JSON object with this exact structure:
+{{
+  "verdicts_explained": [
+    {{
+      "claim_text": "<exact claim text from the VERDICT N: Claim field>",
+      "plain_english": "<3-4 sentences>",
+      "confidence_statement": "<1 sentence>",
+      "source_quality_note": "<1 sentence>",
+      "reader_advisory": "<1 sentence, or null if not needed>",
+      "evidence_gaps_plain": "<1 sentence, or null if no gaps>"
+    }}
+  ],
+  "overall_credibility": "<CREDIBLE|MOSTLY CREDIBLE|MIXED|LOW CREDIBILITY|UNRELIABLE>",
+  "bottom_line": "<1 plain sentence summary>"
+}}
+Produce one object in verdicts_explained per verdict, in the same order as input.
 """.strip()
 
 
@@ -185,7 +200,9 @@ Produce one VerdictExplanation per verdict in the same order as input.
 
 def _build_explanation_llm() -> Any:
     """
-    Groq LLM with structured output.
+    Plain Groq LLM with JSON mode — bypasses function-calling so non-Latin
+    scripts (Assamese, Bengali, Hindi, etc.) in claim_text don't trigger
+    Groq 400 'tool_use_failed' errors.
     Temperature 0.2 for natural prose — intentionally non-zero.
     """
     groq_api_key = _read_env_var("GROQ_API_KEY", "groq_api_key")
@@ -194,12 +211,12 @@ def _build_explanation_llm() -> Any:
             "Missing Groq API key. Set GROQ_API_KEY in .env"
         )
 
-    llm = ChatGroq(
+    return ChatGroq(
         model=_eg_cfg.get("model", "llama-3.3-70b-versatile"),
         api_key=groq_api_key,
         temperature=_eg_cfg.get("temperature", 0.2),
+        model_kwargs={"response_format": {"type": "json_object"}},
     )
-    return llm.with_structured_output(ExplanationOutput)
 
 
 def _format_verdicts_for_prompt(
@@ -312,11 +329,11 @@ def explanation_generator_node(state: "AgentState") -> dict[str, Any]:
         chain = prompt | llm
         response = chain.invoke({"verdicts_text": verdicts_text})
 
-        # Validate / coerce response
-        if isinstance(response, ExplanationOutput):
-            explanation_output = response
-        else:
-            explanation_output = ExplanationOutput.model_validate(response)
+        # json_mode returns raw text — parse manually to avoid function-call
+        # failures on non-Latin scripts (Assamese, Bengali, Hindi, etc.)
+        raw_json = response.content if hasattr(response, "content") else str(response)
+        parsed = json.loads(raw_json)
+        explanation_output = ExplanationOutput.model_validate(parsed)
 
         print("--- EXPLANATIONS COMPLETE ---")
         print(f"--- OVERALL CREDIBILITY: {explanation_output.overall_credibility} ---")

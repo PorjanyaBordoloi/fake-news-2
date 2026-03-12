@@ -1,5 +1,724 @@
 [
   {
+    "id": "cc743d28-86b1-4605-808d-ff4d272167a2",
+    "url": "Image: test3.jpg",
+    "timestamp": "2026-03-12T05:49:48.194563+00:00",
+    "overall_credibility": "MIXED",
+    "avg_score": 60,
+    "bottom_line": "Some claims about cyber criminals and LPG gas booking seem true, but we need more reliable evidence to be confident.",
+    "verdicts": [
+      {
+        "claim_text": "Cyber criminals are creating fake websites for LPG gas booking.",
+        "verdict": "SUPPORTED",
+        "truth_score": 60,
+        "explanation": "The claim is confirmed by multiple sources, including news articles and a social media post, which all suggest that cyber criminals are creating fake websites for LPG gas booking. However, the credibility of these sources is low, which affects the confidence in the claim.",
+        "citations": [
+          "https://hyderabadmail.com/lpg-cylinder-booking-fraud-cyber-alert-india/",
+          "https://newsmeter.in/hyderabad/gas-booking-fraud-alert-hyderabad-cp-sajjanar-warns-against-fake-lpg-ads-offering-instant-delivery-764411"
+        ],
+        "reasoning_summary": "The evidence from multiple sources confirms the claim, but the low credibility of these sources raises concerns about reliability.",
+        "confidence_level": "MEDIUM",
+        "evidence_gaps": [
+          "The low credibility of the sources and the lack of high-credibility evidence to support the claim."
+        ]
+      },
+      {
+        "claim_text": "Cyber criminals are creating fake booking links for LPG gas booking.",
+        "verdict": "SUPPORTED",
+        "truth_score": 70,
+        "explanation": "The claim is supported by all three evidence snippets, which confirm that cyber criminals are creating fake booking links for LPG gas booking. However, the exact nature of the scheme and the context of the situation are not fully clear due to gaps in the evidence and varying credibility of the sources.",
+        "citations": [
+          "https://www.gulte.com/trends/400303/gas-shortage-new-digital-scam-in-hyderabad",
+          "https://www.instagram.com/p/DVvh9sEjn-H/"
+        ],
+        "reasoning_summary": "The evidence confirms that cyber criminals are creating fake booking links for LPG gas booking, but the scheme's details and the situation being taken advantage of are not fully clear.",
+        "confidence_level": "MEDIUM",
+        "evidence_gaps": [
+          "The exact nature of the scheme and the context of the situation being taken advantage of are not fully clear."
+        ]
+      },
+      {
+        "claim_text": "Cyber criminals are sending fraudulent messages related to LPG gas booking.",
+        "verdict": "UNVERIFIED",
+        "truth_score": 50,
+        "explanation": "Insufficient reliable evidence was retrieved for this claim. The claim remains unverified at this time.",
+        "citations": [],
+        "reasoning_summary": "",
+        "confidence_level": "MEDIUM",
+        "evidence_gaps": []
+      }
+    ],
+    "explanations": {
+      "by_claim": {
+        "Cyber criminals are creating fake websites for LPG gas booking.": {
+          "claim_text": "Cyber criminals are creating fake websites for LPG gas booking.",
+          "plain_english": "There's some evidence that cyber criminals are creating fake websites for LPG gas booking, but we can't be too sure because the sources are not very reliable. This claim might be true, but we need more trustworthy evidence to be confident.",
+          "confidence_statement": "We have some evidence, but it's not very reliable.",
+          "source_quality_note": "Reported by specialist or regional sources with low credibility.",
+          "reader_advisory": "Treat this claim with caution due to low credibility of sources.",
+          "evidence_gaps_plain": "We need more reliable evidence to support this claim."
+        },
+        "Cyber criminals are creating fake booking links for LPG gas booking.": {
+          "claim_text": "Cyber criminals are creating fake booking links for LPG gas booking.",
+          "plain_english": "It appears that cyber criminals are creating fake booking links for LPG gas booking, but we don't know much about the scheme or the situation being targeted. This claim seems true, but we need more information to understand the context.",
+          "confidence_statement": "We have some evidence, but it's not clear what's going on.",
+          "source_quality_note": "Reported by specialist or regional sources with low credibility.",
+          "reader_advisory": null,
+          "evidence_gaps_plain": "We don't know much about the scheme or the situation being targeted."
+        },
+        "Cyber criminals are sending fraudulent messages related to LPG gas booking.": {
+          "claim_text": "Cyber criminals are sending fraudulent messages related to LPG gas booking.",
+          "plain_english": "We don't have enough reliable evidence to confirm or deny this claim. We can't say for sure whether cyber criminals are sending fraudulent messages related to LPG gas booking.",
+          "confidence_statement": "We don't have enough evidence to say for sure.",
+          "source_quality_note": "No credibility data available.",
+          "reader_advisory": null,
+          "evidence_gaps_plain": null
+        }
+      },
+      "overall_credibility": "MIXED",
+      "bottom_line": "Some claims about cyber criminals and LPG gas booking seem true, but we need more reliable evidence to be confident."
+    },
+    "source": "webapp"
+  },
+  {
+    "id": "fb4abc36-9244-45ca-a4f5-21661ba39a5a",
+    "url": "https://x.com/drpezeshkian/status/2031794088526168170?ref_src=twsrc%5Etfw%7Ctwcamp%5Etweetembed%7Ctwterm%5E2031794088526168170%7Ctwgr%5Ea336621fde1984bc205cc2b5e37d80b29d43e4ef%7Ctwcon%5Es1_&ref_url=https%3A%2F%2Findianexpress.com%2Farticle%2Fworld%2Firan-conditions-end-war-with-us-israel-10577639%2F",
+    "timestamp": "2026-03-12T05:48:57.288336+00:00",
+    "overall_credibility": "LOW CREDIBILITY",
+    "avg_score": 60,
+    "bottom_line": "Some claims appear to be accurate, but the credibility of the sources is a concern.",
+    "verdicts": [
+      {
+        "claim_text": "The target URL returned an error 400.",
+        "verdict": "SUPPORTED",
+        "truth_score": 60,
+        "explanation": "The evidence suggests that a 400 Bad Request error can occur due to various reasons, and all snippets confirm the occurrence of a 400 Bad Request error, although the exact reason is not specified. The credibility of the sources is low, which may indicate that the information is not entirely reliable.",
+        "citations": [
+          "https://kinsta.com/blog/400-bad-request/",
+          "https://www.hostinger.com/tutorials/how-to-fix-400-bad-request-error"
+        ],
+        "reasoning_summary": "The evidence confirms the occurrence of a 400 Bad Request error, but the exact reason is not specified due to low credibility sources and varying reasons across snippets.",
+        "confidence_level": "MEDIUM",
+        "evidence_gaps": [
+          "The exact reason for the 400 Bad Request error in the target URL is not specified, and the credibility of the sources is low."
+        ]
+      },
+      {
+        "claim_text": "The site owner should be contacted if the problem continues.",
+        "verdict": "SUPPORTED",
+        "truth_score": 60,
+        "explanation": "The evidence from multiple snippets suggests that the site owner should be contacted if the problem continues, but the credibility of these sources is low.",
+        "citations": [
+          "https://stackoverflow.com/questions/78022422/this-page-isn-t-working-if-the-problem-continues-contact-the-site-owner-http",
+          "https://learn.microsoft.com/en-us/answers/questions/5737017/i-get-error-trying-to-access-edge-content-blocked"
+        ],
+        "reasoning_summary": "The claim is supported by error messages in all three snippets, but the low credibility of the sources raises concerns about reliability.",
+        "confidence_level": "MEDIUM",
+        "evidence_gaps": [
+          "More reliable sources are needed to confirm this claim."
+        ]
+      }
+    ],
+    "explanations": {
+      "by_claim": {
+        "The target URL returned an error 400.": {
+          "claim_text": "The target URL returned an error 400.",
+          "plain_english": "A 400 Bad Request error occurred when trying to access the target URL, but we can't say why. This information comes from sources that aren't very reliable.",
+          "confidence_statement": "This appears to be accurate, but with some uncertainty.",
+          "source_quality_note": "Sourced from outlets with limited editorial standards.",
+          "reader_advisory": "Treat with caution due to low credibility sources.",
+          "evidence_gaps_plain": "We don't know the exact reason for the 400 Bad Request error."
+        },
+        "The site owner should be contacted if the problem continues.": {
+          "claim_text": "The site owner should be contacted if the problem continues.",
+          "plain_english": "It seems like contacting the site owner might be a good idea if the problem persists, but we can't be sure because the sources aren't very reliable.",
+          "confidence_statement": "This appears to be accurate, but with some uncertainty.",
+          "source_quality_note": "Sourced from outlets with limited editorial standards, including social media.",
+          "reader_advisory": "Treat with caution due to low credibility sources, including social media.",
+          "evidence_gaps_plain": "We need more reliable sources to confirm this claim."
+        }
+      },
+      "overall_credibility": "LOW CREDIBILITY",
+      "bottom_line": "Some claims appear to be accurate, but the credibility of the sources is a concern."
+    },
+    "source": "webapp"
+  },
+  {
+    "id": "961522b8-520c-422b-8f03-7bdbd7bf9b46",
+    "url": "singer zubeen garg ka death ka raj koi nhi bata rha lekin jante sab hain",
+    "timestamp": "2026-03-12T05:46:40.366912+00:00",
+    "overall_credibility": "LOW CREDIBILITY",
+    "avg_score": 20,
+    "bottom_line": "The government has reported on Zubeen Garg's death, contradicting the claim.",
+    "verdicts": [
+      {
+        "claim_text": "Zubeen Garg's death is not reported by the government.",
+        "verdict": "CONTRADICTED",
+        "truth_score": 20,
+        "explanation": "The evidence suggests that Zubeen Garg's death is reported by the government, as Singapore News reports on the autopsy report. This contradicts the claim that Zubeen Garg's death is not reported by the government.",
+        "citations": [
+          "https://www.straitstimes.com/singapore/zubeen-garg-tragedy-police-in-spore-provide-indian-high-commission-with-autopsy-report"
+        ],
+        "reasoning_summary": "The government's investigation into the death is inferred from the police statement, and the autopsy report is provided to the Indian High Commission.",
+        "confidence_level": "LOW",
+        "evidence_gaps": [
+          "There is a gap in the evidence regarding the government's official statement on Zubeen Garg's death, as Snippet 1 is the only credible source reporting on the autopsy report."
+        ]
+      }
+    ],
+    "explanations": {
+      "by_claim": {
+        "Zubeen Garg's death is not reported by the government.": {
+          "claim_text": "Zubeen Garg's death is not reported by the government.",
+          "plain_english": "This claim is false based on available evidence. The government has reported on Zubeen Garg's death through an autopsy report, which was shared with the Indian High Commission.",
+          "confidence_statement": "I have low confidence in this verdict due to limited credible sources.",
+          "source_quality_note": "Sourced from outlets with limited editorial standards.",
+          "reader_advisory": "Treat this claim with caution as the sources have low credibility.",
+          "evidence_gaps_plain": "There is a gap in the evidence regarding the government's official statement on Zubeen Garg's death."
+        }
+      },
+      "overall_credibility": "LOW CREDIBILITY",
+      "bottom_line": "The government has reported on Zubeen Garg's death, contradicting the claim."
+    },
+    "source": "webapp"
+  },
+  {
+    "id": "92e82f25-5060-4bb8-9800-8ad50ceee5e7",
+    "url": "Image: test2.png",
+    "timestamp": "2026-03-12T05:40:11.962164+00:00",
+    "overall_credibility": "MIXED",
+    "avg_score": 43,
+    "bottom_line": "Some claims could not be verified due to lack of reliable evidence or incomplete information.",
+    "verdicts": [
+      {
+        "claim_text": "The memory recall of participants increased by up to 65%.",
+        "verdict": "UNVERIFIED",
+        "truth_score": 40,
+        "explanation": "The evidence suggests that brain stimulation can improve memory recall, but the specific increase in memory recall is not mentioned in the provided snippets. The improvement in memory recall lasts for up to one month, as per one of the snippets. However, the credibility of the snippets is low, and the information is not comprehensive.",
+        "citations": [
+          "https://www.belfasttelegraph.co.uk/news/uk/brain-stimulation-improves-memory-for-at-least-one-month-study-suggests/a/112284980.html",
+          "https://www.coursehero.com/tutors-problems/Psychology/84089614-Select-a-scenario-and-respond-to-the-following-Scenario-number-5/"
+        ],
+        "reasoning_summary": "The claim cannot be fully confirmed due to low credibility and lack of comprehensive information in the provided snippets.",
+        "confidence_level": "LOW",
+        "evidence_gaps": [
+          "Specific percentage of memory recall increase and comprehensive information on the topic"
+        ]
+      },
+      {
+        "claim_text": "Drinking lemon with warm water every morning can increase human IQ by up to 20 points in just 2 weeks.",
+        "verdict": "UNVERIFIED",
+        "truth_score": 40,
+        "explanation": "The evidence provided suggests that lemon water may have benefits for digestion, energy levels, and mental health, but it does not support the claim that it can increase human IQ by up to 20 points in just 2 weeks. The lack of relevant information makes it difficult to draw a conclusion about the claim.",
+        "citations": [
+          "https://dev.catalog.calpia.ca.gov/custom/assets/review.html?p=viral-lemon-water-trick-in-2026-7-things-they-don-t-mention-when-you-wake-up-and-sip-698e08a74c5f3",
+          "https://www.ctcd.edu/sites/myctcd/today/discover.html?p=warm-lemon-water-in-2026-what-really-changes-in-your-body-beyond-the-hype-69a02ac611eaa"
+        ],
+        "reasoning_summary": "The analyst found that while the evidence suggests some benefits of drinking lemon water, it does not provide any information about its effect on IQ or any specific time frame for improvement.",
+        "confidence_level": "LOW",
+        "evidence_gaps": [
+          "The claim that drinking lemon with warm water can increase human IQ by up to 20 points in just 2 weeks is not supported by the evidence, as there is no mention of IQ or any specific time frame for improvement."
+        ]
+      },
+      {
+        "claim_text": "Universities may recommend the lemon water routine to students to improve learning.",
+        "verdict": "UNVERIFIED",
+        "truth_score": 50,
+        "explanation": "Insufficient reliable evidence was retrieved for this claim. The claim remains unverified at this time.",
+        "citations": [],
+        "reasoning_summary": "",
+        "confidence_level": "MEDIUM",
+        "evidence_gaps": []
+      }
+    ],
+    "explanations": {
+      "by_claim": {
+        "The memory recall of participants increased by up to 65%": {
+          "claim_text": "The memory recall of participants increased by up to 65%",
+          "plain_english": "We can't confirm this claim because the sources are not very trustworthy and don't provide enough information. Brain stimulation can improve memory recall, but we don't know the exact percentage of improvement.",
+          "confidence_statement": "This claim is uncertain due to low credibility and incomplete information.",
+          "source_quality_note": "Sourced from outlets with limited editorial standards",
+          "reader_advisory": "Treat with caution due to low credibility sources",
+          "evidence_gaps_plain": "We don't know the specific percentage of memory recall increase or have comprehensive information on the topic"
+        },
+        "Drinking lemon with warm water every morning can increase human IQ by up to 20 points in just 2 weeks": {
+          "claim_text": "Drinking lemon with warm water every morning can increase human IQ by up to 20 points in just 2 weeks",
+          "plain_english": "There's no evidence to support this claim. While lemon water may have some benefits, it doesn't improve IQ or have any specific time frame for improvement.",
+          "confidence_statement": "This claim is not supported by the available evidence.",
+          "source_quality_note": "Reported by established news outlets",
+          "reader_advisory": null,
+          "evidence_gaps_plain": "We don't know if lemon water can improve IQ or have any specific time frame for improvement"
+        },
+        "Universities may recommend the lemon water routine to students to improve learning": {
+          "claim_text": "Universities may recommend the lemon water routine to students to improve learning",
+          "plain_english": "We can't verify this claim because we don't have enough reliable evidence. It's possible that some universities might recommend lemon water, but we don't know for sure.",
+          "confidence_statement": "This claim remains unverified due to insufficient reliable evidence.",
+          "source_quality_note": "No credibility data available",
+          "reader_advisory": null,
+          "evidence_gaps_plain": null
+        }
+      },
+      "overall_credibility": "MIXED",
+      "bottom_line": "Some claims could not be verified due to lack of reliable evidence or incomplete information."
+    },
+    "source": "webapp"
+  },
+  {
+    "id": "165a5c2a-8608-4528-a122-625401601588",
+    "url": "https://www.asomiyapratidin.in/homepage/himanta-news-11204850",
+    "timestamp": "2026-03-12T05:38:30.777456+00:00",
+    "overall_credibility": "MOSTLY CREDIBLE",
+    "avg_score": 80,
+    "bottom_line": "The claims about checks being distributed to women entrepreneurs at the Baraghat Shaheed Smarak Kshetra appear to be accurate, but there are some discrepancies in the details.",
+    "verdicts": [
+      {
+        "claim_text": "\u09ae\u09c1\u0996\u09cd\u09af\u09ae\u09a8\u09cd\u09a4\u09cd\u09f0\u09c0 \u09b9\u09bf\u09ae\u09a8\u09cd\u09a4 \u09ac\u09bf\u09b6\u09cd\u09ac \u09b6\u09f0\u09cd\u09ae\u09be\u0987 \u09ac\u09f0\u09be\u0997\u09be\u0981\u09f1\u09f0 \u09b6\u09cd\u09ac\u09b9\u09c0\u09a6 \u09b8\u09cd\u09ae\u09be\u09f0\u0995 \u0995\u09cd\u09b7\u09c7\u09a4\u09cd\u09f0\u09a4 \u09ae\u09b9\u09bf\u09b2\u09be \u0989\u09a6\u09cd\u09af\u09ae\u09bf\u09a4\u09be \u0986\u0981\u099a\u09a8\u09bf\u09f0 \u099a\u09c7\u0995 \u09ac\u09bf\u09a4\u09f0\u09a3 \u0995\u09f0\u09bf\u09ac",
+        "verdict": "SUPPORTED",
+        "truth_score": 80,
+        "explanation": "The claim is supported by credible evidence from Snippet 1, which states that Chief Minister Himanta Biswa Sarma participated in a program to distribute checks to women entrepreneurs in Rangia, Kamrup district. Although there are some gaps in information, the core claim is confirmed by this credible source.",
+        "citations": [
+          "https://www.newsonair.gov.in/as/%E0%A7%B0%E0%A6%99%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%A4-%E0%A6%AE%E0%A6%B9%E0%A6%BF%E0%A6%B2%E0%A6%BE-%E0%A6%89%E0%A6%A6%E0%A7%8D%E0%A6%AF%E0%A6%AE%E0%A6%BF%E0%A6%A4%E0%A6%BE-%E0%A6%86/"
+        ],
+        "reasoning_summary": "The analyst's reasoning document confirms that Chief Minister Himanta Biswa Sarma will distribute checks to women entrepreneurs, as stated in Snippet 1. However, there are gaps in information regarding the number of women receiving the checks.",
+        "confidence_level": "MEDIUM",
+        "evidence_gaps": [
+          "The number of women receiving the checks is not consistently reported across the snippets."
+        ]
+      },
+      {
+        "claim_text": "\u09ac\u09f0\u09be\u0997\u09be\u0981\u09f1\u09f0 \u09b6\u09cd\u09ac\u09b9\u09c0\u09a6 \u09b8\u09cd\u09ae\u09be\u09f0\u0995 \u0995\u09cd\u09b7\u09c7\u09a4\u09cd\u09f0\u09a4 \u09ae\u09b9\u09bf\u09b2\u09be \u0989\u09a6\u09cd\u09af\u09ae\u09bf\u09a4\u09be \u0986\u0981\u099a\u09a8\u09bf\u09f0 \u099a\u09c7\u0995 \u09ac\u09bf\u09a4\u09f0\u09a3 \u0995\u09f0\u09be \u09b9'\u09ac",
+        "verdict": "SUPPORTED",
+        "truth_score": 80,
+        "explanation": "The claim is supported by credible evidence from Snippet 1, which states that the cheques for the Mahila Udhyami Yojana will be distributed at the Baraghat Shaheed Smarak Kshetra. Additionally, Snippet 2 and Snippet 3 also confirm the distribution of cheques, although with some discrepancies in the details.",
+        "citations": [
+          "https://www.newsonair.gov.in/as/%E0%A7%AB-%E0%A6%AB%E0%A7%87%E0%A6%AC%E0%A7%8D%E0%A7%B0%E0%A7%81%E0%A7%B1%E0%A6%BE%E0%A7%B0%E0%A7%80%E0%A7%B0-%E0%A6%AD%E0%A6%BF%E0%A6%A4%E0%A7%B0%E0%A6%A4-%E0%A6%AE%E0%A7%81%E0%A6%96%E0%A7%8D/",
+          "https://www.etvbharat.com/as/state/barak-valley-visit-assam-cm-launched-several-important-project-including-new-super-speciality-hospital-assam-news-ass25102501066"
+        ],
+        "reasoning_summary": "The claim is supported by multiple sources, including a government news website and a news article, which confirm the distribution of cheques for the Mahila Udhyami Yojana at the Baraghat Shaheed Smarak Kshetra.",
+        "confidence_level": "MEDIUM",
+        "evidence_gaps": [
+          "There are some discrepancies in the details of the cheques distribution, such as the number of women receiving the cheques and the amount of the cheques."
+        ]
+      }
+    ],
+    "explanations": {
+      "by_claim": {
+        "\u09ae\u09c1\u0996\u09cd\u09af\u09ae\u09a8\u09cd\u09a4\u09cd\u09f0\u09c0 \u09b9\u09bf\u09ae\u09a8\u09cd\u09a4 \u09ac\u09bf\u09b6\u09cd\u09ac \u09b6\u09f0\u09cd\u09ae\u09be\u0987 \u09ac\u09f0\u09be\u0997\u09be\u0981\u09f1\u09f0 \u09b6\u09cd\u09ac\u09b9\u09c0\u09a6 \u09b8\u09cd\u09ae\u09be\u09f0\u0995 \u0995\u09cd\u09b7\u09c7\u09a4\u09cd\u09f0\u09a4 \u09ae\u09b9\u09bf\u09b2\u09be \u0989\u09a6\u09cd\u09af\u09ae\u09bf\u09a4\u09be \u0986\u0981\u099a\u09a8\u09bf\u09f0 \u099a\u09c7\u0995 \u09ac\u09bf\u09a4\u09f0\u09a3 \u0995\u09f0\u09bf\u09ac": {
+          "claim_text": "\u09ae\u09c1\u0996\u09cd\u09af\u09ae\u09a8\u09cd\u09a4\u09cd\u09f0\u09c0 \u09b9\u09bf\u09ae\u09a8\u09cd\u09a4 \u09ac\u09bf\u09b6\u09cd\u09ac \u09b6\u09f0\u09cd\u09ae\u09be\u0987 \u09ac\u09f0\u09be\u0997\u09be\u0981\u09f1\u09f0 \u09b6\u09cd\u09ac\u09b9\u09c0\u09a6 \u09b8\u09cd\u09ae\u09be\u09f0\u0995 \u0995\u09cd\u09b7\u09c7\u09a4\u09cd\u09f0\u09a4 \u09ae\u09b9\u09bf\u09b2\u09be \u0989\u09a6\u09cd\u09af\u09ae\u09bf\u09a4\u09be \u0986\u0981\u099a\u09a8\u09bf\u09f0 \u099a\u09c7\u0995 \u09ac\u09bf\u09a4\u09f0\u09a3 \u0995\u09f0\u09bf\u09ac",
+          "plain_english": "Chief Minister Himanta Biswa Sarma will distribute checks to women entrepreneurs at the Baraghat Shaheed Smarak Kshetra. This appears to be accurate, but we don't know how many women will receive the checks. The information comes from a moderately credible news source.",
+          "confidence_statement": "The claim is supported with medium confidence.",
+          "source_quality_note": "reported by established news outlets",
+          "reader_advisory": null,
+          "evidence_gaps_plain": "We don't know the exact number of women receiving the checks."
+        },
+        "\u09ac\u09f0\u09be\u0997\u09be\u0981\u09f1\u09f0 \u09b6\u09cd\u09ac\u09b9\u09c0\u09a6 \u09b8\u09cd\u09ae\u09be\u09f0\u0995 \u0995\u09cd\u09b7\u09c7\u09a4\u09cd\u09f0\u09a4 \u09ae\u09b9\u09bf\u09b2\u09be \u0989\u09a6\u09cd\u09af\u09ae\u09bf\u09a4\u09be \u0986\u0981\u099a\u09a8\u09bf\u09f0 \u099a\u09c7\u0995 \u09ac\u09bf\u09a4\u09f0\u09a3 \u0995\u09f0\u09be \u09b9'\u09ac": {
+          "claim_text": "\u09ac\u09f0\u09be\u0997\u09be\u0981\u09f1\u09f0 \u09b6\u09cd\u09ac\u09b9\u09c0\u09a6 \u09b8\u09cd\u09ae\u09be\u09f0\u0995 \u0995\u09cd\u09b7\u09c7\u09a4\u09cd\u09f0\u09a4 \u09ae\u09b9\u09bf\u09b2\u09be \u0989\u09a6\u09cd\u09af\u09ae\u09bf\u09a4\u09be \u0986\u0981\u099a\u09a8\u09bf\u09f0 \u099a\u09c7\u0995 \u09ac\u09bf\u09a4\u09f0\u09a3 \u0995\u09f0\u09be \u09b9'\u09ac",
+          "plain_english": "Checks for the Mahila Udhyami Yojana will be distributed at the Baraghat Shaheed Smarak Kshetra. This appears to be accurate, but there are some discrepancies in the details. The information comes from moderately credible news sources.",
+          "confidence_statement": "The claim is supported with medium confidence.",
+          "source_quality_note": "reported by established news outlets",
+          "reader_advisory": null,
+          "evidence_gaps_plain": "We don't know the exact number of women receiving the checks or the amount of the checks."
+        }
+      },
+      "overall_credibility": "MOSTLY CREDIBLE",
+      "bottom_line": "The claims about checks being distributed to women entrepreneurs at the Baraghat Shaheed Smarak Kshetra appear to be accurate, but there are some discrepancies in the details."
+    },
+    "source": "webapp"
+  },
+  {
+    "id": "c59ca132-3329-40e6-b2ca-5a6b7e31b0ca",
+    "url": "https://indianexpress.com/article/world/iran-conditions-end-war-with-us-israel-10577639/?ref=breaking_hp",
+    "timestamp": "2026-03-12T05:35:25.347303+00:00",
+    "overall_credibility": "LOW CREDIBILITY",
+    "avg_score": 43,
+    "bottom_line": "Claims about Iran's ultimatum and conditions to end war are mostly unverified or misleading due to low credibility sources.",
+    "verdicts": [
+      {
+        "claim_text": "Tehran issues defiant 3-point ultimatum to Trump as war enters Day 13.",
+        "verdict": "MISLEADING",
+        "truth_score": 40,
+        "explanation": "The evidence confirms that Tehran has issued an ultimatum to Trump, but the specifics, such as the number of points and the day of war, are unknown or not mentioned. The low credibility of the sources and the lack of specific details make the claim misleading.",
+        "citations": [
+          "https://www.newsweek.com/iran-supreme-leader-issues-ultimatum-trump-10981473",
+          "https://www.ariananews.af/irans-supreme-leader-issues-ultimatum-to-trump-amid-rising-tensions/"
+        ],
+        "reasoning_summary": "The evidence suggests an ultimatum has been issued, but specifics are unclear. Low credibility sources and missing details make the claim misleading.",
+        "confidence_level": "LOW",
+        "evidence_gaps": [
+          "The number of points in the ultimatum and the day of war are not mentioned in the evidence snippets."
+        ]
+      },
+      {
+        "claim_text": "Iran sets 3 conditions to 'end war' with US and Israel.",
+        "verdict": "MISLEADING",
+        "truth_score": 40,
+        "explanation": "Iran has set conditions to end its war with the US and Israel, including recognition of its legitimate rights and payment of reparations, but the exact number of conditions is not specified. The credibility of the sources is low, which may indicate that the information is not entirely reliable.",
+        "citations": [
+          "https://www.legit.ng/world/1700728-iran-sets-conditions-war-israel-lists-demands/",
+          "https://www.jagonews24.com/en/international/news/90742"
+        ],
+        "reasoning_summary": "The evidence suggests that Iran has set conditions to end its war with the US and Israel, but the exact number of conditions is not specified, and the credibility of the sources is low.",
+        "confidence_level": "LOW",
+        "evidence_gaps": [
+          "Number of conditions",
+          "Specific individuals involved",
+          "Specific dates mentioned"
+        ]
+      },
+      {
+        "claim_text": "Iran has issued a 3-point ultimatum to the US and Israel.",
+        "verdict": "UNVERIFIED",
+        "truth_score": 50,
+        "explanation": "Insufficient reliable evidence was retrieved for this claim. The claim remains unverified at this time.",
+        "citations": [],
+        "reasoning_summary": "",
+        "confidence_level": "MEDIUM",
+        "evidence_gaps": []
+      }
+    ],
+    "explanations": {
+      "by_claim": {
+        "Tehran issues defiant 3-point ultimatum to Trump as war enters Day 13.": {
+          "claim_text": "Tehran issues defiant 3-point ultimatum to Trump as war enters Day 13.",
+          "plain_english": "Tehran has issued an ultimatum to Trump, but the specifics, such as the number of points and the day of war, are unknown or not mentioned. This makes the claim misleading due to low credibility sources and missing details.",
+          "confidence_statement": "I have low confidence in the accuracy of this claim.",
+          "source_quality_note": "Sourced from outlets with limited editorial standards.",
+          "reader_advisory": "Treat with caution due to low credibility sources.",
+          "evidence_gaps_plain": "The number of points in the ultimatum and the day of war are not mentioned in the evidence."
+        },
+        "Iran sets 3 conditions to 'end war' with US and Israel.": {
+          "claim_text": "Iran sets 3 conditions to 'end war' with US and Israel.",
+          "plain_english": "Iran has set conditions to end its war with the US and Israel, including recognition of its legitimate rights and payment of reparations, but the exact number of conditions is not specified. The credibility of the sources is low, which may indicate that the information is not entirely reliable.",
+          "confidence_statement": "I have low confidence in the accuracy of this claim.",
+          "source_quality_note": "Sourced from outlets with limited editorial standards.",
+          "reader_advisory": "Treat with caution due to low credibility sources.",
+          "evidence_gaps_plain": "The number of conditions, specific individuals involved, and specific dates mentioned are not specified in the evidence."
+        },
+        "Iran has issued a 3-point ultimatum to the US and Israel.": {
+          "claim_text": "Iran has issued a 3-point ultimatum to the US and Israel.",
+          "plain_english": "There is insufficient reliable evidence to verify this claim, so it remains unverified at this time.",
+          "confidence_statement": "I have medium confidence that this claim is not entirely accurate.",
+          "source_quality_note": "No credibility data available.",
+          "reader_advisory": null,
+          "evidence_gaps_plain": null
+        }
+      },
+      "overall_credibility": "LOW CREDIBILITY",
+      "bottom_line": "Claims about Iran's ultimatum and conditions to end war are mostly unverified or misleading due to low credibility sources."
+    },
+    "source": "webapp"
+  },
+  {
+    "id": "5cf91bcf-55d3-4401-b62a-798fdbc4e00b",
+    "url": "https://www.asomiyapratidin.in/homepage/himanta-news-11204850",
+    "timestamp": "2026-03-12T05:31:29.442614+00:00",
+    "overall_credibility": "MIXED",
+    "avg_score": 80,
+    "bottom_line": "Explanation generation encountered an error. Please review the raw verdicts.",
+    "verdicts": [
+      {
+        "claim_text": "\u09ae\u09c1\u0996\u09cd\u09af\u09ae\u09a8\u09cd\u09a4\u09cd\u09f0\u09c0 \u09b9\u09bf\u09ae\u09a8\u09cd\u09a4 \u09ac\u09bf\u09b6\u09cd\u09ac \u09b6\u09f0\u09cd\u09ae\u09be\u0987 \u09ac\u09f0\u09be\u0997\u09be\u0981\u09f1\u09f0 \u09b6\u09cd\u09ac\u09b9\u09c0\u09a6 \u09b8\u09cd\u09ae\u09be\u09f0\u0995 \u0995\u09cd\u09b7\u09c7\u09a4\u09cd\u09f0\u09a4 \u09ae\u09b9\u09bf\u09b2\u09be \u0989\u09a6\u09cd\u09af\u09ae\u09bf\u09a4\u09be \u0986\u0981\u099a\u09a8\u09bf\u09f0 \u099a\u09c7\u0995 \u09ac\u09bf\u09a4\u09f0\u09a3 \u0995\u09f0\u09bf\u09ac",
+        "verdict": "SUPPORTED",
+        "truth_score": 80,
+        "explanation": "The claim that Chief Minister Himanta Biswa Sarma will distribute checks under the women's entrepreneurship scheme is supported by credible evidence from multiple sources, including a moderately credible news article and social media posts.",
+        "citations": [
+          "https://www.newsonair.gov.in/as/%E0%A7%B0%E0%A6%99%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%A4-%E0%A6%AE%E0%A6%B9%E0%A6%BF%E0%A6%B2%E0%A6%BE-%E0%A6%89%E0%A6%A6%E0%A7%8D%E0%A6%AF%E0%A6%AE%E0%A6%BF%E0%A6%A4%E0%A6%BE-%E0%A6%86/",
+          "https://www.facebook.com/TheTruthIndiaNews/videos/-%E0%A6%B6%E0%A6%BF%E0%A7%B1%E0%A6%B8%E0%A6%BE%E0%A6%97%E0%A7%B0%E0%A6%A4-%E0%A6%89%E0%A6%AA%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BF%E0%A6%A4-%E0%A6%AE%E0%A7%81%E0%A6%96%E0%A7%8D%E0%A6%AF%E0%A6%AE%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A7%B0%E0%A7%80-%E0%A6%B9%E0%A6%BF%E0%A6%AE%E0%A6%A8%E0%A7%8D%E0%A6%A4-%E0%A6%AC%E0%A6%BF%E0%A6%B6%E0%A7%8D%E0%A6%AC-%E0%A6%B6%E0%A7%B0%E0%A7%8D%E0%A6%AE%E0%A6%BE-satya-live/820092031085346/"
+        ],
+        "reasoning_summary": "The claim is supported by multiple sources, including a news article and social media posts, which confirm that Chief Minister Himanta Biswa Sarma will distribute checks under the women's entrepreneurship scheme.",
+        "confidence_level": "MEDIUM",
+        "evidence_gaps": [
+          "The number of women receiving checks is not consistently reported across sources."
+        ]
+      },
+      {
+        "claim_text": "\u09ac\u09f0\u09be\u0997\u09be\u0981\u09f1\u09f0 \u09b6\u09cd\u09ac\u09b9\u09c0\u09a6 \u09b8\u09cd\u09ae\u09be\u09f0\u0995 \u0995\u09cd\u09b7\u09c7\u09a4\u09cd\u09f0\u09a4 \u09ae\u09b9\u09bf\u09b2\u09be \u0989\u09a6\u09cd\u09af\u09ae\u09bf\u09a4\u09be \u0986\u0981\u099a\u09a8\u09bf\u09f0 \u099a\u09c7\u0995 \u09ac\u09bf\u09a4\u09f0\u09a3 \u0995\u09f0\u09be \u09b9'\u09ac",
+        "verdict": "SUPPORTED",
+        "truth_score": 80,
+        "explanation": "The claim is supported by credible evidence from Snippet 1, which states that the checks will be distributed at the Baraghat Martyr Memorial site. Additionally, Snippet 2 and Snippet 3 also confirm the distribution of checks under the Mahila Udhyamita scheme.",
+        "citations": [
+          "https://www.newsonair.gov.in/as/%E0%A7%AB-%E0%A6%AB%E0%A7%87%E0%A6%AC%E0%A7%8D%E0%A7%B0%E0%A7%81%E0%A7%B1%E0%A6%BE%E0%A7%B0%E0%A7%80%E0%A7%B0-%E0%A6%AD%E0%A6%BF%E0%A6%A4%E0%A7%B0%E0%A6%A4-%E0%A6%AE%E0%A7%81%E0%A6%96%E0%A7%8D/",
+          "https://www.etvbharat.com/as/state/barak-valley-visit-assam-cm-launched-several-important-project-including-new-super-speciality-hospital-assam-news-ass25102501066"
+        ],
+        "reasoning_summary": "The claim is supported by multiple sources, including government news and news websites, which confirm the distribution of checks under the Mahila Udhyamita scheme at the Baraghat Martyr Memorial site.",
+        "confidence_level": "MEDIUM",
+        "evidence_gaps": [
+          "The number of women who will receive the checks and the total amount of money to be distributed are not clearly stated in the available evidence."
+        ]
+      }
+    ],
+    "explanations": {
+      "by_claim": {
+        "\u09ae\u09c1\u0996\u09cd\u09af\u09ae\u09a8\u09cd\u09a4\u09cd\u09f0\u09c0 \u09b9\u09bf\u09ae\u09a8\u09cd\u09a4 \u09ac\u09bf\u09b6\u09cd\u09ac \u09b6\u09f0\u09cd\u09ae\u09be\u0987 \u09ac\u09f0\u09be\u0997\u09be\u0981\u09f1\u09f0 \u09b6\u09cd\u09ac\u09b9\u09c0\u09a6 \u09b8\u09cd\u09ae\u09be\u09f0\u0995 \u0995\u09cd\u09b7\u09c7\u09a4\u09cd\u09f0\u09a4 \u09ae\u09b9\u09bf\u09b2\u09be \u0989\u09a6\u09cd\u09af\u09ae\u09bf\u09a4\u09be \u0986\u0981\u099a\u09a8\u09bf\u09f0 \u099a\u09c7\u0995 \u09ac\u09bf\u09a4\u09f0\u09a3 \u0995\u09f0\u09bf\u09ac": {
+          "claim_text": "\u09ae\u09c1\u0996\u09cd\u09af\u09ae\u09a8\u09cd\u09a4\u09cd\u09f0\u09c0 \u09b9\u09bf\u09ae\u09a8\u09cd\u09a4 \u09ac\u09bf\u09b6\u09cd\u09ac \u09b6\u09f0\u09cd\u09ae\u09be\u0987 \u09ac\u09f0\u09be\u0997\u09be\u0981\u09f1\u09f0 \u09b6\u09cd\u09ac\u09b9\u09c0\u09a6 \u09b8\u09cd\u09ae\u09be\u09f0\u0995 \u0995\u09cd\u09b7\u09c7\u09a4\u09cd\u09f0\u09a4 \u09ae\u09b9\u09bf\u09b2\u09be \u0989\u09a6\u09cd\u09af\u09ae\u09bf\u09a4\u09be \u0986\u0981\u099a\u09a8\u09bf\u09f0 \u099a\u09c7\u0995 \u09ac\u09bf\u09a4\u09f0\u09a3 \u0995\u09f0\u09bf\u09ac",
+          "plain_english": "This claim could not be explained at this time due to a processing error.",
+          "confidence_statement": "Confidence unknown \u2014 explanation generation failed.",
+          "source_quality_note": "Source quality assessment unavailable.",
+          "reader_advisory": null,
+          "evidence_gaps_plain": null
+        },
+        "\u09ac\u09f0\u09be\u0997\u09be\u0981\u09f1\u09f0 \u09b6\u09cd\u09ac\u09b9\u09c0\u09a6 \u09b8\u09cd\u09ae\u09be\u09f0\u0995 \u0995\u09cd\u09b7\u09c7\u09a4\u09cd\u09f0\u09a4 \u09ae\u09b9\u09bf\u09b2\u09be \u0989\u09a6\u09cd\u09af\u09ae\u09bf\u09a4\u09be \u0986\u0981\u099a\u09a8\u09bf\u09f0 \u099a\u09c7\u0995 \u09ac\u09bf\u09a4\u09f0\u09a3 \u0995\u09f0\u09be \u09b9'\u09ac": {
+          "claim_text": "\u09ac\u09f0\u09be\u0997\u09be\u0981\u09f1\u09f0 \u09b6\u09cd\u09ac\u09b9\u09c0\u09a6 \u09b8\u09cd\u09ae\u09be\u09f0\u0995 \u0995\u09cd\u09b7\u09c7\u09a4\u09cd\u09f0\u09a4 \u09ae\u09b9\u09bf\u09b2\u09be \u0989\u09a6\u09cd\u09af\u09ae\u09bf\u09a4\u09be \u0986\u0981\u099a\u09a8\u09bf\u09f0 \u099a\u09c7\u0995 \u09ac\u09bf\u09a4\u09f0\u09a3 \u0995\u09f0\u09be \u09b9'\u09ac",
+          "plain_english": "This claim could not be explained at this time due to a processing error.",
+          "confidence_statement": "Confidence unknown \u2014 explanation generation failed.",
+          "source_quality_note": "Source quality assessment unavailable.",
+          "reader_advisory": null,
+          "evidence_gaps_plain": null
+        }
+      },
+      "overall_credibility": "MIXED",
+      "bottom_line": "Explanation generation encountered an error. Please review the raw verdicts."
+    },
+    "source": "webapp"
+  },
+  {
+    "id": "70b10fc4-2014-491b-93c8-2208c220b8a1",
+    "url": "https://www.asomiyapratidin.in/homepage/himanta-news-11204850",
+    "timestamp": "2026-03-12T05:30:21.667737+00:00",
+    "overall_credibility": "MIXED",
+    "avg_score": 80,
+    "bottom_line": "Explanation generation encountered an error. Please review the raw verdicts.",
+    "verdicts": [
+      {
+        "claim_text": "\u09ae\u09c1\u0996\u09cd\u09af\u09ae\u09a8\u09cd\u09a4\u09cd\u09f0\u09c0 \u09b9\u09bf\u09ae\u09a8\u09cd\u09a4 \u09ac\u09bf\u09b6\u09cd\u09ac \u09b6\u09f0\u09cd\u09ae\u09be\u0987 \u09ac\u09f0\u09be\u0997\u09be\u0981\u09f1\u09f0 \u09b6\u09cd\u09ac\u09b9\u09c0\u09a6 \u09b8\u09cd\u09ae\u09be\u09f0\u0995 \u0995\u09cd\u09b7\u09c7\u09a4\u09cd\u09f0\u09a4 \u09ae\u09b9\u09bf\u09b2\u09be \u0989\u09a6\u09cd\u09af\u09ae\u09bf\u09a4\u09be \u0986\u0981\u099a\u09a8\u09bf\u09f0 \u099a\u09c7\u0995 \u09ac\u09bf\u09a4\u09f0\u09a3 \u0995\u09f0\u09bf\u09ac",
+        "verdict": "SUPPORTED",
+        "truth_score": 80,
+        "explanation": "The claim that Chief Minister Himanta Biswa Sarma will distribute checks under the Mahila Udhyamita Achoni scheme is supported by credible evidence from multiple sources, including a news article and social media posts.",
+        "citations": [
+          "https://www.newsonair.gov.in/as/%E0%A7%B0%E0%A6%99%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%A4-%E0%A6%AE%E0%A6%B9%E0%A6%BF%E0%A6%B2%E0%A6%BE-%E0%A6%89%E0%A6%A6%E0%A7%8D%E0%A6%AF%E0%A6%AE%E0%A6%BF%E0%A6%A4%E0%A6%BE-%E0%A6%86/",
+          "https://www.facebook.com/TheTruthIndiaNews/videos/-%E0%A6%B6%E0%A6%BF%E0%A7%B1%E0%A6%B8%E0%A6%BE%E0%A6%97%E0%A7%B0%E0%A6%A4-%E0%A6%89%E0%A6%AA%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BF%E0%A6%A4-%E0%A6%AE%E0%A7%81%E0%A6%96%E0%A7%8D%E0%A6%AF%E0%A6%AE%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A7%B0%E0%A7%80-%E0%A6%B9%E0%A6%BF%E0%A6%AE%E0%A6%A8%E0%A7%8D%E0%A6%A4-%E0%A6%AC%E0%A6%BF%E0%A6%B6%E0%A7%8D%E0%A6%AC-%E0%A6%B6%E0%A7%B0%E0%A7%8D%E0%A6%AE%E0%A6%BE-satya-live/820092031085346/"
+        ],
+        "reasoning_summary": "The claim is supported by multiple sources, including a news article and social media posts, which confirm that Chief Minister Himanta Biswa Sarma will distribute checks under the Mahila Udhyamita Achoni scheme.",
+        "confidence_level": "MEDIUM",
+        "evidence_gaps": [
+          "The number of women who will receive the checks is not consistently reported across the sources."
+        ]
+      },
+      {
+        "claim_text": "\u09ac\u09f0\u09be\u0997\u09be\u0981\u09f1\u09f0 \u09b6\u09cd\u09ac\u09b9\u09c0\u09a6 \u09b8\u09cd\u09ae\u09be\u09f0\u0995 \u0995\u09cd\u09b7\u09c7\u09a4\u09cd\u09f0\u09a4 \u09ae\u09b9\u09bf\u09b2\u09be \u0989\u09a6\u09cd\u09af\u09ae\u09bf\u09a4\u09be \u0986\u0981\u099a\u09a8\u09bf\u09f0 \u099a\u09c7\u0995 \u09ac\u09bf\u09a4\u09f0\u09a3 \u0995\u09f0\u09be \u09b9'\u09ac",
+        "verdict": "SUPPORTED",
+        "truth_score": 80,
+        "explanation": "The claim is supported by credible evidence from Snippet 1, which states that the checks will be distributed at the Baraghat Martyr Memorial site. Additionally, Snippet 2 and Snippet 3 also confirm the distribution of checks under the Mahila Udhyamita scheme.",
+        "citations": [
+          "https://www.newsonair.gov.in/as/%E0%A7%AB-%E0%A6%AB%E0%A7%87%E0%A6%AC%E0%A7%8D%E0%A7%B0%E0%A7%81%E0%A7%B1%E0%A6%BE%E0%A7%B0%E0%A7%80%E0%A7%B0-%E0%A6%AD%E0%A6%BF%E0%A6%A4%E0%A7%B0%E0%A6%A4-%E0%A6%AE%E0%A7%81%E0%A6%96%E0%A7%8D/",
+          "https://www.etvbharat.com/as/state/barak-valley-visit-assam-cm-launched-several-important-project-including-new-super-speciality-hospital-assam-news-ass25102501066"
+        ],
+        "reasoning_summary": "The claim is supported by multiple sources, including government news and news websites, which confirm the distribution of checks under the Mahila Udhyamita scheme at the Baraghat Martyr Memorial site.",
+        "confidence_level": "MEDIUM",
+        "evidence_gaps": [
+          "The number of women who will receive the checks and the total amount of money to be distributed are not clearly stated in the available evidence."
+        ]
+      }
+    ],
+    "explanations": {
+      "by_claim": {
+        "\u09ae\u09c1\u0996\u09cd\u09af\u09ae\u09a8\u09cd\u09a4\u09cd\u09f0\u09c0 \u09b9\u09bf\u09ae\u09a8\u09cd\u09a4 \u09ac\u09bf\u09b6\u09cd\u09ac \u09b6\u09f0\u09cd\u09ae\u09be\u0987 \u09ac\u09f0\u09be\u0997\u09be\u0981\u09f1\u09f0 \u09b6\u09cd\u09ac\u09b9\u09c0\u09a6 \u09b8\u09cd\u09ae\u09be\u09f0\u0995 \u0995\u09cd\u09b7\u09c7\u09a4\u09cd\u09f0\u09a4 \u09ae\u09b9\u09bf\u09b2\u09be \u0989\u09a6\u09cd\u09af\u09ae\u09bf\u09a4\u09be \u0986\u0981\u099a\u09a8\u09bf\u09f0 \u099a\u09c7\u0995 \u09ac\u09bf\u09a4\u09f0\u09a3 \u0995\u09f0\u09bf\u09ac": {
+          "claim_text": "\u09ae\u09c1\u0996\u09cd\u09af\u09ae\u09a8\u09cd\u09a4\u09cd\u09f0\u09c0 \u09b9\u09bf\u09ae\u09a8\u09cd\u09a4 \u09ac\u09bf\u09b6\u09cd\u09ac \u09b6\u09f0\u09cd\u09ae\u09be\u0987 \u09ac\u09f0\u09be\u0997\u09be\u0981\u09f1\u09f0 \u09b6\u09cd\u09ac\u09b9\u09c0\u09a6 \u09b8\u09cd\u09ae\u09be\u09f0\u0995 \u0995\u09cd\u09b7\u09c7\u09a4\u09cd\u09f0\u09a4 \u09ae\u09b9\u09bf\u09b2\u09be \u0989\u09a6\u09cd\u09af\u09ae\u09bf\u09a4\u09be \u0986\u0981\u099a\u09a8\u09bf\u09f0 \u099a\u09c7\u0995 \u09ac\u09bf\u09a4\u09f0\u09a3 \u0995\u09f0\u09bf\u09ac",
+          "plain_english": "This claim could not be explained at this time due to a processing error.",
+          "confidence_statement": "Confidence unknown \u2014 explanation generation failed.",
+          "source_quality_note": "Source quality assessment unavailable.",
+          "reader_advisory": null,
+          "evidence_gaps_plain": null
+        },
+        "\u09ac\u09f0\u09be\u0997\u09be\u0981\u09f1\u09f0 \u09b6\u09cd\u09ac\u09b9\u09c0\u09a6 \u09b8\u09cd\u09ae\u09be\u09f0\u0995 \u0995\u09cd\u09b7\u09c7\u09a4\u09cd\u09f0\u09a4 \u09ae\u09b9\u09bf\u09b2\u09be \u0989\u09a6\u09cd\u09af\u09ae\u09bf\u09a4\u09be \u0986\u0981\u099a\u09a8\u09bf\u09f0 \u099a\u09c7\u0995 \u09ac\u09bf\u09a4\u09f0\u09a3 \u0995\u09f0\u09be \u09b9'\u09ac": {
+          "claim_text": "\u09ac\u09f0\u09be\u0997\u09be\u0981\u09f1\u09f0 \u09b6\u09cd\u09ac\u09b9\u09c0\u09a6 \u09b8\u09cd\u09ae\u09be\u09f0\u0995 \u0995\u09cd\u09b7\u09c7\u09a4\u09cd\u09f0\u09a4 \u09ae\u09b9\u09bf\u09b2\u09be \u0989\u09a6\u09cd\u09af\u09ae\u09bf\u09a4\u09be \u0986\u0981\u099a\u09a8\u09bf\u09f0 \u099a\u09c7\u0995 \u09ac\u09bf\u09a4\u09f0\u09a3 \u0995\u09f0\u09be \u09b9'\u09ac",
+          "plain_english": "This claim could not be explained at this time due to a processing error.",
+          "confidence_statement": "Confidence unknown \u2014 explanation generation failed.",
+          "source_quality_note": "Source quality assessment unavailable.",
+          "reader_advisory": null,
+          "evidence_gaps_plain": null
+        }
+      },
+      "overall_credibility": "MIXED",
+      "bottom_line": "Explanation generation encountered an error. Please review the raw verdicts."
+    },
+    "source": "webapp"
+  },
+  {
+    "id": "e02686c3-1446-4747-9825-d5a11a24d43f",
+    "url": "https://www.asomiyapratidin.in/homepage/himanta-news-11204850",
+    "timestamp": "2026-03-12T05:24:04.560464+00:00",
+    "overall_credibility": "MIXED",
+    "avg_score": 80,
+    "bottom_line": "Explanation generation encountered an error. Please review the raw verdicts.",
+    "verdicts": [
+      {
+        "claim_text": "\u09ae\u09c1\u0996\u09cd\u09af\u09ae\u09a8\u09cd\u09a4\u09cd\u09f0\u09c0 \u09b9\u09bf\u09ae\u09a8\u09cd\u09a4 \u09ac\u09bf\u09b6\u09cd\u09ac \u09b6\u09f0\u09cd\u09ae\u09be\u0987 \u09ac\u09f0\u09be\u0997\u09be\u0981\u09f1\u09f0 \u09b6\u09cd\u09ac\u09b9\u09c0\u09a6 \u09b8\u09cd\u09ae\u09be\u09f0\u0995 \u0995\u09cd\u09b7\u09c7\u09a4\u09cd\u09f0\u09a4 \u09ae\u09b9\u09bf\u09b2\u09be \u0989\u09a6\u09cd\u09af\u09ae\u09bf\u09a4\u09be \u0986\u0981\u099a\u09a8\u09bf\u09f0 \u099a\u09c7\u0995 \u09ac\u09bf\u09a4\u09f0\u09a3 \u0995\u09f0\u09bf\u09ac",
+        "verdict": "SUPPORTED",
+        "truth_score": 80,
+        "explanation": "The claim that Chief Minister Himanta Biswa Sarma will distribute checks under the women's entrepreneurship scheme is supported by credible evidence from multiple sources, including a moderately credible news article and social media posts.",
+        "citations": [
+          "https://www.newsonair.gov.in/as/%E0%A7%B0%E0%A6%99%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE%E0%A6%A4-%E0%A6%AE%E0%A6%B9%E0%A6%BF%E0%A6%B2%E0%A6%BE-%E0%A6%89%E0%A6%A6%E0%A7%8D%E0%A6%AF%E0%A6%AE%E0%A6%BF%E0%A6%A4%E0%A6%BE-%E0%A6%86/",
+          "https://www.facebook.com/TheTruthIndiaNews/videos/-%E0%A6%B6%E0%A6%BF%E0%A7%B1%E0%A6%B8%E0%A6%BE%E0%A6%97%E0%A7%B0%E0%A6%A4-%E0%A6%89%E0%A6%AA%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BF%E0%A6%A4-%E0%A6%AE%E0%A7%81%E0%A6%96%E0%A7%8D%E0%A6%AF%E0%A6%AE%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A7%B0%E0%A7%80-%E0%A6%B9%E0%A6%BF%E0%A6%AE%E0%A6%A8%E0%A7%8D%E0%A6%A4-%E0%A6%AC%E0%A6%BF%E0%A6%B6%E0%A7%8D%E0%A6%AC-%E0%A6%B6%E0%A7%B0%E0%A7%8D%E0%A6%AE%E0%A6%BE-satya-live/820092031085346/"
+        ],
+        "reasoning_summary": "The claim is supported by multiple sources, including a news article and social media posts, which confirm that Chief Minister Himanta Biswa Sarma will distribute checks under the women's entrepreneurship scheme.",
+        "confidence_level": "MEDIUM",
+        "evidence_gaps": [
+          "The number of women receiving checks is not consistently reported across sources."
+        ]
+      },
+      {
+        "claim_text": "\u09ac\u09f0\u09be\u0997\u09be\u0981\u09f1\u09f0 \u09b6\u09cd\u09ac\u09b9\u09c0\u09a6 \u09b8\u09cd\u09ae\u09be\u09f0\u0995 \u0995\u09cd\u09b7\u09c7\u09a4\u09cd\u09f0\u09a4 \u09ae\u09b9\u09bf\u09b2\u09be \u0989\u09a6\u09cd\u09af\u09ae\u09bf\u09a4\u09be \u0986\u0981\u099a\u09a8\u09bf\u09f0 \u099a\u09c7\u0995 \u09ac\u09bf\u09a4\u09f0\u09a3 \u0995\u09f0\u09be \u09b9'\u09ac",
+        "verdict": "SUPPORTED",
+        "truth_score": 80,
+        "explanation": "The claim is supported by credible evidence from Snippet 1, which states that the checks will be distributed at the Baraghat Martyr Memorial site. Additionally, Snippet 2 and Snippet 3 also confirm the distribution of checks under the Mahila Udhyamita scheme.",
+        "citations": [
+          "https://www.newsonair.gov.in/as/%E0%A7%AB-%E0%A6%AB%E0%A7%87%E0%A6%AC%E0%A7%8D%E0%A7%B0%E0%A7%81%E0%A7%B1%E0%A6%BE%E0%A7%B0%E0%A7%80%E0%A7%B0-%E0%A6%AD%E0%A6%BF%E0%A6%A4%E0%A7%B0%E0%A6%A4-%E0%A6%AE%E0%A7%81%E0%A6%96%E0%A7%8D/",
+          "https://www.etvbharat.com/as/state/barak-valley-visit-assam-cm-launched-several-important-project-including-new-super-speciality-hospital-assam-news-ass25102501066"
+        ],
+        "reasoning_summary": "The claim is supported by multiple sources, including government news and news websites, which confirm the distribution of checks under the Mahila Udhyamita scheme at the Baraghat Martyr Memorial site.",
+        "confidence_level": "MEDIUM",
+        "evidence_gaps": [
+          "The number of women who will receive the checks and the total amount of money to be distributed are not clearly stated in the available evidence."
+        ]
+      }
+    ],
+    "explanations": {
+      "by_claim": {
+        "\u09ae\u09c1\u0996\u09cd\u09af\u09ae\u09a8\u09cd\u09a4\u09cd\u09f0\u09c0 \u09b9\u09bf\u09ae\u09a8\u09cd\u09a4 \u09ac\u09bf\u09b6\u09cd\u09ac \u09b6\u09f0\u09cd\u09ae\u09be\u0987 \u09ac\u09f0\u09be\u0997\u09be\u0981\u09f1\u09f0 \u09b6\u09cd\u09ac\u09b9\u09c0\u09a6 \u09b8\u09cd\u09ae\u09be\u09f0\u0995 \u0995\u09cd\u09b7\u09c7\u09a4\u09cd\u09f0\u09a4 \u09ae\u09b9\u09bf\u09b2\u09be \u0989\u09a6\u09cd\u09af\u09ae\u09bf\u09a4\u09be \u0986\u0981\u099a\u09a8\u09bf\u09f0 \u099a\u09c7\u0995 \u09ac\u09bf\u09a4\u09f0\u09a3 \u0995\u09f0\u09bf\u09ac": {
+          "claim_text": "\u09ae\u09c1\u0996\u09cd\u09af\u09ae\u09a8\u09cd\u09a4\u09cd\u09f0\u09c0 \u09b9\u09bf\u09ae\u09a8\u09cd\u09a4 \u09ac\u09bf\u09b6\u09cd\u09ac \u09b6\u09f0\u09cd\u09ae\u09be\u0987 \u09ac\u09f0\u09be\u0997\u09be\u0981\u09f1\u09f0 \u09b6\u09cd\u09ac\u09b9\u09c0\u09a6 \u09b8\u09cd\u09ae\u09be\u09f0\u0995 \u0995\u09cd\u09b7\u09c7\u09a4\u09cd\u09f0\u09a4 \u09ae\u09b9\u09bf\u09b2\u09be \u0989\u09a6\u09cd\u09af\u09ae\u09bf\u09a4\u09be \u0986\u0981\u099a\u09a8\u09bf\u09f0 \u099a\u09c7\u0995 \u09ac\u09bf\u09a4\u09f0\u09a3 \u0995\u09f0\u09bf\u09ac",
+          "plain_english": "This claim could not be explained at this time due to a processing error.",
+          "confidence_statement": "Confidence unknown \u2014 explanation generation failed.",
+          "source_quality_note": "Source quality assessment unavailable.",
+          "reader_advisory": null,
+          "evidence_gaps_plain": null
+        },
+        "\u09ac\u09f0\u09be\u0997\u09be\u0981\u09f1\u09f0 \u09b6\u09cd\u09ac\u09b9\u09c0\u09a6 \u09b8\u09cd\u09ae\u09be\u09f0\u0995 \u0995\u09cd\u09b7\u09c7\u09a4\u09cd\u09f0\u09a4 \u09ae\u09b9\u09bf\u09b2\u09be \u0989\u09a6\u09cd\u09af\u09ae\u09bf\u09a4\u09be \u0986\u0981\u099a\u09a8\u09bf\u09f0 \u099a\u09c7\u0995 \u09ac\u09bf\u09a4\u09f0\u09a3 \u0995\u09f0\u09be \u09b9'\u09ac": {
+          "claim_text": "\u09ac\u09f0\u09be\u0997\u09be\u0981\u09f1\u09f0 \u09b6\u09cd\u09ac\u09b9\u09c0\u09a6 \u09b8\u09cd\u09ae\u09be\u09f0\u0995 \u0995\u09cd\u09b7\u09c7\u09a4\u09cd\u09f0\u09a4 \u09ae\u09b9\u09bf\u09b2\u09be \u0989\u09a6\u09cd\u09af\u09ae\u09bf\u09a4\u09be \u0986\u0981\u099a\u09a8\u09bf\u09f0 \u099a\u09c7\u0995 \u09ac\u09bf\u09a4\u09f0\u09a3 \u0995\u09f0\u09be \u09b9'\u09ac",
+          "plain_english": "This claim could not be explained at this time due to a processing error.",
+          "confidence_statement": "Confidence unknown \u2014 explanation generation failed.",
+          "source_quality_note": "Source quality assessment unavailable.",
+          "reader_advisory": null,
+          "evidence_gaps_plain": null
+        }
+      },
+      "overall_credibility": "MIXED",
+      "bottom_line": "Explanation generation encountered an error. Please review the raw verdicts."
+    },
+    "source": "webapp"
+  },
+  {
+    "id": "e70cd89b-382d-440b-9463-5b2f529c51ac",
+    "url": "\u0986\u099c\u09bf \u09ac\u09f0\u09be\u0997\u09be\u0981\u09f1\u09f0 \u09b6\u09cd\u09ac\u09b9\u09c0\u09a6 \u09b8\u09cd\u09ae\u09be\u09f0\u0995 \u0995\u09cd\u09b7\u09c7\u09a4\u09cd\u09f0\u09a4 \u09ae\u09b9\u09bf\u09b2\u09be \u0989\u09a6\u09cd\u09af\u09ae\u09bf\u09a4\u09be \u0986\u0981\u099a\u09a8\u09bf\u09f0 \u099a\u09c7\u0995 \u09ac\u09bf\u09a4\u09f0\u09a3 \u0995\u09f0\u09bf\u09ac \u09ae\u09c1\u0996\u09cd\u09af\u09ae\u09a8\u09cd\u09a4\u09cd\u09f0\u09c0 \u09b9\u09bf\u09ae\u09a8\u09cd\u09a4 \u09ac\u09bf\u09b6\u09cd\u09ac \u09b6\u09f0\u09cd\u09ae\u09be\u0987",
+    "timestamp": "2026-03-12T05:12:27.893761+00:00",
+    "overall_credibility": "LOW CREDIBILITY",
+    "avg_score": 40,
+    "bottom_line": "This claim is partially true but has low credibility due to unreliable sources.",
+    "verdicts": [
+      {
+        "claim_text": "Chief Minister Himanta Biswa Sarma will distribute checks for the Women Entrepreneurship Scheme at the Shaheed Smarak field in Baraghar.",
+        "verdict": "MISLEADING",
+        "truth_score": 40,
+        "explanation": "The evidence confirms that Himanta Biswa Sarma is the Chief Minister of Assam and that he will distribute checks for the Women Entrepreneurship Scheme, but the location of the distribution is unknown and not specified in the provided snippets.",
+        "citations": [
+          "https://www.aninews.in/news/national/general-news/assam-cm-launches-women-entrepreneurship-fund-distribution-in-karimganj-north-katigorah-and-barkhola20260113223548",
+          "https://thenewsmill.com/2026/01/assam-cm-launches-women-entrepreneurship-cheque-distribution-in-sribhumi-and-cachar/"
+        ],
+        "reasoning_summary": "The claim is misleading because it specifies a location (Shaheed Smarak field in Baraghar) that is not supported by the provided evidence. The evidence does confirm the distribution of checks for the Women Entrepreneurship Scheme by Himanta Biswa Sarma.",
+        "confidence_level": "LOW",
+        "evidence_gaps": [
+          "Location of the distribution, amount distributed in all snippets"
+        ]
+      }
+    ],
+    "explanations": {
+      "by_claim": {
+        "Chief Minister Himanta Biswa Sarma will distribute checks for the Women Entrepreneurship Scheme at the Shaheed Smarak field in Baraghar.": {
+          "claim_text": "Chief Minister Himanta Biswa Sarma will distribute checks for the Women Entrepreneurship Scheme at the Shaheed Smarak field in Baraghar.",
+          "plain_english": "This claim is partially true. The Chief Minister of Assam, Himanta Biswa Sarma, will give out checks for a scheme that helps women entrepreneurs. However, we can't confirm that the checks will be given at the Shaheed Smarak field in Baraghar. We also don't know how much money will be distributed.",
+          "confidence_statement": "Low confidence \u2014 based on incomplete information.",
+          "source_quality_note": "Sourced from outlets with limited editorial standards",
+          "reader_advisory": "Treat this information with caution because the sources have low credibility.",
+          "evidence_gaps_plain": "We don't know where the checks will be distributed or how much money will be given."
+        }
+      },
+      "overall_credibility": "LOW CREDIBILITY",
+      "bottom_line": "This claim is partially true but has low credibility due to unreliable sources."
+    },
+    "source": "webapp"
+  },
+  {
+    "id": "678fab80-a126-4a9e-afad-7e3eab617a91",
+    "url": "Image: new_img2.png",
+    "timestamp": "2026-03-12T05:09:42.159076+00:00",
+    "overall_credibility": "LOW CREDIBILITY",
+    "avg_score": 50,
+    "bottom_line": "This article has low credibility due to the presence of unverified sources and incomplete information.",
+    "verdicts": [
+      {
+        "claim_text": "Rachpal Singh had been to Pakistan 10 times since 2016.",
+        "verdict": "UNVERIFIED",
+        "truth_score": 40,
+        "explanation": "The evidence does not provide direct confirmation of Rachpal Singh's involvement in trips to Pakistan, and there is a lack of information about his total trips to Pakistan since 2016.",
+        "citations": [
+          "https://www.hindustantimes.com/punjab/counter-intelligence-busts-khalistani-terrorist-module-in-amritsar-three-nabbed/story-b3uKDchbU6srH8ydHCnUhL.html",
+          "https://timesofindia.indiatimes.com/city/amritsar/three-with-international-terror-links-arrested/articleshow/53653798.cms"
+        ],
+        "reasoning_summary": "The evidence suggests Rachpal Singh is linked with the Khalistan Zindabad Force, but there is no direct confirmation of his involvement in trips to Pakistan, and the information about his trips is absent.",
+        "confidence_level": "LOW",
+        "evidence_gaps": [
+          "Information about Rachpal Singh's total trips to Pakistan since 2016, and direct confirmation of his involvement in trips to Pakistan."
+        ]
+      },
+      {
+        "claim_text": "Rachpal Singh was planning to bring arms from Pakistan and supply them in Punjab.",
+        "verdict": "SUPPORTED",
+        "truth_score": 60,
+        "explanation": "The evidence suggests that Rachpal Singh was involved in arms recovery and had a plan to supply weapons in Punjab, although the credibility of the evidence is low. The claim that Singh was planning to bring arms from Pakistan is inferred from one of the snippets, but it is not explicitly stated.",
+        "citations": [
+          "https://www.satp.org/other-data/india-punjab/recovery-of-arms_2010",
+          "https://www.facebook.com/ndtv/posts/the-accused-rashpal-singh-is-wanted-in-several-cases-registered-under-the-narcot/10159103129945798/"
+        ],
+        "reasoning_summary": "The analyst's reasoning is based on the evidence provided, which suggests that Rachpal Singh was involved in arms recovery and had a plan to supply weapons in Punjab. However, the credibility of the evidence is low due to the presence of social media and unverified sources.",
+        "confidence_level": "MEDIUM",
+        "evidence_gaps": [
+          "The evidence does not explicitly state that Rachpal Singh was planning to bring arms from Pakistan, and the credibility of the sources is low."
+        ]
+      },
+      {
+        "claim_text": "The intruders were planning to carry out a major attack in Punjab and Delhi.",
+        "verdict": "UNVERIFIED",
+        "truth_score": 50,
+        "explanation": "Insufficient reliable evidence was retrieved for this claim. The claim remains unverified at this time.",
+        "citations": [],
+        "reasoning_summary": "",
+        "confidence_level": "MEDIUM",
+        "evidence_gaps": []
+      }
+    ],
+    "explanations": {
+      "by_claim": {
+        "Rachpal Singh had been to Pakistan 10 times since 2016.": {
+          "claim_text": "Rachpal Singh had been to Pakistan 10 times since 2016.",
+          "plain_english": "The evidence doesn\u2019t confirm Rachpal Singh\u2019s trips to Pakistan. We can\u2019t find information about how many times he\u2019s been there since 2016. This claim could not be verified because we need more information about his trips.",
+          "confidence_statement": "Low confidence \u2014 based on incomplete information.",
+          "source_quality_note": "Sourced from outlets with limited editorial standards.",
+          "reader_advisory": "Treat this claim with caution because the sources have varying credibility.",
+          "evidence_gaps_plain": "We don\u2019t know how many times Rachpal Singh has visited Pakistan since 2016, or if he\u2019s actually been there."
+        },
+        "Rachpal Singh was planning to bring arms from Pakistan and supply them in Punjab.": {
+          "claim_text": "Rachpal Singh was planning to bring arms from Pakistan and supply them in Punjab.",
+          "plain_english": "The evidence suggests Rachpal Singh was involved in arms recovery and had a plan to supply weapons in Punjab. However, the sources are not very reliable, and we can\u2019t confirm if he was planning to bring arms from Pakistan. This claim is partially supported, but we need to be cautious due to the low-quality evidence.",
+          "confidence_statement": "Medium confidence \u2014 based on incomplete and low-quality evidence.",
+          "source_quality_note": "Sourced from outlets with limited editorial standards.",
+          "reader_advisory": "Be cautious with this claim because the sources have low credibility.",
+          "evidence_gaps_plain": "We don\u2019t know for sure if Rachpal Singh was planning to bring arms from Pakistan."
+        },
+        "The intruders were planning to carry out a major attack in Punjab and Delhi.": {
+          "claim_text": "The intruders were planning to carry out a major attack in Punjab and Delhi.",
+          "plain_english": "We don\u2019t have enough reliable information to confirm this claim. The evidence is insufficient to verify or deny this claim.",
+          "confidence_statement": "Medium confidence \u2014 based on insufficient evidence.",
+          "source_quality_note": "No credibility data available.",
+          "reader_advisory": "Treat this claim with caution because there is insufficient reliable evidence.",
+          "evidence_gaps_plain": "We don\u2019t have enough reliable information to confirm this claim."
+        }
+      },
+      "overall_credibility": "LOW CREDIBILITY",
+      "bottom_line": "This article has low credibility due to the presence of unverified sources and incomplete information."
+    },
+    "source": "webapp"
+  },
+  {
     "id": "e9b16cba-2081-48b5-bc56-fbd28cab6100",
     "url": "Image: new_img.png",
     "timestamp": "2026-03-12T00:56:22.588159+00:00",
