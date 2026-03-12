@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fake News Detector</title>
+    <title>KREDO</title>
     <style>
         * {
             box-sizing: border-box;
@@ -276,14 +276,23 @@
     <div class="popup-container">
         <div class="header">
             <span class="header-icon">🔍</span>
-            <h1>Fake News Detector</h1>
+            <h1>KREDO</h1>
         </div>
 
         <!-- Initial state -->
         <div id="not-article">
-            <p>Scan this page with our 5-agent AI pipeline to check for misinformation.</p>
+            <p>Scan this page with our Multi-agent AI pipeline to check for misinformation.</p>
             <div id="current-url" class="page-url"></div>
-            <button id="analyze-btn">Analyze This Page</button>
+            <button id="analyze-btn" style="margin-bottom: 12px;">Analyze This Page</button>
+
+            <div style="position: relative; margin-top: 12px; margin-bottom: 12px;">
+                <div style="position: absolute; top: -8px; left: 0; width: 100%; border-top: 1px solid rgba(255, 255, 255, 0.1); text-align: center;">
+                    <span style="background: #1a1a1a; padding: 0 10px; color: #737373; font-size: 11px;">OR</span>
+                </div>
+            </div>
+
+            <input type="text" id="query-input" placeholder="Paste URL or enter text..." style="width: 100%; padding: 10px 12px; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; color: #fff; font-size: 13px; margin-bottom: 8px; outline: none; transition: border-color 0.2s;" />
+            <button id="analyze-query-btn" style="width: 100%; padding: 10px 16px; background: #3f3f46; color: #fff; border: none; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500; transition: background 0.2s, transform 0.1s;">Analyze Input</button>
         </div>
 
         <!-- Loading / Pipeline progress -->

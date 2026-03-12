@@ -18,10 +18,10 @@ claim_extraction:
 
 # ── Agent 2: Evidence Retrieval ───────────────────────────────────────────────
 evidence_retrieval:
-  max_claims_per_run: 3               # Top-N highest-scored claims to retrieve evidence for
-  max_snippet_chars: 500              # Truncate each Tavily snippet to this many chars
+  max_claims_per_run: 2               # Top-N highest-scored claims to retrieve evidence for
+  max_snippet_chars: 350              # Truncate each Tavily snippet to this many chars
   tavily_search_depth: "basic"        # "basic" or "advanced" (advanced uses more quota)
-  tavily_max_results: 5               # Number of web results fetched per claim
+  tavily_max_results: 3               # Number of web results fetched per claim
   max_parallel_workers: 2             # ThreadPoolExecutor workers for concurrent fetches
 
 # ── Agent 3: Source Credibility ───────────────────────────────────────────────
@@ -39,7 +39,7 @@ fact_checker:
   reasoning_model: "llama-3.1-8b-instant"   # 8b to save 70b quota — handles CoT well
   reasoning_provider: "groq"
   reasoning_temperature: 0
-  reasoning_max_tokens: 1500
+  reasoning_max_tokens: 800
 
   # Call 2 — structured JSON verdict (needs the best model)
   verdict_model: "llama-3.3-70b-versatile"
@@ -47,7 +47,7 @@ fact_checker:
   verdict_temperature: 0
   verdict_method: "json_mode"
 
-  max_citations: 3                    # Max source URLs included in each verdict
+  max_citations: 2                    # Max source URLs included in each verdict
 
 # ── Agent 5: Explanation Generator ───────────────────────────────────────────
 explanation_generator:

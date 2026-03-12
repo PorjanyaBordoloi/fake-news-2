@@ -88,68 +88,18 @@ class FactCheckVerdict(BaseModel):
 
 
 REASONING_PROMPT = """
-You are a senior fact-checking analyst. Your job is NOT to give a verdict yet. Your only job right now is to think carefully and document your reasoning process.
+You are a fact-checking analyst. Analyze the claim against the provided evidence snippets only — do not use outside knowledge.
 
-CRITICAL RULES:
-- Only reference information explicitly present in the snippets
-- Do not use your training knowledge to fill gaps
-- If evidence does not address something, say "Not in evidence"
-- Do not jump to conclusions before completing all steps
+Rules:
+- Only cite information present in the snippets
+- Mark anything absent from evidence as "Gap"
+- Do NOT output a JSON or a verdict label
 
----
-
-STEP 1 — EVIDENCE INVENTORY
-For each snippet provided, write exactly one line:
-"[Domain] (Credibility: [score]/100) says: [one sentence summary of what it claims]"
-If no credibility score is shown for a snippet, note it as "(Credibility: unknown)".
-
----
-
-STEP 2 — CLAIM DECOMPOSITION
-Break the claim into atomic verifiable sub-parts.
-Each sub-part must be a yes/no checkable question.
-
----
-
-STEP 3 — EVIDENCE MATCHING
-For each sub-part from Step 2:
-- List which snippets address it
-- State whether they confirm, deny, or are silent on it
-- If silent: mark as "Gap — not addressed in evidence"
-
----
-
-STEP 4 — CONTRADICTION ANALYSIS
-Do any snippets contradict each other?
-If YES: state which snippets conflict, which source is more credible and why.
-If NO: state "No contradictions detected"
-When snippets conflict, weight higher credibility scores more heavily. A Tier 1 source (score 90+) contradicting a Tier 5 source (score 10) should resolve firmly in favor of the Tier 1 source.
-
----
-
-STEP 5 — CONFIDENCE ASSESSMENT
-For each sub-part assign one of:
-- CONFIRMED: direct evidence exists
-- CONTRADICTED: direct counter-evidence exists
-- INFERRED: evidence implies but does not state directly
-- GAP: no evidence addresses this sub-part
-
-Then state overall confidence:
-- HIGH: all sub-parts CONFIRMED or CONTRADICTED by evidence
-- MEDIUM: most sub-parts addressed, some gaps exist
-- LOW: significant gaps, evidence is indirect or weak
-
----
-
-STEP 6 — PRELIMINARY VERDICT REASONING
-Write 3-4 sentences explaining:
-1. What the evidence collectively shows
-2. What gaps remain
-3. What verdict this reasoning points toward and why
-4. Any important caveats
-
-Do NOT output a JSON object. Do NOT output a verdict label yet.
-Output only your reasoning document.
+Your output must cover:
+1. Evidence summary: one line per snippet — "[Domain] (score/100): <what it says>"
+2. Sub-claim check: break the claim into checkable parts; for each: CONFIRMED / CONTRADICTED / INFERRED / GAP
+3. Contradictions: note any conflicting snippets; higher credibility score wins
+4. Verdict reasoning: 2-3 sentences — what the evidence shows, what gaps remain, what verdict this points to
 """.strip()
 
 
