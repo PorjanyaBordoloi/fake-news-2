@@ -1,5 +1,117 @@
 [
   {
+    "id": "e9b16cba-2081-48b5-bc56-fbd28cab6100",
+    "url": "Image: new_img.png",
+    "timestamp": "2026-03-12T00:56:22.588159+00:00",
+    "overall_credibility": "CREDIBLE",
+    "avg_score": 88,
+    "bottom_line": "This article is trustworthy and reliable.",
+    "verdicts": [
+      {
+        "claim_text": "The Twin Towers were destroyed.",
+        "verdict": "SUPPORTED",
+        "truth_score": 90,
+        "explanation": "The evidence from multiple credible sources confirms that the Twin Towers were destroyed in a terrorist attack. The collapse was caused by the impact of the planes and subsequent fires.",
+        "citations": [
+          "https://www.bbc.com/future/article/20240911-911s-long-legacy-how-the-dust-and-smoke-from-the-twin-towers-attacks-is-still-claiming-lives",
+          "https://en.wikipedia.org/wiki/Collapse_of_the_World_Trade_Center",
+          "https://millercenter.org/remembering-september-11/september-11-terrorist-attacks"
+        ],
+        "reasoning_summary": "The analyst's reasoning involves inventorying the evidence, decomposing the claim, matching the evidence to the claim, analyzing for contradictions, and assessing confidence. The evidence collectively confirms the destruction of the Twin Towers in a terrorist attack.",
+        "confidence_level": "HIGH",
+        "evidence_gaps": [
+          "No significant gaps in the information"
+        ]
+      },
+      {
+        "claim_text": "Hijacked jets hit the Pentagon.",
+        "verdict": "SUPPORTED",
+        "truth_score": 85,
+        "explanation": "The evidence confirms that American Airlines Flight 77, a hijacked jet, crashed into the Pentagon on September 11, 2001, resulting in loss of life. Although some sources are of low credibility and lack direct accounts, the overall evidence supports the claim.",
+        "citations": [
+          "https://pentagonmemorial.org/9-11-at-the-pentagon/",
+          "https://newseumed.org/sites/default/files/legacy/2018/04/Sept11.NY_NYT.pdf"
+        ],
+        "reasoning_summary": "The analyst's reasoning confirms the crash of American Airlines Flight 77 into the Pentagon, caused by hijackers, on September 11, 2001, with loss of life. The evidence collectively supports the claim, despite some uncertainty due to low-credibility sources and lack of direct accounts.",
+        "confidence_level": "HIGH",
+        "evidence_gaps": [
+          "Lack of direct accounts from certain sources and uncertainty about the exact circumstances of the crash."
+        ]
+      },
+      {
+        "claim_text": "Bodies were helplessly tumbling out of the Twin Towers.",
+        "verdict": "SUPPORTED",
+        "truth_score": 90,
+        "explanation": "The claim is supported by multiple evidence snippets, including a credible news source, which describe bodies helplessly tumbling out of the Twin Towers. While there are gaps in the evidence regarding emergency personnel's ability to assist, the core claim is confirmed.",
+        "citations": [
+          "https://www.nytimes.com/2021/09/11/business/dealbook/Sept-11-archive.html",
+          "https://www.instagram.com/nytarchives/p/DOdg-JDEdd-/",
+          "https://www.instagram.com/reel/DUll5g1jC3q/"
+        ],
+        "reasoning_summary": "The analyst's reasoning confirms the claim through multiple evidence snippets, with a high overall confidence assessment.",
+        "confidence_level": "HIGH",
+        "evidence_gaps": [
+          "Emergency personnel's ability to assist those in need"
+        ]
+      }
+    ],
+    "explanations": {
+      "by_claim": {
+        "The Twin Towers were destroyed.": {
+          "claim_text": "The Twin Towers were destroyed.",
+          "plain_english": "The Twin Towers were destroyed in a terrorist attack. The planes that hit the towers and the subsequent fires caused the collapse. This is supported by multiple credible sources, including news outlets and official websites. The evidence is clear and consistent.",
+          "confidence_statement": "High confidence \u2014 confirmed by multiple credible sources.",
+          "source_quality_note": "confirmed by major wire services",
+          "reader_advisory": null,
+          "evidence_gaps_plain": "No significant gaps in the information."
+        }
+      },
+      "overall_credibility": "CREDIBLE",
+      "bottom_line": "This article is trustworthy and reliable."
+    },
+    "source": "webapp"
+  },
+  {
+    "id": "cd4d184a-1e73-4d99-94d8-9df697acb017",
+    "url": "https://images.news18.com/assam/uploads/2026/03/Dipankar-2026-03-4930c10bbbc32b0ccf97663985c6119b.jpg?impolicy=website&width=827&height=620",
+    "timestamp": "2026-03-12T00:31:15.220008+00:00",
+    "overall_credibility": "LOW CREDIBILITY",
+    "avg_score": 50,
+    "bottom_line": "This claim is not entirely trustworthy due to low-quality sources and mixed evidence.",
+    "verdicts": [
+      {
+        "claim_text": "The man wears a formal shirt, pant and vest",
+        "verdict": "MISLEADING",
+        "truth_score": 50,
+        "explanation": "The evidence confirms the man wears a formal pant and vest, but there is no direct evidence to confirm he wears a formal shirt, making the claim technically true but deceptive due to missing context.",
+        "citations": [
+          "https://www.mensusa.com/products/mens-solid-black-vest-matching-dress-pants-set-any-color-shirt-and-tie?srsltid=AfmBOoql4C_483yHWlQnFekB7PjxrDU94A6Iy192-MgB3bT7gyq7pXEY",
+          "https://www.instagram.com/reel/DPwYSUoDci0/"
+        ],
+        "reasoning_summary": "The evidence shows the man wears a formal pant and vest, but lacks confirmation for a formal shirt, leading to a medium confidence level in the claim's accuracy.",
+        "confidence_level": "MEDIUM",
+        "evidence_gaps": [
+          "Lack of direct evidence for the man wearing a formal shirt"
+        ]
+      }
+    ],
+    "explanations": {
+      "by_claim": {
+        "The man wears a formal shirt, pant and vest": {
+          "claim_text": "The man wears a formal shirt, pant and vest",
+          "plain_english": "The man is wearing a formal pant and vest, but we can't confirm if he's wearing a formal shirt. The evidence is mixed, and we're not entirely sure about the shirt. This makes the claim a bit misleading because it implies the man is wearing a formal shirt, but we can't confirm that.",
+          "confidence_statement": "Medium confidence \u2014 the evidence is mixed.",
+          "source_quality_note": "Sourced from social media and outlets with limited editorial standards.",
+          "reader_advisory": "Be cautious of this claim, as the sources are unverified and have low credibility.",
+          "evidence_gaps_plain": "There is no direct evidence to confirm the man wears a formal shirt."
+        }
+      },
+      "overall_credibility": "LOW CREDIBILITY",
+      "bottom_line": "This claim is not entirely trustworthy due to low-quality sources and mixed evidence."
+    },
+    "source": "webapp"
+  },
+  {
     "id": "6e8762a2-4eaf-42ea-a659-bf99b974ab97",
     "url": "[Image: test3.jpg]",
     "timestamp": "2026-03-11T17:59:16.965966+00:00",
@@ -289,39 +401,6 @@
     "source": "webapp"
   },
   {
-    "id": "2e317410-4c50-4489-95ec-0b75671646a5",
-    "url": "[Image: new_img3.jpeg]",
-    "timestamp": "2026-03-11T17:47:54.699887+00:00",
-    "overall_credibility": "UNRELIABLE",
-    "avg_score": 0,
-    "bottom_line": "",
-    "verdicts": [],
-    "explanations": {},
-    "source": "webapp"
-  },
-  {
-    "id": "5b1e32c3-3213-457a-aaa4-689ea0d9aa3c",
-    "url": "[Image: new_img3.jpeg]",
-    "timestamp": "2026-03-11T17:43:52.717769+00:00",
-    "overall_credibility": "UNRELIABLE",
-    "avg_score": 0,
-    "bottom_line": "",
-    "verdicts": [],
-    "explanations": {},
-    "source": "webapp"
-  },
-  {
-    "id": "50ca58fe-e504-43cc-bf16-5070f92ba92c",
-    "url": "[Image: new_img3.jpeg]",
-    "timestamp": "2026-03-11T17:40:39.334005+00:00",
-    "overall_credibility": "UNRELIABLE",
-    "avg_score": 0,
-    "bottom_line": "",
-    "verdicts": [],
-    "explanations": {},
-    "source": "webapp"
-  },
-  {
     "id": "9861f05a-87cf-4643-bf69-1073e65c95cc",
     "url": "[Image: new_img2.png]",
     "timestamp": "2026-03-11T17:37:09.242929+00:00",
@@ -484,116 +563,6 @@
     "source": "webapp"
   },
   {
-    "id": "b3889c74-d01e-42b9-9c67-8eb7c8e63ff5",
-    "url": "[Image: new_img2.png]",
-    "timestamp": "2026-03-11T17:33:16.560938+00:00",
-    "overall_credibility": "UNRELIABLE",
-    "avg_score": 0,
-    "bottom_line": "",
-    "verdicts": [],
-    "explanations": {},
-    "source": "webapp"
-  },
-  {
-    "id": "87aa99dd-410e-40f6-ac30-e3606906f6ff",
-    "url": "[Image: new_img2.png]",
-    "timestamp": "2026-03-11T17:32:34.669463+00:00",
-    "overall_credibility": "UNRELIABLE",
-    "avg_score": 0,
-    "bottom_line": "",
-    "verdicts": [],
-    "explanations": {},
-    "source": "webapp"
-  },
-  {
-    "id": "cd2dcfda-63e6-4eed-9441-bfd87a3abd5f",
-    "url": "[Image: new_img.png]",
-    "timestamp": "2026-03-11T17:32:06.953772+00:00",
-    "overall_credibility": "UNRELIABLE",
-    "avg_score": 0,
-    "bottom_line": "",
-    "verdicts": [],
-    "explanations": {},
-    "source": "webapp"
-  },
-  {
-    "id": "427bfed7-3a29-4360-b611-836a005c1a16",
-    "url": "[Image: new_img.png]",
-    "timestamp": "2026-03-11T17:29:28.977945+00:00",
-    "overall_credibility": "UNRELIABLE",
-    "avg_score": 0,
-    "bottom_line": "",
-    "verdicts": [],
-    "explanations": {},
-    "source": "webapp"
-  },
-  {
-    "id": "bd2245fd-346f-4a14-8112-c1948458c5b8",
-    "url": "[Image: new_img2.png]",
-    "timestamp": "2026-03-11T17:29:17.540516+00:00",
-    "overall_credibility": "UNRELIABLE",
-    "avg_score": 0,
-    "bottom_line": "",
-    "verdicts": [],
-    "explanations": {},
-    "source": "webapp"
-  },
-  {
-    "id": "9d8d9b26-e3c2-44a9-9c03-3bbc76184446",
-    "url": "[Image: new_img2.png]",
-    "timestamp": "2026-03-11T17:27:19.662453+00:00",
-    "overall_credibility": "UNRELIABLE",
-    "avg_score": 0,
-    "bottom_line": "",
-    "verdicts": [],
-    "explanations": {},
-    "source": "webapp"
-  },
-  {
-    "id": "8973b885-10c9-4765-8329-b0800dc6fab0",
-    "url": "[Image: new_img2.png]",
-    "timestamp": "2026-03-11T17:23:10.545849+00:00",
-    "overall_credibility": "UNRELIABLE",
-    "avg_score": 0,
-    "bottom_line": "",
-    "verdicts": [],
-    "explanations": {},
-    "source": "webapp"
-  },
-  {
-    "id": "804e27ca-7b8d-41fc-9ad3-27279797c3f5",
-    "url": "[Image: new_img.png]",
-    "timestamp": "2026-03-11T16:29:57.709371+00:00",
-    "overall_credibility": "UNRELIABLE",
-    "avg_score": 0,
-    "bottom_line": "",
-    "verdicts": [],
-    "explanations": {},
-    "source": "webapp"
-  },
-  {
-    "id": "2a618c93-fa2b-456f-9dd0-a3e65f45bbc6",
-    "url": "[Image: new_img.png]",
-    "timestamp": "2026-03-11T16:14:49.795123+00:00",
-    "overall_credibility": "UNRELIABLE",
-    "avg_score": 0,
-    "bottom_line": "",
-    "verdicts": [],
-    "explanations": {},
-    "source": "webapp"
-  },
-  {
-    "id": "f8ede090-6779-4394-87f7-c5f399dc82bb",
-    "url": "[Image: new_img.png]",
-    "timestamp": "2026-03-11T16:00:04.660012+00:00",
-    "overall_credibility": "UNRELIABLE",
-    "avg_score": 0,
-    "bottom_line": "",
-    "verdicts": [],
-    "explanations": {},
-    "source": "webapp"
-  },
-  {
     "id": "e439347a-2f1e-45f0-9606-d7dacaceb01d",
     "url": "https://www.amarujala.com/world/west-asia-conflict-war-will-end-any-time-i-want-donald-trump-makes-big-claim-2026-03-11?src=tlh&position=1",
     "timestamp": "2026-03-11T15:55:01.155626+00:00",
@@ -656,28 +625,6 @@
       "overall_credibility": "LOW CREDIBILITY",
       "bottom_line": "The credibility of the sources used in these fact-checks is low, which may indicate that the information is not entirely reliable."
     },
-    "source": "webapp"
-  },
-  {
-    "id": "9eca8450-a3e9-467c-a461-3d1101226b4e",
-    "url": "[Image: new_img2.png]",
-    "timestamp": "2026-03-11T15:53:16.038054+00:00",
-    "overall_credibility": "UNRELIABLE",
-    "avg_score": 0,
-    "bottom_line": "",
-    "verdicts": [],
-    "explanations": {},
-    "source": "webapp"
-  },
-  {
-    "id": "a9bd6e73-eeed-4a41-a523-448bafcf3f1e",
-    "url": "[Image: new_img.png]",
-    "timestamp": "2026-03-11T15:51:09.054757+00:00",
-    "overall_credibility": "UNRELIABLE",
-    "avg_score": 0,
-    "bottom_line": "",
-    "verdicts": [],
-    "explanations": {},
     "source": "webapp"
   },
   {

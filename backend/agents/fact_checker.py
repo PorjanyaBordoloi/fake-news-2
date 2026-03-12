@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import os
 import importlib
+import time
 import traceback
 from enum import Enum
 from typing import TYPE_CHECKING, Any
@@ -187,21 +188,41 @@ The JSON must contain exactly these keys:
 
 
 
-def _build_fact_checker_llm() -> Any:
+def _build_fact_checker_llm(model: str | None = None) -> Any:
     from langchain_groq import ChatGroq
 
     groq_api_key = _read_env_var("GROQ_API_KEY", "groq_api_key")
     if not groq_api_key:
         raise RuntimeError("Missing Groq API key. Set GROQ_API_KEY in .env")
 
+    chosen_model = model or _fc_cfg.get("verdict_model", "llama-3.3-70b-versatile")
     llm = ChatGroq(
-        model=_fc_cfg.get("verdict_model", "llama-3.3-70b-versatile"),
+        model=chosen_model,
         api_key=groq_api_key,
         temperature=_fc_cfg.get("verdict_temperature", 0),
     )
     return llm.with_structured_output(
         FactCheckVerdict,
         method=_fc_cfg.get("verdict_method", "json_mode"),
+    )
+
+
+def _build_gemini_fact_checker_llm() -> Any:
+    """Gemini Flash fallback when Groq daily token quota is exhausted."""
+    from langchain_google_genai import ChatGoogleGenerativeAI
+
+    gemini_api_key = _read_env_var("GEMINI_API_KEY", "gemini_api_key")
+    if not gemini_api_key:
+        raise RuntimeError("Missing Gemini API key. Set GEMINI_API_KEY in .env")
+
+    llm = ChatGoogleGenerativeAI(
+        model="gemini-2.0-flash",
+        google_api_key=gemini_api_key,
+        temperature=0,
+    )
+    return llm.with_structured_output(
+        FactCheckVerdict,
+        method="json_mode",
     )
 
 
@@ -234,6 +255,7 @@ def _run_reasoning_step(
     Call 1: Free-form chain-of-thought reasoning.
     Returns reasoning document as plain text.
     Raises ValueError if output is suspiciously short (model skipped steps).
+    Retries up to 3 times on 429 rate-limit errors with exponential backoff.
     """
     reasoning_prompt = ChatPromptTemplate.from_messages([
         ("system", REASONING_PROMPT),
@@ -245,20 +267,31 @@ def _run_reasoning_step(
     ])
 
     chain = reasoning_prompt | llm
-    response = chain.invoke({
-        "claim_text": claim_text,
-        "evidence_context": evidence_context,
-    })
 
-    reasoning_text = response.content
-
-    if len(reasoning_text.strip()) < 100:
-        raise ValueError(
-            f"Reasoning output too short — model may have skipped steps: "
-            f"{reasoning_text}"
-        )
-
-    return reasoning_text
+    last_exc: Exception | None = None
+    for attempt in range(3):
+        try:
+            response = chain.invoke({
+                "claim_text": claim_text,
+                "evidence_context": evidence_context,
+            })
+            reasoning_text = response.content
+            if len(reasoning_text.strip()) < 100:
+                raise ValueError(
+                    f"Reasoning output too short — model may have skipped steps: "
+                    f"{reasoning_text}"
+                )
+            return reasoning_text
+        except Exception as exc:  # noqa: BLE001
+            err_str = str(exc)
+            if "429" in err_str or "rate_limit" in err_str.lower():
+                wait = (2 ** attempt) * 5  # 5s, 10s, 20s
+                print(f"--- RATE LIMIT (reasoning, attempt {attempt + 1}) — waiting {wait}s ---")
+                time.sleep(wait)
+                last_exc = exc
+            else:
+                raise
+    raise last_exc  # type: ignore[misc]
 
 
 def _is_http_url(value: str) -> bool:
@@ -424,14 +457,45 @@ def fact_checker_node(state: "AgentState") -> "AgentState":
                 # ── CALL 2: Structured verdict using reasoning ────────────
                 print("--- VERDICT STEP (CALL 2) ---")
                 chain = verdict_prompt | structured_llm
-                response = chain.invoke({
-                    "claim_text": claim_text,
-                    "evidence_context": evidence_context,
-                    "reasoning_text": reasoning_text,
-                    "available_urls": "\n".join(allowed_urls),
-                })
+
+                # Retry with backoff on 429; fall back to 8b if 70b daily limit exhausted
+                last_exc: Exception | None = None
+                response = None
+                for attempt in range(3):
+                    try:
+                        response = chain.invoke({
+                            "claim_text": claim_text,
+                            "evidence_context": evidence_context,
+                            "reasoning_text": reasoning_text,
+                            "available_urls": "\n".join(allowed_urls),
+                        })
+                        break
+                    except Exception as exc:  # noqa: BLE001
+                        err_str = str(exc)
+                        if "429" in err_str or "rate_limit" in err_str.lower():
+                            if attempt < 2:
+                                wait = (2 ** attempt) * 5  # 5s, 10s
+                                print(f"--- RATE LIMIT (verdict, attempt {attempt + 1}) — waiting {wait}s ---")
+                                time.sleep(wait)
+                                last_exc = exc
+                            else:
+                                # Final attempt: fall back to Gemini
+                                print("--- RATE LIMIT on Groq — falling back to Gemini Flash ---")
+                                structured_llm = _build_gemini_fact_checker_llm()
+                                chain = verdict_prompt | structured_llm
+                                response = chain.invoke({
+                                    "claim_text": claim_text,
+                                    "evidence_context": evidence_context,
+                                    "reasoning_text": reasoning_text,
+                                    "available_urls": "\n".join(allowed_urls),
+                                })
+                                break
+                        else:
+                            raise
 
                 if response is None:
+                    if last_exc is not None:
+                        raise last_exc  # type: ignore[misc]
                     raise ValueError(
                         "Structured LLM returned None — model produced no output for this claim."
                     )

@@ -87,112 +87,63 @@ body {
 /* Input Section */
 .input-section {
   width: 100%;
+  max-width: 800px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1.5rem;
-  margin-bottom: 3rem;
+  margin-top: 2rem;
+  z-index: 10;
+}
+
+.input-section.fixed-bottom {
+  position: sticky;
+  bottom: 1.5rem;
+  margin-top: 1.5rem;
 }
 
 .input-container {
-  position: relative;
   width: 100%;
-  max-width: 700px;
-}
-
-.input-icon {
-  position: absolute;
-  left: 1.5rem;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--text-primary);
-  opacity: 0.8;
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-
-.url-input {
-  width: 100%;
-  padding: 1.25rem 4rem 1.25rem 4rem;
-  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
   background: #2f2f2f;
-  /* Claude input box bg */
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 20px;
-  color: var(--text-primary);
-  outline: none;
+  padding: 0.75rem 1.25rem;
+  gap: 0.75rem;
   transition: all 0.2s ease;
 }
 
-.url-input::placeholder {
-  color: #888888;
-}
-
-.url-input:focus {
+.input-container:focus-within {
   background: #3b3b3b;
   border-color: rgba(255, 255, 255, 0.2);
 }
 
-.image-upload-btn {
-  position: absolute;
-  right: 1.25rem;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  color: rgba(255, 255, 255, 0.55);
+.input-icon {
+  color: var(--text-primary);
+  opacity: 0.7;
   cursor: pointer;
-  padding: 0.25rem;
-  display: flex;
-  align-items: center;
-  transition: color 0.2s;
-  line-height: 0;
-}
-
-.image-upload-btn:hover:not(:disabled) {
-  color: #fff;
-}
-
-.image-upload-btn:disabled {
-  opacity: 0.3;
-  cursor: not-allowed;
-}
-
-.image-chip {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: rgba(255, 255, 255, 0.07);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 20px;
-  padding: 0.35rem 0.75rem;
-  font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.8);
-  max-width: 700px;
-  width: fit-content;
-}
-
-.image-chip-name {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 520px;
-}
-
-.image-chip-remove {
-  background: none;
-  border: none;
-  color: rgba(255, 255, 255, 0.45);
-  cursor: pointer;
-  padding: 0;
-  display: flex;
-  align-items: center;
   flex-shrink: 0;
-  line-height: 0;
+  width: 20px;
+  height: 20px;
 }
 
-.image-chip-remove:hover {
-  color: #fff;
+.input-icon:hover {
+  opacity: 1;
+}
+
+.url-input {
+  flex: 1;
+  padding: 0.35rem 0;
+  font-size: 1.1rem;
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  outline: none;
+}
+
+.url-input::placeholder {
+  color: #888888;
 }
 
 .input-hint {
@@ -201,6 +152,10 @@ body {
   opacity: 0.9;
   font-style: italic;
   font-weight: 300;
+}
+
+.hidden {
+  display: none;
 }
 
 /* Chat Container / Minimal UI */
@@ -852,4 +807,48 @@ body {
 .history-reanalyze-btn:hover {
   background: rgba(255, 255, 255, 0.08);
   color: #fff;
+}
+
+/* Chat mode layout */
+.chat-layout {
+  justify-content: flex-start;
+  padding-top: 2rem;
+}
+
+/* Loader spin animation */
+.spin {
+  animation: rotate 1s linear infinite;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Agent logs accordion */
+.agent-logs-accordion {
+  margin: 1rem 0 1.5rem;
+}
+
+.agent-logs-summary {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: #a3a3a3;
+  list-style: none;
+  padding: 0.25rem 0;
+}
+
+.agent-logs-summary::-webkit-details-marker {
+  display: none;
+}
+
+.agent-logs-summary:hover {
+  color: #d4d4d4;
+}
+
+.agent-logs-content {
+  margin-top: 0.5rem;
 }
